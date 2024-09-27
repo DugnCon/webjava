@@ -12,6 +12,9 @@
 	-fx-font-size:50;
 	-fx-effect: dropshadow(gaussian, gray, 10, 0.0, 0, 0);
 }
+.image{
+	-fx-effect: dropshadow(gaussian, gray, 25, 0.7, 0, 0);
+}
 .button{
 	-fx-background-color:#168560;
 	-fx-text-fill:#ffffff;
@@ -23,11 +26,12 @@
 	-fx-font-weight:bold;
 	-fx-border-width:2;
 	-fx-border-color:#168560;
+	-fx-translate-x:0;
 }
 .button:hover{
 	-fx-background-color:#171B1D;
 	-fx-text-fill:#168560;
-	-fx-translate-x:-100;
+	-fx-translate-x:-150;
 	-fx-cursor:hand;
 }
 
