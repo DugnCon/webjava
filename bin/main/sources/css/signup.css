@@ -1,0 +1,75 @@
+.stackPane{
+	-fx-background-color:black;
+}
+.vbox{
+	-fx-background-color:#171B1D;
+	-fx-background-radius:20;
+	-fx-border-radius:20;
+	-fx-effect: dropshadow(gaussian, gray, 10, 0.0, 8, 15);
+}
+.hboxLogo, .vboxLogin{
+	-fx-background-color:#171B1D;
+	-fx-border-radius:20;
+	-fx-background-radius:20;
+	-fx-border-color:#168560;
+	-fx-border-width:2;
+	-fx-pref-width:600;
+	-fx-effect: dropshadow(gaussian, gray, 10, 0.0, 8, 15);
+}
+.laySignUp{
+	-fx-spacing:50px;
+	-fx-padding: 0 0 20 0;
+	-fx-background-color:#171B1D;
+	-fx-background-radius:8;
+	-fx-border-radius:8;
+	-fx-border-width:2;
+	-fx-border-color:#168560;
+	-fx-effect: dropshadow(gaussian, gray, 10, 0.0, 8, 15);
+}
+.LabelLogo{
+	-fx-font-size:50;
+	-fx-text-fill:#ffffff;
+	-fx-font-weight:bold;
+	-fx-effect: dropshadow(gaussian, gray, 10, 0.0, 8, 15);
+}
+.imageLogo{
+	-fx-effect: dropshadow(gaussian, gray, 10, 0.0, 8, 15);
+}
+.UsPas{
+	-fx-font-size:16;
+	-fx-text-fill:#ffffff;
+	-fx-font-weight:bold;
+	-fx-effect: dropshadow(gaussian, gray, 10, 0.0, 8, 15);
+}
+.layTextField, .layPassField{
+	-fx-pref-width:350px;
+	-fx-spacing:30px;
+	-fx-text-fill: white;
+	-fx-font-weight:bold;
+	-fx-font-size:16px;
+	-fx-pref-height:45px;
+	-fx-border-width:2px;
+	-fx-border-radius: 20;
+	-fx-background-radius: 20;
+	-fx-border-color:#168560;
+	-fx-background-color:rgba(25,25,250,0);
+	-fx-effect: dropshadow(gaussian, gray, 10, 0.0, 8, 15);
+}
+.Button{
+	-fx-font-size:16px;
+	-fx-font-weight:bold;
+	-fx-text-fill:white;
+	-fx-border-color:#168560;
+	-fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-border-width:2px;
+    -fx-pref-width:160px;
+    -fx-background-color:#168560;
+	-fx-effect: dropshadow(gaussian, gray, 10, 0.0, 8, 15);
+}
+.Button:hover{
+	-fx-background-color:white;
+	-fx-text-fill:#007A27;
+	-fx-cursor: hand;
+	-fx-effect: dropshadow(gaussian, darkgray, 15, 0.0, 7, 7);
+}

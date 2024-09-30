@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Pos?>
+<?import javafx.geometry.Insets?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.interfaceController" stylesheets="@main/sources/css/interface.css">
+    <!-- Tạo đêm cho VBox tổng -->
+    <VBox>
+    <!-- Tạo thanh sidebar -->
+    <VBox>
+      <VBox>
+        <GridPane>
+        <!-- Tạo ảnh và username -->
+          <ImageView fitWidth = "100" fitHeight = "100" preserveRatio = "true" GridPane.columnIndex = "0" GridPane.rowIndex = "0">
+            <Image url= "/profile-user.png"/>
+          </ImageView>
+           <Label text = "User name" GridPane.columnIndex = "0" GridPane.rowIndex = "1"/>
+           <!-- Tạo bố cục cho ảnh và home -->
+           <Hbox hgap = "40">
+            <ImageView>
+              <Image url = "/notebook.png" />
+            </ImageView>
+            <Button fx:id = "home" text = "Trang chủ" onAction = "#handleHome" GridPane.columnIndex = "0" GridPane.rowIndex = "2" />
+           </Hbox>
+           <!-- Tạo bố cục cho logo và button -->
+           <Hbox hgap = "40">
+            <ImageView>
+              <Image url = "/notebook.png" />
+            </ImageView>
+            <Button fx:id = "borrower" text = "Quản lý người mượn" onAction = "#handleBorrower" GridPane.columnIndex = "0" GridPane.rowIndex = "3" />
+           </Hbox>
+           <Hbox hgap = "40">
+            <ImageView>
+              <Image url = "/shopping-cart.png" />
+            </ImageView>
+            <Button fx:id = "payer" text = "Quản lý người trả" onAction = "#handlePayer" GridPane.columnIndex = "0" GridPane.rowIndex = "4" />
+           </Hbox>
+           <Hbox hgap = "40">
+            <ImageView>
+              <Image url = "/user.png" />
+            </ImageView>
+            <Button fx:id = "user" text = "Quản lý người dùng" onAction = "#handleUser" GridPane.columnIndex = "0" GridPane.rowIndex = "5" />
+           </Hbox>
+           <Hbox hgap = "40">
+            <ImageView>
+              <Image url = "/group.png" />
+            </ImageView>
+            <Button fx:id = "employees" text = "Quản lý nhân viên" onAction = "#handleEmployees" GridPane.columnIndex = "0" GridPane.rowIndex = "5" />
+           </Hbox>
+           
+        </GridPane>
+        <
+      </VBox>
+    </VBox>
+    </VBox>
+</StackPane>
+
