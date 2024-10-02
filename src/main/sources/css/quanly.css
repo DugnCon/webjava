@@ -1,7 +1,68 @@
-.button{
-	-fx-pref-width: 100;
+.hboxAll{
+	-fx-background-color:black;
+}
+.buttonLay{
+	-fx-pref-width:150;
+	-fx-pref-height:60;
+	-fx-background-color:#168560;
+	-fx-background-radius:45;
+	-fx-border-radius:45;
+	-fx-font-size:13;
+	-fx-font-weight:bold;
+	-fx-text-fill:#ffffff;
+}
+.buttonLay:hover{
+	-fx-background-color:rgba(255,255,255,0.1);
+	-fx-border-color:#168560;
+	-fx-cursor:hand;
+	-fx-effect: dropshadow(gaussian, gray, 25, 0.7, 0, 0);
+}
+.labelLay{
+	-fx-text-fill:#ffffff;
+	-fx-font-weight:bold;
+	-fx-font-size:20;
+}
+.vbox_1{
+	-fx-background-color:#171B1D;
+}
+.hboxLay{
+	-fx-background-color:#363636;
+	-fx-pref-width:180;
+	-fx-pref-height:80;
+	-fx-background-radius:45;
+	-fx-border-radius:45;
+	-fx-alignment:CENTER;
+}
+.image{
+	-fx-effect: dropshadow(gaussian, gray, 25, 0.7, 0, 0);
+}
+.labelTit{
+	-fx-font-size:40;
+	-fx-text-fill:#ffffff;
+	-fx-font-weight:bold;
+}
+.textfield{
+	-fx-pref-width:100;
+	-fx-pref-height:40;
+	-fx-border-color:#168560;
+	-fx-border-radius:20;
+	-fx-background-radius:20;
+	-fx-border-color:#168560;
+	-fx-border-width:2;
+}
+.buttonAdd{
+	-fx-pref-width:150;
 	-fx-pref-height:40;
 	-fx-background-color:#168560;
-	-fx-background-radius:8;
-	-fx-border-radius:8;
+	-fx-background-radius:45;
+	-fx-border-radius:45;
+	-fx-font-size:16;
+	-fx-font-weight:bold;
+	-fx-text-fill:#ffffff;
+}
+.buttonAdd:hover{
+	-fx-background-color:rgba(255,255,255,0.1);
+	-fx-border-color:#168560;
+	-fx-cursor:hand;
+	-fx-effect: dropshadow(gaussian, gray, 25, 0.7, 0, 0);
 }
