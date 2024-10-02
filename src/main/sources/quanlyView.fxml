@@ -13,55 +13,89 @@
 <?import javafx.geometry.Pos?>
 <?import javafx.geometry.Insets?>
 
-<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.interfaceController" stylesheets="@main/sources/css/interface.css">
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.quanlyController" stylesheets="@main/sources/css/quanly.css">
     <!-- Tạo đêm cho VBox tổng -->
-    <VBox>
+    <HBox styleClass = "hboxAll">
     <!-- Tạo thanh sidebar -->
-    <VBox>
-      <VBox>
-        <GridPane>
+    <VBox styleClass = "vbox_1" alignment = "CENTER">
+      <VBox alignment = "CENTER">
+      <padding>
+        <Insets top ="50" right = "20" bottom = "50" left = "50"/>
+      </padding>
+        <GridPane vgap = "20" alignment = "CENTER">
         <!-- Tạo ảnh và username -->
-          <ImageView fitWidth = "100" fitHeight = "100" preserveRatio = "true" GridPane.columnIndex = "0" GridPane.rowIndex = "0">
-            <Image url= "/profile-user.png"/>
-          </ImageView>
-           <Label text = "User name" GridPane.columnIndex = "0" GridPane.rowIndex = "1"/>
+          <VBox alignment = "CENTER" spacing = "10">
+            <ImageView fitWidth = "120" fitHeight = "120" preserveRatio = "true" GridPane.columnIndex = "0" GridPane.rowIndex = "0" styleClass = "image">
+              <Image url= "/profile-user.png"/>
+            </ImageView>
+            <Label text = "User name" GridPane.columnIndex = "0" GridPane.rowIndex = "1" styleClass = "labelLay"/>
+          </VBox>
+          
            <!-- Tạo bố cục cho ảnh và home -->
-           <Hbox hgap = "40">
-            <ImageView>
-              <Image url = "/notebook.png" />
-            </ImageView>
-            <Button fx:id = "home" text = "Trang chủ" onAction = "#handleHome" GridPane.columnIndex = "0" GridPane.rowIndex = "2" />
-           </Hbox>
+           <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "2" styleClass = "hboxLay">
+             <padding>
+               <Insets top = "10" right = "5" bottom = "10" left = "5"/>
+             </padding>
+             <ImageView fitWidth = "40" fitHeight = "40" preserveRatio = "true" styleClass = "image">
+               <Image url = "/notebook.png"/>
+             </ImageView>
+             <Button fx:id = "home" text = "Trang chủ" onAction = "#handleHome" styleClass = "buttonLay"/>
+           </HBox>
            <!-- Tạo bố cục cho logo và button -->
-           <Hbox hgap = "40">
-            <ImageView>
+           <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "3" styleClass = "hboxLay">
+           <padding>
+               <Insets top = "10" right = "5" bottom = "10" left = "5"/>
+             </padding>
+            <ImageView fitWidth = "40" fitHeight = "40" preserveRatio = "true" styleClass = "image">
               <Image url = "/notebook.png" />
             </ImageView>
-            <Button fx:id = "borrower" text = "Quản lý người mượn" onAction = "#handleBorrower" GridPane.columnIndex = "0" GridPane.rowIndex = "3" />
-           </Hbox>
-           <Hbox hgap = "40">
-            <ImageView>
+            <Button fx:id = "borrower" text = "Quản lý người mượn" onAction = "#handleBorrower" styleClass ="buttonLay" />
+           </HBox>
+           
+           <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "4" styleClass = "hboxLay">
+           <padding>
+               <Insets top = "10" right = "5" bottom = "10" left = "5"/>
+             </padding>
+            <ImageView fitWidth = "40" fitHeight = "40" preserveRatio = "true" styleClass = "image">
               <Image url = "/shopping-cart.png" />
             </ImageView>
-            <Button fx:id = "payer" text = "Quản lý người trả" onAction = "#handlePayer" GridPane.columnIndex = "0" GridPane.rowIndex = "4" />
-           </Hbox>
-           <Hbox hgap = "40">
-            <ImageView>
+            <Button fx:id = "payer" text = "Quản lý người trả" onAction = "#handlePayer" styleClass = "buttonLay"/>
+           </HBox>
+           
+           <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "5" styleClass = "hboxLay">
+           <padding>
+               <Insets top = "10" right = "5" bottom = "10" left = "5"/>
+             </padding>
+            <ImageView fitWidth = "40" fitHeight = "40" preserveRatio = "true" styleClass = "image">
               <Image url = "/user.png" />
             </ImageView>
-            <Button fx:id = "user" text = "Quản lý người dùng" onAction = "#handleUser" GridPane.columnIndex = "0" GridPane.rowIndex = "5" />
-           </Hbox>
-           <Hbox hgap = "40">
-            <ImageView>
+            <Button fx:id = "user" text = "Quản lý người dùng" onAction = "#handleUser" styleClass = "buttonLay"/>
+           </HBox>
+           
+           <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "6" styleClass = "hboxLay">
+           <padding>
+               <Insets top = "10" right = "5" bottom = "10" left = "5"/>
+             </padding>
+            <ImageView fitWidth = "40" fitHeight = "40" preserveRatio = "true" styleClass = "image">
               <Image url = "/group.png" />
             </ImageView>
-            <Button fx:id = "employees" text = "Quản lý nhân viên" onAction = "#handleEmployees" GridPane.columnIndex = "0" GridPane.rowIndex = "5" />
-           </Hbox>
+            <Button fx:id = "employees" text = "Quản lý nhân viên" onAction = "#handleEmployees" styleClass = "buttonLay"/>
+           </HBox>
            
         </GridPane>
-        <
+        </VBox>
       </VBox>
-    </VBox>
-    </VBox>
+      <!-- Tạo bố cục quản lý kho sách -->
+      <VBox  styleClass = "vbox_1" HBox.hgrow="ALWAYS" >
+      <padding>
+        <Insets top = "50" right = "150" bottom = "0" left = "150"/>
+      </padding>
+        <VBox alignment = "TOP_CENTER" spacing = "40">
+          <Label text = "Quản lý kho sách" styleClass = "labelTit"/>
+          <TextField promptText="Search" styleClass = "textfield"/>
+          <Button fx:id = "addBook" text = "Thêm sách" onAction = "#handleAddBook" styleClass = "buttonAdd"/>
+        </VBox>
+      </VBox>
+    </HBox>
 </StackPane>
 
