@@ -3,7 +3,7 @@
 }
 .buttonLay{
 	-fx-pref-width:150;
-	-fx-pref-height:60;
+	-fx-pref-height:80;
 	-fx-background-color:#168560;
 	-fx-background-radius:45;
 	-fx-border-radius:45;
@@ -16,7 +16,9 @@
 	-fx-border-color:#168560;
 	-fx-cursor:hand;
 	-fx-effect: dropshadow(gaussian, gray, 25, 0.7, 0, 0);
+    -fx-scale-y: 1.2;
 }
+
 .labelLay{
 	-fx-text-fill:#ffffff;
 	-fx-font-weight:bold;
@@ -24,6 +26,9 @@
 }
 .vbox_1{
 	-fx-background-color:#171B1D;
+	-fx-border-radius:solid;
+	-fx-border-width:4;
+	-fx-border-color:black;
 }
 .hboxLay{
 	-fx-background-color:#363636;

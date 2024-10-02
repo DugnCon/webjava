@@ -31,7 +31,7 @@
 .button:hover{
 	-fx-background-color:#171B1D;
 	-fx-text-fill:#168560;
-	-fx-translate-x:-150;
+	-fx-translate-x:-120;
 	-fx-cursor:hand;
 }
 

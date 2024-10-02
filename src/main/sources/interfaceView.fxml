@@ -55,7 +55,7 @@
               </ImageView>
               <StackPane alignment = "CENTER_RIGHT">
                  <Label text="ON" styleClass="labelOn"/>
-                 <Button text="Quản lý kho sách" onAction="#handleKhosach" styleClass="button"/>
+                 <Button fx:id = "manageBook" text="Quản lý kho sách" onAction="#handleKhosach" styleClass="button"/>
                </StackPane>
              </HBox>
 
@@ -68,7 +68,7 @@
                 </ImageView>
                <StackPane alignment = "CENTER_RIGHT">
                  <Label text="ON" styleClass="labelOn"/>
-                 <Button text="Quản lý mượn sách" onAction="#handleMuonsach" styleClass="button"/>
+                 <Button fx:id = "manageBorrow" text="Quản lý mượn sách" onAction="#handleMuonsach" styleClass="button"/>
                </StackPane>
               </HBox>
               <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "2" alignment = "CENTER" spacing = "20">
@@ -80,7 +80,7 @@
                 </ImageView>
                 <StackPane alignment = "CENTER_RIGHT">
                   <Label text="ON" styleClass="labelOn"/>
-                  <Button text="Quản lý trả sách" onAction="#handleTrasach" styleClass="button"/>
+                  <Button fx:id = "managePay" text="Quản lý trả sách" onAction="#handleTrasach" styleClass="button"/>
                 </StackPane>
               </HBox>
             </GridPane>
@@ -96,7 +96,7 @@
                 </ImageView>
                 <StackPane alignment = "CENTER_RIGHT">
                   <Label text="ON" styleClass="labelOn"/>
-                  <Button text="Quản lý người dùng" onAction="#handleNhanvien" styleClass="button"/>
+                  <Button fx:id = "manageUser" text="Quản lý người dùng" onAction="#handleNhanvien" styleClass="button"/>
                 </StackPane>
               </HBox>
               <HBox GridPane.columnIndex = "1" GridPane.rowIndex = "1" alignment = "CENTER" spacing = "20">
@@ -108,7 +108,7 @@
                </ImageView>
                <StackPane alignment = "CENTER_RIGHT">
                   <Label text="ON" styleClass="labelOn"/>
-                  <Button text="Quản lý nhân viên" onAction="#handleNhanvien" styleClass="button"/>
+                  <Button fx:id = "manageEmployees" text="Quản lý nhân viên" onAction="#handleNhanvien" styleClass="button"/>
                </StackPane>
               </HBox>
               <HBox GridPane.columnIndex = "1" GridPane.rowIndex = "2" alignment = "CENTER" spacing = "20">
