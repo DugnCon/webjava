@@ -1,12 +1,6 @@
 package main.java.controller;
 
-import java.io.IOException;
-import javafx.animation.FadeTransition;
-import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -15,7 +9,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import javafx.util.Duration;
+import main.java.dao.signUpAccount;
+import main.java.model.author;
+
 
 public class signupController extends baseSceneController {
 
@@ -41,10 +37,14 @@ public class signupController extends baseSceneController {
         // Xử lý logic khi nhấn nút Login
     }
 
-    @FXML
+	@FXML
     private void handleButtonSignUp() {
-        // Tải FXML cho cảnh mới
-		createScene(signup,"/main/sources/loginView.fxml","/main/sources/css/login.css");
+    	 // Lấy giá trị từ các trường
+        String userName = username.getText();
+        String passWord = password.getText();
+        String repeatPassWord = repeatPassword.getText();
+		author Author = new author(userName, passWord, repeatPassWord);
+		signUpAccount.getInstance().insert(Author);
+        createScene(signup, "/main/sources/loginView.fxml", "/main/sources/css/login.css");
     }
-
 }

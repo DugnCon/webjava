@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.fxml.FXML;
 
 public class loginController extends baseSceneController {
     @FXML
@@ -47,7 +48,7 @@ public class loginController extends baseSceneController {
     }
     
     @FXML
-    private void handleButtonSignUp() {
+	protected void handleButtonSignUp() {
         // Tải FXML cho cảnh mới
         createScene(signup, "/main/sources/signupView.fxml", "/main/sources/css/signup.css");
     }
