@@ -50,11 +50,11 @@
               <Insets top="20" right="20" bottom="20" left="20"/>
             </padding>
             <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="UsPas"/>
-            <TextField promptText="Example: damdaidung" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="layTextField"/>
+            <TextField fx:id = "username" promptText="Example: damdaidung" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="layTextField"/>
             <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="UsPas"/>
-            <PasswordField promptText="Example: 12345567dung" GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="layPassField"/>
+            <PasswordField fx:id = "password" promptText="Example: 12345567dung" GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="layPassField"/>
             <Label text = "Repeat Password" GridPane.columnIndex="0" GridPane.rowIndex="4" styleClass = "UsPas"/>
-            <PasswordField GridPane.columnIndex="0" GridPane.rowIndex="5" styleClass="layPassField"/>
+            <PasswordField fx:id = "repeatPassword" GridPane.columnIndex="0" GridPane.rowIndex="5" styleClass="layPassField"/>
           </GridPane>
           <Label text="If you don't have an account, you can enroll" styleClass = "UsPas"/>
           <!-- Tạo bố cục cho các button -->

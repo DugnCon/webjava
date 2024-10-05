@@ -13,7 +13,7 @@
 <?import javafx.geometry.Pos?>
 <?import javafx.geometry.Insets?>
 
-<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.quanlyController" stylesheets="@main/sources/css/quanly.css">
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.addBookController" stylesheets="@main/sources/css/addBook.css">
     <!-- Tạo đêm cho VBox tổng -->
     <HBox styleClass = "hboxAll">
     <!-- Tạo thanh sidebar -->
@@ -85,17 +85,54 @@
         </GridPane>
         </VBox>
       </VBox>
-      <!-- Tạo bố cục quản lý kho sách -->
-      <VBox  styleClass = "vbox_1" HBox.hgrow="ALWAYS" >
+      
+      <!-- tạo nơi thêm sách --> 
+      <VBox HBox.hgrow="ALWAYS" styleClass = "vbox_1">
       <padding>
-        <Insets top = "50" right = "150" bottom = "0" left = "150"/>
+        <Insets top = "50" right = "0" bottom = "0" left = "0"/>
       </padding>
-        <VBox alignment = "TOP_CENTER" spacing = "40">
-          <Label text = "Quản lý kho sách" styleClass = "labelTit"/>
-          <TextField promptText="Search" styleClass = "textfield"/>
-          <Button fx:id = "addBook" text = "Thêm sách" onAction = "#handleAddBook" styleClass = "buttonAdd"/>
+        <VBox alignment = "CENTER" spacing = "40">
+          <Label text = "Thông tin sách" styleClass = "labelTit"/>
+          <GridPane alignment = "CENTER" vgap = "40">
+          
+            <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "0" spacing = "80">
+              <HBox spacing = "20">
+                <Label text = "Tiêu đề" styleClass = "labelMin"/>
+                <TextField fx:id ="nameBook" promptText = "Example: Caculus" styleClass = "textField"/>
+              </HBox>
+              <HBox spacing = "20">
+                <Label text = "Số phần" styleClass = "labelMin"/>
+                <TextField fx:id = "chapBook" promptText = "Example: Chapter 6" styleClass = "textField"/>
+              </HBox>
+            </HBox>
+     
+            <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "1" spacing = "80">
+              <HBox spacing = "20">
+                <Label text = "Tác giả" styleClass = "labelMin"/>
+                <TextField fx:id = "nameAuthor" promptText = "Example: Xuân Diệu" styleClass = "textField"/>
+              </HBox>
+              <HBox spacing = "20">
+                <Label text = "Thể loại" styleClass = "labelMin"/>
+                <TextField fx:id = "styleBook" styleClass = "textField" promptText="Nhập nội dung tại đây"/>
+              </HBox>
+            </HBox>
+   
+            <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "2" spacing = "80">
+              <HBox spacing  ="20">
+                <Label text = "Nhà xuất bản" styleClass = "labelMin"/>
+                <TextField fx:id = "publisher" promptText = "Example: Kim Đồng" styleClass = "textField"/>
+              </HBox>
+              <HBox spacing = "20">
+                <Label text = "Năm xuất bản" styleClass = "labelMin"/>
+                <TextField fx:id = "releaseYear" promptText = "Example: 2024" styleClass = "textField"/>
+              </HBox>
+            </HBox>
+            
+          </GridPane>
+          
+          <!-- Tạo nút ghi hoàn tất thêm sách -->
+          <Button fx:id = "completed" text = "Thêm sách" onAction = "#handleComplete" styleClass = "buttonCom"/>
         </VBox>
       </VBox>
     </HBox>
 </StackPane>
-
