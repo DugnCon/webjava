@@ -17,23 +17,12 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class interfaceController {
+public class interfaceController extends baseSceneController {
 	@FXML
 	private Button signout,manageBook,manageBorrow,managePay,manageUser,manageEmployees;
 	@FXML
 	private void handleKhosach() {
-		try {
-			Parent newRoot = FXMLLoader.load(getClass().getResource("/main/sources/quanlyView.fxml"));
-			Scene newScene = new Scene(newRoot, 1200, 780);
-	        newScene.getStylesheets().add(getClass().getResource("/main/sources/css/quanly.css").toExternalForm());
-            // Lấy Stage hiện tại
-	        Stage stage = (Stage) manageBook.getScene().getWindow();
-	        stage.setScene(newScene);
-	        stage.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		createScene(manageBook, "/main/sources/quanlyView.fxml" , "/main/sources/css/quanly.css");
 	}
 	@FXML
 	private void handleMuonsach() {
