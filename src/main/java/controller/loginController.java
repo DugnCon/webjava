@@ -2,6 +2,7 @@ package main.java.controller;
 
 import java.io.IOException;
 
+import main.java.controller.AppController;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -44,6 +45,7 @@ public class loginController extends baseSceneController {
 
     @FXML
     private void handleButtonLogin() {
+		AppController.getAppController().flyOut(login);
     	createScene(login,"/main/sources/interfaceView.fxml","/main/sources/css/interface.css");
     }
     

@@ -1,30 +1,42 @@
 package main.java.controller;
 
 import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import com.google.gson.JsonArray;
 
 public class MultiThreadedAPIController {
     private APIController apiController;
+    private ExecutorService executor;
 
     public MultiThreadedAPIController() {
-        apiController = new APIController(); // Khởi tạo APIController
+        apiController = new APIController(); 
+        executor = Executors.newFixedThreadPool(10);
     }
 
-    // Phương thức tìm kiếm sách trong một luồng không đồng bộ
-    public CompletableFuture<JsonArray> searchBooks(String query) {
+    public CompletableFuture<JsonArray> searchBooksAsync(String query) {
         return CompletableFuture.supplyAsync(() -> {
             try {
                 return apiController.searchBooks(query);
             } catch (IOException | InterruptedException e) {
-                throw new RuntimeException(e); // Ném lỗi để CompletableFuture có thể xử lý
+                throw new RuntimeException("Error during book search", e);
             }
-        });
+        }, executor);
+    }
+
+    public CompletableFuture<JsonArray> getSuggestionsAsync(String query) {
+        return CompletableFuture.supplyAsync(() -> {
+            try {
+               
+                return apiController.searchBooks(query); 
+            } catch (IOException | InterruptedException e) {
+                throw new RuntimeException("Error during getting book suggestions", e);
+            }
+        }, executor);
+    }
+
+    public void shutdown() {
+        executor.shutdown();
     }
 }

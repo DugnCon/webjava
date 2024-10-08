@@ -44,7 +44,12 @@ public class signupController extends baseSceneController {
         String passWord = password.getText();
         String repeatPassWord = repeatPassword.getText();
 		author Author = new author(userName, passWord, repeatPassWord);
-		signUpAccount.getInstance().insert(Author);
-        createScene(signup, "/main/sources/loginView.fxml", "/main/sources/css/login.css");
+		int res = signUpAccount.getInstance().insert(Author);
+		if(res > 0) {
+			signUpAccount.getInstance().AlertComplete();
+			createScene(signup, "/main/sources/loginView.fxml", "/main/sources/css/login.css");
+		}else {
+			signUpAccount.getInstance().AlertUnComplete();
+		}
     }
 }

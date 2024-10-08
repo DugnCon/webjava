@@ -10,30 +10,39 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 public class APIController {
-    private static final String API_KEY = "AIzaSyC1EH7kNUCc-lgollZW7OvpzsJED31s4RM"; // Thay bằng API Key 
+    private static final String API_KEY = "AIzaSyC1EH7kNUCc-lgollZW7OvpzsJED31s4RM";
     private static final String BASE_URL = "https://www.googleapis.com/books/v1/volumes";
 
     private HttpClient client;
 
     public APIController() {
-        client = HttpClient.newHttpClient(); // Khởi tạo HttpClient
+        client = HttpClient.newHttpClient();
     }
 
-    // Phương thức tìm kiếm sách theo từ khóa
     public JsonArray searchBooks(String query) throws IOException, InterruptedException {
         String url = BASE_URL + "?q=" + query + "&key=" + API_KEY;
 
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).build();
-
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        // Kiểm tra mã trạng thái
         if (response.statusCode() == 200) {
-            // Phân tích dữ liệu JSON từ phản hồi
             JsonObject jsonObject = JsonParser.parseString(response.body()).getAsJsonObject();
-            return jsonObject.getAsJsonArray("items"); // Trả về danh sách sách
+            return jsonObject.getAsJsonArray("items");
         } else {
             throw new IOException("Error fetching books: " + response.statusCode());
+        }
+    }
+
+    public JsonArray getSuggestions(String query) throws IOException, InterruptedException {
+        String url = BASE_URL + "?q=" + query + "&key=" + API_KEY + "&maxResults=5"; // Giới hạn số lượng kết quả
+        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).build();
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        if (response.statusCode() == 200) {
+            JsonObject jsonObject = JsonParser.parseString(response.body()).getAsJsonObject();
+            return jsonObject.getAsJsonArray("items");
+        } else {
+            throw new IOException("Error fetching suggestions: " + response.statusCode());
         }
     }
 }
