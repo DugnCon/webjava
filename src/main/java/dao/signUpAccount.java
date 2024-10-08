@@ -45,7 +45,6 @@ public class signUpAccount implements AccountInterface<author> {
     @Override
     public int insert(author t) {
         int res = 0;
-        boolean check = false;
         try {
             Connection con = JDBCSQL.getConnection();
             Statement sttm = con.createStatement();
@@ -57,8 +56,6 @@ public class signUpAccount implements AccountInterface<author> {
                 System.out.println("Bạn đã thực thi: " + sql);
                 System.out.println("Có " + res + " dòng bị thay đổi");
             }else {
-            
-            	check = false;
             	System.out.println("Mật khẩu không phù hợp");
             }
             con.close();

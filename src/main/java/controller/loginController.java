@@ -3,6 +3,8 @@ package main.java.controller;
 import java.io.IOException;
 
 import main.java.controller.AppController;
+import main.java.dao.loginAccount;
+import main.java.model.authorLog;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -46,7 +48,17 @@ public class loginController extends baseSceneController {
     @FXML
     private void handleButtonLogin() {
 		AppController.getAppController().flyOut(login);
-    	createScene(login,"/main/sources/interfaceView.fxml","/main/sources/css/interface.css");
+		String userName = username.getText();
+		String passWord = password.getText();
+		authorLog author = new authorLog(userName, passWord);
+		int res  = loginAccount.getInstance().insert(author);
+		if(res > 0) {
+			loginAccount.getInstance().AlertComplete();
+			createScene(login,"/main/sources/interfaceView.fxml","/main/sources/css/interface.css");	
+		}else {
+			loginAccount.getInstance().AlertUnComplete();
+			 createScene(signup, "/main/sources/loginView.fxml", "/main/sources/css/login.css");
+		}
     }
     
     @FXML
