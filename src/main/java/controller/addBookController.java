@@ -1,8 +1,14 @@
 package main.java.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import main.java.model.add;
+import main.java.dao.addbook;
 
 public class addBookController extends baseSceneController {
 	@FXML
@@ -42,6 +48,16 @@ public class addBookController extends baseSceneController {
 	/**xử lý sự kiện thêm sách*/
 	@FXML
 	private void handleComplete() {
-		
+		add Add = new add(bookCode.getText(),nameBook.getText(),chapBook.getText(),
+				          nameAuthor.getText(),styleBook.getText(),publisher.getText(),
+				          releaseYear.getText(), quantity.getText());
+		int res  = addbook.setNewAdd().insert(Add);
+		if (res > 0) {
+			addbook.setNewAdd().AlertComplete();
+			createScene(completed,"/main/java/controller/addBookController.java" , "/main/sources/css/addBook.css");
+		}else {
+			addbook.setNewAdd().AlertUnComplete();
+			createScene(completed,"/main/java/controller/addBookController.java" , "/main/sources/css/addBook.css");
+		}
 	}
 }

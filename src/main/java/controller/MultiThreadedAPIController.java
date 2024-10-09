@@ -12,7 +12,7 @@ public class MultiThreadedAPIController {
 
     public MultiThreadedAPIController() {
         apiController = new APIController(); 
-        executor = Executors.newFixedThreadPool(10);
+        executor = Executors.newFixedThreadPool(20);
     }
 
     public CompletableFuture<JsonArray> searchBooksAsync(String query) {
