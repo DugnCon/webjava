@@ -58,18 +58,26 @@
 	-fx-font-size:16;
 }
 .buttonCom{
-	-fx-pref-width:100;
+	-fx-pref-width:130;
 	-fx-pref-height:40;
 	-fx-background-color:#168560;
 	-fx-background-radius:45;
 	-fx-border-radius:45;
-	-fx-font-size:13;
+	-fx-font-size:16;
 	-fx-font-weight:bold;
 	-fx-text-fill:#ffffff;
+	-fx-border-color:#168560;
+	-fx-border-style:solid;
+	-fx-border-width:2;
 }
 .buttonCom:hover{
 	-fx-background-color:rgba(255,255,255,0.1);
-	-fx-border-color:#168560;
 	-fx-cursor:hand;
-	-fx-effect: dropshadow(gaussian, gray, 25, 0.7, 0, 0);
+	/*-fx-border-color: transparent;*/
+}
+.tableView{
+	-fx-pref-height:400;
+	-fx-alignment:CENTER;
+	-fx-border-style:solid;
+	-fx-border-width:2;
 }

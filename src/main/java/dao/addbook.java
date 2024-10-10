@@ -12,7 +12,7 @@ import javafx.scene.control.ButtonBar.ButtonData;
 import main.java.JDBC.JDBCSQL;
 import main.java.model.add;
 
-public class addbook implements AccountInterface<add> {
+public class addbook implements AddBookInterface<add> {
 	
 	public static addbook setNewAdd() {
 		return new addbook();
@@ -46,8 +46,8 @@ public class addbook implements AccountInterface<add> {
     }
 
 	 @Override
-	    public int insert(add t) {
-	        int res = 0;
+	 public int insert1(add t) {
+	      int res = 0;
 	        try {
 	            Connection con = JDBCSQL.getConnection();
 	            PreparedStatement prsttm = con.prepareStatement("INSERT INTO book "
@@ -64,12 +64,22 @@ public class addbook implements AccountInterface<add> {
 	            prsttm.setInt(8, Integer.parseInt(t.getQuantity()));
 	            res = prsttm.executeUpdate();
 	            
+	            ResultSet generatedKeys = prsttm.getGeneratedKeys();
+	            if (generatedKeys.next()) {
+	                int id = generatedKeys.getInt(1);
+	                t.setID(id);
+	            }
+	            
 	            con.close();
 	        } catch (ClassNotFoundException | SQLException e) {
 	            e.printStackTrace();
 	        }
-	        return res;
-	    }
+	     return res;
+	}
+	 
+	public int insert2(add t) {
+		return 0;
+	}
 
 	@Override
 	public int update(add t) {

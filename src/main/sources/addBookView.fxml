@@ -12,6 +12,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.geometry.Pos?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 
 <StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.addBookController" stylesheets="@main/sources/css/addBook.css">
     <!-- Tạo đêm cho VBox tổng -->
@@ -89,11 +91,11 @@
       <!-- tạo nơi thêm sách --> 
       <VBox HBox.hgrow="ALWAYS" styleClass = "vbox_1">
       <padding>
-        <Insets top = "50" right = "0" bottom = "0" left = "0"/>
+        <Insets top = "30" right = "0" bottom = "0" left = "0"/>
       </padding>
         <VBox alignment = "CENTER" spacing = "40">
           <Label text = "Thông tin sách" styleClass = "labelTit"/>
-          <GridPane alignment = "CENTER" vgap = "40">
+          <GridPane alignment = "CENTER" vgap = "20">
           
             <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "0" spacing = "80">
               <HBox spacing = "20">
@@ -128,10 +130,35 @@
               </HBox>
             </HBox>
             
+            <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "3" spacing = "80">
+              <HBox spacing  ="20">
+                <Label text = "Mã sách" styleClass = "labelMin"/>
+                <TextField fx:id = "bookCode" promptText = "Example: ***" styleClass = "textField"/>
+              </HBox>
+              <HBox spacing = "20">
+                <Label text = "Số lượng" styleClass = "labelMin"/>
+                <TextField fx:id = "quantity" promptText = "Example: 2024" styleClass = "textField"/>
+              </HBox>
+            </HBox>
+            
           </GridPane>
           
           <!-- Tạo nút ghi hoàn tất thêm sách -->
           <Button fx:id = "completed" text = "Thêm sách" onAction = "#handleComplete" styleClass = "buttonCom"/>
+          
+          <VBox alignment = "CENTER">
+           <padding>
+             <Insets top= "0" right = "50" bottom = "10" left = "50"/>
+           </padding>
+            <TableView fx:id = "tableBook" styleClass = "tableView">
+              <columns>
+               <TableColumn fx:id="columnCode" text="Mã sách" prefWidth="175"/>
+               <TableColumn fx:id="columnTitle" text="Tên sách" prefWidth="295"/>
+               <TableColumn fx:id="columnAuthor" text="Tác giả" prefWidth="215"/>
+               <TableColumn fx:id="columnYear" text="Năm xuất bản" prefWidth="145"/>
+              </columns>
+            </TableView>
+          </VBox>
         </VBox>
       </VBox>
     </HBox>

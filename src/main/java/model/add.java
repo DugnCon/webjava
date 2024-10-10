@@ -1,6 +1,8 @@
 package main.java.model;
 
 public class add {
+	private Integer ID;
+	private Integer Year;
 	private String nameBook;
     private String chapBook;
     private String publisher;
@@ -25,7 +27,10 @@ public class add {
         this.releaseYear = releaseYear;
         this.quantity = quantity;
     }
-
+    
+    public void setID(int ID) {
+    	this.ID = ID;
+    }
     public void setbookCode(String bookCode) {
         this.bookCode = bookCode;
     }
@@ -53,9 +58,21 @@ public class add {
     public void setreleaseYear(String releaseYear) {
         this.releaseYear = releaseYear;
     }
+    
+    public void setYear(String releaseYear) {
+    	this.Year = Integer.parseInt(releaseYear);
+    }
 
     public void setQuantity(String quantity) {
         this.quantity = quantity;
+    }
+    
+    public Integer getYear() {
+    	return Year;
+    }
+    
+    public Integer getID() {
+    	return ID;
     }
 
     public String getbookCode() {
