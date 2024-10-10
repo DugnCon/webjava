@@ -62,8 +62,8 @@ public class addbook implements AccountInterface<add> {
 	            prsttm.setString(6, t.getPublisher());
 	            prsttm.setString(7, t.getreleaseYear());
 	            prsttm.setInt(8, Integer.parseInt(t.getQuantity()));
-
 	            res = prsttm.executeUpdate();
+	            
 	            con.close();
 	        } catch (ClassNotFoundException | SQLException e) {
 	            e.printStackTrace();

@@ -14,7 +14,9 @@ import javafx.scene.control.Hyperlink;
 
     public class quanlyController extends baseSceneController {
         @FXML
-        private Button home, borrower, payer, user, employees, addBook, searchBook;
+        private Button home, borrower, payer, user, 
+                       employees, addBook, searchBook,
+                       deleteBook, updateBook;
         @FXML
         private TextField fieldSearch;
         @FXML
@@ -167,5 +169,17 @@ import javafx.scene.control.Hyperlink;
         } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
         }
+    }
+    
+    /**Xóa sách*/
+    @FXML
+    private void handleDeleteBook() {
+    	
+    }
+    
+    /**Sửa đổi sách đã thêm*/
+    @FXML
+    private void handleUpdateBook() {
+    	
     }
 }
