@@ -174,7 +174,7 @@ import javafx.scene.control.Hyperlink;
     /**Xóa sách*/
     @FXML
     private void handleDeleteBook() {
-    	
+    	createScene(deleteBook,"/main/sources/deleteBookView.fxml","/main/sources/css/deleteBook.css");
     }
     
     /**Sửa đổi sách đã thêm*/

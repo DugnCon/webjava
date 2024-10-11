@@ -88,9 +88,18 @@ public class addbook implements AddBookInterface<add> {
 	}
 
 	@Override
-	public int delete(add t) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int Delete(add t) {
+		int res = 0;
+        try {
+            Connection con = JDBCSQL.getConnection();
+            PreparedStatement prsttm = con.prepareStatement("DELETE FROM book WHERE bookCode = ?");
+            prsttm.setString(1, t.getbookCode());
+            res = prsttm.executeUpdate();
+            con.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+       return res;
 	}
 
 	@Override

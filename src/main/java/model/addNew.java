@@ -4,9 +4,10 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class addNew {
-    private static int nextID = 1; 
-    private SimpleIntegerProperty ID;
-    private SimpleIntegerProperty Year;
+    private static int nextID1 = 1;
+    private static int nextID2 = 1;
+    private SimpleIntegerProperty ID1;
+    private SimpleIntegerProperty ID2;
     private SimpleStringProperty nameBook;
     private SimpleStringProperty chapBook;
     private SimpleStringProperty publisher;
@@ -17,8 +18,8 @@ public class addNew {
     private SimpleStringProperty quantity;
 
     public addNew() {
-        this.ID = new SimpleIntegerProperty(nextID++);
-        this.Year = new SimpleIntegerProperty();
+        this.ID1 = new SimpleIntegerProperty(nextID1++);
+        this.ID2 = new SimpleIntegerProperty(nextID2++);
         this.nameBook = new SimpleStringProperty();
         this.chapBook = new SimpleStringProperty();
         this.publisher = new SimpleStringProperty();
@@ -42,8 +43,12 @@ public class addNew {
         setQuantity(quantity);
     }
 
-    public Integer getID() {
-        return ID.get();
+    public Integer getID1() {
+        return ID1.get();
+    }
+    
+    public Integer getID2() {
+    	return ID2.get();
     }
 
     public void setBookCode(String bookCode) {
@@ -73,17 +78,9 @@ public class addNew {
     public void setReleaseYear(String releaseYear) {
         this.releaseYear.set(releaseYear);
     }
-
-    public void setYear(int year) {
-        this.Year.set(year);
-    }
-
+    
     public void setQuantity(String quantity) {
         this.quantity.set(quantity);
-    }
-
-    public Integer getYear() {
-        return Year.get();
     }
 
     public String getBookCode() {
