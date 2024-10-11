@@ -48,7 +48,7 @@ public class signUpAccount implements AccountInterface<author> {
         try {
             Connection con = JDBCSQL.getConnection();
             Statement sttm = con.createStatement();
-            if(t.isUserVallid() && t.isPassWordValid()) {
+            if(t.isUserVallid() && t.isPassWordValid() && t.getPassWord().equals(t.getRepeatPassWord())) {
             	// Thêm dấu nháy đơn cho các giá trị chuỗi
             	
                 String sql = String.format("INSERT INTO signup(userName, passWord, repeatPassWord) VALUES('%s', '%s', '%s')", t.getUserName(), t.getPassWord(), t.getRepeatPassWord());
