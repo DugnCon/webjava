@@ -22,15 +22,12 @@ public class addBookController extends baseSceneController {
     @FXML
     private TableView<addNew> tableBook; 
     @FXML
-    private TableColumn<addNew, Integer> columnID;
-    @FXML
     private TableColumn<addNew, String> columnCode, columnTitle, columnAuthor, columnYear;
     @FXML
     private ObservableList<addNew> bookList = FXCollections.observableArrayList();
 
     @FXML
     private void initialize() {
-    	columnID.setCellValueFactory(new PropertyValueFactory<>("ID1"));
         columnCode.setCellValueFactory(new PropertyValueFactory<>("bookCode"));
         columnTitle.setCellValueFactory(new PropertyValueFactory<>("nameBook"));
         columnAuthor.setCellValueFactory(new PropertyValueFactory<>("nameAuthor"));

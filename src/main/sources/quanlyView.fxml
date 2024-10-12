@@ -93,7 +93,7 @@
         <!-- Tạo bố cục quản lý kho sách -->
         <VBox styleClass="vbox_1" HBox.hgrow="ALWAYS">
             <padding>
-                <Insets top="30" right="150" bottom="0" left="150"/>
+                <Insets top="30" right="50" bottom="0" left="50"/>
             </padding>
             <VBox.margin>
                 <Insets top="0" right="150" bottom="0" left="150"/>
@@ -110,7 +110,7 @@
                 
                 <!-- Taọ bảng chứa từ đang tra -->
                 <ScrollPane fitToWidth="true" prefHeight="350" hbarPolicy="AS_NEEDED" vbarPolicy="AS_NEEDED">
-                    <VBox fx:id="searchResultsContainer" spacing="30" alignment="CENTER" styleClass="vboxFind"/>
+                    <VBox fx:id="searchResultsContainer" spacing="30" alignment="LEFT" styleClass="vboxFind"/>
                 </ScrollPane>
             </VBox>
         </VBox>

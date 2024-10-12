@@ -4,10 +4,6 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class addNew {
-    private static int nextID1 = 1;
-    private static int nextID2 = 1;
-    private SimpleIntegerProperty ID1;
-    private SimpleIntegerProperty ID2;
     private SimpleStringProperty nameBook;
     private SimpleStringProperty chapBook;
     private SimpleStringProperty publisher;
@@ -18,8 +14,6 @@ public class addNew {
     private SimpleStringProperty quantity;
 
     public addNew() {
-        this.ID1 = new SimpleIntegerProperty(nextID1++);
-        this.ID2 = new SimpleIntegerProperty(nextID2++);
         this.nameBook = new SimpleStringProperty();
         this.chapBook = new SimpleStringProperty();
         this.publisher = new SimpleStringProperty();
@@ -42,15 +36,6 @@ public class addNew {
         setReleaseYear(releaseYear);
         setQuantity(quantity);
     }
-
-    public Integer getID1() {
-        return ID1.get();
-    }
-    
-    public Integer getID2() {
-    	return ID2.get();
-    }
-
     public void setBookCode(String bookCode) {
         this.bookCode.set(bookCode);
     }

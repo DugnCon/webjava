@@ -144,22 +144,50 @@ import javafx.scene.control.Hyperlink;
             for (int i = 0; i < items.size(); i++) {
                 JsonObject book = items.get(i).getAsJsonObject();
                 JsonObject volumeInfo = book.getAsJsonObject("volumeInfo");
+
+                // Lấy thông tin tiêu đề
                 String title = volumeInfo.get("title").getAsString();
                 String infoLink = volumeInfo.has("infoLink") ? volumeInfo.get("infoLink").getAsString() : "";
                 Text bookTitleText = new Text(title);
-                bookTitleText.setWrappingWidth(400); 
-                
+                bookTitleText.setWrappingWidth(300); // Giảm chiều rộng
+
+                // Tạo Hyperlink cho tiêu đề
                 Hyperlink bookLink = new Hyperlink();
                 bookLink.setGraphic(bookTitleText);
                 bookLink.setOnAction(event -> openWebpage(infoLink));
 
-                searchResultsContainer.getChildren().add(bookLink);
+                // Tạo một VBox cho mỗi kết quả
+                VBox resultContainer = new VBox();
+                resultContainer.getChildren().add(bookLink);
+
+                // Lấy thông tin tác giả
+                String author = volumeInfo.has("authors") ? volumeInfo.getAsJsonArray("authors").get(0).getAsString() : "Unknown Author";
+                Text authorText = new Text("Author: " + author);
+                authorText.setWrappingWidth(300); // Giảm chiều rộng
+                resultContainer.getChildren().add(authorText);
+
+                // Lấy thông tin nhà xuất bản
+                String publisher = volumeInfo.has("publisher") ? volumeInfo.get("publisher").getAsString() : "Unknown Publisher";
+                Text publisherText = new Text("Publisher: " + publisher);
+                publisherText.setWrappingWidth(300); // Giảm chiều rộng
+                resultContainer.getChildren().add(publisherText);
+
+                // Lấy thông tin ngày xuất bản
+                String publishedDate = volumeInfo.has("publishedDate") ? volumeInfo.get("publishedDate").getAsString() : "Unknown Date";
+                Text publishedDateText = new Text("Published Date: " + publishedDate);
+                publishedDateText.setWrappingWidth(300); // Giảm chiều rộng
+                resultContainer.getChildren().add(publishedDateText);
+
+                // Thêm vào searchResultsContainer
+                searchResultsContainer.getChildren().add(resultContainer);
             }
         } else {
             Text noResults = new Text("Không tìm thấy kết quả.");
             searchResultsContainer.getChildren().add(noResults);
         }
     }
+
+
     
     /**Tạo lên khi nhấp vào trường sách sẽ ra web mới*/
     private void openWebpage(String urlString) {

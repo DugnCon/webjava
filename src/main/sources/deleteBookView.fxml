@@ -112,11 +112,10 @@
            </padding>
             <TableView fx:id = "tableBook" styleClass = "tableView">
               <columns>
-               <TableColumn fx:id = "columnID" text = "ID" prefWidth = "100" />
-               <TableColumn fx:id="columnCode" text="Mã sách" prefWidth="150"/>
-               <TableColumn fx:id="columnTitle" text="Tên sách" prefWidth="270"/>
-               <TableColumn fx:id="columnAuthor" text="Tác giả" prefWidth="190"/>
-               <TableColumn fx:id="columnYear" text="Năm xuất bản" prefWidth="120"/>
+               <TableColumn fx:id="columnCode" text="Mã sách" prefWidth="175"/>
+               <TableColumn fx:id="columnTitle" text="Tên sách" prefWidth="295"/>
+               <TableColumn fx:id="columnAuthor" text="Tác giả" prefWidth="215"/>
+               <TableColumn fx:id="columnYear" text="Năm xuất bản" prefWidth="145"/>
               </columns>
             </TableView>
           </VBox>
