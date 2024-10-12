@@ -25,7 +25,18 @@ public class addBookController extends baseSceneController {
     private TableColumn<addNew, String> columnCode, columnTitle, columnAuthor, columnYear;
     @FXML
     private ObservableList<addNew> bookList = FXCollections.observableArrayList();
-
+    
+    private ObservableList<addNew> incomingBookList = FXCollections.observableArrayList();
+    
+    public static addBookController setNew() {
+    	return new addBookController();
+    }
+    
+    public void setBookList(ObservableList<addNew> diffbook) {
+        this.incomingBookList = diffbook;
+        tableBook.setItems(incomingBookList);
+    }
+    
     @FXML
     private void initialize() {
         columnCode.setCellValueFactory(new PropertyValueFactory<>("bookCode"));
@@ -33,7 +44,7 @@ public class addBookController extends baseSceneController {
         columnAuthor.setCellValueFactory(new PropertyValueFactory<>("nameAuthor"));
         columnYear.setCellValueFactory(new PropertyValueFactory<>("releaseYear"));
 
-        tableBook.setItems(bookList);
+        tableBook.setItems(incomingBookList);
     }
 
     @FXML
@@ -75,7 +86,7 @@ public class addBookController extends baseSceneController {
 
             int res = addbook.setNewAdd().insert1(Add);
             if (res > 0) {
-                bookList.add(AddNew);
+            	incomingBookList.add(AddNew);
                 addbook.setNewAdd().AlertComplete();
                 clearFields();
             } else {

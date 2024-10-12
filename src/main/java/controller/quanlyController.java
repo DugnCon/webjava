@@ -3,14 +3,24 @@ import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.control.Hyperlink;
+import main.java.controller.addBookController;
+import main.java.model.addNew;
+import main.java.JDBC.JDBCSQL;
 
     public class quanlyController extends baseSceneController {
         @FXML
@@ -22,7 +32,6 @@ import javafx.scene.control.Hyperlink;
         @FXML
         private VBox searchResultsContainer;
         
-        /**Khởi tạo MultiThreadedAPIController*/
         private MultiThreadedAPIController apiController = new MultiThreadedAPIController();
 
 
@@ -58,8 +67,29 @@ import javafx.scene.control.Hyperlink;
     /**xử lý sự kiện thêm sách*/
     @FXML
     private void handleAddBook() {
-        createScene(addBook, "/main/sources/addBookView.fxml", "/main/sources/css/addBook.css");
+        try {
+            Connection con = JDBCSQL.getConnection();
+            PreparedStatement prsttm = con.prepareStatement("SELECT * FROM book");
+            ResultSet rs = prsttm.executeQuery();
+            ObservableList<addNew> bookList = FXCollections.observableArrayList();
+            while (rs.next()) {
+                addNew AddNew = new addNew(rs.getString(2), rs.getString(3), rs.getString(4),
+                        rs.getString(5), rs.getString(6), rs.getString(7),
+                        rs.getString(8), rs.getString(9));
+                bookList.add(AddNew);
+            }
+            
+            addBookController controller = (addBookController) createScene1(addBook, 
+                "/main/sources/addBookView.fxml", "/main/sources/css/addBook.css");
+            controller.setBookList(bookList); 
+            con.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Cannot execute: " + e.getMessage());
+        }
     }
+
     @FXML
     private void initialize() {
     	/**Thiết lập lắng nghe sự kiện để gọi ý kết quả*/
@@ -144,50 +174,22 @@ import javafx.scene.control.Hyperlink;
             for (int i = 0; i < items.size(); i++) {
                 JsonObject book = items.get(i).getAsJsonObject();
                 JsonObject volumeInfo = book.getAsJsonObject("volumeInfo");
-
-                // Lấy thông tin tiêu đề
                 String title = volumeInfo.get("title").getAsString();
                 String infoLink = volumeInfo.has("infoLink") ? volumeInfo.get("infoLink").getAsString() : "";
                 Text bookTitleText = new Text(title);
-                bookTitleText.setWrappingWidth(300); // Giảm chiều rộng
-
-                // Tạo Hyperlink cho tiêu đề
+                bookTitleText.setWrappingWidth(400); 
+                
                 Hyperlink bookLink = new Hyperlink();
                 bookLink.setGraphic(bookTitleText);
                 bookLink.setOnAction(event -> openWebpage(infoLink));
 
-                // Tạo một VBox cho mỗi kết quả
-                VBox resultContainer = new VBox();
-                resultContainer.getChildren().add(bookLink);
-
-                // Lấy thông tin tác giả
-                String author = volumeInfo.has("authors") ? volumeInfo.getAsJsonArray("authors").get(0).getAsString() : "Unknown Author";
-                Text authorText = new Text("Author: " + author);
-                authorText.setWrappingWidth(300); // Giảm chiều rộng
-                resultContainer.getChildren().add(authorText);
-
-                // Lấy thông tin nhà xuất bản
-                String publisher = volumeInfo.has("publisher") ? volumeInfo.get("publisher").getAsString() : "Unknown Publisher";
-                Text publisherText = new Text("Publisher: " + publisher);
-                publisherText.setWrappingWidth(300); // Giảm chiều rộng
-                resultContainer.getChildren().add(publisherText);
-
-                // Lấy thông tin ngày xuất bản
-                String publishedDate = volumeInfo.has("publishedDate") ? volumeInfo.get("publishedDate").getAsString() : "Unknown Date";
-                Text publishedDateText = new Text("Published Date: " + publishedDate);
-                publishedDateText.setWrappingWidth(300); // Giảm chiều rộng
-                resultContainer.getChildren().add(publishedDateText);
-
-                // Thêm vào searchResultsContainer
-                searchResultsContainer.getChildren().add(resultContainer);
+                searchResultsContainer.getChildren().add(bookLink);
             }
         } else {
             Text noResults = new Text("Không tìm thấy kết quả.");
             searchResultsContainer.getChildren().add(noResults);
         }
     }
-
-
     
     /**Tạo lên khi nhấp vào trường sách sẽ ra web mới*/
     private void openWebpage(String urlString) {

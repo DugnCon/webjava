@@ -110,7 +110,7 @@
                 
                 <!-- Taọ bảng chứa từ đang tra -->
                 <ScrollPane fitToWidth="true" prefHeight="350" hbarPolicy="AS_NEEDED" vbarPolicy="AS_NEEDED">
-                    <VBox fx:id="searchResultsContainer" spacing="30" alignment="LEFT" styleClass="vboxFind"/>
+                    <VBox fx:id="searchResultsContainer" spacing="30" alignment="CENTER" styleClass="vboxFind"/>
                 </ScrollPane>
             </VBox>
         </VBox>
