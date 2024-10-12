@@ -65,7 +65,7 @@
 	-fx-text-fill:#ffffff;
 }
 .buttonAdd:hover{
-	-fx-background-color:rgba(255,255,255,0.1);
+	-fx-background-color:rgba(255,255,255,0);
 	-fx-border-color:#168560;
 	-fx-cursor:hand;
 	-fx-effect: dropshadow(gaussian, gray, 25, 0.7, 0, 0);

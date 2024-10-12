@@ -31,8 +31,8 @@
 .button:hover{
 	-fx-background-color:#171B1D;
 	-fx-text-fill:#168560;
-	-fx-translate-x:-120;
 	-fx-cursor:hand;
+	-fx-effect:dropshadow(gaussian, gray, 25, 0.7, 0, 0);
 }
 
 .Hbox{

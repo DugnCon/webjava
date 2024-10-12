@@ -107,7 +107,6 @@
                  <Image url="/group.png"/>
                </ImageView>
                <StackPane alignment = "CENTER_RIGHT">
-                  <Label text="ON" styleClass="labelOn"/>
                   <Button fx:id = "manageEmployees" text="Quản lý nhân viên" onAction="#handleNhanvien" styleClass="button"/>
                </StackPane>
               </HBox>
