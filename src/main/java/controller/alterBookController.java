@@ -1,5 +1,7 @@
 package main.java.controller;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -20,7 +22,7 @@ import main.java.JDBC.JDBCSQL;
 import main.java.dao.addbook;
 public class alterBookController extends baseSceneController {
 	@FXML
-    private Button home, borrower, payer, user, employees, modified,search;
+    private Button home, borrower, payer, user, employees, modified,search,back;
     @FXML
     private TextField nameBook, chapBook, publisher, releaseYear, 
                       nameAuthor, styleBook, bookCode, quantity,
@@ -79,6 +81,31 @@ public class alterBookController extends baseSceneController {
 	}
 	
 	@FXML
+	private void handleLoad() {
+		try {
+            Connection con = JDBCSQL.getConnection();
+            PreparedStatement prsttm = con.prepareStatement("SELECT * FROM book");
+            ResultSet rs = prsttm.executeQuery();
+            ObservableList<addNew> bookList = FXCollections.observableArrayList();
+            while (rs.next()) {
+                addNew AddNew = new addNew(rs.getString(2), rs.getString(3), rs.getString(4),
+                        rs.getString(5), rs.getString(6), rs.getString(7),
+                        rs.getString(8), rs.getString(9));
+                bookList.add(AddNew);
+            }
+            
+            alterBookController controller = (alterBookController) createScene1(back, 
+            		"/main/sources/alterBookView.fxml", "/main/sources/css/alterBook.css");
+            controller.setBookList(bookList); 
+            con.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Cannot execute: " + e.getMessage());
+        }
+	}
+	
+	@FXML
 	private void handleSearchBook() {
 		add Add = new add(searchCode.getText(), nameBook.getText(), chapBook.getText(),
 		        nameAuthor.getText(), styleBook.getText(), publisher.getText(),
@@ -98,6 +125,7 @@ public class alterBookController extends baseSceneController {
 		}else {
 			System.out.print("Không thể thấy mã cần tìm");
 		}
+		searchCode.clear();
 	}
 	
 	/**xử lý sự kiện sửa đổi*/

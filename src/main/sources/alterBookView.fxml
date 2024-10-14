@@ -156,7 +156,10 @@
           </GridPane>
           
           <!-- Tạo nút ghi hoàn tất thêm sách -->
-          <Button fx:id = "modified" text = "Sửa đổi" onAction = "#handleModified" styleClass = "buttonCom"/>
+          <HBox alignment = "CENTER" spacing = "20">
+            <Button fx:id = "modified" text = "Sửa đổi" onAction = "#handleModified" styleClass = "buttonCom"/>
+            <Button fx:id = "back" text = "Tải lại" onAction = "#handleLoad" styleClass = "buttonCom"/>
+          </HBox>
           
           <VBox alignment = "CENTER">
            <padding>

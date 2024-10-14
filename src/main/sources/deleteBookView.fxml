@@ -104,7 +104,10 @@
            <TextField fx:id = "searchCode" promptText = "Vui lòng nhập mã sách cần xóa" styleClass = "textField"/>
          </HBox>
           <!-- Tạo nút ghi hoàn tất thêm sách -->
-          <Button fx:id = "deleted" text = "Xóa sách" onAction = "#handleDelete" styleClass = "buttonCom"/>
+          <HBox alignment = "CENTER" spacing = "10">
+            <Button fx:id = "deleted" text = "Xóa sách" onAction = "#handleDelete" styleClass = "buttonCom"/>
+            <Button fx:id = "back" text = "Tải lại" onAction = "#handleLoad" styleClass = "buttonCom"/>
+          </HBox>
           
           <VBox alignment = "CENTER">
            <padding>

@@ -204,7 +204,27 @@ import main.java.JDBC.JDBCSQL;
     /**Xóa sách*/
     @FXML
     private void handleDeleteBook() {
-    	createScene(deleteBook,"/main/sources/deleteBookView.fxml","/main/sources/css/deleteBook.css");
+    	try {
+            Connection con = JDBCSQL.getConnection();
+            PreparedStatement prsttm = con.prepareStatement("SELECT * FROM book");
+            ResultSet rs = prsttm.executeQuery();
+            ObservableList<addNew> bookList = FXCollections.observableArrayList();
+            while (rs.next()) {
+                addNew AddNew = new addNew(rs.getString(2), rs.getString(3), rs.getString(4),
+                        rs.getString(5), rs.getString(6), rs.getString(7),
+                        rs.getString(8), rs.getString(9));
+                bookList.add(AddNew);
+            }
+            
+            deleteBookController controller = (deleteBookController) createScene1(deleteBook, 
+            		"/main/sources/deleteBookView.fxml", "/main/sources/css/deleteBook.css");
+            controller.setBookList(bookList); 
+            con.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Cannot execute: " + e.getMessage());
+        }
     }
     
     /**Sửa đổi sách đã thêm*/

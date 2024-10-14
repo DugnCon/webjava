@@ -20,16 +20,23 @@ import main.java.JDBC.JDBCSQL;
 
 public class deleteBookController extends baseSceneController {
 	@FXML
-    private Button home, borrower, payer, user, employees, deleted;
+    private Button home, borrower, payer, user, employees, deleted,back;
     @FXML
     private TextField nameBook, chapBook, publisher, releaseYear, nameAuthor, styleBook, bookCode, quantity,searchCode;
     @FXML
-    private TableView<addNew> tableBook; 
+    private TableView<addNew> tableBook;
     @FXML
     private TableColumn<addNew, String> columnCode, columnTitle, columnAuthor, columnYear;
     @FXML
     private ObservableList<addNew> bookList = FXCollections.observableArrayList();
-
+    
+    private ObservableList<addNew> incomingBookList = FXCollections.observableArrayList();
+ 
+    public void setBookList(ObservableList<addNew> diffbook) {
+        this.incomingBookList = diffbook;
+        tableBook.setItems(incomingBookList);
+    }
+    
     @FXML
     private void initialize() {
         columnCode.setCellValueFactory(new PropertyValueFactory<>("bookCode"));
@@ -37,7 +44,7 @@ public class deleteBookController extends baseSceneController {
         columnAuthor.setCellValueFactory(new PropertyValueFactory<>("nameAuthor"));
         columnYear.setCellValueFactory(new PropertyValueFactory<>("releaseYear"));
 
-        tableBook.setItems(bookList);
+        tableBook.setItems(incomingBookList);
     }
 
     @FXML
@@ -67,11 +74,36 @@ public class deleteBookController extends baseSceneController {
 	private void handleEmployees() {
 		
 	}
+	
+	@FXML
+	private void handleLoad() {
+		try {
+            Connection con = JDBCSQL.getConnection();
+            PreparedStatement prsttm = con.prepareStatement("SELECT * FROM book");
+            ResultSet rs = prsttm.executeQuery();
+            ObservableList<addNew> bookList = FXCollections.observableArrayList();
+            while (rs.next()) {
+                addNew AddNew = new addNew(rs.getString(2), rs.getString(3), rs.getString(4),
+                        rs.getString(5), rs.getString(6), rs.getString(7),
+                        rs.getString(8), rs.getString(9));
+                bookList.add(AddNew);
+            }
+            
+            deleteBookController controller = (deleteBookController) createScene1(back, 
+            		"/main/sources/deleteBookView.fxml", "/main/sources/css/deleteBook.css");
+            controller.setBookList(bookList); 
+            con.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Cannot execute: " + e.getMessage());
+        }
+	}
+	
 	@FXML
 	private void handleDelete() {
 	    try {
 	        Connection con = JDBCSQL.getConnection();
-	        // Truy vấn sách dựa trên bookCode
 	        PreparedStatement prsttm = con.prepareStatement("SELECT * FROM book WHERE bookCode = ?");
 	        prsttm.setString(1, searchCode.getText());
 	        ResultSet rs = prsttm.executeQuery();
@@ -84,18 +116,15 @@ public class deleteBookController extends baseSceneController {
 	            if (res > 0) {
 	            	addNew AddNew = new addNew(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), 
                             rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9));
-	                // Xóa thành công, cập nhật danh sách hiển thị
-	                bookList.add(AddNew);
+	                incomingBookList.add(AddNew);
 	                addbook.setNewAdd().AlertComplete();
 	                clearFields();
 	            } else {
-	                // Xóa không thành công
 	                addbook.setNewAdd().AlertUnComplete();
 	                //System.out.print("1");
 	                clearFields();
 	            }
 	        } else {
-	            // Nếu không tìm thấy sách, thông báo không có sách cần xóa
 	            addbook.setNewAdd().AlertUnComplete();
 	            //System.out.print("2");
 	            clearFields();
