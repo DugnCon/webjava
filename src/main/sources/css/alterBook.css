@@ -40,7 +40,7 @@
 	-fx-effect: dropshadow(gaussian, gray, 25, 0.7, 0, 0);
 }
 .labelTit{
-	-fx-font-size:40;
+	-fx-font-size:30;
 	-fx-text-fill:#ffffff;
 	-fx-font-weight:bold;
 }
@@ -52,6 +52,14 @@
 .textField{
 	-fx-border-radius:8;
 	-fx-background-radius:8;
+	-fx-text-fill:black;
+	-fx-pref-width:300;
+	-fx-pref-height:30;
+	-fx-font-size:16;
+}
+.textFieldSearch{
+	-fx-border-radius:45;
+	-fx-background-radius:45;
 	-fx-text-fill:black;
 	-fx-pref-width:300;
 	-fx-pref-height:30;

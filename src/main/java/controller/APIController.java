@@ -34,7 +34,8 @@ public class APIController {
     }
 
     public JsonArray getSuggestions(String query) throws IOException, InterruptedException {
-        String url = BASE_URL + "?q=" + query + "&key=" + API_KEY + "&maxResults=5"; // Giới hạn số lượng kết quả
+    	/**Giới hạn số lượng kết quả*/
+        String url = BASE_URL + "?q=" + query + "&key=" + API_KEY + "&maxResults=5";
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 

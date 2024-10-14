@@ -210,6 +210,26 @@ import main.java.JDBC.JDBCSQL;
     /**Sửa đổi sách đã thêm*/
     @FXML
     private void handleUpdateBook() {
-    	
+    	try {
+            Connection con = JDBCSQL.getConnection();
+            PreparedStatement prsttm = con.prepareStatement("SELECT * FROM book");
+            ResultSet rs = prsttm.executeQuery();
+            ObservableList<addNew> bookList = FXCollections.observableArrayList();
+            while (rs.next()) {
+                addNew AddNew = new addNew(rs.getString(2), rs.getString(3), rs.getString(4),
+                        rs.getString(5), rs.getString(6), rs.getString(7),
+                        rs.getString(8), rs.getString(9));
+                bookList.add(AddNew);
+            }
+            
+            alterBookController controller = (alterBookController) createScene1(addBook, 
+            		"/main/sources/alterBookView.fxml", "/main/sources/css/alterBook.css");
+            controller.setBookList(bookList); 
+            con.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Cannot execute: " + e.getMessage());
+        }
     }
 }

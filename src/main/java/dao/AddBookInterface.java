@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public interface AddBookInterface<T> {
 	public int insert1(T t);
-	public int insert2(T t);
+	public String search(T t);
 	public int update(T t);
 	public int Delete(T t);
 	public ArrayList<T> selectAll();
