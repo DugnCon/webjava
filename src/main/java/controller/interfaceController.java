@@ -26,7 +26,7 @@ public class interfaceController extends baseSceneController {
 	}
 	@FXML
 	private void handleMuonsach() {
-		
+		createScene(manageBorrow, "/main/sources/borrowBookView.fxml", "/main/sources/css/borrowBook.css");
 	}
 	@FXML
 	private void handleTrasach() {
