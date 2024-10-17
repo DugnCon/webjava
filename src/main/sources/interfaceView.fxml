@@ -46,39 +46,39 @@
             </padding>
             <GridPane vgap = "40">
               <!-- Tạo icon và button -->
-             <HBox GridPane.columnIndex="0" GridPane.rowIndex="0" alignment="CENTER" spacing="20" styleClass="Hbox">
+             <HBox GridPane.columnIndex="0" GridPane.rowIndex="0" alignment="CENTER" spacing="40" styleClass="Hbox">
              <padding>
                <Insets top = "0" right = "30" bottom = "0" left = "0"/>
              </padding>
               <ImageView fitWidth="80" fitHeight="80" preserveRatio="true" styleClass="image">
                 <Image url="/open-book.png"/>
               </ImageView>
-              <StackPane alignment = "CENTER_RIGHT">
+              <StackPane alignment = "CENTER">
                  <Label text="ON" styleClass="labelOn"/>
                  <Button fx:id = "manageBook" text="Quản lý kho sách" onAction="#handleKhosach" styleClass="button"/>
                </StackPane>
              </HBox>
 
-              <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "1" alignment = "CENTER" spacing = "20">
+              <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "1" alignment = "CENTER" spacing = "40">
                 <padding>
                  <Insets top = "0" right = "30" bottom = "0" left = "0"/>
                 </padding>
                 <ImageView fitWidth="80" fitHeight="80" preserveRatio="true" styleClass="image">
                   <Image url="/notebook.png"/>
                 </ImageView>
-               <StackPane alignment = "CENTER_RIGHT">
+               <StackPane alignment = "CENTER">
                  <Label text="ON" styleClass="labelOn"/>
                  <Button fx:id = "manageBorrow" text="Quản lý mượn sách" onAction="#handleMuonsach" styleClass="button"/>
                </StackPane>
               </HBox>
-              <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "2" alignment = "CENTER" spacing = "20">
+              <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "2" alignment = "CENTER" spacing = "40">
                 <padding>
                  <Insets top = "0" right = "30" bottom = "0" left = "0"/>
                 </padding>
                 <ImageView fitWidth="80" fitHeight="80" preserveRatio="true" styleClass="image">
                   <Image url="/shopping-cart.png"/>
                 </ImageView>
-                <StackPane alignment = "CENTER_RIGHT">
+                <StackPane alignment = "CENTER">
                   <Label text="ON" styleClass="labelOn"/>
                   <Button fx:id = "managePay" text="Quản lý trả sách" onAction="#handleTrasach" styleClass="button"/>
                 </StackPane>
@@ -87,37 +87,38 @@
           <!-- Tạo bố cục giao diện thứ 2 -->
             <GridPane vgap= "40">
               <!-- Tạo icon và button -->
-              <HBox GridPane.columnIndex = "1" GridPane.rowIndex = "0" alignment = "CENTER" spacing = "20">
+              <HBox GridPane.columnIndex = "1" GridPane.rowIndex = "0" alignment = "CENTER" spacing = "40">
                 <padding>
                  <Insets top = "0" right = "30" bottom = "0" left = "0"/>
                 </padding>
                 <ImageView fitWidth="80" fitHeight="80" preserveRatio="true" styleClass="image">
                   <Image url="/user.png"/>
                 </ImageView>
-                <StackPane alignment = "CENTER_RIGHT">
+                <StackPane alignment = "CENTER">
                   <Label text="ON" styleClass="labelOn"/>
                   <Button fx:id = "manageUser" text="Quản lý người dùng" onAction="#handleNhanvien" styleClass="button"/>
                 </StackPane>
               </HBox>
-              <HBox GridPane.columnIndex = "1" GridPane.rowIndex = "1" alignment = "CENTER" spacing = "20">
+              <HBox GridPane.columnIndex = "1" GridPane.rowIndex = "1" alignment = "CENTER" spacing = "40">
                 <padding>
                  <Insets top = "0" right = "30" bottom = "0" left = "0"/>
                </padding>
                <ImageView fitWidth="80" fitHeight="80" preserveRatio="true" styleClass="image">
                  <Image url="/group.png"/>
                </ImageView>
-               <StackPane alignment = "CENTER_RIGHT">
+               <StackPane alignment = "CENTER">
+                  <Label text="ON" styleClass="labelOn" alignment = "CENTER"/>
                   <Button fx:id = "manageEmployees" text="Quản lý nhân viên" onAction="#handleNhanvien" styleClass="button"/>
                </StackPane>
               </HBox>
-              <HBox GridPane.columnIndex = "1" GridPane.rowIndex = "2" alignment = "CENTER" spacing = "20">
+              <HBox GridPane.columnIndex = "1" GridPane.rowIndex = "2" alignment = "CENTER" spacing = "40">
                 <padding>
                  <Insets top = "0" right = "30" bottom = "0" left = "0"/>
                 </padding>
                 <ImageView fitWidth="80" fitHeight="80" preserveRatio="true" styleClass="image">
                   <Image url="/logout.png"/>
                 </ImageView>
-                <StackPane alignment = "CENTER_RIGHT">
+                <StackPane alignment = "CENTER">
                   <Label text="ON" styleClass="labelOn"/>
                   <Button fx:id = "signout" text="Đăng xuất" onAction="#handleDangxuat" styleClass="button"/>
                 </StackPane>
