@@ -119,7 +119,7 @@
               </HBox>
             </HBox>
    
-            <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "2" spacing = "80">
+            <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "2" spacing = "34">
               <HBox spacing  ="20">
                 <Label text = "Nhà xuất bản" styleClass = "labelMin"/>
                 <TextField fx:id = "publisher" promptText = "Example: Kim Đồng" styleClass = "textField"/>

@@ -91,56 +91,74 @@
       <!-- tạo nơi thêm sách --> 
       <VBox HBox.hgrow="ALWAYS" styleClass = "vbox_1">
       <padding>
-        <Insets top = "30" right = "0" bottom = "0" left = "0"/>
+        <Insets top = "20" right = "0" bottom = "0" left = "0"/>
       </padding>
-        <VBox alignment = "CENTER" spacing = "40">
-          <Label text = "Thông tin người mượn" styleClass = "labelTit"/>
-          <GridPane alignment = "CENTER" vgap = "20">
-          
-            <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "0" spacing = "80">
-              <HBox spacing = "20">
-                <Label text = "Mã người mượn" styleClass = "labelMin"/>
-                <TextField fx:id ="borrowCode" promptText = "Example: 23020518" styleClass = "textField"/>
-              </HBox>
-              <HBox spacing = "20">
-                <Label text = "User ID" styleClass = "labelMin"/>
-                <TextField fx:id = "userID" promptText = "Example: 1" styleClass = "textField"/>
-              </HBox>
-            </HBox>
-     
-            <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "1" spacing = "80">
-              <HBox spacing = "20">
-                <Label text = "Mã sách" styleClass = "labelMin"/>
-                <TextField fx:id = "bookCode" promptText = "Example: GT1" styleClass = "textField"/>
-              </HBox>
-              <HBox spacing = "20">
-                <Label text = "Họ tên" styleClass = "labelMin"/>
-                <TextField fx:id = "userName" styleClass = "textField" promptText="Nhập nội dung tại đây"/>
-              </HBox>
-            </HBox>
-   
-            <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "2" spacing = "80">
-              <HBox spacing  ="20">
-                <Label text = "Ngày mượn" styleClass = "labelMin"/>
-                <TextField fx:id = "borrowDate" promptText = "Example: 2005-01-03" styleClass = "textField"/>
-              </HBox>
-              <HBox spacing = "20">
-                <Label text = "Ngày trả" styleClass = "labelMin"/>
-                <TextField fx:id = "returnDate" promptText = "Example: 2006-01-03" styleClass = "textField"/>
-              </HBox>
-            </HBox>
-            
-            <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "3" spacing = "80">
-              <HBox spacing  ="20">
-                <Label text = "Tình trạng" styleClass = "labelMin"/>
-                <TextField fx:id = "status" promptText = "Example: Đang mượn" styleClass = "textField"/>
-              </HBox>
-            </HBox>
-            
-          </GridPane>
-          
+        <VBox alignment = "CENTER" spacing = "20">
+           <HBox alignment = "CENTER" spacing = "40">
+            <!-- Tạo chỗ tìm kiếm còn sách -->
+            <VBox styleClass = "vbox_2" alignment = "CENTER">
+             <padding>
+               <Insets top = "40" right = "20" bottom = "10" left  ="20"/>
+             </padding>
+             <VBox alignment = "CENTER" spacing = "20">
+               <Label text = "Thông tin sách" styleClass = "labelTit"/>
+             <padding>
+               <Insets top = "0" right = "0" bottom = "30" left  ="0"/>
+             </padding>
+               <HBox spacing = "10">
+                 <Label text = "Mã sách" styleClass = "labelLay"/>
+                 <TextField fx:id = "bookCode" promptText = "Example: GT1" styleClass = "textField"/>
+               </HBox>
+               <HBox spacing = "10">
+                 <Label text = "Tiêu đề" styleClass = "labelLay"/>
+                 <TextField fx:id = "title" promptText = "Example: Harry Porter" styleClass = "textField"/> 
+               </HBox>
+               <HBox spacing = "10">
+                 <Label text = "Số phần" styleClass = "labelLay"/>
+                 <TextField fx:id = "chapter" promptText = "Example: 1" styleClass = "textField"/>
+               </HBox>
+               <HBox spacing = "10">
+                 <Label text = "Tác giả" styleClass = "labelLay" />
+                 <TextField fx:id = "author" promptText = "Example: Đàm Đại Dũng" styleClass = "textField"/>
+               </HBox>
+               <HBox spacing = "10">
+                 <Label text ="Số lượng" styleClass = "labelLay"/>
+                 <TextField fx:id = "quantity" promptText = "Example: 100" styleClass = "textField"/>
+               </HBox>
+               </VBox>
+             </VBox>
+             
+             <!-- Tạo nơi ghi thông tin -->
+             <VBox styleClass = "vbox_2" alignment = "CENTER">
+             <padding>
+               <Insets top = "10" right = "20" bottom = "10" left  ="20"/>
+             </padding>
+             <VBox alignment = "CENTER" spacing = "20">
+             <Label text = "Thông tin người mượn" styleClass = "labelTit"/>
+              <padding>
+                <Insets top = "10" right = "0" bottom = "60" left = "0"/>
+              </padding>
+               <HBox spacing = "10">
+                 <Label text = "Họ và tên" styleClass = "labelLay"/>
+                 <TextField fx:id = "username" promptText = "Đàm Đại Dũng" styleClass = "textField"/>
+               </HBox>
+               <HBox spacing = "10">
+                 <Label text = "Số điện thoại" styleClass = "labelLay"/>
+                 <TextField fx:id = "phone" promptText = "0355384***" styleClass = "textField"/>
+               </HBox>
+               <HBox spacing = "10">
+                 <Label text = "Ngày mượn" styleClass = "labelLay"/>
+                 <TextField fx:id = "borrowDate" promptText = "2005-01-01" styleClass = "textField"/>
+               </HBox>
+               <HBox spacing = "10">
+                 <Label text = "Ngày trả" styleClass = "labelLay"/>
+                 <TextField fx:id = "returnDate" promptText = "2005-04-01" styleClass = "textField"/>
+               </HBox>
+             </VBox>
+            </VBox>
+           </HBox>
           <!-- Tạo nút ghi hoàn tất thêm sách -->
-          <Button fx:id = "record" text = "Thêm sách" onAction = "#handleRecordForm" styleClass = "buttonCom"/>
+          <Button fx:id = "record" text = "Ghi nhận" onAction = "#handleRecordForm" styleClass = "buttonCom"/>
           
           <VBox alignment = "CENTER">
            <padding>

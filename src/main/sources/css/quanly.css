@@ -53,6 +53,8 @@
 	-fx-background-radius:20;
 	-fx-border-color:#168560;
 	-fx-border-width:2;
+	-fx-background-color:rgba(255,255,255,0);
+	-fx-text-fill:white;
 }
 .buttonAdd{
 	-fx-pref-width:150;

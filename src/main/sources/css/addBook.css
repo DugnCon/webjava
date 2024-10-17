@@ -52,10 +52,14 @@
 .textField{
 	-fx-border-radius:8;
 	-fx-background-radius:8;
-	-fx-text-fill:black;
-	-fx-pref-width:250;
+	-fx-text-fill:white;
+	-fx-pref-width:200;
 	-fx-pref-height:30;
 	-fx-font-size:16;
+	-fx-background-color:rgba(255,255,255,0);
+	-fx-border-style:solid;
+	-fx-border-color:#168560;
+	-fx-border-width:2;
 }
 .buttonCom{
 	-fx-pref-width:130;

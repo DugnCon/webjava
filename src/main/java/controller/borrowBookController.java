@@ -25,7 +25,7 @@ public class borrowBookController extends baseSceneController {
     
     @FXML
     private void handleHome() {
-        createScene(home, "/main/sources/borrowBookView.fxml", "/main/sources/css/borrowBook.css");
+    	 createScene(home, "/main/sources/interfaceView.fxml", "/main/sources/css/interface.css");
     }
     /**xử lý sự kiện mượn sách*/
 	@FXML
@@ -60,6 +60,6 @@ public class borrowBookController extends baseSceneController {
 	/**xử lý sự kiện thêm người mượn*/
 	@FXML
 	private void handleAdd() {
-		
+		createScene(addNewBorrower,"/main/sources/recordFormView.fxml","/main/sources/css/recordForm.css");
 	}
 }

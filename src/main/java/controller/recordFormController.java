@@ -11,9 +11,11 @@ import main.java.model.addNew;
 
 public class recordFormController extends baseSceneController {
 	@FXML
-    private Button home, borrower, payer, user, employees, modified,search,back;
+    private Button home, borrower, payer, user, employees, record;
     @FXML
-    private TextField borrowCode,userID,bookCode,userName,borrowDate,returnDate,status;
+    private TextField bookCode,title,chapter,author,quantity;
+    @FXML
+    private TextField username,phone,borrowDate,returnDate,status;
     @FXML
     private TableView<addNew> tableBook; 
     @FXML
@@ -22,6 +24,7 @@ public class recordFormController extends baseSceneController {
     private ObservableList<addNew> bookList = FXCollections.observableArrayList();
     
     private ObservableList<addNew> incomingBookList = FXCollections.observableArrayList();
+    
     @FXML
     private void handleHome() {
         createScene(home, "/main/sources/interfaceView.fxml", "/main/sources/css/interface.css");
