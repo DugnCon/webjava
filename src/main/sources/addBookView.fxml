@@ -91,9 +91,13 @@
       <!-- tạo nơi thêm sách --> 
       <VBox HBox.hgrow="ALWAYS" styleClass = "vbox_1">
       <padding>
-        <Insets top = "30" right = "0" bottom = "0" left = "0"/>
+        <Insets top = "30" right = "60" bottom = "0" left = "60"/>
       </padding>
-        <VBox alignment = "CENTER" spacing = "40">
+        <VBox alignment = "CENTER" spacing = "20">
+         <VBox alignment = "CENTER" styleClass = "vbox_2">
+          <padding>
+            <Insets top = "20" right= "0" bottom = "30" left ="0"/>
+          </padding>
           <Label text = "Thông tin sách" styleClass = "labelTit"/>
           <GridPane alignment = "CENTER" vgap = "20">
           
@@ -142,13 +146,15 @@
             </HBox>
             
           </GridPane>
+          </VBox>
           
           <!-- Tạo nút ghi hoàn tất thêm sách -->
           <Button fx:id = "completed" text = "Thêm sách" onAction = "#handleComplete" styleClass = "buttonCom"/>
-          
-          <VBox alignment = "CENTER">
+        </VBox>
+        
+        <VBox alignment = "CENTER">
            <padding>
-             <Insets top= "0" right = "50" bottom = "10" left = "50"/>
+             <Insets top= "10" right = "0" bottom = "10" left = "0"/>
            </padding>
             <TableView fx:id = "tableBook" styleClass = "tableView">
               <columns>
@@ -159,7 +165,7 @@
               </columns>
             </TableView>
           </VBox>
-        </VBox>
+        
       </VBox>
     </HBox>
 </StackPane>

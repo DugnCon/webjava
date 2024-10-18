@@ -90,25 +90,26 @@
       
       <!-- tạo nơi thêm sách --> 
       <VBox HBox.hgrow="ALWAYS" styleClass = "vbox_1">
+      <padding>
+        <Insets top = "20" right = "30" bottom = "0" left = "30"/>
+      </padding>
       <!-- Tạo trường tìm kiếm mã sách -->
-        <VBox alignment = "CENTER" spacing = "10">
+        <VBox alignment = "CENTER" spacing = "10" styleClass = "vbox_2">
           <padding>
-            <Insets top = "0" right = "200" bottom = "0" left = "200"/>
+            <Insets top = "20" right = "50" bottom = "20" left = "50"/>
           </padding>
           <Label text = "Tìm kiếm mã sách cần sửa" styleClass = "labelTit"/>
           <HBox spacing = "40" alignment = "CENTER">
             <TextField fx:id = "searchCode" promptText = "Mã sách" styleClass = "textFieldSearch"/>
             <Button fx:id = "search" text = "Tìm kiếm" styleClass = "buttonCom" onAction = "#handleSearchBook"/>
           </HBox>
-        </VBox>
       <!-- Tạo phần sửa đổi thông tin sách -->
         <VBox alignment = "CENTER" spacing = "20">
           <padding>
-           <Insets top = "10" right = "0" bottom = "0" left = "0"/>
+           <Insets top = "20" right = "0" bottom = "0" left = "0"/>
           </padding>
-          <Label text = "Sửa đổi thông tin sách" styleClass = "labelTit"/>
           <GridPane alignment = "CENTER" vgap = "20">
-          
+
             <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "0" spacing = "80">
               <HBox spacing = "20">
                 <Label text = "Tiêu đề" styleClass = "labelMin"/>
@@ -154,6 +155,7 @@
             </HBox>
             
           </GridPane>
+         </VBox>
           
           <!-- Tạo nút ghi hoàn tất thêm sách -->
           <HBox alignment = "CENTER" spacing = "20">
@@ -161,20 +163,22 @@
             <Button fx:id = "back" text = "Tải lại" onAction = "#handleLoad" styleClass = "buttonCom"/>
           </HBox>
           
-          <VBox alignment = "CENTER">
+        </VBox>
+        
+         <VBox alignment = "CENTER">
            <padding>
-             <Insets top= "0" right = "50" bottom = "10" left = "50"/>
+             <Insets top= "20" right = "0" bottom = "10" left = "0"/>
            </padding>
             <TableView fx:id = "tableBook" styleClass = "tableView">
               <columns>
-               <TableColumn fx:id="columnCode" text="Mã sách" prefWidth="175"/>
-               <TableColumn fx:id="columnTitle" text="Tên sách" prefWidth="295"/>
-               <TableColumn fx:id="columnAuthor" text="Tác giả" prefWidth="215"/>
-               <TableColumn fx:id="columnYear" text="Năm xuất bản" prefWidth="145"/>
+               <TableColumn fx:id="columnCode" text="Mã sách" prefWidth="187"/>
+               <TableColumn fx:id="columnTitle" text="Tên sách" prefWidth="307"/>
+               <TableColumn fx:id="columnAuthor" text="Tác giả" prefWidth="227"/>
+               <TableColumn fx:id="columnYear" text="Năm xuất bản" prefWidth="158"/>
               </columns>
             </TableView>
-          </VBox>
-        </VBox>
+           </VBox>
+           
       </VBox>
     </HBox>
 </StackPane>

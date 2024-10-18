@@ -29,11 +29,7 @@
     -fx-effect: innershadow(gaussian, rgba(22, 133, 96, 0.5), 30, 0.5, 0, 0, 0.3);
 
 }
-
-
 .button:hover{
-	-fx-background-color:#171B1D;
-	-fx-text-fill:#168560;
 	-fx-cursor:hand;
 	-fx-opacity: 0;
 	/*-fx-effect:dropshadow(gaussian, gray, 25, 0.7, 0, 0);*/
