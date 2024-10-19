@@ -15,6 +15,17 @@ public class alter {
     public alter() {
         super();
     }
+    
+    public alter(String bookCode) {
+    	this.bookCode = bookCode;
+    }
+    
+    public alter(String nameBook, String chapBook, String nameAuthor, String quantity) {
+    	this.nameBook = nameBook;
+    	this.chapBook = chapBook;
+    	this.nameAuthor = nameAuthor;
+    	this.quantity = quantity;
+    }
 
     public alter(String bookCode, String nameBook, String chapBook,String nameAuthor, 
     		String styleBook, String publisher,String releaseYear, String quantity) {

@@ -15,6 +15,10 @@ public class add {
     public add() {
         super();
     }
+    
+    public add(String bookCode) {
+    	this.bookCode = bookCode;
+    }
 
     public add(String bookCode, String nameBook, String chapBook,String nameAuthor, 
     		String styleBook, String publisher,String releaseYear, String quantity) {

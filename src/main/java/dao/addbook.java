@@ -170,5 +170,24 @@ public class addbook implements AddBookInterface<add> {
 		}
 		return arr;
 	}
+	
+	@Override
+	public ArrayList selectByCondition1(String condition) {
+		ArrayList<alter> arr = new ArrayList<>();
+		try {
+			Connection con = JDBCSQL.getConnection();
+			PreparedStatement prsttm = con.prepareStatement("SELECT * FROM book WHERE bookCode = ?");
+			prsttm.setString(1, condition);
+			ResultSet rs = prsttm.executeQuery();
+			if(rs.next()) {
+				alter Alter = new alter(rs.getString(3), rs.getString(4),
+						               rs.getString(5),rs.getString(9));
+				arr.add(Alter);
+			}
+		}catch(ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		return arr;
+	}
 
 }

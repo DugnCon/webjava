@@ -1,6 +1,6 @@
 package main.java.model;
 
-public class borrow {
+public class borrowNew {
     private String borrowerID;
     private String bookCode;
     private String userName;
@@ -10,11 +10,11 @@ public class borrow {
     private String status;
     private String phonenum;
 
-    public borrow() {
+    public borrowNew() {
         super();
     }
 
-    public borrow(String borrowerID, String bookCode, 
+    public borrowNew(String borrowerID, String bookCode, 
             String userName, String userID, String borrowDate, String returnDate, String status, String phonenum) {
         this.borrowerID = borrowerID;
         this.bookCode = bookCode;
@@ -23,6 +23,16 @@ public class borrow {
         this.borrowDate = borrowDate;
         this.returnDate = returnDate;
         this.status = status;
+        this.phonenum = phonenum;
+    }
+
+    public borrowNew(String borrowerID, String bookCode, String userName, 
+            String borrowDate, String returnDate, String phonenum) {
+        this.borrowerID = borrowerID;
+        this.bookCode = bookCode;
+        this.userName = userName;
+        this.borrowDate = borrowDate;
+        this.returnDate = returnDate;
         this.phonenum = phonenum;
     }
 

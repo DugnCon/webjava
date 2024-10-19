@@ -101,14 +101,14 @@
                <Insets top = "40" right = "20" bottom = "10" left  ="20"/>
              </padding>
              <VBox alignment = "CENTER" spacing = "20">
-               <Label text = "Thông tin sách" styleClass = "labelTit"/>
              <padding>
                <Insets top = "0" right = "0" bottom = "30" left  ="0"/>
              </padding>
                <HBox spacing = "10">
-                 <Label text = "Mã sách" styleClass = "labelLay"/>
                  <TextField fx:id = "bookCode" promptText = "Example: GT1" styleClass = "textField"/>
+                 <Button fx:id = "search" text = "Tìm sách" onAction = "#handleSearch" styleClass = "buttonCom"/>
                </HBox>
+                <Label text = "Thông tin sách" styleClass = "labelTit"/>
                <HBox spacing = "10">
                  <Label text = "Tiêu đề" styleClass = "labelLay"/>
                  <TextField fx:id = "title" promptText = "Example: Harry Porter" styleClass = "textField"/> 
@@ -136,8 +136,12 @@
              <VBox alignment = "CENTER" spacing = "20">
              <Label text = "Thông tin người mượn" styleClass = "labelTit"/>
               <padding>
-                <Insets top = "10" right = "0" bottom = "60" left = "0"/>
+                <Insets top = "10" right = "0" bottom = "20" left = "0"/>
               </padding>
+              <HBox spacing = "10">
+                <Label text = "Mã mượn" styleClass = "labelLay"/>
+                <TextField fx:id = "borrowerID" styleClass = "textField"  promptText = "Example: P1"/>
+              </HBox>
                <HBox spacing = "10">
                  <Label text = "Họ và tên" styleClass = "labelLay"/>
                  <TextField fx:id = "username" promptText = "Đàm Đại Dũng" styleClass = "textField"/>
@@ -166,10 +170,12 @@
            </padding>
             <TableView fx:id = "tableBook" styleClass = "tableView">
               <columns>
-               <TableColumn fx:id="columnCode" text="Mã sách" prefWidth="175"/>
-               <TableColumn fx:id="columnTitle" text="Tên sách" prefWidth="295"/>
-               <TableColumn fx:id="columnAuthor" text="Tác giả" prefWidth="215"/>
-               <TableColumn fx:id="columnYear" text="Năm xuất bản" prefWidth="145"/>
+               <TableColumn fx:id="columnID" text="Mã người mượn" prefWidth="127"/>
+               <TableColumn fx:id="columnName" text="Họ và tên" prefWidth="147"/>
+               <TableColumn fx:id = "columnCode" text = "Mã sách" prefWidth = "100"/>
+               <TableColumn fx:id="columnPhone" text="Số điện thoại" prefWidth="167"/>
+               <TableColumn fx:id="columnBorrow" text="Ngày mượn" prefWidth="145"/>
+               <TableColumn fx:id = "columnReturn" text = "Ngày trả" prefWidth = "145"/>
               </columns>
             </TableView>
           </VBox>
