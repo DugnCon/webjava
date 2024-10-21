@@ -16,7 +16,7 @@ public class baseSceneController {
 	public void createScene(Node node,String url,String urlCss) {
 		try {
 			root = FXMLLoader.load(getClass().getResource(url));
-			scene = new Scene(root,1200,780);
+			scene = new Scene(root,1536, 790);
 			scene.getStylesheets().add(getClass().getResource(urlCss).toExternalForm());
 			stage = (Stage) node.getScene().getWindow();
 	        stage.setScene(scene);
@@ -37,7 +37,7 @@ public class baseSceneController {
             // Lấy controller từ FXMLLoader
             controller = loader.getController();
             
-            scene = new Scene(root, 1200, 780);
+            scene = new Scene(root, 1536, 790);
             scene.getStylesheets().add(getClass().getResource(urlCss).toExternalForm());
             stage = (Stage) node.getScene().getWindow();
             stage.setScene(scene);

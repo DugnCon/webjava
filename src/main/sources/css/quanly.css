@@ -81,7 +81,7 @@
 	-fx-text-fill:black;
 	-fx-font-weight:bold;
 	-fx-font-size:16;
-	-fx-border-style:2;
+	-fx-border-style:solid;
 	-fx-border-color:black;
 	-fx-wrap-text:true;
 	-fx-font-family: Afacad Flux;

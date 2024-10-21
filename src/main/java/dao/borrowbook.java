@@ -1,18 +1,76 @@
 package main.java.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ButtonBar.ButtonData;
+import main.java.JDBC.JDBCSQL;
 import main.java.model.borrow;
 public class borrowbook implements BorrowBookInterface<borrow> {
+	
+	public static borrowbook setNew() {
+		return new borrowbook();
+	}
+	
+	/**Thông báo khi đăg kí thành công*/
+    public void AlertComplete() {
+    	Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    	alert.setTitle("Thông báo");
+    	alert.setHeaderText("thành công");
+    	alert.setContentText("Chọn lựa chọn của bạn");
+    	
+    	ButtonType buttonTypeOk = new ButtonType("OK",ButtonData.YES);
+    	ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+    	
+    	alert.getButtonTypes().setAll(buttonTypeOk, buttonTypeCancel);
+    	alert.show();
+    }
+    /**Thông báo khi không đăng kí được*/
+    public void AlertUnComplete() {
+    	Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    	alert.setTitle("Thông báo");
+    	alert.setHeaderText("không thành công");
+    	alert.setContentText("Chọn lựa chọn của bạn");
+    	
+    	ButtonType buttonTypeOk = new ButtonType("OK",ButtonData.YES);
+    	ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+    	
+    	alert.getButtonTypes().setAll(buttonTypeOk, buttonTypeCancel);
+    	alert.show();
+    }
+	
 	@Override
 	public int insert(borrow t) {
-		// TODO Auto-generated method stub
-		return 0;
+		int res = 0;
+		try {
+			Connection con = JDBCSQL.getConnection();
+			PreparedStatement prsttm = con.prepareStatement("INSERT INTO borrower (borrowerID, userID, bookCode, borrowDate, returnDate, userName, status, phonenum) "
+					                                       + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+			prsttm.setString(1, t.getBorrowerID());
+			prsttm.setInt(2, t.getUserID());
+			prsttm.setString(3, t.getBookCode());
+			prsttm.setString(4, t.getBorrowDate());
+			prsttm.setString(5, t.getReturnDate());
+			prsttm.setString(6, t.getUserName());
+			prsttm.setString(7, t.getStatus());
+			prsttm.setString(8, t.getPhonenum());
+			res  = prsttm.executeUpdate();
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
 
 	@Override
-	public String search(borrow t) {
-		// TODO Auto-generated method stub
-		return null;
+	public int search(borrow t, String bookcode) {
+		return 0;
 	}
 
 	@Override

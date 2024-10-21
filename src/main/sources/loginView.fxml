@@ -34,7 +34,7 @@
                         <ImageView fitWidth="100" fitHeight="100" preserveRatio="true" styleClass="imageLogo">
                             <Image url="/1024px-Logo_HUET.svg.png"/>
                         </ImageView>
-                        <Label text="LOGIN" styleClass="LabelLogo"/>
+                        <Label text="ĐĂNG NHẬP" styleClass="LabelLogo"/>
                     </HBox>
                 </VBox>
 
@@ -53,13 +53,13 @@
                             <Label text="PassWord:" GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="UsPas"/>
                             <PasswordField fx:id = "password" promptText="Example: 12345567dung" GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="layPassField"/>
                         </GridPane>
-                        <Label text="If you don't have an account, you can enroll" styleClass="UsPas"/>
+                        <Label text="Nếu chưa có tài khoản, vui lòng đăng ký" styleClass="UsPas"/>
                         <HBox alignment="CENTER" spacing="20">
                             <padding>
                                 <Insets top="0" right="0" bottom="40" left="0"/>
                             </padding>
-                            <Button fx:id="login" text="Login" onAction="#handleButtonLogin" styleClass="Button"/>
-                            <Button fx:id="signup" text="Sign Up" onAction="#handleButtonSignUp" styleClass="Button"/>
+                            <Button fx:id="login" text="Đăng nhập" onAction="#handleButtonLogin" styleClass="Button"/>
+                            <Button fx:id="signup" text="Đăng ký" onAction="#handleButtonSignUp" styleClass="Button"/>
                         </HBox>
                     </VBox>
                 </VBox>
@@ -67,7 +67,7 @@
         </VBox>
 
         <!-- Nửa bên phải: Ảnh nền -->
-        <ImageView fitWidth="600" fitHeight="1000" HBox.hgrow="ALWAYS">
+        <ImageView fitWidth="768" fitHeight="1000" HBox.hgrow="ALWAYS">
             <Image url="/hoa-van-nen-toi_035540534.jpg"/>
         </ImageView>
     </HBox>

@@ -51,7 +51,7 @@ public class signUpAccount implements AccountInterface<author> {
             if(t.isUserVallid() && t.isPassWordValid() && t.getPassWord().equals(t.getRepeatPassWord())) {
             	// Thêm dấu nháy đơn cho các giá trị chuỗi
             	
-                String sql = String.format("INSERT INTO signup(userName, passWord, repeatPassWord) VALUES('%s', '%s', '%s')", t.getUserName(), t.getPassWord(), t.getRepeatPassWord());
+                String sql = String.format("INSERT INTO signup(userName, passWord, repeatPassWord, fullname) VALUES('%s', '%s', '%s', '%s')", t.getUserName(), t.getPassWord(), t.getRepeatPassWord(), t.getFullName());
                 res = sttm.executeUpdate(sql);
                 System.out.println("Bạn đã thực thi: " + sql);
                 System.out.println("Có " + res + " dòng bị thay đổi");

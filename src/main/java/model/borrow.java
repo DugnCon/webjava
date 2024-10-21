@@ -4,7 +4,7 @@ public class borrow {
     private String borrowerID;
     private String bookCode;
     private String userName;
-    private String userID;
+    private int userID;
     private String borrowDate;
     private String returnDate;
     private String status;
@@ -14,8 +14,8 @@ public class borrow {
         super();
     }
 
-    public borrow(String borrowerID, String bookCode, 
-            String userName, String userID, String borrowDate, String returnDate, String status, String phonenum) {
+    public borrow(String borrowerID, int userID,String bookCode
+            , String borrowDate, String returnDate, String userName,String status, String phonenum) {
         this.borrowerID = borrowerID;
         this.bookCode = bookCode;
         this.userName = userName;
@@ -50,11 +50,11 @@ public class borrow {
         this.userName = userName;
     }
 
-    public String getUserID() {
+    public int getUserID() {
         return userID;
     }
 
-    public void setUserID(String userID) {
+    public void setUserID(int userID) {
         this.userID = userID;
     }
 

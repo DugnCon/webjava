@@ -4,7 +4,7 @@ public class borrowNew {
     private String borrowerID;
     private String bookCode;
     private String userName;
-    private String userID;
+    private int userID;
     private String borrowDate;
     private String returnDate;
     private String status;
@@ -15,7 +15,7 @@ public class borrowNew {
     }
 
     public borrowNew(String borrowerID, String bookCode, 
-            String userName, String userID, String borrowDate, String returnDate, String status, String phonenum) {
+            String userName, int userID, String borrowDate, String returnDate, String status, String phonenum) {
         this.borrowerID = borrowerID;
         this.bookCode = bookCode;
         this.userName = userName;
@@ -60,11 +60,11 @@ public class borrowNew {
         this.userName = userName;
     }
 
-    public String getUserID() {
+    public int getUserID() {
         return userID;
     }
 
-    public void setUserID(String userID) {
+    public void setUserID(int userID) {
         this.userID = userID;
     }
 

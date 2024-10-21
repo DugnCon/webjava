@@ -10,19 +10,24 @@ public class author {
 	private String userName;
 	private String passWord;
 	private String repeatPassWord;
+	private String fullname;
 	
 	public author() {
 		super();
 	}
 	
-	public author(String userName, String passWord, String repeatPassWord) {
+	public author(String userName, String passWord, String repeatPassWord, String fullname) {
 		this.userName = userName;
 		this.passWord = passWord;
 		this.repeatPassWord = repeatPassWord;
+		this.fullname = fullname;
 	}
 	
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+	public void setFullName(String fullname) {
+		this.fullname = fullname;
 	}
 	public void setPassWord(String passWord) {
 		this.passWord = passWord;
@@ -32,6 +37,9 @@ public class author {
 	}
 	public String getUserName() {
 		return userName;
+	}
+	public String getFullName() {
+		return fullname;
 	}
 	public String getPassWord() {
 		return passWord;

@@ -9,10 +9,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import main.java.model.addNew;
 import main.java.dao.addbook;
+import main.java.dao.borrowbook;
 import main.java.model.add;
 import main.java.model.alter;
+import main.java.model.borrow;
+import main.java.model.borrowNew;
 
 public class recordFormController extends baseSceneController {
 	@FXML
@@ -22,13 +26,30 @@ public class recordFormController extends baseSceneController {
     @FXML
     private TextField borrowerID,username,phone,borrowDate,returnDate,status;
     @FXML
-    private TableView<addNew> tableBook; 
+    private TableView<borrowNew> tableBook; 
     @FXML
-    private TableColumn<addNew, String> columnID, columnName, columnPhone, columnBorrow,columnReturn,columnCode;
+    private TableColumn<borrowNew, String> columnID, columnName, columnPhone, columnBorrow,columnReturn,columnCode;
     @FXML
-    private ObservableList<addNew> bookList = FXCollections.observableArrayList();
+    private ObservableList<borrowNew> bookList = FXCollections.observableArrayList();
     
-    private ObservableList<addNew> incomingBookList = FXCollections.observableArrayList();
+    private ObservableList<borrowNew> incomingBookList = FXCollections.observableArrayList();
+    
+    public void setBookList(ObservableList<borrowNew> diffbook) {
+        this.incomingBookList = diffbook;
+        tableBook.setItems(incomingBookList);
+    }
+    
+    @FXML
+    private void initialize() {
+        columnID.setCellValueFactory(new PropertyValueFactory<>("borrowerID"));
+        columnName.setCellValueFactory(new PropertyValueFactory<>("userName"));
+        columnCode.setCellValueFactory(new PropertyValueFactory<>("bookCode"));
+        columnPhone.setCellValueFactory(new PropertyValueFactory<>("phonenum"));
+        columnBorrow.setCellValueFactory(new PropertyValueFactory<>("borrowDate"));
+        columnReturn.setCellValueFactory(new PropertyValueFactory<>("returnDate"));
+
+        tableBook.setItems(incomingBookList);
+    }
     
     @FXML
     private void handleHome() {
@@ -80,7 +101,29 @@ public class recordFormController extends baseSceneController {
 	/**xử lý sự kiện ghi phiếu người mượn*/
 	@FXML
 	private void handleRecordForm() {
-		
+         String res = bookCode.getText();
+         if(!res.isEmpty()) {
+        	 
+        	 /**Cần sửa đoạn này*/
+        	 borrow Borrow = new borrow(borrowerID.getText(), 1,bookCode.getText()
+                     ,borrowDate.getText(), returnDate.getText(), username.getText() ,"Đang mượn", phone.getText());
+        	 
+        	 int rs = borrowbook.setNew().insert(Borrow);
+        	 /********************/
+        	 
+        	 if(rs > 0) {
+        		 borrowNew BorrowNew = new borrowNew(borrowerID.getText(),bookCode.getText(), username.getText(), 
+                         borrowDate.getText(), returnDate.getText(), phone.getText());
+            	 borrowbook.setNew().AlertComplete();
+            	 incomingBookList.add(BorrowNew);
+            	 clearFields();
+            	 clearFields1();
+        	 }else {
+        		 borrowbook.setNew().AlertUnComplete();
+        	 }
+         }else {
+        	 borrowbook.setNew().AlertUnComplete();
+         }
 	}
 	
 	private void clearFields() {
@@ -89,5 +132,12 @@ public class recordFormController extends baseSceneController {
 	       chapter.clear();
 	       author.clear();
 	       quantity.clear();
-	   }
+	}
+	private void clearFields1() {
+		borrowerID.clear();
+		username.clear();
+		phone.clear();
+		borrowDate.clear();
+		returnDate.clear();
+	}
 }
