@@ -19,7 +19,7 @@ import javafx.util.Duration;
 
 public class interfaceController extends baseSceneController {
 	@FXML
-	private Button signout,manageBook,manageBorrow,managePay,manageUser,manageEmployees;
+	private Button signout,manageBook,manageBorrow,managePay,manageUser,manageEmployees,interfaceUser;
 	@FXML
 	private void handleKhosach() {
 		createScene(manageBook, "/main/sources/quanlyView.fxml" , "/main/sources/css/quanly.css");
@@ -41,10 +41,14 @@ public class interfaceController extends baseSceneController {
 		
 	}
 	@FXML
+	private void handleInterfaceuser() {
+		createScene(interfaceUser,"/main/sources/interfaceUser.fxml","/main/sources/css/interfaceUser.css");
+	}
+	@FXML
 	private void handleDangxuat() {
 		try {
 			Parent newRoot = FXMLLoader.load(getClass().getResource("/main/sources/loginView.fxml"));
-			Scene newScene = new Scene(newRoot, 1200, 780);
+			Scene newScene = new Scene(newRoot, 1536, 790);
 	        newScene.getStylesheets().add(getClass().getResource("/main/sources/css/login.css").toExternalForm());
             // Lấy Stage hiện tại
 	        Stage stage = (Stage) signout.getScene().getWindow();

@@ -100,7 +100,12 @@
             </VBox.margin>
             <VBox alignment="TOP_CENTER" spacing="40">
                 <Label text="Quản lý kho sách" styleClass="labelTit"/>
-                <TextField fx:id="fieldSearch" promptText="Search" styleClass="textfield"/>
+                <VBox>
+                 <padding>
+                   <Insets top = "0" right = "250" bottom = "0" left = "250"/>
+                 </padding>
+                  <TextField fx:id="fieldSearch" promptText="Search" styleClass="textfield"/>
+                </VBox>
                 <Button fx:id="searchBook" text="Tìm kiếm" onAction="#handleSearchBook" styleClass="buttonAdd"/>
                 <HBox alignment="CENTER" spacing="30">
                     <Button fx:id="addBook" text="Thêm sách" onAction="#handleAddBook" styleClass="buttonAdd"/>

@@ -13,10 +13,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import main.java.model.addNew;
 import main.java.dao.addbook;
 import main.java.dao.borrowbook;
+import main.java.dao.userAccount;
 import main.java.model.add;
 import main.java.model.alter;
 import main.java.model.borrow;
 import main.java.model.borrowNew;
+import main.java.model.user;
 
 public class recordFormController extends baseSceneController {
 	@FXML
@@ -24,7 +26,7 @@ public class recordFormController extends baseSceneController {
     @FXML
     private TextField bookCode,title,chapter,author,quantity;
     @FXML
-    private TextField borrowerID,username,phone,borrowDate,returnDate,status;
+    private TextField borrowerID,username,phone,borrowDate,returnDate,status,searchAccount;
     @FXML
     private TableView<borrowNew> tableBook; 
     @FXML

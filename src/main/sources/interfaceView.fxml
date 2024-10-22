@@ -40,7 +40,7 @@
           <padding>
             <Insets top = "0" right = "80" bottom = "0" left = "80"/>
           </padding>
-          <HBox alignment = "CENTER" spacing = "80" styleClass = "hbox">
+          <HBox alignment = "CENTER" spacing = "40" styleClass = "hbox">
             <padding>
               <Insets top = "40" right = "0" bottom = "40" left = "0"/>
             </padding>
@@ -122,6 +122,10 @@
                   <Label text="ON" styleClass="labelOn"/>
                   <Button fx:id = "signout" text="Đăng xuất" onAction="#handleDangxuat" styleClass="button"/>
                 </StackPane>
+                <StackPane alignment = "CENTER">
+                  <Label text="ON" styleClass="labelOn" alignment = "CENTER"/>
+                  <Button fx:id = "interfaceUser" text="Giao diện người dùng" onAction="#handleInterfaceuser" styleClass="button"/>
+               </StackPane>
               </HBox>
             </GridPane>
           </HBox>

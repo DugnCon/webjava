@@ -108,7 +108,7 @@
                  <TextField fx:id = "bookCode" promptText = "Example: GT1" styleClass = "textField"/>
                  <Button fx:id = "search" text = "Tìm sách" onAction = "#handleSearch" styleClass = "buttonCom"/>
                </HBox>
-                <Label text = "Thông tin sách" styleClass = "labelTit"/>
+                <Label text = "Thông tin sách" styleClass = "labelLay"/>
                <HBox spacing = "10">
                  <Label text = "Tiêu đề" styleClass = "labelLay"/>
                  <TextField fx:id = "title" promptText = "Example: Harry Porter" styleClass = "textField"/> 
@@ -134,7 +134,7 @@
                <Insets top = "10" right = "20" bottom = "10" left  ="20"/>
              </padding>
              <VBox alignment = "CENTER" spacing = "20">
-             <Label text = "Thông tin người mượn" styleClass = "labelTit"/>
+             <Label text = "Thông tin người mượn" styleClass = "labelLay"/>
               <padding>
                 <Insets top = "10" right = "0" bottom = "20" left = "0"/>
               </padding>

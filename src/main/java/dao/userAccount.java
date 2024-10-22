@@ -2,13 +2,15 @@ package main.java.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import main.java.model.user;
 import main.java.JDBC.JDBCSQL;
 import main.java.model.author;
+import main.java.model.borrow;
 
-public class userAccount implements UserAccountInterface<user,author> {
+public class userAccount implements UserAccountInterface<user> {
 	
 	public static userAccount setNew() {
 		return new userAccount();
@@ -39,6 +41,39 @@ public class userAccount implements UserAccountInterface<user,author> {
 	public int delete(user t) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	
+	@Override
+	public String searchAcc(user t) {
+		String fullName = "";
+		int res  = 0;
+		try {
+			Connection con = JDBCSQL.getConnection();
+			PreparedStatement prsttm = con.prepareStatement("SELECT fullname FROM user WHERE userName = ?");
+			prsttm.setString(1, t.getUsername());
+			res = prsttm.executeUpdate();
+			ResultSet rs = prsttm.executeQuery();
+			fullName = rs.getString(5);
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return fullName;
+	}
+	
+	@Override
+	public int searchId(user t) {
+		int res  = 0;
+		try {
+			Connection con = JDBCSQL.getConnection();
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
 
 	@Override
