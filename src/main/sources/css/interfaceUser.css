@@ -9,9 +9,16 @@
 	-fx-border-color:transparent transparent transparent #D9D9D9;
 	-fx-border-width:0 0 0 1;
 }
+.hbox_tile2{
+	-fx-background-color:#0165B9;
+}
+.background_img{
+	-fx-background-image:url("/cn2-16927031617111780269770.jpg");
+	-fx-opacity:0.5;
+}
 .button_1{
 	-fx-pref-width:150;
-	-fx-pref-height:80;
+	-fx-pref-height:200;
 	-fx-text-fill:#ffffff;
 	-fx-color:#00477F;
 	-fx-font-size:16;
@@ -30,5 +37,11 @@
 }
 .fontTile2{
 	-fx-font-size:30;
+	-fx-text-fill:#ffffff;
+	-fx-font-weight:bold;
+}
+.fontTile3{
+	-fx-font-size:30;
 	-fx-text-fill:black;
+	-fx-font-weight:bold;
 }

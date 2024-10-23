@@ -57,9 +57,6 @@
     </HBox>
     <!-- Thanh nav thực thi các scene -->
     <HBox alignment = "CENTER" styleClass = "header_next" spacing = "50">
-     <HBox.margin>
-        <Insets top="20" right="0" bottom="20" left="0"/>
-    </HBox.margin>
       <HBox alignment = "CENTER">
         <Button text = "Trang chủ" fx:id = "home" onAction = "#handleHome" styleClass = "button_1"/>
         <Button text = "Giới thiệu" fx:id = "introduce" onAction = "#handleIntro" styleClass = "button_1"/>
@@ -80,14 +77,17 @@
     <!-- Phần content -->
     <ScrollPane styleClass="scrollPane" HBox.hgrow="ALWAYS">
      <content>
-      <VBox>
+     <!-- Phần giới thiệu -->
+     <VBox>
        <padding>
         <Insets top = "0" right = "50" bottom = "0" left = "50"/>
-      </padding>
-        <HBox>
-          <Label text = "Tên gọi và trụ sở"/>
-        </HBox>
+       </padding>
+      <VBox>
         <Label text = "Giới thiệu" styleClass = "fontTile"/>
+        <HBox styleClass = "hbox_tile2">
+          <Label text = "  TÊN GỌI VÀ TRỤ SỞ" styleClass = "fontTile2"/>
+        </HBox>
+         <Label text = " " />
         <Label text="Điều 1. Tên gọi và trụ sở" styleClass="font"/>
         <Label text="1. Tên tiếng Việt: Trung tâm Thư viện và Tri thức số." styleClass="font"/>
         <Label text="2. Tên tiếng Anh: VNU - Library and Digital Knowledge Center." styleClass="font"/>
@@ -108,9 +108,98 @@
         <Label text="2. Trung tâm được tổ chức và hoạt động theo các quy định hiện hành của pháp luật có liên quan, các quy định của ĐHQGHN và Quy định này." styleClass="font"/>
         <Label text="3. Trung tâm chịu sự quản lý toàn diện, trực tiếp của ĐHQGHN, có nghĩa vụ và trách nhiệm thực hiện các nhiệm vụ được giao," styleClass="font"/>
         <Label text="chấp hành nghiêm chỉnh luật pháp, các quy định, chế độ chính sách của Nhà nước và quy định của ĐHQGHN." styleClass="font"/>
+        <Label text = " "/>
       </VBox>
+      
+      <VBox>
+        <VBox styleClass = "hbox_tile2">
+          <Label text = "  HỢP TÁC QUỐC TẾ" styleClass = "fontTile2"/>
+        </VBox>
+         <Label text = " " />
+        <Label text="Trung tâm có quan hệ với hơn 50 trường đại học, viện nghiên cứu, tổ chức quốc tế, các nhà xuất bản tại Hoa Kỳ, Pháp, Đức, Nga, Italy, Nhật Bản, Hàn Quốc và nhiều nước khác, trong đó có:" styleClass="font"/>
+        <Label text="• Viện Harvard Yenching" styleClass="font"/>
+        <Label text="• Đại học Cornell" styleClass="font"/>
+        <Label text="• Đại học Hawaii" styleClass="font"/>
+        <Label text="• Thư viện Quốc hội Hoa Kỳ" styleClass="font"/>
+        <Label text="• Đại học Paris" styleClass="font"/>
+        <Label text="• Đại học Sorbone" styleClass="font"/>
+        <Label text="• Đại học Bone" styleClass="font"/>
+        <Label text="• Đại học Lômônôxôp" styleClass="font"/>
+        <Label text="• Viện Hàn lâm Khoa học Nga" styleClass="font"/>
+        <Label text="• Đại học Tokyo" styleClass="font"/>
+        <Label text="• Đại học Kyodo" styleClass="font"/>
+        <Label text="• Đại học Quốc gia Kangwon" styleClass="font"/>
+        <Label text="• Đại học Thanh Hoa" styleClass="font"/>
+        <Label text="• Đại học Liêu Ning" styleClass="font"/>
+        <Label text="• Thư viện Quốc gia Australia" styleClass="font"/>
+        <Label text="• Trung tâm Nghiên cứu Phát triển Quốc tế" styleClass="font"/>
+        <Label text="• Nhà xuất bản Đại học Tổng hợp Cali" styleClass="font"/>
+        <Label text="• Thư viện Khảo sát địa chất Nhật Bản" styleClass="font"/>
+        <Label text="• Chương trình hỗ trợ của Trung tâm Quốc tế về Vật lý lý thuyết Abdus Salam..." styleClass="font"/>
+      </VBox>
+      <!-- Phần nội dung thứ 2 -->
+      <HBox spacing = "30">
+        <VBox alignment = "CENTER_LEFT">
+          <Label text="Ngoài ra, Trung tâm còn có quan hệ với nhiều tổ chức quốc tế tại Hà Nội như:" styleClass="font"/>
+          <Label text="• Phòng Văn hóa Thông tin Đại sứ quán Hoa Kỳ" styleClass="font"/>
+          <Label text="• Viện Gớt" styleClass="font"/>
+          <Label text="• Hội đồng Anh" styleClass="font"/>
+          <Label text="• Qũy Châu Á" styleClass="font"/>
+          <Label text="• Phòng Thông tin Đại sứ quán Hàn Quốc" styleClass="font"/>
+          <Label text="• Ngân hàng Thế giới" styleClass="font"/>
+          <Label text="• Hội đồng Pháp ngữ..." styleClass="font"/>
+          <Label text="Trung tâm là thành viên sáng lập và tham gia Ban Chấp hành Hội thư viện đại học trực tuyến" styleClass="font"/>
+          <Label text = "các nước Đông Nam Á (AUNILO) và" styleClass = "font"/>
+          <Label text = "Hội đồng thư viện Đại học Quốc gia các nước Đông Á (East Asian University Library Council)." styleClass = "font"/>
+        </VBox>
+        <VBox alignment = "CENTER_RIGHT">
+          <ImageView fitWidth = "600" fitHeight = "600" preserveRatio = "true">
+           <Image url = "/Hoc-phi-DH-Cong-nghe-HN-fotor-2024102394230.png"/>
+          </ImageView>
+        </VBox>
+      </HBox>
+      
+     <!-- Phần nội dung thứ 3 -->
+     <VBox>
+        <Label text = " "/>
+        <Label text = " "/>
+        <Label text = " "/>
+       <VBox styleClass = "hbox_tile2">
+         <Label text = "  CHỨC NĂNG - NHIỆM VỤ" styleClass = "fontTile2"/>
+       </VBox>
+        <Label text = " "/>
+        <Label text="Chức năng" styleClass="fontTile3" />
+        <Label text="1. Quản lý và cung cấp thông tin khoa học cho người dùng tin." styleClass="font" />
+        <Label text="2. Quản trị dữ liệu lớn và kết nối với cơ sở dữ liệu chất lượng cao." styleClass="font" />
+        <Label text="3. Hỗ trợ nghiên cứu và đào tạo thông qua phân tích và tư vấn." styleClass="font" />
+        <Label text="4. Nghiên cứu và tổ chức đào tạo nghiệp vụ thông tin cho nhân sự." styleClass="font" />
+        <Label text = " "/>
+        <Label text="Nhiệm vụ" styleClass="fontTile3" />
+        <Label text="1. Tham mưu lãnh đạo về quản trị tri thức và thư viện số." styleClass="font" />
+        <Label text="2. Xây dựng kế hoạch phát triển thư viện số trong ĐHQGHN." styleClass="font" />
+        <Label text="3. Phát triển nguồn tài nguyên thông tin cho người dùng tin." styleClass="font" />
+        <Label text="4. Thu nhận và lưu chiểu các xuất bản phẩm của ĐHQGHN." styleClass="font" />
+        <Label text="5. Chuyển đổi số và số hóa tài liệu để phục vụ người dùng." styleClass="font" />
+        <Label text="6. Tạo lập siêu dữ liệu và hệ thống tra cứu thông tin." styleClass="font" />
+        <Label text="7. Quản trị công nghệ và dữ liệu lớn cho hoạt động của Trung tâm." styleClass="font" />
+        <Label text="8. Cung cấp dịch vụ tri thức số cho người dùng tin." styleClass="font" />  
+        <Label text="9. Triển khai các dịch vụ học liệu và mượn trả tự động." styleClass="font" /> 
+        <Label text="10. Quản trị cơ sở vật chất và trang thiết bị hiện đại." styleClass="font" />
+        <Label text="11. Nghiên cứu và áp dụng thành tựu trong lĩnh vực thư viện." styleClass="font" />
+        <Label text="12. Tổ chức hội thảo và đào tạo nâng cao về thư viện số." styleClass="font" />
+        <Label text="13. Cung cấp thông tin các công bố khoa học phục vụ nghiên cứu." styleClass="font" />
+        <Label text="14. Hợp tác với các tổ chức trong và ngoài nước về thư viện." styleClass="font" />
+        <Label text="15. Liên kết và chia sẻ nguồn lực với các đơn vị khác." styleClass="font" />
+        <Label text="16. Phát triển văn hóa đọc cho CCVC và HSSV trong ĐHQGHN." styleClass="font" />
+        <Label text="17. Thực hiện nhiệm vụ khác theo chỉ đạo của Giám đốc." styleClass="font" />
+      </VBox>
+      
+      <!-- Tạo footer -->
+     <VBox styleClass = "background_img">
+     
+     </VBox>
+     
+     </VBox>
     </content>
-    </ScrollPane>
-
-
+   </ScrollPane>
 </VBox>
