@@ -78,11 +78,20 @@
     <ScrollPane styleClass="scrollPane" HBox.hgrow="ALWAYS">
      <content>
      <!-- Phần giới thiệu -->
-     <VBox>
+     <VBox styleClass = "body">
        <padding>
-        <Insets top = "0" right = "50" bottom = "0" left = "50"/>
+        <Insets top = "20" right = "0" bottom = "0" left = "56"/>
        </padding>
-      <VBox>
+      <HBox spacing = "20">
+       <VBox>
+        <padding>
+          <Insets top = "80" right = "0" bottom = "0" left = "0"/>
+        </padding>
+        <ImageView fitWidth = "400" fitHeight = "500" preserveRatio = "true">
+          <Image url = "/smail-b.png"/>
+        </ImageView>
+       </VBox> 
+       <VBox> 
         <Label text = "Giới thiệu" styleClass = "fontTile"/>
         <HBox styleClass = "hbox_tile2">
           <Label text = "  TÊN GỌI VÀ TRỤ SỞ" styleClass = "fontTile2"/>
@@ -102,14 +111,16 @@
         <Label text="5. Website: http://lic.vnu.edu.vn Email: lic@vnu.edu.vn" styleClass="font"/>
         <Label text="6. Điện thoại: (024) 37546545 Hotline: (024) 62539899" styleClass="font"/>
         <Label text="Điều 2. Vị trí pháp lý" styleClass="font"/>
-        <Label text="1. Trung tâm Thư viện và Tri thức số (sau đây gọi tắt là Trung tâm) được tổ chức lại trên cơ sở điều chỉnh chức năng, nhiệm vụ và đổi tên của Trung tâm" styleClass="font"/>
+        <Label text="1. Trung tâm Thư viện và Tri thức số (sau đây gọi tắt là Trung tâm) được" styleClass="font"/>
+        <Label text="tổ chức lại trên cơ sở điều chỉnh chức năng, nhiệm vụ và đổi tên của Trung tâm" styleClass = "font"/>
         <Label text="Thông tin - Thư viện theo Quyết định số 316/QĐ-ĐHQGHN ngày 14/02/2022 của Giám đốc Đại học Quốc gia Hà Nội (ĐHQGHN); là đơn vị phục vụ, dịch vụ trực thuộc ĐHQGHN," styleClass="font"/>
         <Label text="tự đảm bảo một phần chi thường xuyên, có tư cách pháp nhân, có con dấu và tài khoản riêng." styleClass="font"/>
         <Label text="2. Trung tâm được tổ chức và hoạt động theo các quy định hiện hành của pháp luật có liên quan, các quy định của ĐHQGHN và Quy định này." styleClass="font"/>
         <Label text="3. Trung tâm chịu sự quản lý toàn diện, trực tiếp của ĐHQGHN, có nghĩa vụ và trách nhiệm thực hiện các nhiệm vụ được giao," styleClass="font"/>
         <Label text="chấp hành nghiêm chỉnh luật pháp, các quy định, chế độ chính sách của Nhà nước và quy định của ĐHQGHN." styleClass="font"/>
         <Label text = " "/>
-      </VBox>
+       </VBox>
+      </HBox>
       
       <VBox>
         <VBox styleClass = "hbox_tile2">
@@ -192,12 +203,54 @@
         <Label text="15. Liên kết và chia sẻ nguồn lực với các đơn vị khác." styleClass="font" />
         <Label text="16. Phát triển văn hóa đọc cho CCVC và HSSV trong ĐHQGHN." styleClass="font" />
         <Label text="17. Thực hiện nhiệm vụ khác theo chỉ đạo của Giám đốc." styleClass="font" />
+        <Label text = " " />
       </VBox>
       
       <!-- Tạo footer -->
      <VBox styleClass = "background_img">
-     
+        <padding>
+           <Insets top = "100" right = "200" bottom = "100" left = "200"/>
+         </padding>
+       <StackPane alignment = "CENTER">
+        <VBox alignment = "CENTER">
+         <VBox styleClass = "image_2" alignment = "CENTER">
+           <ImageView fitWidth = "500" fitHeight = "300" preserveRatio = "true">
+             <Image url = "/logo-vnu.png"/>
+           </ImageView>
+         </VBox>
+         <HBox spacing = "50">
+           <padding>
+             <Insets top = "40" right = "0" bottom = "0" left = "0"/>
+           </padding>
+           <Button text = "FaceBook" styleClass = "button_2"/>
+           <Button text = "Gmail" styleClass = "button_2"/>
+           <Button text = "TikTok" styleClass = "button_2"/>
+         </HBox>
+        </VBox> 
+       </StackPane>
      </VBox>
+     
+     <!-- Tạo footer cuổi -->
+     <HBox styleClass = "header_top" alignment  = "CENTER" spacing = "40">
+      <padding>
+        <Insets top = "10" right = "0" bottom = "10" left = "0"/>
+      </padding>
+       <ImageView fitWidth = "200" fitHeight = "100" preserveRatio = "true">
+         <Image url = "/logo-vnu.png"/>
+       </ImageView>
+       <ImageView fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+         <Image url = "/unnamed.png"/>
+       </ImageView>
+       <ImageView fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+         <Image url = "/logo.png"/>
+       </ImageView>
+       <ImageView fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+         <Image url = "/VNU-HUS.jpg"/>
+       </ImageView>
+       <ImageView fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+         <Image url = "/ULIS-Logo-RBG-02.jpg"/>
+       </ImageView>
+     </HBox>
      
      </VBox>
     </content>
