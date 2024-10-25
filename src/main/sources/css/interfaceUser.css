@@ -135,3 +135,13 @@
 	-fx-pref-width:370;
 	-fx-pref-height:305;
 }
+.Image5{
+	-fx-background-image:url("/serivice-home5.png");
+	-fx-pref-width:370;
+	-fx-pref-height:305;
+}
+.Image6{
+	-fx-background-image:url("/serivice-home6.png");
+	-fx-pref-width:370;
+	-fx-pref-height:305;
+}

@@ -167,6 +167,9 @@
       
       <!-- Body 2 -->
       <VBox spacing = "30">
+      <padding>
+        <Insets top = "40" right = "0" bottom = "40" left = "0"/>
+      </padding>
       <!-- Dòng 1 -->
         <HBox spacing = "50" alignment = "CENTER">
         <!-- Ảnh 1 -->
@@ -265,36 +268,37 @@
             <VBox alignment = "CENTER_LEFT" styleClass = "AlterImage1">
               <StackPane alignment = "CENTER_LEFT">
                 <VBox alignment = "CENTER_LEFT">
-                  <Label styleClass = "fontTile9">
-                  Dịch vụ cung cấp dữ liệu,
+                  <Label styleClass = "fontTile6">
+                  Dịch vụ trắc lượng
                 </Label>
-                <Label styleClass = "fontTile9">
-                  thông tin, tri thức cho học tập,
-                </Label>
-                <Label styleClass = "fontTile9">
-                  đào tạo và nghiên cứu
+                <Label styleClass = "fontTile6">
+                  thư mục
                 </Label>
                 <Label text = " "/>
+                <Label text = " "/>
+                <Label text = "5" styleClass = "fontTile8"/>
                 <Label />
                 </VBox>
               </StackPane>
             </VBox>
           </VBox>
           <!-- Ảnh 6 -->
-          <VBox styleClass = "Image4">
-            <VBox alignment = "CENTER_LEFT" styleClass = "AlterImage1">
-              <StackPane alignment = "CENTER_LEFT">
-                <VBox alignment = "CENTER_LEFT">
-                  <Label text = "4" styleClass = "fontTile8_1"/>
-                  <Label styleClass = "fontTile9">
-                  Dịch vụ cung cấp dữ liệu,
+          <VBox styleClass = "Image6">
+            <VBox alignment = "CENTER_RIGHT" styleClass = "AlterImage2">
+              <StackPane alignment = "CENTER_RIGHT">
+                <VBox alignment = "CENTER_RIGHT">
+                  <Label styleClass = "fontTile6">
+                  Dịch vụ kết nối tra cứu
                 </Label>
-                <Label styleClass = "fontTile9">
-                  thông tin, tri thức cho học tập,
+                <Label styleClass = "fontTile6">
+                  dữ liệu khoa học
                 </Label>
-                <Label styleClass = "fontTile9">
-                  đào tạo và nghiên cứu
+                <Label styleClass = "fontTile6">
+                  liên thư viện
                 </Label>
+                <Label text = " "/>
+                <Label text = " "/>
+                <Label text = "6" styleClass = "fontTile8"/>
                 </VBox>
               </StackPane>
             </VBox>
