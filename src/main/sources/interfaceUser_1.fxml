@@ -84,9 +84,9 @@
        </padding>
       
       <!-- Tạo phần content -->
-      <HBox alignment = "CENTER" spacing = "40">
+      <HBox alignment = "CENTER" spacing = "10">
         <VBox alignment = "CENTER">
-          <Label text = "TIN TỨC" />
+          <Label text = "TIN TỨC" styleClass = "fontTile"/>
           <ImageView fitWidth = "550" fitHeight = "500" preserveRatio = "true">
             <Image url = "/463106705_924474886375949_7615068487356660703_n-565x335.jpg"/>
           </ImageView>
@@ -95,16 +95,15 @@
           </Label>
         </VBox>
         
-        <VBox alignment = "CENTER">
-        
-          <VBox>
+        <HBox alignment = "CENTER" spacing = "10">
+          <VBox alignment = "CENTER" spacing = "20">
            <HBox>
             <ImageView fitWidth = "150" fitHeight = "70" preserveRatio = "true">
               <Image url = "/462508358_921021493387955_6015371627903243179_n-100x84.jpg"/>
             </ImageView>
             <Label styleClass = "fontTile5">
-              VNU-LIC CHÀO MỪNG KỶ NIỆM 70 NĂM\n
-              NGÀY GIẢI PHÓNG THỦ ĐÔ\n
+              VNU-LIC CHÀO MỪNG KỶ NIỆM 70 NĂM
+              NGÀY GIẢI PHÓNG THỦ ĐÔ
               (10/10/1954-10/10/2024)
             </Label>
            </HBox>
@@ -113,9 +112,9 @@
                <Image url = "/460663595_907458911410880_604379066960442608_n-100x84.jpg"/>
              </ImageView>
              <Label styleClass = "fontTile5">
-               VNU-LIC HƯỚNG DẪN SỬ DỤNG\n
-               HỌC LIỆU TRỰC TUYẾN CHO 700 TÂN\n
-               SINH VIÊN\n
+               VNU-LIC HƯỚNG DẪN SỬ DỤNG
+               HỌC LIỆU TRỰC TUYẾN CHO 700 TÂN
+               SINH VIÊN
                (21/09/2024)
              </Label>
            </HBox>
@@ -124,45 +123,32 @@
                 <Image url = "/459648551_904352591721512_7408307320904964313_n-100x84.jpg"/>
               </ImageView>
               <Label styleClass = "fontTile5">
-                VNU-LIC ỦNG HỘ, SẺ CHIA VỚI CÁN BỘ\n
-                , NHÀ GIÁO, NGƯỜI LAO ĐỘNG VÀ\n
-                HỌC SINH VÙNG LŨ\n
+                VNU-LIC ỦNG HỘ, SẺ CHIA VỚI CÁN BỘ
+                , NHÀ GIÁO, NGƯỜI LAO ĐỘNG VÀ
+                HỌC SINH VÙNG LŨ
                (17/9/2024)
               </Label>
             </HBox>
           </VBox>
           
-          <HBox>
-            <HBox>
-              <ImageView fitWidth = "150" fitHeight = "70" preserveRatio = "true">
-                <Image url = "/459648551_904352591721512_7408307320904964313_n-100x84.jpg"/>
-              </ImageView>
-              <Label styleClass = "fontTile5">
-                VNU-LIC ỦNG HỘ, SẺ CHIA VỚI CÁN BỘ\n
-                , NHÀ GIÁO, NGƯỜI LAO ĐỘNG VÀ\n
-                HỌC SINH VÙNG LŨ\n
-               (17/9/2024)
-              </Label>
-            </HBox>
+          <VBox alignment = "CENTER" spacing = "20">
             <HBox>
               <ImageView fitWidth = "150" fitHeight = "70" preserveRatio = "true">
                 <Image url = "/461302709_911432027680235_6550184406163210669_n-100x84.jpg"/>
               </ImageView>
-              <Label>
-                KHÔNG KHÍ NÁO NỨC, HĂNG SAY HỌC TẬP CỦA\n
-                SINH VIÊN TẠI VNU-LIC\n
+              <Label styleClass = "fontTile5">
+                KHÔNG KHÍ NÁO NỨC, HĂNG SAY HỌC TẬP CỦA
+                SINH VIÊN TẠI VNU-LIC
                 (26/09/2024)
               </Label>
             </HBox>
-            
-            <HBox>
               <HBox>
                 <ImageView fitWidth = "150" fitHeight = "70" preserveRatio = "true">
                   <Image url = "/plummentandsoar.jpg"/>
                 </ImageView>
-                <Label>
-                   THỐNG KÊ CÔNG BỐ QUỐC TẾ SCOPUS/WOS CỦA\n
-                   ĐHQGHN THÁNG 09/2024\n
+                <Label styleClass = "fontTile5">
+                   THỐNG KÊ CÔNG BỐ QUỐC TẾ SCOPUS/WOS CỦA
+                   ĐHQGHN THÁNG 09/2024
                    (25/09/2024)
                 </Label>
               </HBox>
@@ -170,16 +156,151 @@
                 <ImageView fitWidth = "150" fitHeight = "70" preserveRatio = "true">
                   <Image url = "/4088cf344c47ea19b356-100x84.jpg"/>
                 </ImageView>
-                <Label>
-                  HƯƠNG CỐM TRÊN TỪNG TRANG SÁCH\n
+                <Label styleClass = "fontTile5">
+                  HƯƠNG CỐM TRÊN TỪNG TRANG SÁCH
                   (17/09/2024)
                 </Label>
               </HBox>
-            </HBox>
-          </HBox>
-        </VBox>
-        
+          </VBox>
+        </HBox>
       </HBox>
+      
+      <!-- Body 2 -->
+      <VBox spacing = "30">
+      <!-- Dòng 1 -->
+        <HBox spacing = "50" alignment = "CENTER">
+        <!-- Ảnh 1 -->
+          <VBox styleClass = "Image1">
+            <VBox alignment = "CENTER_LEFT" styleClass = "AlterImage1">
+              <StackPane alignment = "CENTER_LEFT">
+                <VBox alignment = "CENTER_LEFT">
+                  <Label styleClass = "fontTile6">
+                  Dịch vụ số hóa tài liệu
+                </Label>
+                <Label styleClass = "fontTile6">
+                  theo yêu cầu
+                </Label>
+                <Label text = " "/>
+                <Label styleClass = "fontTile7">
+                  Cung cấp dịch vụ số hóa mọi loại hình tài liệu, sách, báo chí
+                </Label>
+                <Label styleClass = "fontTile7">
+                  với các định dạng file PDF, PDF multi-page, TIFF, TIF, PNG...
+                </Label>
+                <Label text = " "/>
+                <Label text = "1" styleClass = "fontTile8"/>
+                </VBox>
+              </StackPane>
+            </VBox>
+          </VBox>
+          <!-- Ảnh 2 -->
+          <VBox styleClass = "Image2">
+            <VBox alignment = "CENTER_RIGHT" styleClass = "AlterImage2">
+              <StackPane alignment = "CENTER_RIGHT">
+                <VBox alignment = "CENTER_RIGHT">
+                  <Label styleClass = "fontTile6">
+                  Dịch vụ chuyển đổ số, số hóa,
+                </Label>
+                <Label styleClass = "fontTile6">
+                  xây dựng, tổ chức và
+                </Label>
+                <Label styleClass = "fontTile6">
+                  quản trị học liệu số theo yêu cầu
+                </Label>
+                <Label styleClass = "fontTile6">
+                  đơn vị đào tạo
+                </Label>
+                <Label text = " "/>
+                <Label text = "2" styleClass = "fontTile8"/>
+                </VBox>
+              </StackPane>
+            </VBox>
+          </VBox>
+          
+          <!-- Ảnh 3 -->
+          <VBox styleClass = "Image3">
+            <VBox alignment = "BOTTOM_RIGHT" styleClass = "AlterImage3">
+              <StackPane alignment = "BOTTOM_RIGHT">
+                <VBox alignment = "BOTTOM_RIGHT">
+                  <Label text = "3" styleClass = "fontTile8"/>
+                  <Label text = " "/>
+                  <Label text = " "/>
+                  <Label styleClass = "fontTile6">
+                  Dịch vụ cung cấp dữ liệu,
+                </Label>
+                <Label styleClass = "fontTile6">
+                  thông tin, tri thức cho học tập,
+                </Label>
+                <Label styleClass = "fontTile6">
+                  đào tạo và nghiên cứu
+                </Label>
+                </VBox>
+              </StackPane>
+            </VBox>
+          </VBox>
+        </HBox>
+        <!-- Dòng 2 -->
+        <HBox alignment = "CENTER" spacing = "50">
+        <!-- Ảnh 4 -->
+          <VBox styleClass = "Image4">
+            <VBox alignment = "CENTER_LEFT" styleClass = "AlterImage1">
+              <StackPane alignment = "CENTER_LEFT">
+                <VBox alignment = "CENTER_LEFT">
+                  <Label text = "4" styleClass = "fontTile8_1"/>
+                  <Label styleClass = "fontTile9">
+                  Dịch vụ cung cấp dữ liệu,
+                </Label>
+                <Label styleClass = "fontTile9">
+                  thông tin, tri thức cho học tập,
+                </Label>
+                <Label styleClass = "fontTile9">
+                  đào tạo và nghiên cứu
+                </Label>
+                </VBox>
+              </StackPane>
+            </VBox>
+          </VBox>
+          <!-- Ảnh 5 -->
+          <VBox styleClass = "Image5">
+            <VBox alignment = "CENTER_LEFT" styleClass = "AlterImage1">
+              <StackPane alignment = "CENTER_LEFT">
+                <VBox alignment = "CENTER_LEFT">
+                  <Label styleClass = "fontTile9">
+                  Dịch vụ cung cấp dữ liệu,
+                </Label>
+                <Label styleClass = "fontTile9">
+                  thông tin, tri thức cho học tập,
+                </Label>
+                <Label styleClass = "fontTile9">
+                  đào tạo và nghiên cứu
+                </Label>
+                <Label text = " "/>
+                <Label />
+                </VBox>
+              </StackPane>
+            </VBox>
+          </VBox>
+          <!-- Ảnh 6 -->
+          <VBox styleClass = "Image4">
+            <VBox alignment = "CENTER_LEFT" styleClass = "AlterImage1">
+              <StackPane alignment = "CENTER_LEFT">
+                <VBox alignment = "CENTER_LEFT">
+                  <Label text = "4" styleClass = "fontTile8_1"/>
+                  <Label styleClass = "fontTile9">
+                  Dịch vụ cung cấp dữ liệu,
+                </Label>
+                <Label styleClass = "fontTile9">
+                  thông tin, tri thức cho học tập,
+                </Label>
+                <Label styleClass = "fontTile9">
+                  đào tạo và nghiên cứu
+                </Label>
+                </VBox>
+              </StackPane>
+            </VBox>
+          </VBox>
+        </HBox>
+      </VBox>
       
       <!-- Tạo footer -->
      <VBox styleClass = "background_img">

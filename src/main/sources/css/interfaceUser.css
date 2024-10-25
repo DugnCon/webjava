@@ -81,3 +81,57 @@
 	-fx-font-size:10;
 	-fx-text-fill:black;
 }
+.fontTile6{
+	-fx-font-size:18;
+	-fx-text-fill:#ffffff;
+	-fx-font-weight:bold;
+}
+.fontTile7{
+	-fx-font-size:14;
+	-fx-text-fill:#ffffff;
+	-fx-font-weight:bold;
+}
+.fontTile8{
+	-fx-font-size:50;
+	-fx-text-fill:#ffffff;
+	-fx-font-weight:bold;
+}
+.fontTile8_1{
+	-fx-font-size:50;
+	-fx-text-fill:black;
+	-fx-font-weight:bold;
+}
+.fontTile9{
+	-fx-font-size:18;
+	-fx-text-fill:black;
+	-fx-font-weight:bold;
+}
+.AlterImage1{
+	-fx-padding:10 0 0 10;
+}
+.AlterImage2{
+	-fx-padding:10 10 0 0;
+}
+.AlterImage3{
+	-fx-padding:90 10 10 0;
+}
+.Image1{
+	-fx-background-image:url("/serivice-home1.png");
+	-fx-pref-width:370;
+	-fx-pref-height:305;
+}
+.Image2{
+	-fx-background-image:url("/serivice-home2.png");
+	-fx-pref-width:370;
+	-fx-pref-height:305;
+}
+.Image3{
+	-fx-background-image:url("/serivice-home3.png");
+	-fx-pref-width:370;
+	-fx-pref-height:305;
+}
+.Image4{
+	-fx-background-image:url("/serivice-home4.png");
+	-fx-pref-width:370;
+	-fx-pref-height:305;
+}
