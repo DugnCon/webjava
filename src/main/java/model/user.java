@@ -37,4 +37,12 @@ public class user {
 	public String getFullname() {
 		return fullname;
 	}
+	public boolean isUserVallid() {
+		if(userName.length() < 6) return false;
+		return true;
+	}
+	public boolean isPassWordValid() {
+		if(passWord.length() < 6) return false;
+		return true;
+	}
 }
