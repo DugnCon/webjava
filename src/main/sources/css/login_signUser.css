@@ -1,0 +1,18 @@
+.image_bgr{
+	-fx-background-color:#F7F9FD;
+}
+.image_1{
+	-fx-background-color:#FFFFFF;
+	-fx-padding:100 150;
+}
+.image_2{
+	-fx-background-color:#F65579;
+	-fx-padding:100 150;
+}
+.buttonLog{
+	-fx-background-color:#F65579;
+	-fx-border-radius:45;
+	-fx-background-radius:45;
+	-fx-text-fill:#ffffff;
+	-fx-font-size:15;
+}
