@@ -3,7 +3,7 @@
 }
 .image_1{
 	-fx-background-color:#FFFFFF;
-	-fx-padding:100 150;
+	-fx-padding:130 180;
 }
 .image_2{
 	-fx-background-color:#F65579;
@@ -14,5 +14,53 @@
 	-fx-border-radius:45;
 	-fx-background-radius:45;
 	-fx-text-fill:#ffffff;
+	-fx-font-size:15;
+	-fx-pref-width:350;
+	-fx-pref-height:40;
+}
+.buttonLog:hover{
+	-fx-background-color:#ffffff;
+	-fx-text-fill:#F65579;
+	-fx-border-color:#F65579;
+}
+.buttonSign{
+	-fx-background-color:#ffffff;
+	-fx-border-radius:45;
+	-fx-background-radius:45;
+	-fx-text-fill:#F65579;
+	-fx-font-size:15;
+	-fx-pref-width:150;
+	-fx-pref-height:40;
+}
+.buttonSign:hover{
+	-fx-background-color:#F65579;
+	-fx-text-fill:#ffffff;
+	-fx-border-color:#ffffff;
+}
+.field{
+	-fx-pref-width:350;
+	-fx-pref-height:40;
+	-fx-border-radius:45;
+	-fx-background-radius:45;
+}
+.tileBig{
+	-fx-text-fill:#ffffff;
+	-fx-font-weight:bold;
+	-fx-font-size:40;
+}
+.tileBig1{
+	-fx-text-fill:black;
+	-fx-font-size:30;
+}
+.tileTiny{
+	-fx-text-fill:#ffffff;
+	-fx-font-size:16;
+}
+.tile{
+	-fx-text-fill:black;
+}
+.tile1{
+	-fx-text-fill:black;
+	-fx-font-weight:bold;
 	-fx-font-size:15;
 }
