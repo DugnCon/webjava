@@ -5,7 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class loginUserController {
+public class loginUserController extends baseSceneController {
 	@FXML
 	private TextField username;
 	@FXML
@@ -18,6 +18,6 @@ public class loginUserController {
 	}
 	@FXML
 	private void handleSignup() {
-		
+		createScene(signup,"/main/sources/signupUserView.fxml","/main/sources/css/login_signUser.css");
 	}
 }

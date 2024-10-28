@@ -3,11 +3,19 @@
 }
 .image_1{
 	-fx-background-color:#FFFFFF;
-	-fx-padding:130 180;
+	-fx-padding:100 150;
 }
 .image_2{
 	-fx-background-color:#F65579;
-	-fx-padding:100 150;
+	-fx-padding:130 150;
+}
+.image_3{
+	-fx-background-color:#FFFFFF;
+	-fx-padding:50 100;
+}
+.image_4{
+	-fx-background-color:#F65579;
+	-fx-padding:100 120;
 }
 .buttonLog{
 	-fx-background-color:#F65579;
@@ -50,7 +58,7 @@
 }
 .tileBig1{
 	-fx-text-fill:black;
-	-fx-font-size:30;
+	-fx-font-size:40;
 }
 .tileTiny{
 	-fx-text-fill:#ffffff;
@@ -62,5 +70,5 @@
 .tile1{
 	-fx-text-fill:black;
 	-fx-font-weight:bold;
-	-fx-font-size:15;
+	-fx-font-size:18;
 }
