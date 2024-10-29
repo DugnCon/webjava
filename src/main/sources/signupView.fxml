@@ -28,7 +28,7 @@
     <!-- Tạo bố cục tổng thể-->
    <VBox alignment="CENTER_RIGHT" styleClass = "stackPane">
     <padding>
-      <Insets top = "0" right = "0" bottom = "0" left = "0"/>
+      <Insets top = "100" right = "0" bottom = "100" left = "0"/>
     </padding>
     <VBox styleClass="vbox" alignment="CENTER">
       <VBox alignment="CENTER_RIGHT" spacing = "40">
@@ -48,7 +48,7 @@
         </HBox>
         
         <!-- Tạo bố cục cho sign up -->
-        <VBox alignment="CENTER" styleClass="vboxLogin" spacing ="20">
+        <VBox alignment="CENTER" styleClass="vboxLogin" spacing ="10">
           <GridPane alignment="CENTER" vgap="15" hgap="10">
             <padding>
               <Insets top="20" right="20" bottom="20" left="20"/>

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import main.java.model.user;
 import main.java.JDBC.JDBCSQL;
@@ -18,17 +19,24 @@ public class userAccount implements UserAccountInterface<user> {
 	
 	@Override
 	public int insert(user t) {
-		int res  = 0;
-		try {
-			Connection con = JDBCSQL.getConnection();
-			 String sql = String.format("INSERT INTO user(userName, passWord, fullname) VALUES('%s', '%s', '%s')", t.getUsername(), t.getPassword(), t.getFullname());
-			 PreparedStatement prsttm = con.prepareStatement(sql);
-			 res = prsttm.executeUpdate();
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return res;
+		int res = 0;
+        try {
+            Connection con = JDBCSQL.getConnection();
+            Statement sttm = con.createStatement();
+            if(t.isUserVallid() && t.isPassWordValid() && t.getPassword().equals(t.getReapeatPass())) {
+            	// Thêm dấu nháy đơn cho các giá trị chuỗi
+                String sql = String.format("INSERT INTO signup(userName, passWord, repeatPassWord, fullname) VALUES('%s', '%s', '%s', '%s')", t.getUsername(), t.getPassword(), t.getReapeatPass(), t.getFullname());
+                res = sttm.executeUpdate(sql);
+                System.out.println("Bạn đã thực thi: " + sql);
+                System.out.println("Có " + res + " dòng bị thay đổi");
+            }else {
+            	System.out.println("Mật khẩu không phù hợp");
+            }
+            con.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return res;
 	}
 
 	@Override
@@ -45,34 +53,12 @@ public class userAccount implements UserAccountInterface<user> {
 	
 	@Override
 	public String searchAcc(user t) {
-		String fullName = "";
-		int res  = 0;
-		try {
-			Connection con = JDBCSQL.getConnection();
-			PreparedStatement prsttm = con.prepareStatement("SELECT fullname FROM user WHERE userName = ?");
-			prsttm.setString(1, t.getUsername());
-			res = prsttm.executeUpdate();
-			ResultSet rs = prsttm.executeQuery();
-			fullName = rs.getString(5);
-			
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return fullName;
+		return "";
 	}
 	
 	@Override
 	public int searchId(user t) {
 		int res  = 0;
-		try {
-			Connection con = JDBCSQL.getConnection();
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 		return res;
 	}
 

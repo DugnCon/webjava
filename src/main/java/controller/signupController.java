@@ -49,12 +49,8 @@ public class signupController extends baseSceneController {
 		author Author = new author(userName, passWord, repeatPassWord, fullName);
 		int res = signUpAccount.getInstance().insert(Author);
 		if(res > 0) {
-			user User = new user(userName, passWord, fullName);
-			int rs = userAccount.setNew().insert(User);
-			if(rs > 0) {
-				signUpAccount.getInstance().AlertComplete();
-				createScene(signup, "/main/sources/loginView.fxml", "/main/sources/css/login.css");	
-			}
+			signUpAccount.getInstance().AlertComplete();
+			createScene(signup, "/main/sources/loginView.fxml", "/main/sources/css/login.css");	
 		}else {
 			signUpAccount.getInstance().AlertUnComplete();
 		}
