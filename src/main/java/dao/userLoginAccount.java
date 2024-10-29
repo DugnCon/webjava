@@ -14,12 +14,6 @@ public class userLoginAccount implements UserAccountInterface<userLog> {
 	public static userLoginAccount setNew() {
 		return new userLoginAccount();
 	}
-	
-    @Override
-	public ArrayList selectByCondition(String condition) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public int insert(userLog t) {
@@ -80,6 +74,33 @@ public class userLoginAccount implements UserAccountInterface<userLog> {
 
 	@Override
 	public ArrayList<userLog> selectAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<userLog> selectByCondition(String condition) {
+		ArrayList<userLog> arr = new ArrayList<>();
+		try {
+			int res = Integer.parseInt(condition);
+			Connection con = JDBCSQL.getConnection();
+			PreparedStatement prsttm = con.prepareStatement("SELECT * FROM user WHERE userID = ?");
+			prsttm.setInt(1, res);
+			ResultSet rs = prsttm.executeQuery();
+			if(rs.next()) {
+				userLog userlog = new userLog(rs.getString(1), rs.getString(2), rs.getString(5));
+				arr.add(userlog);
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return arr;
+	}
+
+	@Override
+	public ArrayList<userLog> selectByCondition1(int condition) {
 		// TODO Auto-generated method stub
 		return null;
 	}

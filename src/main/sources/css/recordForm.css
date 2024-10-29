@@ -13,8 +13,6 @@
 	-fx-pref-width:150;
 	-fx-pref-height:80;
 	-fx-background-color:black;
-	-fx-background-radius:45;
-	-fx-border-radius:45;
 	-fx-font-size:13;
 	-fx-font-weight:bold;
 	-fx-text-fill:#ffffff;
@@ -42,8 +40,6 @@
 	-fx-background-color:#363636;
 	-fx-pref-width:180;
 	-fx-pref-height:80;
-	-fx-background-radius:45;
-	-fx-border-radius:45;
 	-fx-alignment:CENTER;
 }
 .image{
@@ -64,6 +60,18 @@
 	-fx-background-radius:8;
 	-fx-text-fill:white;
 	-fx-pref-width:250;
+	-fx-pref-height:30;
+	-fx-font-size:16;
+	-fx-border-color:#168560;
+	-fx-border-style:solid;
+	-fx-border-width:2;
+	-fx-background-color:rgba(255,255,255,0);
+}
+.textField_1{
+	-fx-border-radius:8;
+	-fx-background-radius:8;
+	-fx-text-fill:white;
+	-fx-pref-width:180;
 	-fx-pref-height:30;
 	-fx-font-size:16;
 	-fx-border-color:#168560;

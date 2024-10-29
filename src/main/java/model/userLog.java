@@ -3,7 +3,17 @@ package main.java.model;
 public class userLog {
 	private String username;
 	private String password;
+	private String ID;
+	private String Fullname;
 	public userLog() {};
+	public userLog(String ID) {
+		this.ID = ID;
+	}
+	public userLog(String ID, String username, String Fullname) {
+		this.ID = ID;
+		this.username = username;
+		this.Fullname = Fullname;
+	}
 	public userLog(String username,String password) {
 		this.username = username;
 		this.password = password;
@@ -19,6 +29,18 @@ public class userLog {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getFullname() {
+		return Fullname;
+	}
+	public void setFullname(String Fullname) {
+		this.Fullname = Fullname;
+	}
+	public String getID() {
+		return ID;
+	}
+	public void setID(String ID) {
+		this.ID = ID;
 	}
 	public boolean isUserVallid() {
 		if(username.length() < 6) return false;

@@ -52,7 +52,7 @@ public class borrowbook implements BorrowBookInterface<borrow> {
 			PreparedStatement prsttm = con.prepareStatement("INSERT INTO borrower (borrowerID, userID, bookCode, borrowDate, returnDate, userName, status, phonenum) "
 					                                       + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 			prsttm.setString(1, t.getBorrowerID());
-			prsttm.setInt(2, t.getUserID());
+			prsttm.setString(2, t.getUserID());
 			prsttm.setString(3, t.getBookCode());
 			prsttm.setString(4, t.getBorrowDate());
 			prsttm.setString(5, t.getReturnDate());

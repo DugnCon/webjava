@@ -22,6 +22,8 @@ public class loginUserController extends baseSceneController {
 		if(res > 0) {
 			signUpAccount.getInstance().AlertComplete();
 			createScene(login, "/main/sources/interfaceUser.fxml","/main/sources/css/interfaceUser.css");
+		}else {
+			signUpAccount.getInstance().AlertUnComplete();
 		}
 	}
 	@FXML

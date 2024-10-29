@@ -14,19 +14,21 @@ import main.java.model.addNew;
 import main.java.dao.addbook;
 import main.java.dao.borrowbook;
 import main.java.dao.userAccount;
+import main.java.dao.userLoginAccount;
 import main.java.model.add;
 import main.java.model.alter;
 import main.java.model.borrow;
 import main.java.model.borrowNew;
 import main.java.model.user;
+import main.java.model.userLog;
 
 public class recordFormController extends baseSceneController {
 	@FXML
-    private Button home, borrower, payer, user, employees, record,search;
+    private Button home, borrower, payer, user, employees, record,search,searchID;
     @FXML
     private TextField bookCode,title,chapter,author,quantity;
     @FXML
-    private TextField borrowerID,username,phone,borrowDate,returnDate,status,searchAccount;
+    private TextField borrowerID,username,phone,borrowDate,returnDate,status,searchAccount,userID;
     @FXML
     private TableView<borrowNew> tableBook; 
     @FXML
@@ -100,6 +102,20 @@ public class recordFormController extends baseSceneController {
 		}
 	}
 	
+	/**xử lý sự kiện tìm kiếm ID người dùng*/
+	@FXML
+	private void handleSearchID() {
+		String check = userID.getText();
+		if(!check.isEmpty()) {
+			addbook.setNewAdd().AlertComplete();
+			ArrayList<userLog> arr = userLoginAccount.setNew().selectByCondition(check);
+			username.setText(arr.get(0).getFullname());
+		}else {
+			addbook.setNewAdd().AlertComplete();
+			userID.clear();
+		}
+	}
+	
 	/**xử lý sự kiện ghi phiếu người mượn*/
 	@FXML
 	private void handleRecordForm() {
@@ -107,7 +123,7 @@ public class recordFormController extends baseSceneController {
          if(!res.isEmpty()) {
         	 
         	 /**Cần sửa đoạn này*/
-        	 borrow Borrow = new borrow(borrowerID.getText(), 1,bookCode.getText()
+        	 borrow Borrow = new borrow(borrowerID.getText(), userID.getText(),bookCode.getText()
                      ,borrowDate.getText(), returnDate.getText(), username.getText() ,"Đang mượn", phone.getText());
         	 
         	 int rs = borrowbook.setNew().insert(Borrow);

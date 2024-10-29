@@ -11,4 +11,5 @@ public interface UserAccountInterface<T> {
 	public ArrayList<T> selectAll();
 	public T selectById(T t);
 	public ArrayList<T> selectByCondition(String condition);
+	public ArrayList<T> selectByCondition1(int condition);
 }

@@ -79,4 +79,10 @@ public class userAccount implements UserAccountInterface<user> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public ArrayList<user> selectByCondition1(int condition) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

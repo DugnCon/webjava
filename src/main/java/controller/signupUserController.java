@@ -26,6 +26,8 @@ public class signupUserController extends baseSceneController {
 		if(res > 0) {
 			signUpAccount.getInstance().AlertComplete();
 			createScene(signup,"/main/sources/loginUserView.fxml","/main/sources/css/login_signUser.css");
+		}else {
+			signUpAccount.getInstance().AlertUnComplete();
 		}
 	}
 }

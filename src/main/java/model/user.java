@@ -5,9 +5,14 @@ public class user {
 	private String passWord;
 	private String fullname;
 	private String repeatPass;
+	private int ID;
 	
 	public user() {
 		
+	}
+	
+	public user(int ID) {
+		this.ID = ID;
 	}
 	
 	public user(String userName) {
@@ -49,6 +54,12 @@ public class user {
 	}
 	public String getReapeatPass() {
 		return repeatPass;
+	}
+	public int getID() {
+		return ID;
+	}
+	public void setID(int ID) {
+		this.ID = ID;
 	}
 	public boolean isUserVallid() {
 		if(userName.length() < 6) return false;

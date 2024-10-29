@@ -22,7 +22,7 @@
     <VBox styleClass = "vbox_1" alignment = "CENTER">
       <VBox alignment = "CENTER">
       <padding>
-        <Insets top ="50" right = "20" bottom = "50" left = "50"/>
+        <Insets top ="50" right = "0" bottom = "50" left = "0"/>
       </padding>
         <GridPane vgap = "20" alignment = "CENTER">
         <!-- Tạo ảnh và username -->
@@ -133,7 +133,11 @@
              <padding>
                <Insets top = "10" right = "20" bottom = "10" left  ="20"/>
              </padding>
-             <VBox alignment = "CENTER" spacing = "20">
+             <VBox alignment = "CENTER" spacing = "10">
+             <HBox spacing = "10" alignment = "CENTER">
+                <TextField fx:id = "userID" styleClass = "textField_1" promptText = "Example: 1"/>
+                <Button text = "Tìm ID" styleClass = "buttonCom" fx:id = "searchID" onAction = "#handleSearchID"/>
+              </HBox>
              <Label text = "Thông tin người mượn" styleClass = "labelLay"/>
               <padding>
                 <Insets top = "10" right = "0" bottom = "20" left = "0"/>
@@ -170,12 +174,12 @@
            </padding>
             <TableView fx:id = "tableBook" styleClass = "tableView">
               <columns>
-               <TableColumn fx:id="columnID" text="Mã người mượn" prefWidth="127"/>
-               <TableColumn fx:id="columnName" text="Họ và tên" prefWidth="147"/>
-               <TableColumn fx:id = "columnCode" text = "Mã sách" prefWidth = "100"/>
-               <TableColumn fx:id="columnPhone" text="Số điện thoại" prefWidth="167"/>
-               <TableColumn fx:id="columnBorrow" text="Ngày mượn" prefWidth="145"/>
-               <TableColumn fx:id = "columnReturn" text = "Ngày trả" prefWidth = "145"/>
+               <TableColumn fx:id="columnID" text="Mã người mượn" prefWidth="201"/>
+               <TableColumn fx:id="columnName" text="Họ và tên" prefWidth="221"/>
+               <TableColumn fx:id = "columnCode" text = "Mã sách" prefWidth = "174"/>
+               <TableColumn fx:id="columnPhone" text="Số điện thoại" prefWidth="241"/>
+               <TableColumn fx:id="columnBorrow" text="Ngày mượn" prefWidth="199"/>
+               <TableColumn fx:id = "columnReturn" text = "Ngày trả" prefWidth = "150"/>
               </columns>
             </TableView>
           </VBox>

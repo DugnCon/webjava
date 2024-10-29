@@ -22,7 +22,7 @@
     <VBox styleClass = "vbox_1" alignment = "CENTER">
       <VBox alignment = "CENTER">
       <padding>
-        <Insets top ="50" right = "20" bottom = "50" left = "50"/>
+        <Insets top ="50" right = "0" bottom = "50" left = "0"/>
       </padding>
         <GridPane vgap = "20" alignment = "CENTER">
         <!-- Tạo ảnh và username -->
@@ -112,9 +112,9 @@
               <columns>
                <TableColumn fx:id="columnCode" text="Mã sách" prefWidth="150"/>
                <TableColumn fx:id="columnTitle" text="Tên người mượn" prefWidth="270"/>
-               <TableColumn fx:id="columnAuthor" text="Ngày mượn" prefWidth="190"/>
-               <TableColumn fx:id="columnYear" text="Ngày trả" prefWidth="120"/>
-               <TableColumn fx:id="columnDayBorrow" text = "Tình trạng" prefWidth = "100"/>
+               <TableColumn fx:id="columnAuthor" text="Ngày mượn" prefWidth="220"/>
+               <TableColumn fx:id="columnYear" text="Ngày trả" prefWidth="220"/>
+               <TableColumn fx:id="columnDayBorrow" text = "Tình trạng" prefWidth = "130"/>
               </columns>
             </TableView>
           </VBox>

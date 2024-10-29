@@ -24,7 +24,7 @@
     <HBox alignment = "CENTER">
   <!-- Tạo trường đăng nhập -->
     <VBox styleClass = "image_1" alignment = "CENTER">
-      <VBox alignment = "CENTER_LEFT" spacing = "20">
+      <VBox alignment = "CENTER_LEFT" spacing = "10">
         <Label text = "Login" styleClass = "tileBig1"/>
         <Label text = "USERNAME" styleClass = "tile1"/>
         <TextField fx:id = "username" promptText = "damdaidung2005" styleClass = "field"/>
