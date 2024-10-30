@@ -49,9 +49,9 @@
                <Insets top = "10" right = "5" bottom = "10" left = "5"/>
              </padding>
             <ImageView fitWidth = "40" fitHeight = "40" preserveRatio = "true" styleClass = "image">
-              <Image url = "/notebook.png" />
+              <Image url = "/open-book.png" />
             </ImageView>
-            <Button fx:id = "borrower" text = "Quản lý người mượn" onAction = "#handleBorrower" styleClass ="buttonLay" />
+            <Button fx:id = "managebook" text = "Quản lý kho sách" onAction = "#handleManage" styleClass ="buttonLay" />
            </HBox>
            
            <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "4" styleClass = "hboxLay">
@@ -110,11 +110,11 @@
            </padding>
             <TableView fx:id = "tableBook" styleClass = "tableView">
               <columns>
-               <TableColumn fx:id="columnCode" text="Mã sách" prefWidth="150"/>
-               <TableColumn fx:id="columnTitle" text="Tên người mượn" prefWidth="270"/>
-               <TableColumn fx:id="columnAuthor" text="Ngày mượn" prefWidth="220"/>
-               <TableColumn fx:id="columnYear" text="Ngày trả" prefWidth="220"/>
-               <TableColumn fx:id="columnDayBorrow" text = "Tình trạng" prefWidth = "130"/>
+               <TableColumn fx:id="columnCode" text="Mã sách" prefWidth="200"/>
+               <TableColumn fx:id="columnUser" text="Tên người mượn" prefWidth="320"/>
+               <TableColumn fx:id="columnBorrowDate" text="Ngày mượn" prefWidth="270"/>
+               <TableColumn fx:id="columnReturnDate" text="Ngày trả" prefWidth="270"/>
+               <TableColumn fx:id="columnStatus" text = "Tình trạng" prefWidth = "180"/>
               </columns>
             </TableView>
           </VBox>

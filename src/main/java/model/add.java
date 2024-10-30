@@ -32,6 +32,11 @@ public class add {
         this.quantity = quantity;
     }
     
+    public add(String quantity, String bookCode) {
+    	this.quantity = quantity;
+    	this.bookCode = bookCode;
+    }
+    
     public void setID(int ID) {
     	this.ID = ID;
     }

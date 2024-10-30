@@ -123,6 +123,29 @@ public class addbook implements AddBookInterface<add> {
 		}
 		return res;
 	}
+	
+	@Override
+	public int update2(add t) {
+		int res = 0;
+		try {
+			Connection con = JDBCSQL.getConnection();
+			PreparedStatement prsttm = con.prepareStatement("UPDATE book"
+					          + " SET quantity = ?"
+					          + " WHERE bookCode = ?");
+			int Quantity = Integer.parseInt(t.getQuantity()) - 1;
+			if(Quantity >= 1) {
+				prsttm.setString(1,String.valueOf(Quantity));
+				prsttm.setString(2, t.getbookCode());
+				res = prsttm.executeUpdate();
+			}else {
+				return 0;
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return res;
+	}
 
 	@Override
 	public int Delete(add t) {

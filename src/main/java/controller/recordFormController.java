@@ -46,8 +46,8 @@ public class recordFormController extends baseSceneController {
     @FXML
     private void initialize() {
         columnID.setCellValueFactory(new PropertyValueFactory<>("borrowerID"));
-        columnName.setCellValueFactory(new PropertyValueFactory<>("userName"));
         columnCode.setCellValueFactory(new PropertyValueFactory<>("bookCode"));
+        columnName.setCellValueFactory(new PropertyValueFactory<>("userName"));
         columnPhone.setCellValueFactory(new PropertyValueFactory<>("phonenum"));
         columnBorrow.setCellValueFactory(new PropertyValueFactory<>("borrowDate"));
         columnReturn.setCellValueFactory(new PropertyValueFactory<>("returnDate"));
@@ -110,6 +110,7 @@ public class recordFormController extends baseSceneController {
 			addbook.setNewAdd().AlertComplete();
 			ArrayList<userLog> arr = userLoginAccount.setNew().selectByCondition(check);
 			username.setText(arr.get(0).getFullname());
+			arr.clear();
 		}else {
 			addbook.setNewAdd().AlertComplete();
 			userID.clear();
@@ -129,7 +130,10 @@ public class recordFormController extends baseSceneController {
         	 int rs = borrowbook.setNew().insert(Borrow);
         	 /********************/
         	 
-        	 if(rs > 0) {
+        	 add Add = new add(quantity.getText(), res);
+        	 int check = addbook.setNewAdd().update2(Add);
+        	 
+        	 if(rs > 0 && check > 0) {
         		 borrowNew BorrowNew = new borrowNew(borrowerID.getText(),bookCode.getText(), username.getText(), 
                          borrowDate.getText(), returnDate.getText(), phone.getText());
             	 borrowbook.setNew().AlertComplete();

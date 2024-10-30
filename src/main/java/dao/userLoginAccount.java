@@ -16,7 +16,7 @@ public class userLoginAccount implements UserAccountInterface<userLog> {
 	}
 
 	@Override
-	public int insert(userLog t) {
+	public int insertSign(userLog t) {
 		int res = 0;
 	    try {
 	        Connection con = JDBCSQL.getConnection();
@@ -40,6 +40,12 @@ public class userLoginAccount implements UserAccountInterface<userLog> {
 	        e.printStackTrace();
 	    }
 	    return res;
+	}
+	
+	@Override
+	public int insertLog(userLog t) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override

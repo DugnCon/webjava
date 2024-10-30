@@ -22,8 +22,9 @@ public class signupUserController extends baseSceneController {
 	@FXML
 	public void handleSignup() {
 		user User =  new user(username.getText(),password.getText(), repeatpass.getText(), fullname.getText());
-		int res = userAccount.setNew().insert(User);
-		if(res > 0) {
+		int res = userAccount.setNew().insertSign(User);
+		int res1 = userAccount.setNew().insertLog(User);
+		if(res > 0 && res1 > 0) {
 			signUpAccount.getInstance().AlertComplete();
 			createScene(signup,"/main/sources/loginUserView.fxml","/main/sources/css/login_signUser.css");
 		}else {

@@ -25,6 +25,14 @@ public class borrow {
         this.status = status;
         this.phonenum = phonenum;
     }
+    
+    public borrow(String bookCode, String userName, String borrowDate, String returnDate, String status) {
+    	this.bookCode = bookCode;
+    	this.userName = userName;
+    	this.borrowDate = borrowDate;
+    	this.returnDate = returnDate;
+    	this.status = status;
+    }
 
     public String getBorrowerID() {
         return borrowerID;

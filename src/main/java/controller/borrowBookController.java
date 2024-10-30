@@ -3,6 +3,7 @@ package main.java.controller;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,24 +12,42 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import main.java.JDBC.JDBCSQL;
 import main.java.dao.borrowbook;
 import main.java.model.addNew;
+import main.java.model.borrow;
 import main.java.model.borrowNew;
 
 public class borrowBookController extends baseSceneController {
 	@FXML
-    private Button home, borrower, payer, user, employees, search,addNewBorrower;
+    private Button home, managebook, payer, user, employees, search,addNewBorrower;
     @FXML
     private TextField searchBorrowerID;
     @FXML
     private TableView<borrowNew> tableBook; 
     @FXML
-    private TableColumn<borrowNew, String> columnCode, columnTitle, columnAuthor, columnYear,columnDayBorrow;
+    private TableColumn<borrowNew, String> columnCode, columnUser, columnBorrowDate, columnReturnDate, columnStatus;
     @FXML
     private ObservableList<borrowNew> bookList = FXCollections.observableArrayList();
     
     private ObservableList<borrowNew> incomingBookList = FXCollections.observableArrayList();
+    
+    /*public void setBookList(ObservableList<borrowNew> diffbook) {
+        this.incomingBookList = diffbook;
+        tableBook.setItems(incomingBookList);
+    }*/
+    
+    @FXML
+    private void initialize() {
+        columnCode.setCellValueFactory(new PropertyValueFactory<>("bookCode"));
+        columnUser.setCellValueFactory(new PropertyValueFactory<>("userName"));
+        columnBorrowDate.setCellValueFactory(new PropertyValueFactory<>("borrowDate"));
+        columnReturnDate.setCellValueFactory(new PropertyValueFactory<>("returnDate"));
+        columnStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+
+        tableBook.setItems(bookList);
+    }
     
     @FXML
     private void handleHome() {
@@ -36,8 +55,8 @@ public class borrowBookController extends baseSceneController {
     }
     /**xử lý sự kiện mượn sách*/
 	@FXML
-	private void handleBorrower() {
-		
+	private void handleManage() {
+		createScene(managebook,"/main/sources/quanlyView.fxml","/main/sources/css/quanly.css");
 	}
 	
 	/**xử lý sự kiện người trả*/
@@ -61,13 +80,18 @@ public class borrowBookController extends baseSceneController {
 	/**xử lý sự kiện tì người mượn*/
 	@FXML
 	private void handleSearchBorrower() {
-		String code = search.getText();
-		if(!code.isEmpty()) {
-			/*B1: Tìm kiếm mã trong sql vaò hàm arraylist<borrow>*/
-			/*B2: Đưa dữ liệu vao nơi giống addNew*/
-			/*B3: Thiết lập các column lấy giá trị từ cái giống addNew*/
-			/*B4: Kết thúc*/
-		}
+	    String code = searchBorrowerID.getText();
+	    if (!code.isEmpty()) {
+	        ArrayList<borrow> arr = borrowbook.setNew().selectByCondition(code);
+	        if (!arr.isEmpty()) {
+	            borrowNew borrownew = new borrowNew(arr.get(0).getBookCode(),
+	                              arr.get(0).getUserName(), arr.get(0).getBorrowDate(),
+	                              arr.get(0).getReturnDate(), arr.get(0).getStatus());
+	            this.bookList.add(borrownew);
+	            tableBook.refresh();
+	        }
+	        arr.clear();
+	    }
 	}
 	
 	/**xử lý sự kiện thêm người mượn*/

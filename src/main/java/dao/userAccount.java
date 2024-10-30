@@ -18,7 +18,7 @@ public class userAccount implements UserAccountInterface<user> {
 	}
 	
 	@Override
-	public int insert(user t) {
+	public int insertSign(user t) {
 		int res = 0;
         try {
             Connection con = JDBCSQL.getConnection();
@@ -37,6 +37,28 @@ public class userAccount implements UserAccountInterface<user> {
             e.printStackTrace();
         }
         return res;
+	}
+	
+	@Override
+	public int insertLog(user t) {
+		int res1 = 0;
+        try {
+            Connection con = JDBCSQL.getConnection();
+            Statement sttm = con.createStatement();
+            if(t.isUserVallid() && t.isPassWordValid() && t.getPassword().equals(t.getReapeatPass())) {
+            	// Thêm dấu nháy đơn cho các giá trị chuỗi
+                String sql1 = String.format("INSERT INTO user(userName, passWord,fullname) VALUES('%s', '%s', '%s')", t.getUsername(), t.getPassword(), t.getFullname());
+                res1 = sttm.executeUpdate(sql1);
+                System.out.println("Bạn đã thực thi: " + sql1);
+                System.out.println("Có " + res1 + " dòng bị thay đổi");
+            }else {
+            	System.out.println("Mật khẩu không phù hợp");
+            }
+            con.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return res1;
 	}
 
 	@Override

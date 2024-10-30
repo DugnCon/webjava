@@ -18,7 +18,7 @@ public class loginUserController extends baseSceneController {
 	@FXML
 	private void handleLogin() {
 		userLog userlog = new userLog(username.getText(), password.getText());
-		int res = userLoginAccount.setNew().insert(userlog);
+		int res = userLoginAccount.setNew().insertSign(userlog);
 		if(res > 0) {
 			signUpAccount.getInstance().AlertComplete();
 			createScene(login, "/main/sources/interfaceUser.fxml","/main/sources/css/interfaceUser.css");

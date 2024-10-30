@@ -1,102 +1,123 @@
 package main.java.model;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 public class borrowNew {
-    private String borrowerID;
-    private String bookCode;
-    private String userName;
-    private int userID;
-    private String borrowDate;
-    private String returnDate;
-    private String status;
-    private String phonenum;
+    private SimpleStringProperty borrowerID;
+    private SimpleStringProperty bookCode;
+    private SimpleStringProperty userName;
+    private SimpleIntegerProperty userID;
+    private SimpleStringProperty borrowDate;
+    private SimpleStringProperty returnDate;
+    private SimpleStringProperty status;
+    private SimpleStringProperty phonenum;
 
     public borrowNew() {
-        super();
+        this.borrowerID = new SimpleStringProperty();
+        this.bookCode = new SimpleStringProperty();
+        this.userName = new SimpleStringProperty();
+        this.userID = new SimpleIntegerProperty();
+        this.borrowDate = new SimpleStringProperty();
+        this.returnDate = new SimpleStringProperty();
+        this.status = new SimpleStringProperty();
+        this.phonenum = new SimpleStringProperty();
     }
 
     public borrowNew(String borrowerID, String bookCode, 
             String userName, int userID, String borrowDate, String returnDate, String status, String phonenum) {
-        this.borrowerID = borrowerID;
-        this.bookCode = bookCode;
-        this.userName = userName;
-        this.userID = userID;
-        this.borrowDate = borrowDate;
-        this.returnDate = returnDate;
-        this.status = status;
-        this.phonenum = phonenum;
+        this();
+        setBorrowerID(borrowerID);
+        setBookCode(bookCode);
+        setUserName(userName);
+        setUserID(userID);
+        setBorrowDate(borrowDate);
+        setReturnDate(returnDate);
+        setStatus(status);
+        setPhonenum(phonenum);
+    }
+    
+    public borrowNew(String bookCode, String userName, String borrowDate, String returnDate, String status) {
+    	this();
+        setBookCode(bookCode);
+        setUserName(userName);
+        setBorrowDate(borrowDate);
+        setReturnDate(returnDate);
+        setStatus(status);
     }
 
     public borrowNew(String borrowerID, String bookCode, String userName, 
             String borrowDate, String returnDate, String phonenum) {
-        this.borrowerID = borrowerID;
-        this.bookCode = bookCode;
-        this.userName = userName;
-        this.borrowDate = borrowDate;
-        this.returnDate = returnDate;
-        this.phonenum = phonenum;
+    	this();
+        setBorrowerID(borrowerID);
+        setBookCode(bookCode);
+        setUserName(userName);
+        setBorrowDate(borrowDate);
+        setReturnDate(returnDate);
+        setPhonenum(phonenum);
     }
 
     public String getBorrowerID() {
-        return borrowerID;
+        return borrowerID.get();
     }
 
     public void setBorrowerID(String borrowerID) {
-        this.borrowerID = borrowerID;
+        this.borrowerID.set(borrowerID);
     }
 
     public String getBookCode() {
-        return bookCode;
+        return bookCode.get();
     }
 
     public void setBookCode(String bookCode) {
-        this.bookCode = bookCode;
+        this.bookCode.set(bookCode);
     }
 
     public String getUserName() {
-        return userName;
+        return userName.get();
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.userName.set(userName);
     }
 
     public int getUserID() {
-        return userID;
+        return userID.get();
     }
 
     public void setUserID(int userID) {
-        this.userID = userID;
+        this.userID.set(userID);
     }
 
     public String getBorrowDate() {
-        return borrowDate;
+        return borrowDate.get();
     }
 
     public void setBorrowDate(String borrowDate) {
-        this.borrowDate = borrowDate;
+        this.borrowDate.set(borrowDate);
     }
 
     public String getReturnDate() {
-        return returnDate;
+        return returnDate.get();
     }
 
     public void setReturnDate(String returnDate) {
-        this.returnDate = returnDate;
+        this.returnDate.set(returnDate);
     }
 
     public String getStatus() {
-        return status;
+        return status.get();
     }
 
     public void setStatus(String status) {
-        this.status = status;
+        this.status.set(status);
     }
 
     public String getPhonenum() {
-        return phonenum;
+        return phonenum.get();
     }
 
     public void setPhonenum(String phonenum) {
-        this.phonenum = phonenum;
+        this.phonenum.set(phonenum);
     }
 }

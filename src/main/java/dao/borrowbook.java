@@ -99,8 +99,21 @@ public class borrowbook implements BorrowBookInterface<borrow> {
 
 	@Override
 	public ArrayList<borrow> selectByCondition(String condition) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<borrow> arr = new ArrayList<>();
+		try {
+			Connection con = JDBCSQL.getConnection();
+			PreparedStatement prsttm = con.prepareStatement("SELECT * FROM borrower WHERE borrowerID = ?");
+			prsttm.setString(1, condition);
+			ResultSet rs = prsttm.executeQuery();
+			if(rs.next()) {
+				borrow Borrow = new borrow(rs.getString(3), rs.getString(8), rs.getString(4), rs.getString(5), rs.getString(6));
+				arr.add(Borrow);
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return arr;
 	}
 
 }

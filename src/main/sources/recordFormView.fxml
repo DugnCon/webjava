@@ -174,12 +174,12 @@
            </padding>
             <TableView fx:id = "tableBook" styleClass = "tableView">
               <columns>
-               <TableColumn fx:id="columnID" text="Mã người mượn" prefWidth="201"/>
-               <TableColumn fx:id="columnName" text="Họ và tên" prefWidth="221"/>
-               <TableColumn fx:id = "columnCode" text = "Mã sách" prefWidth = "174"/>
-               <TableColumn fx:id="columnPhone" text="Số điện thoại" prefWidth="241"/>
-               <TableColumn fx:id="columnBorrow" text="Ngày mượn" prefWidth="199"/>
-               <TableColumn fx:id = "columnReturn" text = "Ngày trả" prefWidth = "150"/>
+               <TableColumn fx:id="columnID" text="Mã người mượn" prefWidth="211"/>
+               <TableColumn fx:id = "columnCode" text = "Họ và tên" prefWidth = "184"/>
+               <TableColumn fx:id="columnName" text="Mã sách" prefWidth="231"/>
+               <TableColumn fx:id="columnPhone" text="Ngày mượn" prefWidth="251"/>
+               <TableColumn fx:id="columnBorrow" text="Số điện thoại" prefWidth="209"/>
+               <TableColumn fx:id = "columnReturn" text = "Ngày trả" prefWidth = "160"/>
               </columns>
             </TableView>
           </VBox>
