@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.geometry.Pos?>
 <?import javafx.geometry.Insets?>
@@ -16,92 +17,91 @@
 <?import javafx.scene.control.TableView?>
 
 <StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.alterBookController" stylesheets="@main/sources/css/alterBook.css">
-    <!-- Tạo đêm cho VBox tổng -->
-    <HBox styleClass = "hboxAll">
-    <!-- Tạo thanh sidebar -->
-    <VBox styleClass = "vbox_1" alignment = "CENTER">
-      <VBox alignment = "CENTER">
-      <padding>
-        <Insets top ="50" right = "0" bottom = "50" left = "0"/>
-      </padding>
-        <GridPane vgap = "20" alignment = "CENTER">
-        <!-- Tạo ảnh và username -->
-          <VBox alignment = "CENTER" spacing = "10">
-            <ImageView fitWidth = "120" fitHeight = "120" preserveRatio = "true" GridPane.columnIndex = "0" GridPane.rowIndex = "0" styleClass = "image">
-              <Image url= "/profile-user.png"/>
-            </ImageView>
-            <Label text = "User name" GridPane.columnIndex = "0" GridPane.rowIndex = "1" styleClass = "labelLay"/>
-          </VBox>
-          
-           <!-- Tạo bố cục cho ảnh và home -->
-           <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "2" styleClass = "hboxLay">
-             <padding>
-               <Insets top = "10" right = "5" bottom = "10" left = "5"/>
-             </padding>
-             <ImageView fitWidth = "40" fitHeight = "40" preserveRatio = "true" styleClass = "image">
-               <Image url = "/home.png"/>
-             </ImageView>
-             <Button fx:id = "home" text = "Trang chủ" onAction = "#handleHome" styleClass = "buttonLay"/>
-           </HBox>
-           <!-- Tạo bố cục cho logo và button -->
-           <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "3" styleClass = "hboxLay">
-           <padding>
-               <Insets top = "10" right = "5" bottom = "10" left = "5"/>
-             </padding>
-            <ImageView fitWidth = "40" fitHeight = "40" preserveRatio = "true" styleClass = "image">
-              <Image url = "/notebook.png" />
-            </ImageView>
-            <Button fx:id = "borrower" text = "Quản lý người mượn" onAction = "#handleBorrower" styleClass ="buttonLay" />
-           </HBox>
-           
-           <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "4" styleClass = "hboxLay">
-           <padding>
-               <Insets top = "10" right = "5" bottom = "10" left = "5"/>
-             </padding>
-            <ImageView fitWidth = "40" fitHeight = "40" preserveRatio = "true" styleClass = "image">
-              <Image url = "/shopping-cart.png" />
-            </ImageView>
-            <Button fx:id = "payer" text = "Quản lý người trả" onAction = "#handlePayer" styleClass = "buttonLay"/>
-           </HBox>
-           
-           <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "5" styleClass = "hboxLay">
-           <padding>
-               <Insets top = "10" right = "5" bottom = "10" left = "5"/>
-             </padding>
-            <ImageView fitWidth = "40" fitHeight = "40" preserveRatio = "true" styleClass = "image">
-              <Image url = "/user.png" />
-            </ImageView>
-            <Button fx:id = "user" text = "Quản lý người dùng" onAction = "#handleUser" styleClass = "buttonLay"/>
-           </HBox>
-           
-           <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "6" styleClass = "hboxLay">
-           <padding>
-               <Insets top = "10" right = "5" bottom = "10" left = "5"/>
-             </padding>
-            <ImageView fitWidth = "40" fitHeight = "40" preserveRatio = "true" styleClass = "image">
-              <Image url = "/group.png" />
-            </ImageView>
-            <Button fx:id = "employees" text = "Quản lý nhân viên" onAction = "#handleEmployees" styleClass = "buttonLay"/>
-           </HBox>
-           
-        </GridPane>
-        </VBox>
-      </VBox>
+    <BorderPane>
+        <!-- Tạo thanh sidebar -->
+        <left>
+            <VBox styleClass="vbox_1" alignment="TOP_CENTER">
+                <VBox alignment="CENTER">
+                    <padding>
+                        <Insets top="40" right="0" bottom="0" left="0"/>
+                    </padding>
+                    <VBox alignment="TOP_CENTER" spacing="10">
+                        <ImageView fitWidth="80" fitHeight="80" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="image">
+                            <Image url="/profile-user.png"/>
+                        </ImageView>
+                        <Label text="User name" styleClass="labelLay"/>
+                    </VBox>
+                    <GridPane vgap="5" alignment="CENTER">
+                        <HBox GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="hboxLay">
+                            <padding>
+                                <Insets top="20" right="0" bottom="20" left="0"/>
+                            </padding>
+                            <Button fx:id="home" text="Trang chủ" onAction="#handleHome" styleClass="buttonLay"/>
+                        </HBox>
+                        <HBox GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="hboxLay">
+                            <padding>
+                                <Insets top="20" right="0" bottom="20" left="0"/>
+                            </padding>
+                            <Button fx:id="borrower" text="Quản lý người mượn" onAction="#handleBorrower" styleClass="buttonLay"/>
+                        </HBox>
+                        <HBox GridPane.columnIndex="0" GridPane.rowIndex="4" styleClass="hboxLay">
+                            <padding>
+                                <Insets top="20" right="0" bottom="20" left="0"/>
+                            </padding>
+                            <Button fx:id="payer" text="Quản lý người trả" onAction="#handlePayer" styleClass="buttonLay"/>
+                        </HBox>
+                        <HBox GridPane.columnIndex="0" GridPane.rowIndex="5" styleClass="hboxLay">
+                            <padding>
+                                <Insets top="20" right="0" bottom="20" left="0"/>
+                            </padding>
+                            <Button fx:id="user" text="Quản lý người dùng" onAction="#handleUser" styleClass="buttonLay"/>
+                        </HBox>
+                        <HBox GridPane.columnIndex="0" GridPane.rowIndex="6" styleClass="hboxLay">
+                            <padding>
+                                <Insets top="20" right="0" bottom="20" left="0"/>
+                            </padding>
+                            <Button fx:id="employees" text="Quản lý nhân viên" onAction="#handleEmployees" styleClass="buttonLay"/>
+                        </HBox>
+                    </GridPane>
+                </VBox>
+            </VBox>
+        </left>
       
-      <!-- tạo nơi thêm sách --> 
-      <VBox HBox.hgrow="ALWAYS" styleClass = "vbox_1">
+      <center>
+     <VBox styleClass = "vbox_2">
+     <VBox alignment = "CENTER_LEFT" styleClass = "alterHbox">
+      <Label text = "SỬA ĐỔI SÁCH" styleClass = "labelTit"/>
+     </VBox>
+      <HBox spacing = "70">
       <padding>
-        <Insets top = "20" right = "30" bottom = "0" left = "30"/>
+        <Insets top = "20" right = "30" bottom = "30" left = "30"/>
       </padding>
+      
+        <VBox alignment = "CENTER_LEFT">
+           <padding>
+             <Insets top= "40" right = "0" bottom = "10" left = "0"/>
+           </padding>
+            <TableView fx:id = "tableBook" styleClass = "tableView">
+              <columns>
+               <TableColumn fx:id="columnCode" text="Mã sách" prefWidth="281"/>
+               <TableColumn fx:id="columnTitle" text="Tên sách" prefWidth="401"/>
+               <TableColumn fx:id="columnAuthor" text="Tác giả" prefWidth="321"/>
+               <TableColumn fx:id="columnYear" text="Năm xuất bản" prefWidth="251"/>
+              </columns>
+            </TableView>
+         </VBox>
       <!-- Tạo trường tìm kiếm mã sách -->
-        <VBox alignment = "CENTER" spacing = "10" styleClass = "vbox_2">
+        <VBox alignment = "CENTER" spacing = "20" styleClass = "alterVbox">
           <padding>
             <Insets top = "20" right = "50" bottom = "20" left = "50"/>
           </padding>
-          <Label text = "Tìm kiếm mã sách cần sửa" styleClass = "labelTit"/>
-          <HBox spacing = "40" alignment = "CENTER">
-            <TextField fx:id = "searchCode" promptText = "Mã sách" styleClass = "textFieldSearch"/>
-            <Button fx:id = "search" text = "Tìm kiếm" styleClass = "buttonCom" onAction = "#handleSearchBook"/>
+          <Label text = "Tìm kiếm mã sách cần sửa" styleClass = "labelLay"/>
+          <HBox spacing = "20" alignment = "CENTER">
+            <ImageView fitWidth = "30" fitHeight = "30" preserveRatio = "true">
+              <Image url="/icons8-search-50.png"/>
+            </ImageView>
+            <TextField fx:id = "searchCode" promptText = "Mã sách" styleClass = "textField_1"/>
+            <Button fx:id = "search" text = "Tìm kiếm" styleClass = "buttonAdd" onAction = "#handleSearchBook"/>
           </HBox>
       <!-- Tạo phần sửa đổi thông tin sách -->
         <VBox alignment = "CENTER" spacing = "20">
@@ -112,73 +112,44 @@
 
             <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "0" spacing = "80">
               <HBox spacing = "20">
-                <Label text = "Tiêu đề" styleClass = "labelMin"/>
-                <TextField fx:id ="nameBook" promptText = "Example: Caculus" styleClass = "textField"/>
-              </HBox>
-              <HBox spacing = "20">
-                <Label text = "Số phần" styleClass = "labelMin"/>
-                <TextField fx:id = "chapBook" promptText = "Example: Chapter 6" styleClass = "textField"/>
+                <TextField fx:id ="nameBook" promptText = "Tên sách" styleClass = "textField"/>
+                <TextField fx:id = "chapBook" promptText = "Số chương sách" styleClass = "textField"/>
               </HBox>
             </HBox>
      
             <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "1" spacing = "80">
               <HBox spacing = "20">
-                <Label text = "Tác giả" styleClass = "labelMin"/>
-                <TextField fx:id = "nameAuthor" promptText = "Example: Xuân Diệu" styleClass = "textField"/>
-              </HBox>
-              <HBox spacing = "20">
-                <Label text = "Thể loại" styleClass = "labelMin"/>
-                <TextField fx:id = "styleBook" styleClass = "textField" promptText="Nhập nội dung tại đây"/>
+                <TextField fx:id = "nameAuthor" promptText = "Tên tác giả" styleClass = "textField"/>
+                <TextField fx:id = "styleBook" styleClass = "textField" promptText="Thể loại"/>
               </HBox>
             </HBox>
    
             <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "2" spacing = "34">
               <HBox spacing  ="20">
-                <Label text = "Nhà xuất bản" styleClass = "labelMin"/>
-                <TextField fx:id = "publisher" promptText = "Example: Kim Đồng" styleClass = "textField"/>
-              </HBox>
-              <HBox spacing = "20">
-                <Label text = "Năm xuất bản" styleClass = "labelMin"/>
-                <TextField fx:id = "releaseYear" promptText = "Example: 2024" styleClass = "textField"/>
+                <TextField fx:id = "publisher" promptText = "Nhà xuất bản" styleClass = "textField"/>
+                <TextField fx:id = "releaseYear" promptText = "Năm ra đời" styleClass = "textField"/>
               </HBox>
             </HBox>
             
             <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "3" spacing = "80">
               <HBox spacing  ="20">
-                <Label text = "Mã sách" styleClass = "labelMin"/>
-                <TextField fx:id = "bookCode" promptText = "Example: ***" styleClass = "textField"/>
-              </HBox>
-              <HBox spacing = "20">
-                <Label text = "Số lượng" styleClass = "labelMin"/>
-                <TextField fx:id = "quantity" promptText = "Example: 2024" styleClass = "textField"/>
+                <TextField fx:id = "bookCode" promptText = "Mã sách" styleClass = "textField"/>
+                <TextField fx:id = "quantity" promptText = "Số lượng" styleClass = "textField"/>
               </HBox>
             </HBox>
-            
           </GridPane>
+          
          </VBox>
           
           <!-- Tạo nút ghi hoàn tất thêm sách -->
           <HBox alignment = "CENTER" spacing = "20">
-            <Button fx:id = "modified" text = "Sửa đổi" onAction = "#handleModified" styleClass = "buttonCom"/>
-            <Button fx:id = "back" text = "Tải lại" onAction = "#handleLoad" styleClass = "buttonCom"/>
+            <Button fx:id = "modified" text = "Sửa đổi" onAction = "#handleModified" styleClass = "buttonAdd"/>
+            <Button fx:id = "back" text = "Tải lại" onAction = "#handleLoad" styleClass = "buttonAdd"/>
           </HBox>
-          
         </VBox>
         
-         <VBox alignment = "CENTER">
-           <padding>
-             <Insets top= "20" right = "0" bottom = "10" left = "0"/>
-           </padding>
-            <TableView fx:id = "tableBook" styleClass = "tableView">
-              <columns>
-               <TableColumn fx:id="columnCode" text="Mã sách" prefWidth="281"/>
-               <TableColumn fx:id="columnTitle" text="Tên sách" prefWidth="401"/>
-               <TableColumn fx:id="columnAuthor" text="Tác giả" prefWidth="321"/>
-               <TableColumn fx:id="columnYear" text="Năm xuất bản" prefWidth="251"/>
-              </columns>
-            </TableView>
-           </VBox>
-           
-      </VBox>
-    </HBox>
+      </HBox>
+     </VBox>
+     </center>
+    </BorderPane>
 </StackPane>

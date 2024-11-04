@@ -1,21 +1,27 @@
 .image_bgr{
-	-fx-background-color:#F7F9FD;
+	-fx-background-color:rgba(255,255,255,0);
+}
+.padding1{
+	-fx-padding:0 0 0 0;
 }
 .image_1{
 	-fx-background-color:#FFFFFF;
-	-fx-padding:100 150;
+}
+.image_1_1{
+	-fx-background-color:#FFFFFF;
+	-fx-background-radius:8;
+	-fx-border-radius:8;
 }
 .image_2{
-	-fx-background-color:#F65579;
-	-fx-padding:130 150;
+	-fx-background-color:rgba(255,255,255,0);
 }
 .image_3{
 	-fx-background-color:#FFFFFF;
-	-fx-padding:50 100;
+	-fx-background-radius:8;
+	-fx-border-radius:8;
 }
 .image_4{
-	-fx-background-color:#F65579;
-	-fx-padding:100 120;
+	-fx-background-color:rgba(255,255,255,0);
 }
 .buttonLog{
 	-fx-background-color:#F65579;
@@ -60,6 +66,10 @@
 	-fx-text-fill:black;
 	-fx-font-size:40;
 }
+.tileBig2{
+	-fx-text-fill:#ffffff;
+	-fx-font-size:40;
+}
 .tileTiny{
 	-fx-text-fill:#ffffff;
 	-fx-font-size:16;
@@ -69,6 +79,11 @@
 }
 .tile1{
 	-fx-text-fill:black;
+	-fx-font-weight:bold;
+	-fx-font-size:18;
+}
+.tile2{
+	-fx-text-fill:#ffffff;
 	-fx-font-weight:bold;
 	-fx-font-size:18;
 }

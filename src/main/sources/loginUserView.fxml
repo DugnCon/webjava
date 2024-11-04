@@ -4,43 +4,68 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.geometry.Pos?>
+<?import javafx.scene.media.MediaView?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.text.Text?>
-<?import javafx.scene.text.TextFlow?>
 
 <StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.loginUserController" stylesheets="@main/sources/css/login_signUser.css">
-  <VBox styleClass = "image_bgr" alignment = "CENTER">
-    <HBox alignment = "CENTER">
-  <!-- Tạo trường đăng nhập -->
-    <VBox styleClass = "image_1" alignment = "CENTER">
-      <VBox alignment = "CENTER_LEFT" spacing = "10">
-        <Label text = "Login" styleClass = "tileBig1"/>
-        <Label text = "USERNAME" styleClass = "tile1"/>
-        <TextField fx:id = "username" promptText = "damdaidung2005" styleClass = "field"/>
-        <Label text = "PASSWORD" styleClass = "tile1"/>
-        <PasswordField fx:id = "password" promptText = "1234567" styleClass = "field"/>
-        <Button fx:id = "login" text = "Login" onAction = "#handleLogin" styleClass = "buttonLog"/>
+      <!-- Tạo trường đăng nhập -->
+   <StackPane fx:id = "Pane1" translateX="0">
+    <HBox>
+     <VBox fx:id = "vbox1"  alignment="CENTER_LEFT" spacing="10" styleClass = "padding">
+      <VBox.margin>
+        <Insets right = "0" left = "0"/>
+      </VBox.margin>
+        <VBox prefWidth = "768" styleClass="image_1_1" alignment="CENTER_LEFT" spacing="20">
+          <Label text="Sign in" styleClass="tileBig1"/>
+          <Label text="USERNAME" styleClass="tile1"/>
+          <TextField fx:id="userName" promptText="damdaidung2005" styleClass="field"/>
+          <Label text="PASSWORD" styleClass="tile1"/>
+          <PasswordField fx:id="passWord" promptText="1234567" styleClass="field"/>
+          <Button fx:id="login" text="Login" onAction="#handleLogin" styleClass="buttonLog"/>
+          <Button fx:id="signup1" text="Sign up" onAction="#handleSignup1" styleClass="buttonLog"/>
+        </VBox>
       </VBox>
-    </VBox>
-    <!-- Tạo trường câu hỏi -->
-    <VBox styleClass = "image_2" alignment = "CENTER">
-     <VBox alignment = "CENTER" spacing = "20">
-       <Label text = "Welcome to login" styleClass = "tileBig"/>
-       <Label text = "Don't have an account?" styleClass = "tileTiny"/>
-       <Button fx:id = "signup" text = "Sign up" onAction = "#handleSignup" styleClass = "buttonSign"/>
-     </VBox>
-    </VBox>
-   </HBox>
-  </VBox>
+      <!-- Tạo trường câu hỏi -->
+      <VBox HBox.hgrow="ALWAYS" fx:id = "vbox2" styleClass="image_2" alignment="CENTER" spacing="8">
+        <Label text="Welcome to Sign in" styleClass="tileBig"/>
+        <Label text="Don't have an account?" styleClass="tileTiny"/>
+        <Label text = "What are you watting for?" styleClass = "tileTiny"/>
+        <Label text = "Sign up now" styleClass = "tileTiny"/>
+      </VBox>
+     </HBox>
+   </StackPane> 
+      
+      <!-- Tạo trường đki -->
+    <StackPane fx:id = "Pane2" translateX="0">
+     <HBox>
+      <VBox HBox.hgrow="ALWAYS" fx:id = "vbox4" styleClass="image_2" alignment="CENTER" spacing="8">
+        <Label text="Welcome to Sign up" styleClass="tileBig"/>
+        <Label text="Don't have an account?" styleClass="tileTiny"/>
+        <Label text = "What are you watting for?" styleClass = "tileTiny"/>
+        <Label text = "Sign up now" styleClass = "tileTiny"/>
+      </VBox>
+       <VBox prefWidth = "768" alignment = "CENTER_RIGHT" fx:id = "vbox3" styleClass = "image_3">
+        <HBox.margin>
+          <Insets right = "0" left = "0"/>
+        </HBox.margin>
+        <VBox alignment = "CENTER_LEFT" spacing = "10">
+          <Label text = "Sign Up" styleClass = "tileBig1"/>
+          <Label text = "USERNAME" styleClass = "tile1"/>
+          <TextField fx:id = "username" promptText = "damdaidung2005" styleClass = "field"/>
+          <Label text = "FULLNAME" styleClass = "tile1"/>
+          <TextField fx:id = "fullname" promptText = "Đàm Đại Dũng" styleClass = "field"/>
+          <Label text = "PASSWORD" styleClass = "tile1"/>
+          <PasswordField fx:id = "password" promptText = "1234567" styleClass = "field"/>
+          <Label text = "REAPEAT PASSWORD" styleClass = "tile1"/>
+          <PasswordField fx:id = "repeatpass" styleClass = "field"/>
+          <Button fx:id = "signup2" text = "Sign up" onAction = "#handleSignup2" styleClass = "buttonLog"/>
+          <Button text = "Back" styleClass = "buttonLog" onAction = "#handleBack" fx:id = "back"/>
+        </VBox>
+      </VBox>
+    </HBox>
+   </StackPane>
+   
 </StackPane>

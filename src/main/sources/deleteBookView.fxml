@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.geometry.Pos?>
 <?import javafx.geometry.Insets?>
@@ -16,80 +17,59 @@
 <?import javafx.scene.control.TableView?>
 
 <StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.deleteBookController" stylesheets="@main/sources/css/deleteBook.css">
-    <!-- Tạo đêm cho VBox tổng -->
-    <HBox styleClass = "hboxAll">
-    <!-- Tạo thanh sidebar -->
-    <VBox styleClass = "vbox_1" alignment = "CENTER">
-      <VBox alignment = "CENTER">
-      <padding>
-        <Insets top ="50" right = "0" bottom = "50" left = "0"/>
-      </padding>
-        <GridPane vgap = "20" alignment = "CENTER">
-        <!-- Tạo ảnh và username -->
-          <VBox alignment = "CENTER" spacing = "10">
-            <ImageView fitWidth = "120" fitHeight = "120" preserveRatio = "true" GridPane.columnIndex = "0" GridPane.rowIndex = "0" styleClass = "image">
-              <Image url= "/profile-user.png"/>
-            </ImageView>
-            <Label text = "User name" GridPane.columnIndex = "0" GridPane.rowIndex = "1" styleClass = "labelLay"/>
-          </VBox>
-          
-           <!-- Tạo bố cục cho ảnh và home -->
-           <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "2" styleClass = "hboxLay">
-             <padding>
-               <Insets top = "10" right = "5" bottom = "10" left = "5"/>
-             </padding>
-             <ImageView fitWidth = "40" fitHeight = "40" preserveRatio = "true" styleClass = "image">
-               <Image url = "/home.png"/>
-             </ImageView>
-             <Button fx:id = "home" text = "Trang chủ" onAction = "#handleHome" styleClass = "buttonLay"/>
-           </HBox>
-           <!-- Tạo bố cục cho logo và button -->
-           <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "3" styleClass = "hboxLay">
-           <padding>
-               <Insets top = "10" right = "5" bottom = "10" left = "5"/>
-             </padding>
-            <ImageView fitWidth = "40" fitHeight = "40" preserveRatio = "true" styleClass = "image">
-              <Image url = "/notebook.png" />
-            </ImageView>
-            <Button fx:id = "borrower" text = "Quản lý người mượn" onAction = "#handleBorrower" styleClass ="buttonLay" />
-           </HBox>
-           
-           <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "4" styleClass = "hboxLay">
-           <padding>
-               <Insets top = "10" right = "5" bottom = "10" left = "5"/>
-             </padding>
-            <ImageView fitWidth = "40" fitHeight = "40" preserveRatio = "true" styleClass = "image">
-              <Image url = "/shopping-cart.png" />
-            </ImageView>
-            <Button fx:id = "payer" text = "Quản lý người trả" onAction = "#handlePayer" styleClass = "buttonLay"/>
-           </HBox>
-           
-           <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "5" styleClass = "hboxLay">
-           <padding>
-               <Insets top = "10" right = "5" bottom = "10" left = "5"/>
-             </padding>
-            <ImageView fitWidth = "40" fitHeight = "40" preserveRatio = "true" styleClass = "image">
-              <Image url = "/user.png" />
-            </ImageView>
-            <Button fx:id = "user" text = "Quản lý người dùng" onAction = "#handleUser" styleClass = "buttonLay"/>
-           </HBox>
-           
-           <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "6" styleClass = "hboxLay">
-           <padding>
-               <Insets top = "10" right = "5" bottom = "10" left = "5"/>
-             </padding>
-            <ImageView fitWidth = "40" fitHeight = "40" preserveRatio = "true" styleClass = "image">
-              <Image url = "/group.png" />
-            </ImageView>
-            <Button fx:id = "employees" text = "Quản lý nhân viên" onAction = "#handleEmployees" styleClass = "buttonLay"/>
-           </HBox>
-           
-        </GridPane>
-        </VBox>
-      </VBox>
+    <BorderPane>
+        <!-- Tạo thanh sidebar -->
+        <left>
+            <VBox styleClass="vbox_1" alignment="TOP_CENTER">
+                <VBox alignment="CENTER">
+                    <padding>
+                        <Insets top="40" right="0" bottom="0" left="0"/>
+                    </padding>
+                    <VBox alignment="TOP_CENTER" spacing="10">
+                        <ImageView fitWidth="80" fitHeight="80" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="image">
+                            <Image url="/profile-user.png"/>
+                        </ImageView>
+                        <Label text="User name" styleClass="labelLay"/>
+                    </VBox>
+                    <GridPane vgap="5" alignment="CENTER">
+                        <HBox GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="hboxLay">
+                            <padding>
+                                <Insets top="20" right="0" bottom="20" left="0"/>
+                            </padding>
+                            <Button fx:id="home" text="Trang chủ" onAction="#handleHome" styleClass="buttonLay"/>
+                        </HBox>
+                        <HBox GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="hboxLay">
+                            <padding>
+                                <Insets top="20" right="0" bottom="20" left="0"/>
+                            </padding>
+                            <Button fx:id="borrower" text="Quản lý người mượn" onAction="#handleBorrower" styleClass="buttonLay"/>
+                        </HBox>
+                        <HBox GridPane.columnIndex="0" GridPane.rowIndex="4" styleClass="hboxLay">
+                            <padding>
+                                <Insets top="20" right="0" bottom="20" left="0"/>
+                            </padding>
+                            <Button fx:id="payer" text="Quản lý người trả" onAction="#handlePayer" styleClass="buttonLay"/>
+                        </HBox>
+                        <HBox GridPane.columnIndex="0" GridPane.rowIndex="5" styleClass="hboxLay">
+                            <padding>
+                                <Insets top="20" right="0" bottom="20" left="0"/>
+                            </padding>
+                            <Button fx:id="user" text="Quản lý người dùng" onAction="#handleUser" styleClass="buttonLay"/>
+                        </HBox>
+                        <HBox GridPane.columnIndex="0" GridPane.rowIndex="6" styleClass="hboxLay">
+                            <padding>
+                                <Insets top="20" right="0" bottom="20" left="0"/>
+                            </padding>
+                            <Button fx:id="employees" text="Quản lý nhân viên" onAction="#handleEmployees" styleClass="buttonLay"/>
+                        </HBox>
+                    </GridPane>
+                </VBox>
+            </VBox>
+        </left>
       
       <!-- tạo nơi thêm sách --> 
-      <VBox HBox.hgrow="ALWAYS" styleClass = "vbox_1">
+     <center>
+      <VBox styleClass = "vbox_2">
       <padding>
         <Insets top = "30" right = "0" bottom = "0" left = "0"/>
       </padding>
@@ -97,21 +77,24 @@
         <!-- Tạo nhãn đề mục -->
           <Label text = "Xóa thông tin sách" styleClass = "labelTit"/>
           <!-- Tạo trường để xóa sach -->
-         <HBox alignment = "CENTER">
+         <HBox alignment = "CENTER" spacing = "20">
           <padding>
             <Insets top = "0" right = "20" bottom = "0" left = "20"/>
           </padding>
+           <ImageView>
+             <Image url="/icons8-search-50.png"/>
+           </ImageView>
            <TextField fx:id = "searchCode" promptText = "Vui lòng nhập mã sách cần xóa" styleClass = "textField"/>
+           <Button fx:id = "deleted" text = "Xóa sách" onAction = "#handleDelete" styleClass = "buttonAdd"/>
          </HBox>
           <!-- Tạo nút ghi hoàn tất thêm sách -->
-          <HBox alignment = "CENTER" spacing = "10">
-            <Button fx:id = "deleted" text = "Xóa sách" onAction = "#handleDelete" styleClass = "buttonCom"/>
-            <Button fx:id = "back" text = "Tải lại" onAction = "#handleLoad" styleClass = "buttonCom"/>
+          <HBox alignment = "CENTER">
+            <Button fx:id = "back" text = "Tải lại" onAction = "#handleLoad" styleClass = "buttonAdd"/>
           </HBox>
           
           <VBox alignment = "CENTER">
            <padding>
-             <Insets top= "0" right = "50" bottom = "10" left = "50"/>
+             <Insets top= "0" right = "50" bottom = "30" left = "50"/>
            </padding>
             <TableView fx:id = "tableBook" styleClass = "tableView">
               <columns>
@@ -124,5 +107,6 @@
           </VBox>
         </VBox>
       </VBox>
-    </HBox>
+     </center>
+    </BorderPane>
 </StackPane>

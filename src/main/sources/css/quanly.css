@@ -1,84 +1,90 @@
-.hboxAll{
-	-fx-background-color:black;
-}
 .buttonLay{
 	-fx-pref-width:150;
-	-fx-pref-height:80;
-	-fx-background-color:black;
-	-fx-font-size:13;
-	-fx-font-weight:bold;
+	-fx-pref-height:40;
+	-fx-background-color:rgba(255,255,255,0);
 	-fx-text-fill:#ffffff;
-	-fx-effect: innershadow(gaussian, rgba(22, 133, 96, 0.8), 30, 0.5, 0, 0, 0.4);
+	-fx-font-size:12;
+	-fx-font-weight:bold;
+	-fx-alignment:CENTER_LEFT;
 }
 .buttonLay:hover{
-	-fx-border-color:#168560;
 	-fx-cursor:hand;
-	-fx-effect: dropshadow(gaussian, #168560, 30, 0.5, 0, 0);
+	-fx-background-color:#ffffff;
+	-fx-border-color:#ffffff;
+	-fx-border-width:4;
+	-fx-text-fill:#2B579A;
 }
 
 .labelLay{
 	-fx-text-fill:#ffffff;
 	-fx-font-weight:bold;
-	-fx-font-size:20;
+	-fx-font-size:16;
+}
+.alterHbox{
+	-fx-border-style:none none solid none;
+	-fx-border-color:#EFEFEF;
+	-fx-border-width:0 0 2 0;
+}
+.alterVbox{
+	-fx-border-style:none none none solid;
+	-fx-border-color:#EFEFEF;
+	-fx-border-width:0 0 0 2;
 }
 .vbox_1{
 	/*-fx-background-color:#171B1D;*/
-	-fx-background-color:black;
-	-fx-border-style:solid;
-	-fx-border-width:2;
-	-fx-border-color:#0B412F;
-	-fx-effect: innershadow(gaussian, rgba(22, 133, 96, 0.8), 30, 0.5, 0, 0, 0.4);
+	-fx-background-color:#2B579A;
+}
+.vbox_2{
+	/*-fx-background-color:#171B1D;*/
+	-fx-background-color:#ffffff;
 }
 .hboxLay{
-	-fx-background-color:#363636;
-	-fx-pref-width:180;
-	-fx-pref-height:80;
-	-fx-alignment:CENTER;
-}
-.image{
-	-fx-effect: dropshadow(gaussian, gray, 25, 0.7, 0, 0);
+	-fx-alignment:CENTER_LEFT;
 }
 .labelTit{
 	-fx-font-size:40;
-	-fx-text-fill:#ffffff;
+	-fx-text-fill:#2B579A;
 	-fx-font-weight:bold;
 }
 .textfield{
-	-fx-pref-width:100;
+	-fx-pref-width:500;
 	-fx-pref-height:40;
 	-fx-border-color:#168560;
 	-fx-border-radius:20;
 	-fx-background-radius:20;
-	-fx-border-color:#168560;
+	-fx-border-color:#2B579A;
 	-fx-border-width:2;
 	-fx-background-color:rgba(255,255,255,0);
-	-fx-text-fill:white;
+	-fx-text-fill:black;
 }
 .buttonAdd{
 	-fx-pref-width:130;
 	-fx-pref-height:40;
-	-fx-background-color:black;
 	-fx-background-radius:45;
 	-fx-border-radius:45;
-	-fx-font-size:16;
+	-fx-font-size:12;
 	-fx-font-weight:bold;
-	-fx-text-fill:#ffffff;
-	-fx-border-color:#168560;
+	-fx-text-fill:#2B579A;
+	-fx-border-color:#2B579A;
 	-fx-border-style:solid;
 	-fx-border-width:2;
-	-fx-effect: innershadow(gaussian, rgba(22, 133, 96, 0.8), 30, 0.5, 0, 0, 0.4);
 }
 .buttonAdd:hover{
 	-fx-cursor:hand;
-	-fx-effect: dropshadow(gaussian, #168560, 30, 0.5, 0, 0);
+	-fx-background-color:#2B579A;
+	-fx-text-fill:#ffffff;
+}
+.progress-indicator {
+    -fx-pref-width: 50px;
+    -fx-pref-height: 50px;
+    -fx-background-color: transparent;
 }
 .vboxFind{
 	-fx-background-color:#ffffff;
 	-fx-text-fill:black;
 	-fx-font-weight:bold;
-	-fx-font-size:16;
+	-fx-font-size:12;
 	-fx-border-style:solid;
-	-fx-border-color:black;
 	-fx-wrap-text:true;
 	-fx-font-family: Afacad Flux;
 }

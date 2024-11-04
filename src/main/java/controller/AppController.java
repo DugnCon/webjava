@@ -19,9 +19,9 @@ public class AppController {
         baseSceneController.createScene(node, url, urlCss);
     }
 
-    public void flyOut(Node node) {
+    /*public void flyOut(Node node) {
         transistionController.flyOut(node);
-    }
+    }*/
 
     public void flyIn(Node node) {
         transistionController.flyIn(node);

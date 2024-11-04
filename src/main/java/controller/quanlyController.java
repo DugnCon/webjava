@@ -1,4 +1,5 @@
 package main.java.controller;
+
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
@@ -6,35 +7,56 @@ import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.GaussianBlur;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.scene.control.Hyperlink;
-import main.java.controller.addBookController;
-import main.java.model.addNew;
 import main.java.JDBC.JDBCSQL;
+import main.java.model.addNew;
 
-    public class quanlyController extends baseSceneController {
-        @FXML
-        private Button home, borrower, payer, user, 
-                       employees, addBook, searchBook,
-                       deleteBook, updateBook;
-        @FXML
-        private TextField fieldSearch;
-        @FXML
-        private VBox searchResultsContainer;
-        
-        private MultiThreadedAPIController apiController = new MultiThreadedAPIController();
+public class quanlyController extends baseSceneController {
+    @FXML
+    private Button home, searchBook;
+    @FXML
+    private Button borrower, payer, user, 
+                   employees, addBook,
+                   deleteBook, updateBook;
+    @FXML
+    private TextField fieldSearch;
+    @FXML
+    private VBox searchResultsContainer;
+    @FXML
+    private ProgressIndicator loadingIndicator;
+    @FXML
+    private StackPane rootContainer;
+    @FXML
+    private BorderPane mainContent;
 
 
+    private APIController apiController = new APIController();
+    private ScheduledExecutorService scheduler;
+    private Runnable searchTask;
     @FXML
     private void handleHome() {
         createScene(home, "/main/sources/interfaceView.fxml", "/main/sources/css/interface.css");
@@ -62,143 +84,6 @@ import main.java.JDBC.JDBCSQL;
     @FXML
     private void handleEmployees() {
       
-    }
-    
-    /**xử lý sự kiện thêm sách*/
-    @FXML
-    private void handleAddBook() {
-        try {
-            Connection con = JDBCSQL.getConnection();
-            PreparedStatement prsttm = con.prepareStatement("SELECT * FROM book");
-            ResultSet rs = prsttm.executeQuery();
-            ObservableList<addNew> bookList = FXCollections.observableArrayList();
-            while (rs.next()) {
-                addNew AddNew = new addNew(rs.getString(2), rs.getString(3), rs.getString(4),
-                        rs.getString(5), rs.getString(6), rs.getString(7),
-                        rs.getString(8), rs.getString(9));
-                bookList.add(AddNew);
-            }
-            
-            addBookController controller = (addBookController) createScene1(addBook, 
-                "/main/sources/addBookView.fxml", "/main/sources/css/addBook.css");
-            controller.setBookList(bookList); 
-            con.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Cannot execute: " + e.getMessage());
-        }
-    }
-
-    @FXML
-    private void initialize() {
-    	/**Thiết lập lắng nghe sự kiện để gọi ý kết quả*/
-        fieldSearch.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.trim().isEmpty()) {
-                suggestBooks(newValue.trim());
-            } else {
-                searchResultsContainer.getChildren().clear(); // Xóa gợi ý khi không có gì
-            }
-        });
-    }
-
-    private void suggestBooks(String query) {
-    	/**Gọi API để gợi ý*/
-        apiController.getSuggestionsAsync(query).thenAccept(results -> {
-            javafx.application.Platform.runLater(() -> updateSuggestionList(results));
-        }).exceptionally(e -> {
-            javafx.application.Platform.runLater(() -> {
-                searchResultsContainer.getChildren().clear();
-                Text errorText = new Text("Có lỗi xảy ra khi lấy gợi ý sách.");
-                searchResultsContainer.getChildren().add(errorText);
-            });
-            e.printStackTrace();
-            return null;
-        });
-    }
-
-    private void updateSuggestionList(JsonArray items) {
-    	/**Hủy gợi ý khi không cần thiết*/
-        searchResultsContainer.getChildren().clear();
-        if (items != null && items.size() > 0) {
-            for (int i = 0; i < items.size(); i++) {
-            	
-            	/**Đường dẫn lấy sách*/
-                JsonObject book = items.get(i).getAsJsonObject();
-                
-                /**Thiết lập để mô tả thông tin về cuốn sách*/
-                JsonObject volumeInfo = book.getAsJsonObject("volumeInfo");
-                
-                /**Biến nó thành 1 chuỗi gửi về tên của sách*/
-                String title = volumeInfo.get("title").getAsString();
-                
-                /**Tạo trường link trong mỗi chuỗi tên sách*/
-                String infoLink = volumeInfo.has("infoLink") ? volumeInfo.get("infoLink").getAsString() : "";
-                Text bookTitleText = new Text(title);
-                bookTitleText.setWrappingWidth(400); 
-                
-                Hyperlink bookLink = new Hyperlink();
-                bookLink.setGraphic(bookTitleText);
-                bookLink.setOnAction(event -> openWebpage(infoLink));
-
-                searchResultsContainer.getChildren().add(bookLink);
-            }
-        } else {
-            Text noResults = new Text("Không tìm thấy gợi ý nào.");
-            searchResultsContainer.getChildren().add(noResults);
-        }
-    }
-
-    @FXML
-    private void handleSearchBook() {
-        String query = fieldSearch.getText().trim(); 
-        if (!query.isEmpty()) {
-            apiController.searchBooksAsync(query).thenAccept(results -> {
-                javafx.application.Platform.runLater(() -> updateBookList(results));
-            }).exceptionally(e -> {
-                javafx.application.Platform.runLater(() -> {
-                    searchResultsContainer.getChildren().clear();
-                    Text errorText = new Text("Có lỗi xảy ra khi tìm kiếm sách.");
-                    searchResultsContainer.getChildren().add(errorText);
-                });
-                e.printStackTrace();
-                return null;
-            });
-        }
-    }
-    
-    /**Update danh sách list book*/
-    private void updateBookList(JsonArray items) {
-        searchResultsContainer.getChildren().clear();
-        if (items != null && items.size() > 0) {
-            for (int i = 0; i < items.size(); i++) {
-                JsonObject book = items.get(i).getAsJsonObject();
-                JsonObject volumeInfo = book.getAsJsonObject("volumeInfo");
-                String title = volumeInfo.get("title").getAsString();
-                String infoLink = volumeInfo.has("infoLink") ? volumeInfo.get("infoLink").getAsString() : "";
-                Text bookTitleText = new Text(title);
-                bookTitleText.setWrappingWidth(400); 
-                
-                Hyperlink bookLink = new Hyperlink();
-                bookLink.setGraphic(bookTitleText);
-                bookLink.setOnAction(event -> openWebpage(infoLink));
-
-                searchResultsContainer.getChildren().add(bookLink);
-            }
-        } else {
-            Text noResults = new Text("Không tìm thấy kết quả.");
-            searchResultsContainer.getChildren().add(noResults);
-        }
-    }
-    
-    /**Tạo lên khi nhấp vào trường sách sẽ ra web mới*/
-    private void openWebpage(String urlString) {
-        try {
-            URI uri = new URI(urlString);
-            Desktop.getDesktop().browse(uri);
-        } catch (IOException | URISyntaxException e) {
-            e.printStackTrace();
-        }
     }
     
     /**Xóa sách*/
@@ -252,4 +137,175 @@ import main.java.JDBC.JDBCSQL;
             System.out.println("Cannot execute: " + e.getMessage());
         }
     }
+    
+    /**xử lý sự kiện thêm sách*/
+    @FXML
+    private void handleAddBook() {
+        try {
+            Connection con = JDBCSQL.getConnection();
+            PreparedStatement prsttm = con.prepareStatement("SELECT * FROM book");
+            ResultSet rs = prsttm.executeQuery();
+            ObservableList<addNew> bookList = FXCollections.observableArrayList();
+            while (rs.next()) {
+                addNew AddNew = new addNew(rs.getString(2), rs.getString(3), rs.getString(4),
+                        rs.getString(5), rs.getString(6), rs.getString(7),
+                        rs.getString(8), rs.getString(9));
+                bookList.add(AddNew);
+            }
+            
+            addBookController controller = (addBookController) createScene1(addBook, 
+                "/main/sources/addBookView.fxml", "/main/sources/css/addBook.css");
+            controller.setBookList(bookList); 
+            con.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Cannot execute: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    private void initialize() {
+        scheduler = Executors.newSingleThreadScheduledExecutor();
+        fieldSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.trim().isEmpty()) {
+                scheduleSearch(newValue.trim());
+            } else {
+                searchResultsContainer.getChildren().clear();
+            }
+        });
+    }
+
+    private void scheduleSearch(String query) {
+        if (searchTask != null) {
+            scheduler.shutdownNow(); 
+        }
+        
+        searchTask = () -> {
+            try {
+                JsonArray results = apiController.getSuggestions(query);
+                Platform.runLater(() -> updateSuggestionList(results));
+            } catch (IOException | InterruptedException e) {
+                Platform.runLater(() -> {
+                    searchResultsContainer.getChildren().clear();
+                    Text errorText = new Text("Có lỗi xảy ra khi lấy gợi ý sách.");
+                    searchResultsContainer.getChildren().add(errorText);
+                });
+                e.printStackTrace();
+            }
+        };
+
+        scheduler.schedule(searchTask, 500, TimeUnit.MILLISECONDS);
+    }
+
+    private void updateSuggestionList(JsonArray items) {
+        searchResultsContainer.getChildren().clear();
+        if (items != null && items.size() > 0) {
+            for (int i = 0; i < items.size(); i++) {
+                JsonObject book = items.get(i).getAsJsonObject();
+                JsonObject volumeInfo = book.getAsJsonObject("volumeInfo");
+                String title = volumeInfo.get("title").getAsString();
+                String infoLink = volumeInfo.has("infoLink") ? volumeInfo.get("infoLink").getAsString() : "";
+                Text bookTitleText = new Text(title);
+                bookTitleText.setWrappingWidth(400); 
+                
+                Hyperlink bookLink = new Hyperlink();
+                bookLink.setGraphic(bookTitleText);
+                bookLink.setOnAction(event -> openWebpage(infoLink));
+
+                searchResultsContainer.getChildren().add(bookLink);
+            }
+        } else {
+            Text noResults = new Text("Không tìm thấy gợi ý nào.");
+            searchResultsContainer.getChildren().add(noResults);
+        }
+    }
+
+
+
+    @FXML
+    private void handleSearchBook() {
+        String query = fieldSearch.getText().trim();
+        if (query.isEmpty()) {
+            loadingIndicator.setVisible(false);
+            mainContent.setEffect(null); 
+            return;
+        }
+
+        loadingIndicator.setVisible(true);
+
+        GaussianBlur blurEffect = new GaussianBlur(10);
+        mainContent.setEffect(blurEffect);
+
+        Task<JsonArray> searchTask = new Task<JsonArray>() {
+            @Override
+            protected JsonArray call() throws Exception {
+                return apiController.searchBooks(query, 10);
+            }
+
+            @Override
+            protected void succeeded() {
+                JsonArray results;
+                try {
+                    results = get();
+                    updateResults(results);
+                } catch (InterruptedException | ExecutionException e) {
+                    e.printStackTrace();
+                } finally {
+                    loadingIndicator.setVisible(false);
+                    mainContent.setEffect(null); // Bỏ hiệu ứng mờ khi hoàn tất
+                }
+            }
+
+            @Override
+            protected void failed() {
+                loadingIndicator.setVisible(false);
+                mainContent.setEffect(null); // Bỏ hiệu ứng mờ khi có lỗi
+                Platform.runLater(() -> {
+                    Text errorText = new Text("Có lỗi xảy ra khi tìm kiếm.");
+                    searchResultsContainer.getChildren().add(errorText);
+                });
+            }
+        };
+
+        new Thread(searchTask).start();
+    }
+
+
+    private void updateResults(JsonArray results) {
+        searchResultsContainer.getChildren().clear(); 
+        if (results != null && results.size() > 0) {
+            for (int i = 0; i < results.size(); i++) {
+                JsonObject book = results.get(i).getAsJsonObject();
+                JsonObject volumeInfo = book.getAsJsonObject("volumeInfo");
+                String title = volumeInfo.get("title").getAsString();
+                String infoLink = volumeInfo.has("infoLink") ? volumeInfo.get("infoLink").getAsString() : "";
+                Hyperlink bookLink = new Hyperlink(title);
+                if (!infoLink.isEmpty()) {
+                    bookLink.setOnAction(event -> openWebpage(infoLink));
+                } else {
+                    bookLink.setDisable(true); 
+                }
+                searchResultsContainer.getChildren().add(bookLink); 
+            }
+        } else {
+            Text noResults = new Text("Không tìm thấy kết quả.");
+            searchResultsContainer.getChildren().add(noResults);
+        }
+    }
+
+
+    private void openWebpage(String urlString) {
+        try {
+            if (urlString != null && !urlString.trim().isEmpty()) {
+                URI uri = new URI(urlString);
+                Desktop.getDesktop().browse(uri);
+            } else {
+                System.out.println("Liên kết không hợp lệ: " + urlString);
+            }
+        } catch (IOException | URISyntaxException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

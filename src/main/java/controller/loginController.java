@@ -47,7 +47,7 @@ public class loginController extends baseSceneController {
 
     @FXML
     private void handleButtonLogin() {
-		AppController.getAppController().flyOut(login);
+		//AppController.getAppController().flyOut(login);
 		String userName = username.getText();
 		String passWord = password.getText();
 		authorLog author = new authorLog(userName, passWord);
