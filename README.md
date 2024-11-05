@@ -1,4 +1,4 @@
-# Quản lý ứng dụng thư viện (Manage Library)
+# Ứng dụng quản lý thư viện (Manage Library)
 # I. Cách tải và cài đặt ứng dụng về máy của mình
 * B1: Tải project về
   1. Cách 1: Trên Github, chọn Code => Download ZIP. 
