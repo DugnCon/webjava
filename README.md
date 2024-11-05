@@ -1,0 +1,6 @@
+# Quản lý ứng dụng thu viện 
+# I. Cách tải và cài đặt ứng dụng về máy của mình
+* B1: Tải project về
+  1. Cách 1: Trên Github, chọn Code => Download ZIP. 
+  2. Cách 2: Mở terminal tại thư mục muốn lưu project, sử dụng lệnh git init để khởi tạo Git, sau đó dùng lệnh git clone https://github.com/DugnCon/webjava để clone project về máy.
+* B2: Chạy game Tìm file main.exe và chạy file.
