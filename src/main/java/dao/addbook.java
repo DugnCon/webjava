@@ -78,6 +78,7 @@ public class addbook implements AddBookInterface<add> {
 	     return res;
 	}
 	 
+	@Override
 	public String search(add t) {
 		String res = "";
 		try {
@@ -87,6 +88,25 @@ public class addbook implements AddBookInterface<add> {
 			ResultSet rs = prsttm.executeQuery();
 			if(rs.next()) {
 				res = rs.getString(2);
+			}
+			con.close();
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return res;
+	}
+	
+	@Override
+	public String search2(add t) {
+		String res = "";
+		try {
+			Connection con = JDBCSQL.getConnection();
+			PreparedStatement prsttm = con.prepareStatement("SELECT * FROM book WHERE bookCode  = ?");
+			prsttm.setString(1, t.getbookCode());
+			ResultSet rs = prsttm.executeQuery();
+			if(rs.next()) {
+				res = rs.getString(9);
 			}
 			con.close();
 		} catch (ClassNotFoundException | SQLException e) {
@@ -133,6 +153,29 @@ public class addbook implements AddBookInterface<add> {
 					          + " SET quantity = ?"
 					          + " WHERE bookCode = ?");
 			int Quantity = Integer.parseInt(t.getQuantity()) - 1;
+			if(Quantity >= 1) {
+				prsttm.setString(1,String.valueOf(Quantity));
+				prsttm.setString(2, t.getbookCode());
+				res = prsttm.executeUpdate();
+			}else {
+				return 0;
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return res;
+	}
+	
+	@Override
+	public int update3(add t) {
+		int res = 0;
+		try {
+			Connection con = JDBCSQL.getConnection();
+			PreparedStatement prsttm = con.prepareStatement("UPDATE book"
+					          + " SET quantity = ?"
+					          + " WHERE bookCode = ?");
+			int Quantity = Integer.parseInt(t.getQuantity()) + 1;
 			if(Quantity >= 1) {
 				prsttm.setString(1,String.valueOf(Quantity));
 				prsttm.setString(2, t.getbookCode());

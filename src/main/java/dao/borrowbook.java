@@ -11,7 +11,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ButtonBar.ButtonData;
 import main.java.JDBC.JDBCSQL;
 import main.java.model.borrow;
-public class borrowbook implements BorrowBookInterface<borrow> {
+public class borrowbook implements BorrowReturnInterface<borrow> {
 	
 	public static borrowbook setNew() {
 		return new borrowbook();
@@ -69,35 +69,6 @@ public class borrowbook implements BorrowBookInterface<borrow> {
 	}
 
 	@Override
-	public int search(borrow t, String bookcode) {
-		return 0;
-	}
-
-	@Override
-	public int update(borrow t) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int Delete(borrow t) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public borrow selectById(borrow t) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<borrow> selectAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public ArrayList<borrow> selectByCondition(String condition) {
 		ArrayList<borrow> arr = new ArrayList<>();
 		try {
@@ -114,6 +85,64 @@ public class borrowbook implements BorrowBookInterface<borrow> {
 			e.printStackTrace();
 		}
 		return arr;
+	}
+
+	@Override
+	public ArrayList<borrow> selectByCondition1(String condition) {
+		ArrayList<borrow> arr = new ArrayList<>();
+		try {
+			Connection con = JDBCSQL.getConnection();
+			PreparedStatement prsttm = con.prepareStatement("SELECT * FROM borrower WHERE borrowerID = ?");
+			prsttm.setString(1, condition);
+			ResultSet rs = prsttm.executeQuery();
+			if(rs.next()) {
+				borrow Borrow = new borrow(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8));
+				arr.add(Borrow);
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return arr;
+	}
+
+	@Override
+	public int search(borrow t, String condition) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int update(borrow t) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int Delete(String condition) {
+		int res = 0;
+		try {
+			Connection con = JDBCSQL.getConnection();
+			PreparedStatement prsttm = con.prepareStatement("DELETE FROM borrower WHERE borrowerID = ?");
+			prsttm.setString(1,condition);
+			res = prsttm.executeUpdate();
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+	@Override
+	public ArrayList<borrow> selectAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public borrow selectById(borrow t) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

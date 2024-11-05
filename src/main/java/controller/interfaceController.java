@@ -32,7 +32,7 @@ public class interfaceController extends baseSceneController {
 	}
 	@FXML
 	private void handleTrasach() {
-		
+		createScene(managePay,"/main/sources/returnBookView.fxml","/main/sources/css/returnBook.css");
 	}
 	@FXML
 	private void handleNhanvien() {

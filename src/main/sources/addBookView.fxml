@@ -29,7 +29,6 @@
                         <ImageView fitWidth="80" fitHeight="80" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="image">
                             <Image url="/profile-user.png"/>
                         </ImageView>
-                        <Label text="User name" styleClass="labelLay"/>
                     </VBox>
                     <GridPane vgap="5" alignment="CENTER">
                         <HBox GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="hboxLay">
@@ -69,11 +68,12 @@
       
       <!-- tạo nơi thêm sách --> 
      <center>
-     <VBox>
-      <VBox styleClass = "alterVbox">
+     <VBox styleClass = "vbox_2" >
+      <HBox styleClass = "alterVbox" spacing = "1000" alignment = "CENTER">
       <Label text = "THÊM SÁCH" styleClass = "labelTit"/>
-      </VBox>
-      <HBox styleClass = "vbox_2" spacing = "40">
+      <Button fx:id = "back" text = "Quay về" styleClass = "buttonBack" onAction = "#handleBack"/>
+      </HBox>
+      <HBox spacing = "40">
       <padding>
         <Insets top = "30" right = "60" bottom = "80" left = "60"/>
       </padding>
@@ -94,7 +94,7 @@
          <padding>
            <Insets top = "0" left = "75"/>
          </padding>
-         <VBox alignment = "CENTER" styleClass = "vbox_2">
+         <VBox alignment = "CENTER" styleClass = "vbox_2" spacing = "20">
           <padding>
             <Insets top = "20" right= "0" bottom = "30" left ="0"/>
           </padding>
@@ -103,29 +103,29 @@
           
             <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "0" spacing = "80">
               <HBox spacing = "20">
-                <TextField fx:id ="nameBook" promptText = "Example: Caculus" styleClass = "textField"/>
-                <TextField fx:id = "chapBook" promptText = "Example: Chapter 6" styleClass = "textField"/>
+                <TextField fx:id ="nameBook" promptText = "Tên sách" styleClass = "textField"/>
+                <TextField fx:id = "chapBook" promptText = "Chương sách" styleClass = "textField"/>
               </HBox>
             </HBox>
      
             <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "1" spacing = "80">
               <HBox spacing = "20">
-                <TextField fx:id = "nameAuthor" promptText = "Example: Xuân Diệu" styleClass = "textField"/>
-                <TextField fx:id = "styleBook" styleClass = "textField" promptText="Nhập nội dung tại đây"/>
+                <TextField fx:id = "nameAuthor" promptText = "Tên tác giả" styleClass = "textField"/>
+                <TextField fx:id = "styleBook" styleClass = "textField" promptText="Thể loại"/>
               </HBox>
             </HBox>
    
             <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "2" spacing = "34">
               <HBox spacing  ="20">
-                <TextField fx:id = "publisher" promptText = "Example: Kim Đồng" styleClass = "textField"/>
-                <TextField fx:id = "releaseYear" promptText = "Example: 2024" styleClass = "textField"/>
+                <TextField fx:id = "publisher" promptText = "Nhà xuất bản" styleClass = "textField"/>
+                <TextField fx:id = "releaseYear" promptText = "Năm phát hành" styleClass = "textField"/>
               </HBox>
             </HBox>
             
             <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "3" spacing = "80">
               <HBox spacing  ="20">
-                <TextField fx:id = "bookCode" promptText = "Example: ***" styleClass = "textField"/>
-                <TextField fx:id = "quantity" promptText = "Example: 20" styleClass = "textField"/>
+                <TextField fx:id = "bookCode" promptText = "Mã sách" styleClass = "textField"/>
+                <TextField fx:id = "quantity" promptText = "Số lượng" styleClass = "textField"/>
               </HBox>
             </HBox>
             

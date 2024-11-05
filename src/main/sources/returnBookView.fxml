@@ -16,7 +16,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 
-<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.recordFormController" stylesheets="@main/sources/css/recordForm.css">
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.returnBookController" stylesheets="@main/sources/css/returnBook.css">
     <BorderPane>
         <!-- Tạo thanh sidebar -->
         <left>
@@ -68,11 +68,11 @@
         </left>
       
      <center>
-          <VBox>
+          <VBox styleClass="vbox_2" >
            <VBox styleClass = "alterHbox">
-            <Label text = "GHI PHIẾU MƯỢN" styleClass = "labelTit"/>
+            <Label text = "GHI PHIẾU TRẢ" styleClass = "labelTit"/>
            </VBox>
-            <HBox styleClass="vbox_2" alignment = "CENTER" spacing = "40">
+            <HBox alignment = "CENTER" spacing = "40">
                 <padding>
                     <Insets top="20" right="0" bottom="0" left="0"/>
                 </padding>
@@ -85,40 +85,15 @@
                         <TableView fx:id="tableBook" styleClass="tableView">
                             <columns>
                                 <TableColumn fx:id="columnID" text="Mã người mượn" prefWidth="211"/>
-                                <TableColumn fx:id="columnCode" text="Họ và tên" prefWidth="184"/>
-                                <TableColumn fx:id="columnName" text="Mã sách" prefWidth="231"/>
-                                <TableColumn fx:id="columnPhone" text="Ngày mượn" prefWidth="251"/>
-                                <TableColumn fx:id="columnBorrow" text="Số điện thoại" prefWidth="209"/>
-                                <TableColumn fx:id="columnReturn" text="Ngày trả" prefWidth="160"/>
+                                <TableColumn fx:id="columnName" text="Họ và tên" prefWidth="231"/>
+                                <TableColumn fx:id="columnCode" text="Mã sách" prefWidth="184"/>
+                                <TableColumn fx:id="columnReturn" text="Ngày trả" prefWidth="180"/>
                             </columns>
                         </TableView>
                        <Button fx:id="record" text="Ghi nhận" onAction="#handleRecordForm" styleClass="buttonAdd"/>
                      </VBox>
                     </VBox>
                     <VBox alignment="CENTER_RIGHT" spacing="20" styleClass = "alterVbox">
-                        <!-- Tạo chỗ tìm kiếm còn sách -->
-                        <VBox styleClass="vbox_2" alignment="CENTER_RIGHT">
-                            <padding>
-                                <Insets top="40" right="0" bottom="0" left="45"/>
-                            </padding>
-                            <VBox alignment="CENTER" spacing="20">
-                                <padding>
-                                    <Insets top="0" right="0" bottom="30" left="0"/>
-                                </padding>
-                                <Label text="Thông tin sách" styleClass="labelLay"/>
-                                <HBox spacing="10">
-                                    <TextField fx:id="bookCode" promptText="Example: GT1" styleClass="textField"/>
-                                    <Button fx:id="search" text="Tìm sách" onAction="#handleSearch" styleClass="buttonAdd"/>
-                                </HBox>
-                                <VBox spacing = "10">
-                                    <TextField fx:id="title" promptText="Example: Harry Porter" styleClass="textField"/> 
-                                    <TextField fx:id="chapter" promptText="Example: 1" styleClass="textField"/>
-                                    <TextField fx:id="author" promptText="Example: Đàm Đại Dũng" styleClass="textField"/>
-                                    <TextField fx:id="quantity" promptText="Example: 100" styleClass="textField"/>
-                                </VBox>
-                            </VBox>
-                        </VBox>
-
                         <!-- Tạo nơi ghi thông tin -->
                         <VBox styleClass="vbox_2" alignment="CENTER_RIGHT">
                             <padding>
@@ -127,18 +102,20 @@
                             <VBox alignment="CENTER" spacing="10">
                                  <Label text="Thông tin người mượn" styleClass="labelLay"/>
                                  <HBox spacing="10" alignment="CENTER">
-                                    <TextField fx:id="userID" styleClass="textField" promptText="Example: 1"/>
+                                    <TextField fx:id="borrowerID" styleClass="textField" promptText="Mã người mượn"/>
                                     <Button text="Tìm ID" styleClass="buttonAdd" fx:id="searchID" onAction="#handleSearchID"/>
                                  </HBox>
                                  <VBox spacing = "10">
                                    <padding>
                                       <Insets top="10" right="0" bottom="20" left="0"/>
                                     </padding>
-                                    <TextField fx:id="borrowerID" styleClass="textField" promptText="Mã người mượn"/>
-                                    <TextField fx:id="username" promptText="Tên người mượn" styleClass="textField"/>
-                                    <TextField fx:id="phone" promptText="Số điện thoại" styleClass="textField"/>
-                                    <TextField fx:id="borrowDate" promptText="Ngày mượn" styleClass="textField"/>
+                                    <TextField fx:id = "userID" promptText = "ID" styleClass = "textField"/>
+                                    <TextField fx:id="bookCode" styleClass="textField" promptText="Mã sách"/>
+                                    <TextField fx:id = "borrowDate" styleClass = "textField" promptText = "Ngày mượn"/>
                                     <TextField fx:id="returnDate" promptText="Ngày trả" styleClass="textField"/>
+                                    <TextField fx:id = "status" promptText = "Trạng thái" styleClass = "textField"/>
+                                    <TextField fx:id = "phone" promptText = "Số điện thoại" styleClass = "textField" />
+                                    <TextField fx:id="username" promptText="Tên người trả" styleClass="textField"/>
                                 </VBox>
                             </VBox>
                         </VBox>

@@ -32,7 +32,6 @@
                         <ImageView fitWidth="80" fitHeight="80" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="image">
                             <Image url="/profile-user.png"/>
                         </ImageView>
-                        <Label text="User name" styleClass="labelLay"/>
                     </VBox>
                     <GridPane vgap="5" alignment="CENTER">
                         <HBox GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="hboxLay">

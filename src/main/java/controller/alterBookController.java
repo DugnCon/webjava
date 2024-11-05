@@ -22,7 +22,7 @@ import main.java.JDBC.JDBCSQL;
 import main.java.dao.addbook;
 public class alterBookController extends baseSceneController {
 	@FXML
-    private Button home, borrower, payer, user, employees, modified,search,back;
+    private Button home, borrower, payer, user, employees, modified,search,back,Back;
     @FXML
     private TextField nameBook, chapBook, publisher, releaseYear, 
                       nameAuthor, styleBook, bookCode, quantity,
@@ -39,6 +39,11 @@ public class alterBookController extends baseSceneController {
     public void setBookList(ObservableList<addNew> diffbook) {
         this.incomingBookList = diffbook;
         tableBook.setItems(incomingBookList);
+    }
+    
+    @FXML
+    private void handleBack() {
+    	createScene(Back,"/main/sources/quanlyView.fxml","/main/sources/css/quanly.css");
     }
     
     @FXML

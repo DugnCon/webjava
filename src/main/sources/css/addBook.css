@@ -63,7 +63,7 @@
 	-fx-text-fill:black;
 }
 .textField{
-	-fx-pref-width:150;
+	-fx-pref-width:250;
 	-fx-pref-height:40;
 	-fx-border-color:#168560;
 	-fx-border-radius:20;
@@ -72,6 +72,24 @@
 	-fx-border-width:2;
 	-fx-background-color:rgba(255,255,255,0);
 	-fx-text-fill:black;
+}
+.textField:focused{
+	-fx-effect: dropshadow(gaussian, #2B579A, 10, 0.5, 0, 0);
+}
+.buttonBack{
+    -fx-pref-width:130;
+	-fx-pref-height:40;
+	-fx-font-size:12;
+	-fx-font-weight:bold;
+	-fx-text-fill:#2B579A;
+	-fx-border-color:#2B579A;
+	-fx-border-style:solid;
+	-fx-border-width:2;
+}
+.buttonBack:hover{
+	-fx-cursor:hand;
+	-fx-background-color:#2B579A;
+	-fx-text-fill:#ffffff;
 }
 .buttonAdd{
 	-fx-pref-width:130;

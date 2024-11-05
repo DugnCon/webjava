@@ -29,7 +29,6 @@
                         <ImageView fitWidth="80" fitHeight="80" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="image">
                             <Image url="/profile-user.png"/>
                         </ImageView>
-                        <Label text="User name" styleClass="labelLay"/>
                     </VBox>
                     <GridPane vgap="5" alignment="CENTER">
                         <HBox GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="hboxLay">
@@ -69,9 +68,10 @@
       
       <center>
      <VBox styleClass = "vbox_2">
-     <VBox alignment = "CENTER_LEFT" styleClass = "alterHbox">
+     <HBox alignment = "CENTER_LEFT" styleClass = "alterHbox" spacing = "970">
       <Label text = "SỬA ĐỔI SÁCH" styleClass = "labelTit"/>
-     </VBox>
+      <Button text = "Quay về" styleClass = "buttonBack" fx:id = "Back" onAction = "#handleBack"/>
+     </HBox>
       <HBox spacing = "70">
       <padding>
         <Insets top = "20" right = "30" bottom = "30" left = "30"/>
@@ -127,7 +127,7 @@
             <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "2" spacing = "34">
               <HBox spacing  ="20">
                 <TextField fx:id = "publisher" promptText = "Nhà xuất bản" styleClass = "textField"/>
-                <TextField fx:id = "releaseYear" promptText = "Năm ra đời" styleClass = "textField"/>
+                <TextField fx:id = "releaseYear" promptText = "Năm phát hành" styleClass = "textField"/>
               </HBox>
             </HBox>
             

@@ -20,7 +20,7 @@ import main.java.JDBC.JDBCSQL;
 
 public class deleteBookController extends baseSceneController {
 	@FXML
-    private Button home, borrower, payer, user, employees, deleted,back;
+    private Button home, borrower, payer, user, employees, deleted,back,Back;
     @FXML
     private TextField nameBook, chapBook, publisher, releaseYear, nameAuthor, styleBook, bookCode, quantity,searchCode;
     @FXML
@@ -35,6 +35,11 @@ public class deleteBookController extends baseSceneController {
     public void setBookList(ObservableList<addNew> diffbook) {
         this.incomingBookList = diffbook;
         tableBook.setItems(incomingBookList);
+    }
+    
+    @FXML
+    private void handleBack() {
+    	createScene(Back,"/main/sources/quanlyView.fxml","/main/sources/css/quanly.css");
     }
     
     @FXML

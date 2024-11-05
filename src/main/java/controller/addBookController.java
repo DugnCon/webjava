@@ -16,7 +16,7 @@ import main.java.dao.addbook;
 
 public class addBookController extends baseSceneController {
     @FXML
-    private Button home, borrower, payer, user, employees, completed;
+    private Button home, borrower, payer, user, employees, completed,back;
     @FXML
     private TextField nameBook, chapBook, publisher, releaseYear, nameAuthor, styleBook, bookCode, quantity;
     @FXML
@@ -35,6 +35,11 @@ public class addBookController extends baseSceneController {
     public void setBookList(ObservableList<addNew> diffbook) {
         this.incomingBookList = diffbook;
         tableBook.setItems(incomingBookList);
+    }
+    
+    @FXML
+    private void handleBack() {
+    	createScene(back,"/main/sources/quanlyView.fxml","/main/sources/css/quanly.css");
     }
     
     @FXML

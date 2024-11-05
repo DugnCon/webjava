@@ -33,6 +33,16 @@ public class borrow {
     	this.returnDate = returnDate;
     	this.status = status;
     }
+    
+    public borrow(String userID,String bookCode, String borrowDate, String returnDate, String status, String phonenum, String userName) {
+    	this.userID = userID;
+        this.bookCode = bookCode;
+        this.borrowDate = borrowDate;
+        this.returnDate = returnDate;
+        this.status = status;
+        this.phonenum = phonenum;
+        this.userName = userName;
+    }
 
     public String getBorrowerID() {
         return borrowerID;
