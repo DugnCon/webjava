@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="658.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Admin.chartController">
+   <children>
+      <HBox layoutX="13.0" layoutY="28.0" prefHeight="100.0" prefWidth="680.0" style="-fx-border-color: black;">
+         <children>
+            <Pane prefHeight="99.0" prefWidth="358.0" style="-fx-border-width: 0 2 0 0; -fx-border-color: blue;">
+               <children>
+                  <Label alignment="CENTER" layoutX="139.0" layoutY="70.0" prefHeight="30.0" prefWidth="81.0" text="USERS">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="numberUsers" alignment="CENTER" layoutX="103.0" layoutY="14.0" prefHeight="27.0" prefWidth="153.0" text="Number ">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="10.0" layoutY="10.0" prefHeight="99.0" prefWidth="315.0">
+               <children>
+                  <Label alignment="CENTER" layoutX="75.0" layoutY="71.0" prefHeight="27.0" prefWidth="166.0" text="BOOKS IN BORROW">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="numberBorrowBooks" alignment="CENTER" layoutX="75.0" layoutY="14.0" prefHeight="27.0" prefWidth="166.0" text="Number">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </HBox>
+      <PieChart fx:id="userChart" layoutX="25.0" layoutY="256.0" prefHeight="307.0" prefWidth="336.0" title="User" />
+      <PieChart fx:id="bookChart" layoutX="362.0" layoutY="256.0" prefHeight="307.0" prefWidth="336.0" title="BOOKS" />
+      <ImageView fitHeight="78.0" fitWidth="81.0" layoutX="154.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../org/example/demo1/User_icon_2.svg.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="78.0" fitWidth="153.0" layoutX="491.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../org/example/demo1/5402751.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,7 @@
+#tieude{
+    -fx-text-fill: blue;
+}
+#title{
+    -fx-text-fill: Red;
+    -fx-blend-mode: difference;
+}

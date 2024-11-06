@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+
+<StackPane fx:id="stackPane" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo1.SignUp">
+   <children>
+      <BorderPane fx:id="signUp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0">
+         <left>
+            <AnchorPane prefHeight="600.0" prefWidth="289.0" style="-fx-background-color: SteelBlue;" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="205.0" fitWidth="342.0" layoutY="395.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@HD-wallpaper-digital-book-book-digital-blue-page.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="253.0" fitWidth="436.0" layoutX="2.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@lovepik-reading-under-the-moon-sky-picture_500588638.jpg" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="talk" alignment="CENTER" editable="false" layoutY="5.0" prefHeight="132.0" prefWidth="342.0" style="-fx-font-size: 17; -fx-font-weight: bold; -fx-background-color: transparent;" text="The more you read,The more you know!" />
+               </children>
+            </AnchorPane>
+         </left>
+         <center>
+            <AnchorPane prefHeight="600.0" prefWidth="430.0" style="-fx-background-color: #eee0cd;" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="firstname" layoutX="56.0" layoutY="135.0" prefHeight="38.0" prefWidth="138.0" promptText="FirstName" style="-fx-background-color: trans; -fx-border-width: 0px 0px 1px 0px; -fx-border-color: black;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="tieude" alignment="CENTER" layoutX="78.0" layoutY="40.0" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: transparent;" text="Create Account">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </TextField>
+                  <ImageView fitHeight="61.0" fitWidth="84.0" layoutX="333.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Logo_HUET.svg.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="lastname" layoutX="216.0" layoutY="135.0" prefHeight="38.0" prefWidth="166.0" promptText="LastName" style="-fx-background-color: trans; -fx-border-width: 0px 0px 1px 0px; -fx-border-color: black;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="phone" layoutX="59.0" layoutY="190.0" prefHeight="38.0" prefWidth="329.0" promptText="Phone" style="-fx-background-color: trans; -fx-border-width: 0px 0px 1px 0px; -fx-border-color: black;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="username" layoutX="59.0" layoutY="249.0" prefHeight="38.0" prefWidth="332.0" promptText="Username" style="-fx-background-color: trans; -fx-border-width: 0px 0px 1px 0px; -fx-border-color: black;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="ConfirmPass" layoutX="59.0" layoutY="369.0" prefHeight="38.0" prefWidth="334.0" promptText="Verify Password" style="-fx-background-color: trans; -fx-border-width: 0px 0px 1px 0px; -fx-border-color: black;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Button layoutX="122.0" layoutY="457.0" mnemonicParsing="false" onAction="#signup" prefHeight="48.0" prefWidth="164.0" style="-fx-background-color: lightgreen; -fx-border-color: black; -fx-border-radius: 20; -fx-background-radius: 20;" text="Sign up!">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="ThongBao" alignment="CENTER" layoutX="142.0" layoutY="91.0" prefHeight="38.0" prefWidth="114.0" text="WELCOME!" textFill="#042298">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="turnBack" alignment="CENTER" layoutX="14.0" layoutY="570.0" mnemonicParsing="false" onAction="#turnback" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: red; -fx-border-color: black; -fx-border-radius: 20; -fx-background-radius: 20;" text="Back">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="pass" layoutX="59.0" layoutY="309.0" prefHeight="38.0" prefWidth="332.0" promptText="Password" style="-fx-background-color: trans; -fx-border-width: 0px 0px 1px 0px; -fx-border-color: black;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="unmatch1" layoutX="253.0" layoutY="347.0" prefHeight="18.0" prefWidth="136.0" text="Unmatch PassWord!" textFill="#cf0303" />
+                  <Label fx:id="unmatch2" layoutX="253.0" layoutY="407.0" prefHeight="18.0" prefWidth="136.0" text="Unmatch PassWord!" textFill="#cf0303" />
+                  <ImageView fitHeight="106.0" fitWidth="128.0" layoutX="288.0" layoutY="511.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@5402751.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="IDs" alignment="CENTER" layoutX="276.0" layoutY="94.0" prefHeight="30.0" prefWidth="98.0" text="YourID" textAlignment="CENTER" textFill="#042298">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="44.0" fitWidth="114.0" layoutX="-73.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="32.0" fitWidth="45.0" layoutX="11.0" layoutY="193.0" pickOnBounds="true" preserveRatio="true" style="-fx-: #FFB6C1;">
+                     <image>
+                        <Image url="@304540.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="42.0" fitWidth="38.0" layoutX="8.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true" style="-fx-: #FFB6C1;">
+                     <image>
+                        <Image url="@5582931.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="38.0" fitWidth="33.0" layoutX="9.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@User_icon_2.svg.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="accountcheck" layoutX="107.0" layoutY="285.0" prefHeight="26.0" prefWidth="286.0" style="-fx-background-color: transparent;" text="Account had already been created">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <ImageView fitHeight="42.0" fitWidth="38.0" layoutX="8.0" layoutY="369.0" pickOnBounds="true" preserveRatio="true" style="-fx-: #FFB6C1;">
+                     <image>
+                        <Image url="@5582931.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="52.0" fitWidth="56.0" layoutX="1.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@8079092.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</StackPane>
