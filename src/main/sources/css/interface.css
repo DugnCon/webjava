@@ -16,11 +16,9 @@
     -fx-text-fill: #ffffff;
     -fx-font-size: 12;
     -fx-pref-width: 150;
-    -fx-pref-height: 40;
+    -fx-pref-height: 50;
     -fx-font-weight: bold;
-    -fx-border-width: 2; 
-    -fx-border-color: transparent;
-    -fx-alignment:CENTER_LEFT;
+    -fx-alignment:CENTER;
     -fx-background-color:rgba(255,255,255,0);
 }
 .button:hover{
@@ -33,9 +31,13 @@
 }
 .vbox_1{
 	-fx-background-color:#2B579A;
+	-fx-background-radius:8;
+	-fx-border-radius:8;
 }
 .vbox_2{
 	-fx-background-color:#ffffff;
+	-fx-background-radius:8;
+	-fx-border-radius:8;
 }
 .hbox_1{
 	-fx-border-style:none none solid none;
@@ -55,5 +57,9 @@
 .label-custom {
     -fx-font-family: url("/font/DFVN NewEddy.ttf");
     -fx-font-size: 16px;
+}
+.scrollpane{
+	-fx-background-radius:8;
+	-fx-border-radius:8;
 }
 

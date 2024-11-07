@@ -4,68 +4,74 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.media.MediaView?>
+<?import javafx.geometry.Pos?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.geometry.Insets?>
 
 <StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.loginUserController" stylesheets="@main/sources/css/login_signUser.css">
-      <!-- Tạo trường đăng nhập -->
-   <StackPane fx:id = "Pane1" translateX="0">
-    <HBox>
-     <VBox fx:id = "vbox1"  alignment="CENTER_LEFT" spacing="10" styleClass = "padding">
-      <VBox.margin>
-        <Insets right = "0" left = "0"/>
-      </VBox.margin>
-        <VBox prefWidth = "768" styleClass="image_1_1" alignment="CENTER_LEFT" spacing="20">
-          <Label text="Sign in" styleClass="tileBig1"/>
-          <Label text="USERNAME" styleClass="tile1"/>
-          <TextField fx:id="userName" promptText="damdaidung2005" styleClass="field"/>
-          <Label text="PASSWORD" styleClass="tile1"/>
-          <PasswordField fx:id="passWord" promptText="1234567" styleClass="field"/>
-          <Button fx:id="login" text="Login" onAction="#handleLogin" styleClass="buttonLog"/>
-          <Button fx:id="signup1" text="Sign up" onAction="#handleSignup1" styleClass="buttonLog"/>
-        </VBox>
-      </VBox>
-      <!-- Tạo trường câu hỏi -->
-      <VBox HBox.hgrow="ALWAYS" fx:id = "vbox2" styleClass="image_2" alignment="CENTER" spacing="8">
-        <Label text="Welcome to Sign in" styleClass="tileBig"/>
-        <Label text="Don't have an account?" styleClass="tileTiny"/>
-        <Label text = "What are you watting for?" styleClass = "tileTiny"/>
-        <Label text = "Sign up now" styleClass = "tileTiny"/>
-      </VBox>
-     </HBox>
-   </StackPane> 
-      
-      <!-- Tạo trường đki -->
-    <StackPane fx:id = "Pane2" translateX="0">
-     <HBox>
-      <VBox HBox.hgrow="ALWAYS" fx:id = "vbox4" styleClass="image_2" alignment="CENTER" spacing="8">
-        <Label text="Welcome to Sign up" styleClass="tileBig"/>
-        <Label text="Don't have an account?" styleClass="tileTiny"/>
-        <Label text = "What are you watting for?" styleClass = "tileTiny"/>
-        <Label text = "Sign up now" styleClass = "tileTiny"/>
-      </VBox>
-       <VBox prefWidth = "768" alignment = "CENTER_RIGHT" fx:id = "vbox3" styleClass = "image_3">
-        <HBox.margin>
-          <Insets right = "0" left = "0"/>
-        </HBox.margin>
-        <VBox alignment = "CENTER_LEFT" spacing = "10">
-          <Label text = "Sign Up" styleClass = "tileBig1"/>
-          <Label text = "USERNAME" styleClass = "tile1"/>
-          <TextField fx:id = "username" promptText = "damdaidung2005" styleClass = "field"/>
-          <Label text = "FULLNAME" styleClass = "tile1"/>
-          <TextField fx:id = "fullname" promptText = "Đàm Đại Dũng" styleClass = "field"/>
-          <Label text = "PASSWORD" styleClass = "tile1"/>
-          <PasswordField fx:id = "password" promptText = "1234567" styleClass = "field"/>
-          <Label text = "REAPEAT PASSWORD" styleClass = "tile1"/>
-          <PasswordField fx:id = "repeatpass" styleClass = "field"/>
-          <Button fx:id = "signup2" text = "Sign up" onAction = "#handleSignup2" styleClass = "buttonLog"/>
-          <Button text = "Back" styleClass = "buttonLog" onAction = "#handleBack" fx:id = "back"/>
-        </VBox>
-      </VBox>
-    </HBox>
-   </StackPane>
-   
+     <HBox fx:id = "HBOX1">
+    <StackPane style = "-fx-pref-width:768;" fx:id = "ST1">
+    <VBox fx:id = "VBOX3" styleClass = "vbox1" alignment = "CENTER">
+       <VBox fx:id = "VBOXCHILD3" styleClass = "vbox1_1" spacing = "20" alignment = "CENTER">
+         <Label text = "Đăng kí" styleClass = "Label"/>
+         <VBox spacing = "5">
+           <Label text = "Tài khoản" styleClass = "labelTiny"/>
+           <TextField fx:id = "userName" promptText = "username" styleClass = "layTextField"/>
+           <Label text = "Mật khẩu" styleClass = "labelTiny"/>
+           <PasswordField fx:id = "passWord" promptText = "password" styleClass = "layPassField"/>
+           <Label text = "Nhập lại mật khẩu" styleClass = "labelTiny"/>
+           <PasswordField fx:id = "repeatpass" promptText = "repeat password" styleClass = "layPassField"/>
+           <Label text = "Họ và tên" styleClass = "labelTiny"/>
+           <TextField fx:id ="fullname" promptText = "fullname" styleClass = "layTextField"/>
+         </VBox>
+         <Label text = "Nếu bạn chưa có mật khẩu, vui lòng đăng ký" styleClass = "labelTiny"/>
+         <Button text = "Đăng kí" fx:id = "signup2" onAction = "#handleButtonSignup2" styleClass = "Button1"/>
+       </VBox>  
+     </VBox>
+     <VBox fx:id = "VBOX1" styleClass = "vbox1" alignment = "CENTER">
+       <VBox fx:id = "VBOXCHILD1" styleClass = "vbox1_1" spacing = "20" alignment = "CENTER">
+         <Label text = "Đăng nhập" styleClass = "Label"/>
+         <VBox spacing = "5">
+           <Label text = "Tài khoản" styleClass = "labelTiny"/>
+           <TextField fx:id = "username" promptText = "username" styleClass = "layTextField"/>
+           <Label text = "Mật khẩu" styleClass = "labelTiny"/>
+           <PasswordField fx:id = "password" promptText = "password" styleClass = "layPassField"/>
+         </VBox>
+         <Label text = "Nếu bạn chưa có mật khẩu, vui lòng đăng ký" styleClass = "labelTiny"/>
+         <Button text = "Đăng nhập" fx:id = "login1" onAction = "#handleButtonLogin1" styleClass = "Button1"/>
+       </VBox>  
+     </VBox>
+    </StackPane>
+    
+   <StackPane HBox.hgrow="ALWAYS" fx:id = "ST2">
+    <VBox fx:id = "VBOX4" styleClass = "vbox2" alignment = "CENTER">
+       <VBox fx:id = "VBOXCHILD3" styleClass = "vbox1_2" spacing = "20" alignment = "CENTER">
+         <ImageView fitWidth = "500" fitHeight = "300" style = "-fx-border-radius: 50%; -fx-background-radius:45;">
+           <Image url = "/LeagueofLegends_Worlds2021_Trophy.jpg"/>
+         </ImageView>
+         <Label text = "Đăng ký để nhận 1 xuất tham dự CKTG nào !" styleClass = "labelTiny2"/>
+         <Button text = "Đăng nhập" fx:id = "login2" onAction = "#handleButtonLogin2" styleClass = "Button"/>
+       </VBox> 
+     </VBox> 
+     <VBox fx:id = "VBOX2" styleClass = "vbox2" alignment = "CENTER">
+       <VBox fx:id = "VBOXCHILD2" styleClass = "vbox1_2" spacing = "20" alignment = "CENTER">
+         <ImageView fitWidth = "500" fitHeight = "300">
+           <Image url = "/LeagueOfLegends_Worlds2023_Finals_T1_SummonersCup-removebg.png"/>
+         </ImageView>
+         <Label text = "Đăng ký để nhận 1 xuất tham dự CKTG nào !" styleClass = "labelTiny2"/>
+         <Button text = "Đăng kí" fx:id = "signup1" onAction = "#handleButtonSignUp1" styleClass = "Button"/>
+       </VBox> 
+     </VBox> 
+    </StackPane>
+   </HBox>
 </StackPane>

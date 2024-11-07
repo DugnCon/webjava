@@ -1,75 +1,116 @@
-.stackPane{
-	-fx-background-color:black;
-}
-.vbox{
-	-fx-background-color:#171B1D;
-	-fx-background-radius:20;
-	-fx-border-radius:20;
-	-fx-effect: dropshadow(gaussian, gray, 10, 0.0, -8, 15);
-}
-.hboxLogo, .vboxLogin{
-	-fx-background-color:#171B1D;
-	-fx-border-radius:20;
-	-fx-background-radius:20;
-	-fx-border-color:#168560;
-	-fx-border-width:2;
-	-fx-pref-width:600;
-	-fx-effect: dropshadow(gaussian, gray, 10, 0.0, -8, 15);
-}
-.layLogin{
-	-fx-spacing:50px;
-	-fx-padding: 0 0 20 0;
-	-fx-background-color:#171B1D;
-	-fx-background-radius:8;
-	-fx-border-radius:8;
-	-fx-border-width:2;
-	-fx-border-color:#168560;
-	-fx-effect: dropshadow(gaussian, gray, 10, 0.0, -8, 15);
-}
-.LabelLogo{
-	-fx-font-size:50;
-	-fx-text-fill:#ffffff;
-	-fx-font-weight:bold;
-	-fx-effect: dropshadow(gaussian, gray, 10, 0.0, -8, 15);
-}
-.imageLogo{
-	-fx-effect: dropshadow(gaussian, gray, 10, 0.0, -8, 15);
-}
-.UsPas{
-	-fx-font-size:16;
-	-fx-text-fill:#ffffff;
-	-fx-font-weight:bold;
-	-fx-effect: dropshadow(gaussian, gray, 10, 0.0, -8, 15);
-}
 .layTextField, .layPassField{
 	-fx-pref-width:350px;
-	-fx-spacing:30px;
-	-fx-text-fill: white;
+	-fx-text-fill: black;
 	-fx-font-weight:bold;
 	-fx-font-size:16px;
 	-fx-pref-height:45px;
 	-fx-border-width:2px;
-	-fx-border-radius: 20;
-	-fx-background-radius: 20;
-	-fx-border-color:#168560;
-	-fx-background-color:rgba(25,25,250,0);
-	-fx-effect: dropshadow(gaussian, gray, 10, 0.0, -8, 15);
+	-fx-border-radius:45;
+	-fx-background-radius: 45;
+	-fx-background-color:#fafafa;
+	-fx-border-color:black;
+}
+.layTextField:focused, .layPassField:focused{
+	-fx-effect: dropshadow(one-pass-box, black, 20, 0.5, 0, 0);
 }
 .Button{
 	-fx-font-size:16px;
 	-fx-font-weight:bold;
+	-fx-text-fill:black;
+	-fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-border-width:2px;
+    -fx-pref-width:160;
+    -fx-pref-height:40;
+    -fx-border-color:black;
+    -fx-background-color:white;
+}
+.Button:hover{
+	-fx-background-color:black;
 	-fx-text-fill:white;
-	-fx-border-color:#168560;
+	-fx-cursor: hand;
+	-fx-effect: dropshadow(one-pass-box, white, 20, 0.5, 0, 0);
+}
+.Button1{
+	-fx-font-size:16px;
+	-fx-font-weight:bold;
+	-fx-text-fill:white;
 	-fx-border-radius: 20;
     -fx-background-radius: 20;
     -fx-border-width:2px;
     -fx-pref-width:160px;
-    -fx-background-color:#168560;
-	-fx-effect: dropshadow(gaussian, gray, 10, 0.0, -8, 15);
+    -fx-pref-height:40;
+    -fx-border-color:black;
+    -fx-background-color:black;
 }
-.Button:hover{
+.Button1:hover{
 	-fx-background-color:white;
-	-fx-text-fill:#007A27;
+	-fx-text-fill:black;
 	-fx-cursor: hand;
-	-fx-effect: dropshadow(gaussian, darkgray, 15, 0.0, -7, 7);
+	-fx-effect: dropshadow(one-pass-box, black, 20, 0.5, 0, 0);
 }
+.background {
+    -fx-background-image: url("/background.png");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+}
+
+.background_login {
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-border-style: solid;
+    -fx-border-color: #ffffff;
+}
+
+.blurred-background {
+    -fx-background-color: rgba(255, 255, 255, 0.5);
+    -fx-background-radius: 8;
+}
+.vbox1{
+	-fx-pref-width:768;
+	-fx-padding:0 40;
+	-fx-background-color:rgba(255,255,255,0);
+}
+.vbox1_1{
+	-fx-background-color:#ffffff;
+	-fx-pref-height:600;
+	-fx-padding:0 50;
+	-fx-border-radius:12;
+	-fx-background-radius:12;
+	-fx-effect: dropshadow(one-pass-box, black, 20, 0.5, 0, 0);
+}
+.vbox1_2{
+	-fx-background-color:black;
+	-fx-pref-height:600;
+	-fx-padding:0 50;
+	-fx-border-radius:12;
+	-fx-background-radius:12;
+	-fx-effect: dropshadow(one-pass-box, #ffffff, 20, 0.5, 0, 0);
+}
+.vbox2{
+	-fx-padding:0 40;
+	-fx-background-color:rgba(255,255,255,0);
+}
+.stackpane{
+	-fx-background-image:url("/hinh-nen-desktop-don-gian_040353052.jpg");
+	-fx-background-size:cover;
+	-fx-background-position:center;
+}
+.labelTiny{
+	-fx-font-size:13;
+	-fx-text-fill:black;
+	-fx-font-family:"DFVN NewEddy";
+	-fx-font-weight:bold;
+}
+.labelTiny2{
+	-fx-font-size:16;
+	-fx-text-fill:white;
+	-fx-font-family:"DFVN NewEddy";
+}
+.Label{
+	-fx-font-size:40;
+	-fx-text-fill:black;
+	-fx-font-family:"DFVN NewEddy";
+	-fx-font-weight:bold;
+}
+

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javafx.animation.ScaleTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,6 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Duration;
 import main.java.JDBC.JDBCSQL;
 import main.java.dao.addbook;
 import main.java.dao.borrowbook;
@@ -48,12 +50,31 @@ public class returnBookController extends baseSceneController {
         tableBook.setItems(incomingBookList);
     }
     
+    private void addButtonZoomEffect(Button button) {
+        ScaleTransition scaleIn = new ScaleTransition(Duration.millis(200), button);
+        scaleIn.setToX(1.1);
+        scaleIn.setToY(1.1);
+
+        ScaleTransition scaleOut = new ScaleTransition(Duration.millis(200), button);
+        scaleOut.setToX(1.0);
+        scaleOut.setToY(1.0);
+
+        button.setOnMouseEntered(e -> scaleIn.play()); 
+        button.setOnMouseExited(e -> scaleOut.play()); 
+    }
+    
     @FXML
     private void initialize() {
         columnID.setCellValueFactory(new PropertyValueFactory<>("borrowerID"));
         columnName.setCellValueFactory(new PropertyValueFactory<>("userName"));
         columnCode.setCellValueFactory(new PropertyValueFactory<>("bookCode"));
         columnReturn.setCellValueFactory(new PropertyValueFactory<>("returnDate"));
+        
+        addButtonZoomEffect(home);
+        addButtonZoomEffect(borrower);
+        addButtonZoomEffect(payer);
+        addButtonZoomEffect(employees);
+        addButtonZoomEffect(user);
 
         tableBook.setItems(incomingBookList);
     }

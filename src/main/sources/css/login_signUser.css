@@ -1,89 +1,116 @@
-.image_bgr{
-	-fx-background-color:rgba(255,255,255,0);
-}
-.padding1{
-	-fx-padding:0 0 0 0;
-}
-.image_1{
-	-fx-background-color:#FFFFFF;
-}
-.image_1_1{
-	-fx-background-color:#FFFFFF;
-	-fx-background-radius:8;
-	-fx-border-radius:8;
-}
-.image_2{
-	-fx-background-color:rgba(255,255,255,0);
-}
-.image_3{
-	-fx-background-color:#FFFFFF;
-	-fx-background-radius:8;
-	-fx-border-radius:8;
-}
-.image_4{
-	-fx-background-color:rgba(255,255,255,0);
-}
-.buttonLog{
-	-fx-background-color:#F65579;
-	-fx-border-radius:45;
-	-fx-background-radius:45;
-	-fx-text-fill:#ffffff;
-	-fx-font-size:15;
-	-fx-pref-width:350;
-	-fx-pref-height:40;
-}
-.buttonLog:hover{
-	-fx-background-color:#ffffff;
-	-fx-text-fill:#F65579;
-	-fx-border-color:#F65579;
-}
-.buttonSign{
-	-fx-background-color:#ffffff;
-	-fx-border-radius:45;
-	-fx-background-radius:45;
-	-fx-text-fill:#F65579;
-	-fx-font-size:15;
-	-fx-pref-width:150;
-	-fx-pref-height:40;
-}
-.buttonSign:hover{
-	-fx-background-color:#F65579;
-	-fx-text-fill:#ffffff;
-	-fx-border-color:#ffffff;
-}
-.field{
-	-fx-pref-width:350;
-	-fx-pref-height:40;
-	-fx-border-radius:45;
-	-fx-background-radius:45;
-}
-.tileBig{
-	-fx-text-fill:#ffffff;
+.layTextField, .layPassField{
+	-fx-pref-width:350px;
+	-fx-text-fill: black;
 	-fx-font-weight:bold;
-	-fx-font-size:40;
+	-fx-font-size:16px;
+	-fx-pref-height:45px;
+	-fx-border-width:2px;
+	-fx-border-radius:45;
+	-fx-background-radius: 45;
+	-fx-background-color:#fafafa;
+	-fx-border-color:black;
 }
-.tileBig1{
+.layTextField:focused, .layPassField:focused{
+	-fx-effect: dropshadow(one-pass-box, black, 20, 0.5, 0, 0);
+}
+.Button{
+	-fx-font-size:16px;
+	-fx-font-weight:bold;
 	-fx-text-fill:black;
-	-fx-font-size:40;
+	-fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-border-width:2px;
+    -fx-pref-width:160;
+    -fx-pref-height:40;
+    -fx-border-color:black;
+    -fx-background-color:white;
 }
-.tileBig2{
-	-fx-text-fill:#ffffff;
-	-fx-font-size:40;
+.Button:hover{
+	-fx-background-color:black;
+	-fx-text-fill:white;
+	-fx-cursor: hand;
+	-fx-effect: dropshadow(one-pass-box, white, 20, 0.5, 0, 0);
 }
-.tileTiny{
-	-fx-text-fill:#ffffff;
+.Button1{
+	-fx-font-size:16px;
+	-fx-font-weight:bold;
+	-fx-text-fill:white;
+	-fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-border-width:2px;
+    -fx-pref-width:160px;
+    -fx-pref-height:40;
+    -fx-border-color:black;
+    -fx-background-color:black;
+}
+.Button1:hover{
+	-fx-background-color:white;
+	-fx-text-fill:black;
+	-fx-cursor: hand;
+	-fx-effect: dropshadow(one-pass-box, black, 20, 0.5, 0, 0);
+}
+.background {
+    -fx-background-image: url("/background.png");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+}
+
+.background_login {
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-border-style: solid;
+    -fx-border-color: #ffffff;
+}
+
+.blurred-background {
+    -fx-background-color: rgba(255, 255, 255, 0.5);
+    -fx-background-radius: 8;
+}
+.vbox1{
+	-fx-pref-width:768;
+	-fx-padding:0 40;
+	-fx-background-color:rgba(255,255,255,0);
+}
+.vbox1_1{
+	-fx-background-color:#ffffff;
+	-fx-pref-height:600;
+	-fx-padding:0 50;
+	-fx-border-radius:12;
+	-fx-background-radius:12;
+	-fx-effect: dropshadow(one-pass-box, black, 20, 0.5, 0, 0);
+}
+.vbox1_2{
+	-fx-background-color:black;
+	-fx-pref-height:600;
+	-fx-padding:0 50;
+	-fx-border-radius:12;
+	-fx-background-radius:12;
+	-fx-effect: dropshadow(one-pass-box, #ffffff, 20, 0.5, 0, 0);
+}
+.vbox2{
+	-fx-padding:0 40;
+	-fx-background-color:rgba(255,255,255,0);
+}
+.stackpane{
+	-fx-background-image:url("/hinh-nen-desktop-don-gian_040353052.jpg");
+	-fx-background-size:cover;
+	-fx-background-position:center;
+}
+.labelTiny{
+	-fx-font-size:13;
+	-fx-text-fill:black;
+	-fx-font-family:"DFVN NewEddy";
+	-fx-font-weight:bold;
+}
+.labelTiny2{
 	-fx-font-size:16;
+	-fx-text-fill:white;
+	-fx-font-family:"DFVN NewEddy";
 }
-.tile{
+.Label{
+	-fx-font-size:40;
 	-fx-text-fill:black;
-}
-.tile1{
-	-fx-text-fill:black;
+	-fx-font-family:"DFVN NewEddy";
 	-fx-font-weight:bold;
-	-fx-font-size:18;
 }
-.tile2{
-	-fx-text-fill:#ffffff;
-	-fx-font-weight:bold;
-	-fx-font-size:18;
-}
+

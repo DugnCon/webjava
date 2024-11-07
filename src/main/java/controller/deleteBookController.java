@@ -5,20 +5,28 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javafx.animation.ScaleTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 import main.java.dao.addbook;
 import main.java.model.add;
 import main.java.model.addNew;
 import main.java.JDBC.JDBCSQL;
 
 public class deleteBookController extends baseSceneController {
+	@FXML
+	private Label label;
+	@FXML
+	private ImageView image;
 	@FXML
     private Button home, borrower, payer, user, employees, deleted,back,Back;
     @FXML
@@ -37,6 +45,19 @@ public class deleteBookController extends baseSceneController {
         tableBook.setItems(incomingBookList);
     }
     
+    private void addButtonZoomEffect(Button button) {
+        ScaleTransition scaleIn = new ScaleTransition(Duration.millis(200), button);
+        scaleIn.setToX(1.1);
+        scaleIn.setToY(1.1);
+
+        ScaleTransition scaleOut = new ScaleTransition(Duration.millis(200), button);
+        scaleOut.setToX(1.0);
+        scaleOut.setToY(1.0);
+
+        button.setOnMouseEntered(e -> scaleIn.play()); 
+        button.setOnMouseExited(e -> scaleOut.play()); 
+    }
+    
     @FXML
     private void handleBack() {
     	createScene(Back,"/main/sources/quanlyView.fxml","/main/sources/css/quanly.css");
@@ -48,8 +69,23 @@ public class deleteBookController extends baseSceneController {
         columnTitle.setCellValueFactory(new PropertyValueFactory<>("nameBook"));
         columnAuthor.setCellValueFactory(new PropertyValueFactory<>("nameAuthor"));
         columnYear.setCellValueFactory(new PropertyValueFactory<>("releaseYear"));
+        
+        addButtonZoomEffect(home);
+        addButtonZoomEffect(borrower);
+        addButtonZoomEffect(payer);
+        addButtonZoomEffect(employees);
+        addButtonZoomEffect(back);
+        addButtonZoomEffect(user);
 
         tableBook.setItems(incomingBookList);
+        transistionController tran = new transistionController();
+        tran.COMERIGHTALL(home,borrower,payer,user,employees);
+        tran.COMEON(back);
+        tran.COMELEFT(Back);
+        tran.COMEUNDER2(tableBook);
+        tran.COMEON(label);
+        tran.COMEONALL1(deleted,searchCode,image);
+        tran.COMELEFT1(nameBook, nameAuthor, publisher, bookCode, chapBook, styleBook, releaseYear, quantity);
     }
 
     @FXML

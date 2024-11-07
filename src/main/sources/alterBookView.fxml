@@ -69,7 +69,7 @@
       <center>
      <VBox styleClass = "vbox_2">
      <HBox alignment = "CENTER_LEFT" styleClass = "alterHbox" spacing = "970">
-      <Label text = "SỬA ĐỔI SÁCH" styleClass = "labelTit"/>
+      <Label fx:id = "label1" text = "SỬA ĐỔI SÁCH" styleClass = "labelTit"/>
       <Button text = "Quay về" styleClass = "buttonBack" fx:id = "Back" onAction = "#handleBack"/>
      </HBox>
       <HBox spacing = "70">
@@ -95,9 +95,9 @@
           <padding>
             <Insets top = "20" right = "50" bottom = "20" left = "50"/>
           </padding>
-          <Label text = "Tìm kiếm mã sách cần sửa" styleClass = "labelLay"/>
+          <Label fx:id = "label" text = "Tìm kiếm mã sách cần sửa" styleClass = "labelLay"/>
           <HBox spacing = "20" alignment = "CENTER">
-            <ImageView fitWidth = "30" fitHeight = "30" preserveRatio = "true">
+            <ImageView fx:id = "image" fitWidth = "30" fitHeight = "30" preserveRatio = "true">
               <Image url="/icons8-search-50.png"/>
             </ImageView>
             <TextField fx:id = "searchCode" promptText = "Mã sách" styleClass = "textField_1"/>

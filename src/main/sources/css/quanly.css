@@ -1,11 +1,11 @@
 .buttonLay{
 	-fx-pref-width:150;
-	-fx-pref-height:40;
+	-fx-pref-height:50;
 	-fx-background-color:rgba(255,255,255,0);
 	-fx-text-fill:#ffffff;
 	-fx-font-size:12;
 	-fx-font-weight:bold;
-	-fx-alignment:CENTER_LEFT;
+	-fx-alignment:CENTER;
 }
 .buttonLay:hover{
 	-fx-cursor:hand;
@@ -14,7 +14,6 @@
 	-fx-border-width:4;
 	-fx-text-fill:#2B579A;
 }
-
 .labelLay{
 	-fx-text-fill:#ffffff;
 	-fx-font-weight:bold;
@@ -31,12 +30,14 @@
 	-fx-border-width:0 0 0 2;
 }
 .vbox_1{
-	/*-fx-background-color:#171B1D;*/
 	-fx-background-color:#2B579A;
+	-fx-background-radius:8;
+	-fx-border-radius:8;
 }
 .vbox_2{
-	/*-fx-background-color:#171B1D;*/
 	-fx-background-color:#ffffff;
+	-fx-background-radius:8;
+	-fx-border-radius:8;
 }
 .hboxLay{
 	-fx-alignment:CENTER_LEFT;
@@ -54,8 +55,11 @@
 	-fx-background-radius:20;
 	-fx-border-color:#2B579A;
 	-fx-border-width:2;
-	-fx-background-color:rgba(255,255,255,0);
 	-fx-text-fill:black;
+	-fx-effect: dropshadow(gaussian, #2b579a, 0, 1, 5, 5);
+}
+.textfield:focused{
+	-fx-effect: dropshadow(gaussian, #2b579a, 0, 1, 0, 0);
 }
 .buttonAdd{
 	-fx-pref-width:130;
@@ -68,11 +72,13 @@
 	-fx-border-color:#2B579A;
 	-fx-border-style:solid;
 	-fx-border-width:2;
+	-fx-effect: dropshadow(gaussian, #2b579a, 0, 1, 5, 5);
 }
 .buttonAdd:hover{
 	-fx-cursor:hand;
 	-fx-background-color:#2B579A;
 	-fx-text-fill:#ffffff;
+	-fx-effect: dropshadow(gaussian, #2b579a, 0, 1, 0, 0);
 }
 .progress-indicator {
     -fx-pref-width: 50px;
@@ -87,4 +93,7 @@
 	-fx-border-style:solid;
 	-fx-wrap-text:true;
 	-fx-font-family: Afacad Flux;
+	-fx-effect: dropshadow(gaussian, #2b579a, 0, 1, 7, 7);
+	-fx-border-radius:8;
+	-fx-background-radius:8;
 }

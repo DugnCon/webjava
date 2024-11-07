@@ -1,20 +1,25 @@
 package main.java.controller;
 
+import javafx.animation.ScaleTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Duration;
 import main.java.model.add;
 import main.java.model.addNew;
 import main.java.dao.addbook;
 
 public class addBookController extends baseSceneController {
+	@FXML
+	private Label label,label1;
     @FXML
     private Button home, borrower, payer, user, employees, completed,back;
     @FXML
@@ -44,13 +49,45 @@ public class addBookController extends baseSceneController {
     
     @FXML
     private void initialize() {
+        // Set up table columns as before
         columnCode.setCellValueFactory(new PropertyValueFactory<>("bookCode"));
         columnTitle.setCellValueFactory(new PropertyValueFactory<>("nameBook"));
         columnAuthor.setCellValueFactory(new PropertyValueFactory<>("nameAuthor"));
         columnYear.setCellValueFactory(new PropertyValueFactory<>("releaseYear"));
 
         tableBook.setItems(incomingBookList);
+
+        // Apply the hover effect to all buttons
+        applyHoverEffect(home);
+        applyHoverEffect(borrower);
+        applyHoverEffect(payer);
+        applyHoverEffect(user);
+        applyHoverEffect(employees);
+        applyHoverEffect(completed);
+        applyHoverEffect(back);
+        
+        transistionController tran = new transistionController();
+        tran.COMERIGHTALL(home,borrower,payer,user,employees);
+        tran.COMELEFT2(label,completed);
+        tran.COMELEFT(back);
+        tran.COMEUNDER2(tableBook);
+        tran.COMEON(label1);
+        tran.COMELEFT1(nameBook, nameAuthor, publisher, bookCode, chapBook, styleBook, releaseYear, quantity);
     }
+
+    private void applyHoverEffect(Button button) {
+    	 ScaleTransition scaleIn = new ScaleTransition(Duration.millis(200), button);
+         scaleIn.setToX(1.1);
+         scaleIn.setToY(1.1);
+
+         ScaleTransition scaleOut = new ScaleTransition(Duration.millis(200), button);
+         scaleOut.setToX(1.0);
+         scaleOut.setToY(1.0);
+
+         button.setOnMouseEntered(e -> scaleIn.play()); 
+         button.setOnMouseExited(e -> scaleOut.play()); 
+    }
+
 
     @FXML
     private void handleHome() {

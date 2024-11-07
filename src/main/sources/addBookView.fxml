@@ -70,7 +70,7 @@
      <center>
      <VBox styleClass = "vbox_2" >
       <HBox styleClass = "alterVbox" spacing = "1000" alignment = "CENTER">
-      <Label text = "THÊM SÁCH" styleClass = "labelTit"/>
+      <Label fx:id = "label1" text = "THÊM SÁCH" styleClass = "labelTit"/>
       <Button fx:id = "back" text = "Quay về" styleClass = "buttonBack" onAction = "#handleBack"/>
       </HBox>
       <HBox spacing = "40">
@@ -98,7 +98,7 @@
           <padding>
             <Insets top = "20" right= "0" bottom = "30" left ="0"/>
           </padding>
-          <Label text = "Thông tin sách" styleClass = "labelTit"/>
+          <Label fx:id = "label" text = "Thông tin sách" styleClass = "labelTit"/>
           <GridPane alignment = "CENTER" vgap = "20">
           
             <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "0" spacing = "80">

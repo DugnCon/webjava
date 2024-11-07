@@ -15,6 +15,8 @@ import java.util.concurrent.TimeUnit;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+
+import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,6 +27,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.ImageView;
@@ -32,6 +35,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import main.java.JDBC.JDBCSQL;
 import main.java.model.addNew;
 
@@ -52,11 +56,31 @@ public class quanlyController extends baseSceneController {
     private StackPane rootContainer;
     @FXML
     private BorderPane mainContent;
+    @FXML
+    private ImageView image;
+    @FXML
+    private ScrollPane scrollpane;
+    @FXML
+    private Label label;
 
 
     private APIController apiController = new APIController();
     private ScheduledExecutorService scheduler;
     private Runnable searchTask;
+   
+    
+    private void addButtonZoomEffect(Button button) {
+        ScaleTransition scaleIn = new ScaleTransition(Duration.millis(200), button);
+        scaleIn.setToX(1.1);
+        scaleIn.setToY(1.1);
+
+        ScaleTransition scaleOut = new ScaleTransition(Duration.millis(200), button);
+        scaleOut.setToX(1.0);
+        scaleOut.setToY(1.0);
+
+        button.setOnMouseEntered(e -> scaleIn.play()); 
+        button.setOnMouseExited(e -> scaleOut.play()); 
+    }
     @FXML
     private void handleHome() {
         createScene(home, "/main/sources/interfaceView.fxml", "/main/sources/css/interface.css");
@@ -166,6 +190,7 @@ public class quanlyController extends baseSceneController {
 
     @FXML
     private void initialize() {
+    	
         scheduler = Executors.newSingleThreadScheduledExecutor();
         fieldSearch.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.trim().isEmpty()) {
@@ -174,6 +199,19 @@ public class quanlyController extends baseSceneController {
                 searchResultsContainer.getChildren().clear();
             }
         });
+        
+        addButtonZoomEffect(home);
+        addButtonZoomEffect(borrower);
+        addButtonZoomEffect(payer);
+        addButtonZoomEffect(employees);
+        addButtonZoomEffect(user);
+        transistionController tran = new transistionController();
+        tran.COMEONALL1(searchBook,fieldSearch,image);
+        tran.COMEONALL(addBook,deleteBook,updateBook);
+        tran.COMEUNDER1(scrollpane);
+        tran.COMEUNDER3(label);
+        tran.COMEUNDER2(searchResultsContainer);
+        tran.COMERIGHTALL(home,borrower,payer,user,employees);
     }
 
     private void scheduleSearch(String query) {

@@ -15,7 +15,7 @@
     <BorderPane>
         <left>
             <VBox alignment="CENTER" styleClass="vbox_1" spacing="80">
-                <ImageView fitWidth="90" fitHeight="90" preserveRatio="true">
+                <ImageView fx:id = "image" fitWidth="90" fitHeight="90" preserveRatio="true">
                     <Image url="/uet.png"/>
                 </ImageView>
                 <VBox spacing="30" alignment="CENTER_LEFT">
@@ -30,10 +30,10 @@
             </VBox>
         </left>
         <center>
-            <ScrollPane fitToWidth="true" fitToHeight="true">
+            <ScrollPane styleClass = "scrollpane" fitToWidth="true" fitToHeight="true">
                 <VBox spacing="10">
                     <HBox alignment="CENTER_LEFT" styleClass="hbox_1">
-                        <Label text="GIỚI THIỆU VỀ UET" style="-fx-font-size: 40; -fx-text-fill: #2B579A; -fx-font-weight:bold;"/>
+                        <Label fx:id = "label" text="GIỚI THIỆU VỀ UET" style="-fx-font-size: 40; -fx-text-fill: #2B579A; -fx-font-weight:bold;"/>
                     </HBox>
                     <Label text="Trường Đại học Công nghệ, Đại học Quốc gia Hà Nội được thành lập theo Quyết định số 92/2004/QĐ-TTg ngày 25/05/2004 của Thủ tướng Chính phủ trên cơ sở Khoa Công nghệ và Trung tâm Hợp tác Đào tạo và Bồi dưỡng Cơ học trực thuộc Đại học Quốc gia Hà Nội với hai nhiệm vụ như sau:" styleClass="label-custom" />
                     <Label text = "Chính phủ trên cơ sở Khoa Công nghệ và Trung tâm Hợp tác Đào tạo và Bồi dưỡng Cơ học trực thuộc Đại học Quốc gia Hà Nội với hai nhiệm vụ như sau:" styleClass="label-custom" />
