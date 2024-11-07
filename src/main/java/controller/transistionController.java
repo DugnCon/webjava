@@ -19,6 +19,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 public class transistionController {
+<<<<<<< HEAD
     // Di chuyển node ra khỏi màn hình
     public void flyOut(Node node, Runnable onFinished) {
         Scene scene = node.getScene();
@@ -444,4 +445,7 @@ public class transistionController {
         
         transition.play();
     }
+=======
+    //Tý update sau
+>>>>>>> 808f624e27a8d8b48e5986a337f1f135ae566ef0
 }
