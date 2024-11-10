@@ -1,7 +1,13 @@
 package main.java.controller;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 import javafx.animation.ScaleTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,6 +17,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import main.java.JDBC.JDBCSQL;
+import main.java.model.borrowNew;
+import main.java.model.userLog;
 
 public class interfaceController extends baseSceneController {
     @FXML
@@ -68,7 +77,25 @@ public class interfaceController extends baseSceneController {
 
     @FXML
     private void handleNguoimuon() {
+    	try {
+            Connection con = JDBCSQL.getConnection();
+            PreparedStatement prsttm = con.prepareStatement("SELECT * FROM user");
+            ResultSet rs = prsttm.executeQuery();
+            ObservableList<userLog> bookList = FXCollections.observableArrayList();
+            while (rs.next()) {
+                userLog userlog = new userLog(rs.getString(1), rs.getString(2) , rs.getString(3), rs.getString(4), rs.getString(5));
+                bookList.add(userlog);
+            }
+            
+            manageUserController controller = (manageUserController) createScene1(manageUser, 
+                "/main/sources/manageUserView.fxml", "/main/sources/css/manageUser.css");
+            controller.setBookList(bookList); 
+            con.close();
 
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Cannot execute: " + e.getMessage());
+        }
     }
 
     @FXML

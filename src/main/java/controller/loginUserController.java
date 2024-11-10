@@ -70,7 +70,6 @@ public class loginUserController extends baseSceneController {
     	user User = new user(userName.getText(), passWord.getText(), repeatpass.getText(), fullname.getText());
         int res = userAccount.setNew().insertSign(User);
         int res1 = userAccount.setNew().insertLog(User);
-        System.out.println(res  + " " + res1);
         if (res > 0 && res1 > 0) {
             signUpAccount.getInstance().AlertComplete();
             transistionController tran = new transistionController();
@@ -83,5 +82,12 @@ public class loginUserController extends baseSceneController {
         } else {
             signUpAccount.getInstance().AlertUnComplete();
         }
+    }
+    
+    public void clear() {
+    	userName.clear();
+    	passWord.clear();
+    	repeatpass.clear();
+    	fullname.clear();
     }
 }

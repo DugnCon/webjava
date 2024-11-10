@@ -12,6 +12,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.effect.GaussianBlur;
+import javafx.scene.layout.HBox;
 import javafx.util.Duration;
 import main.java.model.add;
 import main.java.model.addNew;
@@ -19,7 +21,9 @@ import main.java.dao.addbook;
 
 public class addBookController extends baseSceneController {
 	@FXML
-	private Label label,label1;
+	private HBox hbox,HBOX;
+	@FXML
+	private Label label,label1,notify;
     @FXML
     private Button home, borrower, payer, user, employees, completed,back;
     @FXML
@@ -49,7 +53,6 @@ public class addBookController extends baseSceneController {
     
     @FXML
     private void initialize() {
-        // Set up table columns as before
         columnCode.setCellValueFactory(new PropertyValueFactory<>("bookCode"));
         columnTitle.setCellValueFactory(new PropertyValueFactory<>("nameBook"));
         columnAuthor.setCellValueFactory(new PropertyValueFactory<>("nameAuthor"));
@@ -57,7 +60,6 @@ public class addBookController extends baseSceneController {
 
         tableBook.setItems(incomingBookList);
 
-        // Apply the hover effect to all buttons
         applyHoverEffect(home);
         applyHoverEffect(borrower);
         applyHoverEffect(payer);
@@ -73,6 +75,7 @@ public class addBookController extends baseSceneController {
         tran.COMEUNDER2(tableBook);
         tran.COMEON(label1);
         tran.COMELEFT1(nameBook, nameAuthor, publisher, bookCode, chapBook, styleBook, releaseYear, quantity);
+        
     }
 
     private void applyHoverEffect(Button button) {

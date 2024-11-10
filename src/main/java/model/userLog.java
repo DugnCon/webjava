@@ -5,6 +5,7 @@ public class userLog {
 	private String password;
 	private String ID;
 	private String Fullname;
+	private String createAc;
 	public userLog() {};
 	public userLog(String ID) {
 		this.ID = ID;
@@ -17,6 +18,13 @@ public class userLog {
 	public userLog(String username,String password) {
 		this.username = username;
 		this.password = password;
+	}
+	public userLog(String ID,String username, String password, String createAc, String Fullname) {
+		this.ID = ID;
+		this.username = username;
+		this.password = password;
+		this.createAc = createAc;
+		this.Fullname = Fullname;
 	}
 	public String getUsername() {
 		return username;
@@ -41,6 +49,13 @@ public class userLog {
 	}
 	public void setID(String ID) {
 		this.ID = ID;
+	}
+	public String getCreateAc() {
+		return createAc;
+	}
+	public void setCreateAc(String createAc) {
+		this.createAc = createAc;
+		
 	}
 	public boolean isUserVallid() {
 		if(username.length() < 6) return false;

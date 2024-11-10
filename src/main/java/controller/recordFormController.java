@@ -6,11 +6,14 @@ import javafx.animation.ScaleTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import main.java.model.addNew;
 import main.java.dao.addbook;
@@ -26,7 +29,11 @@ import main.java.model.userLog;
 
 public class recordFormController extends baseSceneController {
 	@FXML
-    private Button home, borrower, payer, user, employees, record,search,searchID;
+	private Label label1,label2;
+	@FXML
+	private ImageView image1,image2;
+	@FXML
+    private Button home, borrower, payer, user, employees, record,search,searchID,back;
     @FXML
     private TextField bookCode,title,chapter,author,quantity;
     @FXML
@@ -75,6 +82,37 @@ public class recordFormController extends baseSceneController {
         addButtonZoomEffect(user);
 
         tableBook.setItems(incomingBookList);
+        
+        transistionController tran = new transistionController();
+        tran.COMERIGHTALL(home,borrower,payer,user,employees);
+        tran.COMEONALL1(search,bookCode,image1);
+        tran.COMEONALL1(searchID,userID,image2);
+        tran.COMEUNDER2(tableBook);
+        tran.COMEUNDER2(record);
+        
+        ArrayList<Node> textfield1 = new ArrayList<Node>();
+        textfield1.add(title);
+        textfield1.add(chapter);
+        textfield1.add(author);
+        textfield1.add(quantity);
+        tran.COMELEFTARRAY(textfield1);
+        tran.COMEON(label1);
+        
+        ArrayList<Node> textfield2 = new ArrayList<Node>();
+        textfield2.add(borrowerID);
+        textfield2.add(username);
+        textfield2.add(phone);
+        textfield2.add(borrowDate);
+        textfield2.add(returnDate);
+        tran.COMELEFTARRAY(textfield2);
+        tran.COMEON(label2);
+        
+        tran.COMELEFT(back);
+    }
+    
+    @FXML
+    private void handleBack() {
+    	createScene(back,"/main/sources/borrowBookView.fxml","/main/sources/css/borrowBook.css");
     }
     
     @FXML
@@ -154,8 +192,8 @@ public class recordFormController extends baseSceneController {
         	 
         	 add Add = new add(quantity.getText(), res);
         	 int check = addbook.setNewAdd().update2(Add);
-        	 
-        	 if(rs > 0 && check > 0) {
+        	 int Quantity = Integer.parseInt(quantity.getText());
+        	 if(rs > 0 && check > 0 && Quantity >= 1) {
         		 borrowNew BorrowNew = new borrowNew(borrowerID.getText(),bookCode.getText(), username.getText(), 
                          borrowDate.getText(), returnDate.getText(), phone.getText());
             	 borrowbook.setNew().AlertComplete();

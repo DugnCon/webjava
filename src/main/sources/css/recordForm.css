@@ -14,7 +14,21 @@
 	-fx-border-width:4;
 	-fx-text-fill:#2B579A;
 }
-
+.buttonBack{
+    -fx-pref-width:130;
+	-fx-pref-height:40;
+	-fx-font-size:12;
+	-fx-font-weight:bold;
+	-fx-text-fill:#2B579A;
+	-fx-border-color:#2B579A;
+	-fx-border-style:solid;
+	-fx-border-width:2;
+}
+.buttonBack:hover{
+	-fx-cursor:hand;
+	-fx-background-color:#2B579A;
+	-fx-text-fill:#ffffff;
+}
 .labelLay{
 	-fx-text-fill:#ffffff;
 	-fx-font-weight:bold;

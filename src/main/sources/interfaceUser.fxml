@@ -7,6 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -20,13 +21,17 @@
 <?import javafx.scene.text.TextFlow?>
 
 <VBox xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.interfaceUserController" stylesheets="@main/sources/css/interfaceUser.css">
+   <BorderPane>
+    <top>
+    <BorderPane>
+     <top>
     <HBox alignment="TOP_CENTER" styleClass = "header_top" spacing = "50">
         <!-- Đặt từng ImageView trong VBox để căn chỉnh theo chiều dọc -->
         <VBox alignment="CENTER">
           <padding>
             <Insets top = "0" right = "50" bottom = "0" left = "10"/>
           </padding>
-            <ImageView fitWidth="70" fitHeight="70" preserveRatio="true">
+            <ImageView fx:id = "img1" fitWidth="70" fitHeight="70" preserveRatio="true">
                 <Image url="/1024px-Logo_HUET.svg.png"/>
             </ImageView>
         </VBox>
@@ -34,7 +39,7 @@
           <padding>
             <Insets top = "0" right = "10" bottom = "0" left = "50"/>
           </padding>
-            <ImageView fitWidth="70" fitHeight="70" preserveRatio="true">
+            <ImageView fx:id = "img2" fitWidth="70" fitHeight="70" preserveRatio="true">
                 <Image url="/unnamed.png"/>
             </ImageView>
         </VBox>
@@ -42,7 +47,7 @@
           <padding>
             <Insets top = "15" right = "10" bottom = "0" left = "50"/>
           </padding>
-            <ImageView fitWidth="150" fitHeight="350" preserveRatio="true">
+            <ImageView fx:id = "img3" fitWidth="150" fitHeight="350" preserveRatio="true">
                 <Image url="/logo-vnu.png"/>
             </ImageView>
         </VBox>
@@ -50,12 +55,14 @@
           <padding>
             <Insets top = "40" right = "10" bottom = "0" left = "50"/>
           </padding>
-            <ImageView fitWidth="200" fitHeight="350" preserveRatio="true">
+            <ImageView fx:id = "img4" fitWidth="200" fitHeight="350" preserveRatio="true">
                 <Image url="/959.png"/>
             </ImageView>
         </VBox>
     </HBox>
+    </top>
     <!-- Thanh nav thực thi các scene -->
+    <center>
     <HBox alignment = "CENTER" styleClass = "header_next" spacing = "50">
       <HBox alignment = "CENTER">
         <Button text = "Trang chủ" fx:id = "home" onAction = "#handleHome" styleClass = "button_1"/>
@@ -63,18 +70,15 @@
         <Button text = "Nổi bật" fx:id = "suprise" onAction = "#handleSuprise" styleClass = "button_1"/>
         <Button text = "Dịch vụ" fx:id = "service" onAction = "#handleService" styleClass = "button_1"/>
         <Button text = "Liên hệ" fx:id = "contact" onAction = "#handleContact" styleClass = "button_1"/>
-      </HBox>
-      <HBox alignment = "CENTER" spacing = "10">
-        <ImageView fitWidth="40" fitHeight="40" preserveRatio="true">
-          <Image url = "/communication.png"/>
-        </ImageView>
-        <ImageView fitWidth="40" fitHeight="40" preserveRatio="true">
-          <Image url = "/tik-tok.png"/>
-        </ImageView>
+        <Button text = "Quay về" fx:id = "back" onAction = "#handleBack" styleClass = "button_1"/>
       </HBox>
     </HBox>
+    </center>
+    </BorderPane>
+    </top>
     
     <!-- Phần content -->
+    <center>
     <ScrollPane styleClass="scrollPane" HBox.hgrow="ALWAYS">
      <content>
      <!-- Phần giới thiệu -->
@@ -87,15 +91,16 @@
         <padding>
           <Insets top = "80" right = "0" bottom = "0" left = "0"/>
         </padding>
-        <ImageView fitWidth = "400" fitHeight = "500" preserveRatio = "true">
+        <ImageView fx:id = "img5" fitWidth = "400" fitHeight = "500" preserveRatio = "true">
           <Image url = "/smail-b.png"/>
         </ImageView>
        </VBox> 
        <VBox> 
-        <Label text = "Giới thiệu" styleClass = "fontTile"/>
+        <Label fx:id = "label1" text = "Giới thiệu" styleClass = "fontTile"/>
         <HBox styleClass = "hbox_tile2">
-          <Label text = "  TÊN GỌI VÀ TRỤ SỞ" styleClass = "fontTile2"/>
+          <Label fx:id = "label2" text = "  TÊN GỌI VÀ TRỤ SỞ" styleClass = "fontTile2"/>
         </HBox>
+        <VBox fx:id = "tuto1">
          <Label text = " " />
         <Label text="Điều 1. Tên gọi và trụ sở" styleClass="font"/>
         <Label text="1. Tên tiếng Việt: Trung tâm Thư viện và Tri thức số." styleClass="font"/>
@@ -119,13 +124,15 @@
         <Label text="3. Trung tâm chịu sự quản lý toàn diện, trực tiếp của ĐHQGHN, có nghĩa vụ và trách nhiệm thực hiện các nhiệm vụ được giao," styleClass="font"/>
         <Label text="chấp hành nghiêm chỉnh luật pháp, các quy định, chế độ chính sách của Nhà nước và quy định của ĐHQGHN." styleClass="font"/>
         <Label text = " "/>
+        </VBox>
        </VBox>
       </HBox>
       
       <VBox>
         <VBox styleClass = "hbox_tile2">
-          <Label text = "  HỢP TÁC QUỐC TẾ" styleClass = "fontTile2"/>
+          <Label fx:id = "label3" text = "  HỢP TÁC QUỐC TẾ" styleClass = "fontTile2"/>
         </VBox>
+        <VBox fx:id = "tuto2">
          <Label text = " " />
         <Label text="Trung tâm có quan hệ với hơn 50 trường đại học, viện nghiên cứu, tổ chức quốc tế, các nhà xuất bản tại Hoa Kỳ, Pháp, Đức, Nga, Italy, Nhật Bản, Hàn Quốc và nhiều nước khác, trong đó có:" styleClass="font"/>
         <Label text="• Viện Harvard Yenching" styleClass="font"/>
@@ -147,10 +154,11 @@
         <Label text="• Nhà xuất bản Đại học Tổng hợp Cali" styleClass="font"/>
         <Label text="• Thư viện Khảo sát địa chất Nhật Bản" styleClass="font"/>
         <Label text="• Chương trình hỗ trợ của Trung tâm Quốc tế về Vật lý lý thuyết Abdus Salam..." styleClass="font"/>
+        </VBox>
       </VBox>
       <!-- Phần nội dung thứ 2 -->
       <HBox spacing = "30">
-        <VBox alignment = "CENTER_LEFT">
+        <VBox fx:id = "tuto3" alignment = "CENTER_LEFT">
           <Label text="Ngoài ra, Trung tâm còn có quan hệ với nhiều tổ chức quốc tế tại Hà Nội như:" styleClass="font"/>
           <Label text="• Phòng Văn hóa Thông tin Đại sứ quán Hoa Kỳ" styleClass="font"/>
           <Label text="• Viện Gớt" styleClass="font"/>
@@ -164,7 +172,7 @@
           <Label text = "Hội đồng thư viện Đại học Quốc gia các nước Đông Á (East Asian University Library Council)." styleClass = "font"/>
         </VBox>
         <VBox alignment = "CENTER_RIGHT">
-          <ImageView fitWidth = "600" fitHeight = "600" preserveRatio = "true">
+          <ImageView fx:id = "img6" fitWidth = "600" fitHeight = "600" preserveRatio = "true">
            <Image url = "/Hoc-phi-DH-Cong-nghe-HN-fotor-2024102394230.png"/>
           </ImageView>
         </VBox>
@@ -176,8 +184,9 @@
         <Label text = " "/>
         <Label text = " "/>
        <VBox styleClass = "hbox_tile2">
-         <Label text = "  CHỨC NĂNG - NHIỆM VỤ" styleClass = "fontTile2"/>
+         <Label fx:id = "label4" text = "  CHỨC NĂNG - NHIỆM VỤ" styleClass = "fontTile2"/>
        </VBox>
+       <VBox fx:id = "tuto4">
         <Label text = " "/>
         <Label text="Chức năng" styleClass="fontTile3" />
         <Label text="1. Quản lý và cung cấp thông tin khoa học cho người dùng tin." styleClass="font" />
@@ -204,6 +213,7 @@
         <Label text="16. Phát triển văn hóa đọc cho CCVC và HSSV trong ĐHQGHN." styleClass="font" />
         <Label text="17. Thực hiện nhiệm vụ khác theo chỉ đạo của Giám đốc." styleClass="font" />
         <Label text = " " />
+        </VBox>
       </VBox>
       
       <!-- Tạo footer -->
@@ -214,7 +224,7 @@
        <StackPane alignment = "CENTER">
         <VBox alignment = "CENTER">
          <VBox styleClass = "image_2" alignment = "CENTER">
-           <ImageView fitWidth = "500" fitHeight = "300" preserveRatio = "true">
+           <ImageView fx:id = "img6" fitWidth = "500" fitHeight = "300" preserveRatio = "true">
              <Image url = "/logo-vnu.png"/>
            </ImageView>
          </VBox>
@@ -222,9 +232,9 @@
            <padding>
              <Insets top = "40" right = "0" bottom = "0" left = "0"/>
            </padding>
-           <Button text = "FaceBook" styleClass = "button_2"/>
-           <Button text = "Gmail" styleClass = "button_2"/>
-           <Button text = "TikTok" styleClass = "button_2"/>
+           <Button fx:id = "bt1" text = "FaceBook" styleClass = "button_2"/>
+           <Button fx:id = "bt2" text = "Gmail" styleClass = "button_2"/>
+           <Button fx:id = "bt3" text = "TikTok" styleClass = "button_2"/>
          </HBox>
         </VBox> 
        </StackPane>
@@ -235,19 +245,19 @@
       <padding>
         <Insets top = "10" right = "0" bottom = "10" left = "0"/>
       </padding>
-       <ImageView fitWidth = "200" fitHeight = "100" preserveRatio = "true">
-         <Image url = "/logo-vnu.png"/>
+       <ImageView fx:id = "img7" fitWidth = "200" fitHeight = "100" preserveRatio = "true">
+         <Image  url = "/logo-vnu.png"/>
        </ImageView>
-       <ImageView fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+       <ImageView fx:id = "img8" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
          <Image url = "/unnamed.png"/>
        </ImageView>
-       <ImageView fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+       <ImageView fx:id = "img9" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
          <Image url = "/logo.png"/>
        </ImageView>
-       <ImageView fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+       <ImageView fx:id = "img10" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
          <Image url = "/VNU-HUS.jpg"/>
        </ImageView>
-       <ImageView fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+       <ImageView fx:id = "img11" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
          <Image url = "/ULIS-Logo-RBG-02.jpg"/>
        </ImageView>
      </HBox>
@@ -255,4 +265,6 @@
      </VBox>
     </content>
    </ScrollPane>
+   </center>
+  </BorderPane>
 </VBox>

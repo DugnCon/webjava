@@ -75,7 +75,7 @@
           
          <VBox alignment = "TOP_CENTER" spacing = "10">
           <HBox alignment = "CENTER" spacing = "30">
-            <ImageView>
+            <ImageView fx:id = "image" fitWidth = "30" fitHeight = "30" preserveRatio = "true">
                <Image url="/icons8-search-50.png"/>
             </ImageView>
             <TextField fx:id = "searchBorrowerID" promptText = "Mã người mượn sách" styleClass = "textfield"/>
@@ -88,7 +88,7 @@
            <padding>
              <Insets top= "0" right = "50" bottom = "10" left = "50"/>
            </padding>
-            <Label text = "Thông tin người mượn" styleClass = "labelTit"/>
+            <Label fx:id = "label" text = "Thông tin người mượn" styleClass = "labelTit"/>
             <TableView fx:id = "tableBook" styleClass = "tableView">
               <columns>
                <TableColumn fx:id="columnCode" text="Mã sách" prefWidth="210"/>

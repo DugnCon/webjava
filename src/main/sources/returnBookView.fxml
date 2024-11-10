@@ -69,9 +69,10 @@
       
      <center>
           <VBox styleClass="vbox_2" >
-           <VBox styleClass = "alterHbox">
-            <Label text = "GHI PHIẾU TRẢ" styleClass = "labelTit"/>
-           </VBox>
+           <HBox styleClass = "alterHbox" spacing = "960" alignment = "CENTER">
+            <Label fx:id = "label" text = "GHI PHIẾU TRẢ" styleClass = "labelTit"/>
+            <Button text = "Quay về" fx:id = "back" onAction = "#handleBack" styleClass = "buttonBack"/>
+           </HBox>
             <HBox alignment = "CENTER" spacing = "40">
                 <padding>
                     <Insets top="20" right="0" bottom="0" left="0"/>
@@ -90,18 +91,20 @@
                                 <TableColumn fx:id="columnReturn" text="Ngày trả" prefWidth="180"/>
                             </columns>
                         </TableView>
-                       <Button fx:id="record" text="Ghi nhận" onAction="#handleRecordForm" styleClass="buttonAdd"/>
                      </VBox>
                     </VBox>
                     <VBox alignment="CENTER_RIGHT" spacing="20" styleClass = "alterVbox">
                         <!-- Tạo nơi ghi thông tin -->
                         <VBox styleClass="vbox_2" alignment="CENTER_RIGHT">
                             <padding>
-                                <Insets top="0" right="0" bottom="0" left="45"/>
+                                <Insets top="0" right="0" bottom="0" left="55"/>
                             </padding>
                             <VBox alignment="CENTER" spacing="10">
-                                 <Label text="Thông tin người mượn" styleClass="labelLay"/>
+                                 <Label fx:id = "label1" text="Thông tin người mượn" styleClass="labelLay"/>
                                  <HBox spacing="10" alignment="CENTER">
+                                    <ImageView fx:id = "image" fitWidth = "30" fitHeight = "30" preserveRatio = "true">
+                                      <Image url="/icons8-search-50.png"/>
+                                    </ImageView>
                                     <TextField fx:id="borrowerID" styleClass="textField" promptText="Mã người mượn"/>
                                     <Button text="Tìm ID" styleClass="buttonAdd" fx:id="searchID" onAction="#handleSearchID"/>
                                  </HBox>
@@ -117,6 +120,7 @@
                                     <TextField fx:id = "phone" promptText = "Số điện thoại" styleClass = "textField" />
                                     <TextField fx:id="username" promptText="Tên người trả" styleClass="textField"/>
                                 </VBox>
+                                <Button fx:id="record" text="Ghi nhận" onAction="#handleRecordForm" styleClass="buttonAdd"/>
                             </VBox>
                         </VBox>
                     </VBox>

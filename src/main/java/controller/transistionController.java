@@ -10,16 +10,19 @@ import javafx.animation.ScaleTransition;
 import javafx.animation.SequentialTransition;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 public class transistionController {
-<<<<<<< HEAD
     // Di chuyển node ra khỏi màn hình
     public void flyOut(Node node, Runnable onFinished) {
         Scene scene = node.getScene();
@@ -139,6 +142,19 @@ public class transistionController {
         transition.play();
     }
     
+    public void COMERIGHT3(ArrayList<Node> node) {
+    	double time  = 1.0d;
+        for(int i = 0; i < node.size(); i++) {
+        	TranslateTransition tran = new TranslateTransition();
+        	tran.setNode(node.get(i));
+        	time += 0.3;
+        	tran.setDuration(Duration.seconds(time));
+        	tran.setFromX(-800);
+        	tran.setToX(0);
+        	tran.play();
+        }
+    }
+    
     public void COMELEFT2(Node node1, Node node2) {
         TranslateTransition transition1 = new TranslateTransition();
         transition1.setNode(node1);
@@ -164,6 +180,19 @@ public class transistionController {
         transition1.setToX(0); // Đến vị trí gốc
         
         transition1.play();
+    }
+    
+    public void COMELEFTARRAY(ArrayList<Node> node) {
+    	double time  = 1.0d;
+        for(int i = 0; i < node.size(); i++) {
+        	TranslateTransition tran = new TranslateTransition();
+        	tran.setNode(node.get(i));
+        	time += 0.3;
+        	tran.setDuration(Duration.seconds(time));
+        	tran.setFromX(800);
+        	tran.setToX(0);
+        	tran.play();
+        }
     }
     
     public void COMELEFT1(Node node1, Node node2, Node node3, Node node4, Node node5, Node node6, Node node7, Node node8) {
@@ -242,6 +271,19 @@ public class transistionController {
         transition1.setFromY(-500);
         transition1.setToY(0);
         transition1.play();
+    }
+    
+    public void COMEONARRAY(ArrayList<Node> node) {
+    	double time  = 1.0d;
+        for(int i = 0; i < node.size(); i++) {
+        	TranslateTransition tran = new TranslateTransition();
+        	tran.setNode(node.get(i));
+        	time += 0.3;
+        	tran.setDuration(Duration.seconds(time));
+        	tran.setFromY(-300);
+        	tran.setToY(0);
+        	tran.play();
+        }
     }
     
     public void COMEONALL2(Node node1, Node node2) {
@@ -445,7 +487,5 @@ public class transistionController {
         
         transition.play();
     }
-=======
-    //Tý update sau
->>>>>>> 808f624e27a8d8b48e5986a337f1f135ae566ef0
+
 }

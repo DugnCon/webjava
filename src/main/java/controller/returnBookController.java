@@ -9,11 +9,14 @@ import javafx.animation.ScaleTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import main.java.JDBC.JDBCSQL;
 import main.java.dao.addbook;
@@ -31,7 +34,11 @@ import main.java.dao.userLoginAccount;
 
 public class returnBookController extends baseSceneController {
 	@FXML
-    private Button home, borrower, payer, user, employees, record,search,searchID;
+	private Label label,label1;
+	@FXML
+	private ImageView image;
+	@FXML
+    private Button home, borrower, payer, user, employees, record,search,searchID,back;
     @FXML
     private TextField bookCode,title,chapter,author,quantity;
     @FXML
@@ -77,6 +84,29 @@ public class returnBookController extends baseSceneController {
         addButtonZoomEffect(user);
 
         tableBook.setItems(incomingBookList);
+        transistionController tran = new transistionController();
+        tran.COMERIGHTALL(home,borrower,payer,user,employees);
+        tran.COMEONALL1(searchID,borrowerID,image);
+        tran.COMEUNDER2(tableBook);
+        tran.COMEON(label);
+        tran.COMELEFT2(label1,record);
+        
+        ArrayList<Node> textfield = new ArrayList<Node>();
+        textfield.add(userID);
+        textfield.add(bookCode);
+        textfield.add(borrowDate);
+        textfield.add(returnDate);
+        textfield.add(status);
+        textfield.add(phone);
+        textfield.add(username);
+        tran.COMELEFTARRAY(textfield);
+        
+        tran.COMELEFT(back);
+    }
+    
+    @FXML
+    private void handleBack() {
+    	createScene(back,"/main/sources/interfaceView.fxml", "/main/sources/css/interface.css");
     }
     
     @FXML

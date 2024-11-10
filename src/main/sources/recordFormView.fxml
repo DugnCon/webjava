@@ -69,9 +69,10 @@
       
      <center>
           <VBox>
-           <VBox styleClass = "alterHbox">
+           <HBox styleClass = "alterHbox" spacing = "900" alignment = "CENTER">
             <Label text = "GHI PHIẾU MƯỢN" styleClass = "labelTit"/>
-           </VBox>
+            <Button text = "Quay về" fx:id = "back" onAction = "#handleBack" styleClass = "buttonBack"/>
+           </HBox>
             <HBox styleClass="vbox_2" alignment = "CENTER" spacing = "40">
                 <padding>
                     <Insets top="20" right="0" bottom="0" left="0"/>
@@ -105,8 +106,11 @@
                                 <padding>
                                     <Insets top="0" right="0" bottom="30" left="0"/>
                                 </padding>
-                                <Label text="Thông tin sách" styleClass="labelLay"/>
+                                <Label fx:id = "label1" text="Thông tin sách" styleClass="labelLay"/>
                                 <HBox spacing="10">
+                                    <ImageView fx:id = "image1" fitWidth = "30" fitHeight = "30" preserveRatio = "true">
+                                      <Image url="/icons8-search-50.png"/>
+                                    </ImageView>
                                     <TextField fx:id="bookCode" promptText="Example: GT1" styleClass="textField"/>
                                     <Button fx:id="search" text="Tìm sách" onAction="#handleSearch" styleClass="buttonAdd"/>
                                 </HBox>
@@ -125,8 +129,11 @@
                                 <Insets top="0" right="0" bottom="0" left="45"/>
                             </padding>
                             <VBox alignment="CENTER" spacing="10">
-                                 <Label text="Thông tin người mượn" styleClass="labelLay"/>
+                                 <Label fx:id = "label2" text="Thông tin người mượn" styleClass="labelLay"/>
                                  <HBox spacing="10" alignment="CENTER">
+                                    <ImageView fx:id = "image2" fitWidth = "30" fitHeight = "30" preserveRatio = "true">
+                                      <Image url="/icons8-search-50.png"/>
+                                    </ImageView>
                                     <TextField fx:id="userID" styleClass="textField" promptText="Example: 1"/>
                                     <Button text="Tìm ID" styleClass="buttonAdd" fx:id="searchID" onAction="#handleSearchID"/>
                                  </HBox>

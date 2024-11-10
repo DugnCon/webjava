@@ -7,6 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -19,14 +20,18 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.interfaceUserController" stylesheets="@main/sources/css/interfaceUser.css">
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.interfaceUserController1" stylesheets="@main/sources/css/interfaceUser.css">
+   <BorderPane>
+    <top>
+    <BorderPane>
+     <top>
     <HBox alignment="TOP_CENTER" styleClass = "header_top" spacing = "50">
         <!-- Đặt từng ImageView trong VBox để căn chỉnh theo chiều dọc -->
         <VBox alignment="CENTER">
           <padding>
             <Insets top = "0" right = "50" bottom = "0" left = "10"/>
           </padding>
-            <ImageView fitWidth="70" fitHeight="70" preserveRatio="true">
+            <ImageView fx:id = "img1" fitWidth="70" fitHeight="70" preserveRatio="true">
                 <Image url="/1024px-Logo_HUET.svg.png"/>
             </ImageView>
         </VBox>
@@ -34,7 +39,7 @@
           <padding>
             <Insets top = "0" right = "10" bottom = "0" left = "50"/>
           </padding>
-            <ImageView fitWidth="70" fitHeight="70" preserveRatio="true">
+            <ImageView fx:id = "img2" fitWidth="70" fitHeight="70" preserveRatio="true">
                 <Image url="/unnamed.png"/>
             </ImageView>
         </VBox>
@@ -42,7 +47,7 @@
           <padding>
             <Insets top = "15" right = "10" bottom = "0" left = "50"/>
           </padding>
-            <ImageView fitWidth="150" fitHeight="350" preserveRatio="true">
+            <ImageView fx:id = "img3" fitWidth="150" fitHeight="350" preserveRatio="true">
                 <Image url="/logo-vnu.png"/>
             </ImageView>
         </VBox>
@@ -50,12 +55,14 @@
           <padding>
             <Insets top = "40" right = "10" bottom = "0" left = "50"/>
           </padding>
-            <ImageView fitWidth="200" fitHeight="350" preserveRatio="true">
+            <ImageView fx:id = "img4" fitWidth="200" fitHeight="350" preserveRatio="true">
                 <Image url="/959.png"/>
             </ImageView>
         </VBox>
     </HBox>
+    </top>
     <!-- Thanh nav thực thi các scene -->
+    <center>
     <HBox alignment = "CENTER" styleClass = "header_next" spacing = "50">
       <HBox alignment = "CENTER">
         <Button text = "Trang chủ" fx:id = "home" onAction = "#handleHome" styleClass = "button_1"/>
@@ -63,18 +70,14 @@
         <Button text = "Nổi bật" fx:id = "suprise" onAction = "#handleSuprise" styleClass = "button_1"/>
         <Button text = "Dịch vụ" fx:id = "service" onAction = "#handleService" styleClass = "button_1"/>
         <Button text = "Liên hệ" fx:id = "contact" onAction = "#handleContact" styleClass = "button_1"/>
-      </HBox>
-      <HBox alignment = "CENTER" spacing = "10">
-        <ImageView fitWidth="40" fitHeight="40" preserveRatio="true">
-          <Image url = "/communication.png"/>
-        </ImageView>
-        <ImageView fitWidth="40" fitHeight="40" preserveRatio="true">
-          <Image url = "/tik-tok.png"/>
-        </ImageView>
+        <Button text = "Quay về" fx:id = "back" onAction = "#handleBack" styleClass = "button_1"/>
       </HBox>
     </HBox>
+    </center>
+    </BorderPane>
+    </top>
     
-    <!-- Phần content -->
+    <center>
     <ScrollPane styleClass="scrollPane" HBox.hgrow="ALWAYS">
      <content>
      <!-- Phần giới thiệu -->
@@ -85,12 +88,12 @@
       
       <!-- Tạo phần content -->
       <HBox alignment = "CENTER" spacing = "10">
-        <VBox alignment = "CENTER">
-          <Label text = "TIN TỨC" styleClass = "fontTile"/>
-          <ImageView fitWidth = "550" fitHeight = "500" preserveRatio = "true">
+        <VBox alignment = "CENTER_LEFT">
+          <Label fx:id = "label1" text = "TIN TỨC" styleClass = "fontTile"/>
+          <ImageView fx:id = "IMG1" fitWidth = "550" fitHeight = "500" preserveRatio = "true">
             <Image url = "/463106705_924474886375949_7615068487356660703_n-565x335.jpg"/>
           </ImageView>
-          <Label styleClass = "fontTile4">
+          <Label fx:id = "LB1" styleClass = "fontTile4">
             VNU-LIC HỖ TRỢ CÂU LẠC BỘ TRUYỀN THÔNG CỦA TRƯỜNG ĐẠI HỌC LUẬT
           </Label>
         </VBox>
@@ -98,20 +101,20 @@
         <HBox alignment = "CENTER" spacing = "10">
           <VBox alignment = "CENTER" spacing = "20">
            <HBox>
-            <ImageView fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+            <ImageView fx:id = "IMG2" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
               <Image url = "/462508358_921021493387955_6015371627903243179_n-100x84.jpg"/>
             </ImageView>
-            <Label styleClass = "fontTile5">
+            <Label fx:id = "LB2" styleClass = "fontTile5">
               VNU-LIC CHÀO MỪNG KỶ NIỆM 70 NĂM
               NGÀY GIẢI PHÓNG THỦ ĐÔ
               (10/10/1954-10/10/2024)
             </Label>
            </HBox>
            <HBox>
-             <ImageView fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+             <ImageView fx:id = "IMG3" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
                <Image url = "/460663595_907458911410880_604379066960442608_n-100x84.jpg"/>
              </ImageView>
-             <Label styleClass = "fontTile5">
+             <Label fx:id = "LB3" styleClass = "fontTile5">
                VNU-LIC HƯỚNG DẪN SỬ DỤNG
                HỌC LIỆU TRỰC TUYẾN CHO 700 TÂN
                SINH VIÊN
@@ -119,10 +122,10 @@
              </Label>
            </HBox>
            <HBox>
-              <ImageView fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+              <ImageView fx:id = "IMG4" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
                 <Image url = "/459648551_904352591721512_7408307320904964313_n-100x84.jpg"/>
               </ImageView>
-              <Label styleClass = "fontTile5">
+              <Label fx:id = "LB4" styleClass = "fontTile5">
                 VNU-LIC ỦNG HỘ, SẺ CHIA VỚI CÁN BỘ
                 , NHÀ GIÁO, NGƯỜI LAO ĐỘNG VÀ
                 HỌC SINH VÙNG LŨ
@@ -133,30 +136,30 @@
           
           <VBox alignment = "CENTER" spacing = "20">
             <HBox>
-              <ImageView fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+              <ImageView fx:id = "IMG5" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
                 <Image url = "/461302709_911432027680235_6550184406163210669_n-100x84.jpg"/>
               </ImageView>
-              <Label styleClass = "fontTile5">
+              <Label fx:id = "LB5" styleClass = "fontTile5">
                 KHÔNG KHÍ NÁO NỨC, HĂNG SAY HỌC TẬP CỦA
                 SINH VIÊN TẠI VNU-LIC
                 (26/09/2024)
               </Label>
             </HBox>
               <HBox>
-                <ImageView fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+                <ImageView fx:id = "IMG6" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
                   <Image url = "/plummentandsoar.jpg"/>
                 </ImageView>
-                <Label styleClass = "fontTile5">
+                <Label fx:id = "LB6" styleClass = "fontTile5">
                    THỐNG KÊ CÔNG BỐ QUỐC TẾ SCOPUS/WOS CỦA
                    ĐHQGHN THÁNG 09/2024
                    (25/09/2024)
                 </Label>
               </HBox>
               <HBox>
-                <ImageView fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+                <ImageView fx:id = "IMG7" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
                   <Image url = "/4088cf344c47ea19b356-100x84.jpg"/>
                 </ImageView>
-                <Label styleClass = "fontTile5">
+                <Label fx:id = "LB7" styleClass = "fontTile5">
                   HƯƠNG CỐM TRÊN TỪNG TRANG SÁCH
                   (17/09/2024)
                 </Label>
@@ -173,7 +176,7 @@
       <!-- Dòng 1 -->
         <HBox spacing = "50" alignment = "CENTER">
         <!-- Ảnh 1 -->
-          <VBox styleClass = "Image1">
+          <VBox fx:id = "IMG8" styleClass = "Image1">
             <VBox alignment = "CENTER_LEFT" styleClass = "AlterImage1">
               <StackPane alignment = "CENTER_LEFT">
                 <VBox alignment = "CENTER_LEFT">
@@ -197,7 +200,7 @@
             </VBox>
           </VBox>
           <!-- Ảnh 2 -->
-          <VBox styleClass = "Image2">
+          <VBox fx:id = "IMG9" styleClass = "Image2">
             <VBox alignment = "CENTER_RIGHT" styleClass = "AlterImage2">
               <StackPane alignment = "CENTER_RIGHT">
                 <VBox alignment = "CENTER_RIGHT">
@@ -221,7 +224,7 @@
           </VBox>
           
           <!-- Ảnh 3 -->
-          <VBox styleClass = "Image3">
+          <VBox fx:id = "IMG10" styleClass = "Image3">
             <VBox alignment = "BOTTOM_RIGHT" styleClass = "AlterImage3">
               <StackPane alignment = "BOTTOM_RIGHT">
                 <VBox alignment = "BOTTOM_RIGHT">
@@ -245,7 +248,7 @@
         <!-- Dòng 2 -->
         <HBox alignment = "CENTER" spacing = "50">
         <!-- Ảnh 4 -->
-          <VBox styleClass = "Image4">
+          <VBox fx:id = "IMG11" styleClass = "Image4">
             <VBox alignment = "CENTER_LEFT" styleClass = "AlterImage1">
               <StackPane alignment = "CENTER_LEFT">
                 <VBox alignment = "CENTER_LEFT">
@@ -264,7 +267,7 @@
             </VBox>
           </VBox>
           <!-- Ảnh 5 -->
-          <VBox styleClass = "Image5">
+          <VBox fx:id = "IMG12" styleClass = "Image5">
             <VBox alignment = "CENTER_LEFT" styleClass = "AlterImage1">
               <StackPane alignment = "CENTER_LEFT">
                 <VBox alignment = "CENTER_LEFT">
@@ -283,8 +286,8 @@
             </VBox>
           </VBox>
           <!-- Ảnh 6 -->
-          <VBox styleClass = "Image6">
-            <VBox alignment = "CENTER_RIGHT" styleClass = "AlterImage2">
+          <VBox fx:id = "IMG13" styleClass = "Image6">
+            <VBox  alignment = "CENTER_RIGHT" styleClass = "AlterImage2">
               <StackPane alignment = "CENTER_RIGHT">
                 <VBox alignment = "CENTER_RIGHT">
                   <Label styleClass = "fontTile6">
@@ -314,7 +317,7 @@
        <StackPane alignment = "CENTER">
         <VBox alignment = "CENTER">
          <VBox styleClass = "image_2" alignment = "CENTER">
-           <ImageView fitWidth = "500" fitHeight = "300" preserveRatio = "true">
+           <ImageView fx:id = "img6" fitWidth = "500" fitHeight = "300" preserveRatio = "true">
              <Image url = "/logo-vnu.png"/>
            </ImageView>
          </VBox>
@@ -322,9 +325,9 @@
            <padding>
              <Insets top = "40" right = "0" bottom = "0" left = "0"/>
            </padding>
-           <Button text = "FaceBook" styleClass = "button_2"/>
-           <Button text = "Gmail" styleClass = "button_2"/>
-           <Button text = "TikTok" styleClass = "button_2"/>
+           <Button fx:id = "bt1" text = "FaceBook" styleClass = "button_2"/>
+           <Button fx:id = "bt2" text = "Gmail" styleClass = "button_2"/>
+           <Button fx:id = "bt3" text = "TikTok" styleClass = "button_2"/>
          </HBox>
         </VBox> 
        </StackPane>
@@ -335,19 +338,19 @@
       <padding>
         <Insets top = "10" right = "0" bottom = "10" left = "0"/>
       </padding>
-       <ImageView fitWidth = "200" fitHeight = "100" preserveRatio = "true">
-         <Image url = "/logo-vnu.png"/>
+       <ImageView fx:id = "img7" fitWidth = "200" fitHeight = "100" preserveRatio = "true">
+         <Image  url = "/logo-vnu.png"/>
        </ImageView>
-       <ImageView fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+       <ImageView fx:id = "img8" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
          <Image url = "/unnamed.png"/>
        </ImageView>
-       <ImageView fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+       <ImageView fx:id = "img9" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
          <Image url = "/logo.png"/>
        </ImageView>
-       <ImageView fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+       <ImageView fx:id = "img10" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
          <Image url = "/VNU-HUS.jpg"/>
        </ImageView>
-       <ImageView fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+       <ImageView fx:id = "img11" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
          <Image url = "/ULIS-Logo-RBG-02.jpg"/>
        </ImageView>
      </HBox>
@@ -355,4 +358,6 @@
      </VBox>
     </content>
    </ScrollPane>
+   </center>
+   </BorderPane>
 </VBox>

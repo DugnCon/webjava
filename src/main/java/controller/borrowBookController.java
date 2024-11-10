@@ -10,10 +10,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import main.java.JDBC.JDBCSQL;
 import main.java.dao.borrowbook;
@@ -22,6 +24,10 @@ import main.java.model.borrow;
 import main.java.model.borrowNew;
 
 public class borrowBookController extends baseSceneController {
+	@FXML
+	private Label label;
+	@FXML
+	private ImageView image;
 	@FXML
     private Button home, borrower, payer, user, employees, search,addNewBorrower;
     @FXML
@@ -69,6 +75,13 @@ public class borrowBookController extends baseSceneController {
         addButtonZoomEffect(borrower);
 
         tableBook.setItems(bookList);
+        
+        transistionController tran = new transistionController();
+        tran.COMERIGHTALL(home,borrower,payer,user,employees);
+        tran.COMEONALL1(search,searchBorrowerID,image);
+        tran.COMEUNDER2(tableBook);
+        tran.COMEON(addNewBorrower);
+        tran.COMERIGHT(label);
     }
     
     @FXML
