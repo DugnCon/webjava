@@ -6,3 +6,4 @@
 * B2: Chạy ứng dụng
   1. Khi đã download project về máy, hãy kiểm tra xem IDE của hai bên có giống nhau không (ở đây tôi dùng Eclipse).
   2. Tìm tới cái main.java và chạy ứng dụng.
+# II. Đang trong thời gian update thêm
