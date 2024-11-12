@@ -154,7 +154,7 @@ public class alterBookController extends baseSceneController {
 		        releaseYear.getText(), quantity.getText());
 		String bookcode = addbook.setNewAdd().search(Add);
 		if(!bookcode.isEmpty()) {
-			addbook.setNewAdd().AlertComplete();
+			alertController.setNew().AlertComplete("Đã tìm thấy sách cần sửa");
 			ArrayList<alter> arr = addbook.setNewAdd().selectByCondition(bookcode);
 			nameBook.setText(arr.get(0).getnameBook());
 			chapBook.setText(arr.get(0).getchapBook());
@@ -183,10 +183,10 @@ public class alterBookController extends baseSceneController {
         int res = addbook.setNewAdd().update(Add);
         if (res > 0) {
         	incomingBookList.add(AddNew);
-            addbook.setNewAdd().AlertComplete();
+            alertController.setNew().AlertComplete("Sửa sách thành công");
             clearFields();
         } else {
-            addbook.setNewAdd().AlertUnComplete();
+            alertController.setNew().AlertUnComplete("Sửa không thành công");
         }
     }
 	

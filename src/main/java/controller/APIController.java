@@ -25,7 +25,7 @@ public class APIController {
 
         if (response.statusCode() == 200) {
             JsonObject jsonObject = JsonParser.parseString(response.body()).getAsJsonObject();
-            return jsonObject.has("items") ? jsonObject.getAsJsonArray("items") : new JsonArray(); // Đảm bảo trả về mảng rỗng nếu không có kết quả
+            return jsonObject.has("items") ? jsonObject.getAsJsonArray("items") : new JsonArray();
         } else {
             throw new IOException("Error fetching books: " + response.statusCode());
         }
@@ -38,7 +38,7 @@ public class APIController {
 
         if (response.statusCode() == 200) {
             JsonObject jsonObject = JsonParser.parseString(response.body()).getAsJsonObject();
-            return jsonObject.has("items") ? jsonObject.getAsJsonArray("items") : new JsonArray(); // Đảm bảo trả về mảng rỗng nếu không có gợi ý
+            return jsonObject.has("items") ? jsonObject.getAsJsonArray("items") : new JsonArray();
         } else {
             throw new IOException("Error fetching suggestions: " + response.statusCode());
         }

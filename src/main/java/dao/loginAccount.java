@@ -17,34 +17,6 @@ public class loginAccount implements AccountInterface<authorLog> {
 		return new loginAccount();
 	}
 	
-	/**Thông báo khi đăg kí thành công*/
-    public void AlertComplete() {
-    	Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-    	alert.setTitle("Thông báo");
-    	alert.setHeaderText("Đăng nhập thành công");
-    	alert.setContentText("Chọn lựa chọn của bạn");
-    	
-    	ButtonType buttonTypeOk = new ButtonType("OK",ButtonData.YES);
-    	ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
-    	
-    	alert.getButtonTypes().setAll(buttonTypeOk, buttonTypeCancel);
-    	alert.show();
-    }
-    
-    /**Thông báo khi không đăng kí được*/
-    public void AlertUnComplete() {
-    	Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-    	alert.setTitle("Thông báo");
-    	alert.setHeaderText("Đăng nhập không thành công");
-    	alert.setContentText("Chọn lựa chọn của bạn");
-    	
-    	ButtonType buttonTypeOk = new ButtonType("OK",ButtonData.YES);
-    	ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
-    	
-    	alert.getButtonTypes().setAll(buttonTypeOk, buttonTypeCancel);
-    	alert.show();
-    }
-	
 	@Override
 	public ArrayList selectByCondition(String condition) {
 		// TODO Auto-generated method stub

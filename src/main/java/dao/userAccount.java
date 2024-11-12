@@ -38,6 +38,7 @@ public class userAccount implements UserAccountInterface<user> {
         }
         return res;
 	}
+
 	
 	@Override
 	public int insertLog(user t) {
@@ -59,6 +60,12 @@ public class userAccount implements UserAccountInterface<user> {
             e.printStackTrace();
         }
         return res1;
+	}
+	
+	@Override
+	public int insertLock(user t) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
@@ -101,9 +108,9 @@ public class userAccount implements UserAccountInterface<user> {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 	@Override
-	public ArrayList<user> selectByCondition1(int condition) {
+	public ArrayList<user> selectByCondition1(String condition) {
 		// TODO Auto-generated method stub
 		return null;
 	}

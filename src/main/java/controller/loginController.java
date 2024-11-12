@@ -70,10 +70,10 @@ public class loginController extends baseSceneController {
 		authorLog author = new authorLog(username, password);
 		int res  = loginAccount.getInstance().insert(author);
 		if(res > 0) {
-			loginAccount.getInstance().AlertComplete();
+			alertController.setNew().AlertComplete("Đăng nhập thành công");
 			createScene(login1,"/main/sources/interfaceView.fxml","/main/sources/css/interface.css");	
 		}else {
-			loginAccount.getInstance().AlertUnComplete();
+			alertController.setNew().AlertUnComplete("Đăng nhập không thành công");
 			 createScene(signup1, "/main/sources/loginView.fxml", "/main/sources/css/login.css");
 		}
     }

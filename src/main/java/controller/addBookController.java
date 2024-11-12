@@ -132,10 +132,10 @@ public class addBookController extends baseSceneController {
             int res = addbook.setNewAdd().insert1(Add);
             if (res > 0) {
             	incomingBookList.add(AddNew);
-                addbook.setNewAdd().AlertComplete();
+                alertController.setNew().AlertComplete("Thêm sách thành công");
                 clearFields();
             } else {
-                addbook.setNewAdd().AlertUnComplete();
+                alertController.setNew().AlertUnComplete("Thêm sách không thành công");
             }
         }
     }

@@ -153,20 +153,19 @@ public class deleteBookController extends baseSceneController {
 	            add Add = new add(searchCode.getText(), rs.getString(2), rs.getString(3), rs.getString(4), 
 	                              rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
 	            int res = addbook.setNewAdd().Delete(Add);
-
 	            if (res > 0) {
 	            	addNew AddNew = new addNew(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), 
                             rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9));
 	                incomingBookList.add(AddNew);
-	                addbook.setNewAdd().AlertComplete();
+	                alertController.setNew().AlertComplete("Xóa thành công");
 	                clearFields();
 	            } else {
-	                addbook.setNewAdd().AlertUnComplete();
+	                alertController.setNew().AlertUnComplete("Xóa không thành công");
 	                //System.out.print("1");
 	                clearFields();
 	            }
 	        } else {
-	            addbook.setNewAdd().AlertUnComplete();
+	            alertController.setNew().AlertUnComplete("Không tìm thấy sách");
 	            //System.out.print("2");
 	            clearFields();
 	        }

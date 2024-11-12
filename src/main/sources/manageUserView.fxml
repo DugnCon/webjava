@@ -83,7 +83,7 @@
           </HBox>
           <HBox alignment = "CENTER" spacing = "20">
            <Button fx:id = "logaccount" text = "Khóa tài khoản" onAction = "#handleLog" styleClass = "buttonAdd"/>
-           <Button fx:id = "deleteaccount" text = "Xóa tài khoản" onAction = "#handleDelete" styleClass = "buttonAdd"/>
+           <Button fx:id = "restoreaccount" text = "Xóa tài khoản" onAction = "#handleRestore" styleClass = "buttonAdd"/>
            </HBox>
          </VBox>
           

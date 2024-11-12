@@ -1,5 +1,7 @@
 package main.java.controller;
 
+import java.util.ArrayList;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -7,9 +9,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import main.java.dao.lockAccount;
 import main.java.dao.signUpAccount;
 import main.java.dao.userAccount;
 import main.java.dao.userLoginAccount;
+import main.java.model.lockaccount;
 import main.java.model.user;
 import main.java.model.userLog;
 
@@ -31,15 +35,21 @@ public class loginUserController extends baseSceneController {
     @FXML
     private VBox vbox1, vbox2, vbox3, vbox4;
     
-    @FXML
+	@FXML
     private void handleButtonLogin1() {
         userLog userlog = new userLog(username.getText(), password.getText());
         int res = userLoginAccount.setNew().insertLog(userlog);
-        if (res > 0) {
-            signUpAccount.getInstance().AlertComplete();
+        ArrayList<lockaccount> arr = lockAccount.setNew().selectByCondition(username.getText());
+        String isUsername = arr.get(0).getUsername();
+        String notify = arr.get(0).getExplain();
+        arr.clear();
+        if(res < 1) {
+        	alertController.setNew().AlertComplete("Sai mật khẩu");
+        } else if (res > 0 && (!username.getText().equals(isUsername) || isUsername.isEmpty())) {
+        	alertController.setNew().AlertComplete("Đăng nhập thành công");
             createScene(login1, "/main/sources/interfaceUser.fxml", "/main/sources/css/interfaceUser.css");
         } else {
-            signUpAccount.getInstance().AlertUnComplete();
+        	alertController.setNew().AlertComplete(notify);
         }
     }
 

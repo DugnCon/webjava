@@ -143,7 +143,7 @@ public class returnBookController extends baseSceneController {
 	private void handleSearchID() {
 		String check = borrowerID.getText();
 		if(!check.isEmpty()) {
-			addbook.setNewAdd().AlertComplete();
+			alertController.setNew().AlertComplete("Trả sách thành công");
 			ArrayList<borrow> arr = borrowbook.setNew().selectByCondition1(check);
 			userID.setText(arr.get(0).getUserID());
 			bookCode.setText(arr.get(0).getBookCode());
@@ -154,7 +154,7 @@ public class returnBookController extends baseSceneController {
 			username.setText(arr.get(0).getUserName());
 			arr.clear();
 		}else {
-			addbook.setNewAdd().AlertUnComplete();
+			alertController.setNew().AlertUnComplete("Trả sách không thành công");
 			borrowerID.clear();
 		}
 	}
@@ -171,17 +171,17 @@ public class returnBookController extends baseSceneController {
         	 String Quantity = addbook.setNewAdd().search2(new add(bookCode.getText()));
         	 add Add = new add(Quantity, bookCode.getText());
         	 int check = addbook.setNewAdd().update3(Add);
-        	 
+        	 alertController.setNew().AlertComplete("Đã tìm thấy ID người mượn");
         	 if(rs > 0 && check > 0 && rs1 > 0) {
         		 ReturnNew returnNew = new ReturnNew(borrowerID.getText(),username.getText(), bookCode.getText(),returnDate.getText());
-            	 borrowbook.setNew().AlertComplete();
+        		 alertController.setNew().AlertComplete("Đã trả thành công");
             	 incomingBookList.add(returnNew);
             	 clearFields();
         	 }else {
-        		 borrowbook.setNew().AlertUnComplete();
+        		 alertController.setNew().AlertUnComplete("Chưa trả thành công");
         	 }
          }else {
-        	 borrowbook.setNew().AlertUnComplete();
+        	 alertController.setNew().AlertComplete("Chưa tìm thấy ID người mượn");
          }
 	}
 	

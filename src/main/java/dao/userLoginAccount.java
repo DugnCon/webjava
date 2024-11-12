@@ -42,6 +42,12 @@ public class userLoginAccount implements UserAccountInterface<userLog> {
 	    }
 	    return res;
 	}
+	
+	@Override
+	public int insertLock(userLog t) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 	@Override
 	public int update(userLog t) {
@@ -101,9 +107,24 @@ public class userLoginAccount implements UserAccountInterface<userLog> {
 	}
 
 	@Override
-	public ArrayList<userLog> selectByCondition1(int condition) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<userLog> selectByCondition1(String condition) {
+		ArrayList<userLog> arr = new ArrayList<>();
+		try {
+			int res = Integer.parseInt(condition);
+			Connection con = JDBCSQL.getConnection();
+			PreparedStatement prsttm = con.prepareStatement("SELECT * FROM user WHERE userID = ?");
+			prsttm.setInt(1, res);
+			ResultSet rs = prsttm.executeQuery();
+			if(rs.next()) {
+				userLog userlog = new userLog(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+				arr.add(userlog);
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return arr;
 	}
 
 }

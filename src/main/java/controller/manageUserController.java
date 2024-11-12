@@ -26,7 +26,7 @@ public class manageUserController extends baseSceneController {
 	@FXML
     private Button home, borrower, payer, user, employees, record,search,searchID,back;
 	@FXML
-	private Button logaccount,deleteaccount;
+	private Button logaccount,restoreaccount;
     @FXML
     private TextField bookCode,title,chapter,author,quantity,searchUserID;
     @FXML
@@ -83,7 +83,7 @@ public class manageUserController extends baseSceneController {
         
         ArrayList<Node> button = new ArrayList<Node>();
         button.add(logaccount);
-        button.add(deleteaccount);
+        button.add(restoreaccount);
         tran.COMEONARRAY(button);
     }
     
@@ -128,11 +128,11 @@ public class manageUserController extends baseSceneController {
 	
 	@FXML
 	private void handleLog() {
-		
+		createScene(logaccount,"/main/sources/lockAccountView.fxml","/main/sources/css/lockAccount.css");
 	}
 	
 	@FXML
-	private void handleDelete() {
+	private void handleRestore() {
 		
 	}
 }

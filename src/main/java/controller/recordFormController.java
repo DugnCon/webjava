@@ -150,14 +150,14 @@ public class recordFormController extends baseSceneController {
 		add Add = new add(bookCode.getText());
 		String bookcode = addbook.setNewAdd().search(Add);
 		if(!bookcode.isEmpty()) {
-			addbook.setNewAdd().AlertComplete();
+			alertController.setNew().AlertComplete("Đã tìm thấy mã sách thành công");
 			ArrayList<alter> arr = addbook.setNewAdd().selectByCondition1(bookcode);
 			title.setText(arr.get(0).getnameBook());
 			chapter.setText(arr.get(0).getchapBook());
 			author.setText(arr.get(0).getnameAuthor());
 			quantity.setText(arr.get(0).getQuantity());
 		}else {
-			addbook.setNewAdd().AlertUnComplete();
+			alertController.setNew().AlertComplete("Đã tìm thấy mã sách không thành công");
 			clearFields();
 		}
 	}
@@ -167,12 +167,12 @@ public class recordFormController extends baseSceneController {
 	private void handleSearchID() {
 		String check = userID.getText();
 		if(!check.isEmpty()) {
-			addbook.setNewAdd().AlertComplete();
+			alertController.setNew().AlertComplete("Đã tìm thấy ID người dùng");
 			ArrayList<userLog> arr = userLoginAccount.setNew().selectByCondition(check);
 			username.setText(arr.get(0).getFullname());
 			arr.clear();
 		}else {
-			addbook.setNewAdd().AlertComplete();
+			alertController.setNew().AlertComplete("Không tìm thấy ID người dùng");
 			userID.clear();
 		}
 	}
@@ -189,22 +189,22 @@ public class recordFormController extends baseSceneController {
         	 
         	 int rs = borrowbook.setNew().insert(Borrow);
         	 /********************/
-        	 
+        	 alertController.setNew().AlertComplete("Đã tìm thấy mã sách");
         	 add Add = new add(quantity.getText(), res);
         	 int check = addbook.setNewAdd().update2(Add);
         	 int Quantity = Integer.parseInt(quantity.getText());
         	 if(rs > 0 && check > 0 && Quantity >= 1) {
         		 borrowNew BorrowNew = new borrowNew(borrowerID.getText(),bookCode.getText(), username.getText(), 
                          borrowDate.getText(), returnDate.getText(), phone.getText());
-            	 borrowbook.setNew().AlertComplete();
+        		 alertController.setNew().AlertComplete("Ghi nhận thành công");
             	 incomingBookList.add(BorrowNew);
             	 clearFields();
             	 clearFields1();
         	 }else {
-        		 borrowbook.setNew().AlertUnComplete();
+        		 alertController.setNew().AlertUnComplete("Ghi nhạn không thành công");
         	 }
          }else {
-        	 borrowbook.setNew().AlertUnComplete();
+        	 alertController.setNew().AlertUnComplete("Không tìm thấy mã sách");
          }
 	}
 	

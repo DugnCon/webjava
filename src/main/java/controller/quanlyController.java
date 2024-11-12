@@ -291,14 +291,14 @@ public class quanlyController extends baseSceneController {
                     e.printStackTrace();
                 } finally {
                     loadingIndicator.setVisible(false);
-                    mainContent.setEffect(null); // Bỏ hiệu ứng mờ khi hoàn tất
+                    mainContent.setEffect(null);
                 }
             }
 
             @Override
             protected void failed() {
                 loadingIndicator.setVisible(false);
-                mainContent.setEffect(null); // Bỏ hiệu ứng mờ khi có lỗi
+                mainContent.setEffect(null);
                 Platform.runLater(() -> {
                     Text errorText = new Text("Có lỗi xảy ra khi tìm kiếm.");
                     searchResultsContainer.getChildren().add(errorText);
