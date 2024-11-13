@@ -124,12 +124,12 @@
 }
 
 .tableView{
-	-fx-pref-height:600;
-	-fx-pref-width:800;
+	-fx-pref-height:450;
+	-fx-pref-width:600;
 	-fx-alignment:CENTER;
 	-fx-border-style:solid;
 	-fx-border-width:2;
-	-fx-background-radius:8;
 	-fx-border-radius:8;
+	-fx-background-radius:8;
 	-fx-effect: dropshadow(gaussian, #2b579a, 0, 1, 5, 5);
 }
