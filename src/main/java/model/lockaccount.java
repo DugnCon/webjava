@@ -8,6 +8,9 @@ public class lockaccount {
 	private String createAc;
 	private String explain;
 	public lockaccount() {};
+	public lockaccount(String ID) {
+		this.ID = ID;
+	}
 	public lockaccount(String username, String explain) {
 		this.username = username;
 		this.explain = explain;

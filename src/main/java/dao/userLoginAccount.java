@@ -75,8 +75,20 @@ public class userLoginAccount implements UserAccountInterface<userLog> {
 
 	@Override
 	public userLog selectById(userLog t) {
-		// TODO Auto-generated method stub
-		return null;
+		userLog log = null;
+		try {
+			Connection con = JDBCSQL.getConnection();
+			PreparedStatement prsttm = con.prepareStatement("SELECT * FROM user WHERE userID = ?");
+			prsttm.setString(1, t.getID());
+			ResultSet res = prsttm.executeQuery();
+			if(res.next()) {
+				log = new userLog(res.getString(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5));
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return log;
 	}
 
 	@Override

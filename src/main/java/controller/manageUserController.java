@@ -15,7 +15,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
+import main.java.dao.lockAccount;
+import main.java.dao.userLoginAccount;
 import main.java.model.borrowNew;
+import main.java.model.lockaccount;
 import main.java.model.userLog;
 
 public class manageUserController extends baseSceneController {
@@ -123,7 +126,19 @@ public class manageUserController extends baseSceneController {
 	
 	@FXML
 	private void handleSearchUser() {
-		
+	    String id = searchUserID.getText();
+	    if (!id.isEmpty()) {
+	        userLog isID = new userLog(id);
+	        userLog log = userLoginAccount.setNew().selectById(isID);
+	        if (log != null) {
+	            incomingBookList.clear(); 
+	            incomingBookList.add(log);
+	            tableBook.setItems(incomingBookList); 
+	            alertController.setNew().AlertComplete("Đã tìm thấy thành công");
+	        } else {
+	            alertController.setNew().AlertUnComplete("Không thể tìm thấy người dùng");
+	        }
+	    }
 	}
 	
 	@FXML

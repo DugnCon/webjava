@@ -286,18 +286,31 @@ public class transistionController {
         }
     }
     
+    public void COMEONARRAY2(ArrayList<Node> node) {
+    	double time  = 1.0d;
+        for(int i = 0; i < node.size(); i++) {
+        	TranslateTransition tran = new TranslateTransition();
+        	tran.setNode(node.get(i));
+        	time += 0.2;
+        	tran.setDuration(Duration.seconds(time));
+        	tran.setFromY(-800);
+        	tran.setToY(0);
+        	tran.play();
+        }
+    }
+    
     public void COMEONALL2(Node node1, Node node2) {
         TranslateTransition transition1 = new TranslateTransition();
         transition1.setNode(node1);
         transition1.setDuration(Duration.seconds(1.2));
-        transition1.setFromY(-100); // Bắt đầu bên ngoài màn hình
-        transition1.setToY(0); // Đến vị trí gốc
+        transition1.setFromY(-100);
+        transition1.setToY(0);
         
         TranslateTransition transition2 = new TranslateTransition();
         transition2.setNode(node2);
         transition2.setDuration(Duration.seconds(1.4));
-        transition2.setFromY(-100); // Bắt đầu bên ngoài màn hình
-        transition2.setToY(0); // Đến vị trí gốc
+        transition2.setFromY(-100); 
+        transition2.setToY(0); 
         
         transition1.play();
         transition2.play();
@@ -307,20 +320,20 @@ public class transistionController {
         TranslateTransition transition1 = new TranslateTransition();
         transition1.setNode(node1);
         transition1.setDuration(Duration.seconds(1.7));
-        transition1.setFromY(-500); // Bắt đầu bên ngoài màn hình
-        transition1.setToY(0); // Đến vị trí gốc
+        transition1.setFromY(-500); 
+        transition1.setToY(0); 
         
         TranslateTransition transition2 = new TranslateTransition();
         transition2.setNode(node2);
         transition2.setDuration(Duration.seconds(1.9));
-        transition2.setFromY(-500); // Bắt đầu bên ngoài màn hình
-        transition2.setToY(0); // Đến vị trí gốc
+        transition2.setFromY(-500); 
+        transition2.setToY(0);
         
         TranslateTransition transition3 = new TranslateTransition();
         transition3.setNode(node3);
         transition3.setDuration(Duration.seconds(2.1));
-        transition3.setFromY(-500); // Bắt đầu bên ngoài màn hình
-        transition3.setToY(0); // Đến vị trí gốc
+        transition3.setFromY(-500);
+        transition3.setToY(0);
         
         transition1.play();
         transition2.play();
@@ -328,49 +341,49 @@ public class transistionController {
     }
     
     public void COMEONALL(Node node1, Node node2, Node node3) {
-        // Transition for node1
+
         TranslateTransition transition1 = new TranslateTransition();
         transition1.setNode(node1);
         transition1.setDuration(Duration.seconds(1.1));
         transition1.setFromY(-500);
         transition1.setToY(0);
 
-        // Transition for node2
+
         TranslateTransition transition2 = new TranslateTransition();
         transition2.setNode(node2);
         transition2.setDuration(Duration.seconds(1.3));
         transition2.setFromY(-500);
         transition2.setToY(0);
 
-        // Transition for node3
+
         TranslateTransition transition3 = new TranslateTransition();
         transition3.setNode(node3);
         transition3.setDuration(Duration.seconds(1.5));
         transition3.setFromY(-500);
         transition3.setToY(0);
 
-        // Play all transitions
+
         transition1.play();
         transition2.play();
         transition3.play();
     }
     
     public void COMERIGHTALL(Node node1, Node node2, Node node3, Node node4, Node node5) {
-        // Transition for node1
+
         TranslateTransition transition1 = new TranslateTransition();
         transition1.setNode(node1);
         transition1.setDuration(Duration.seconds(0.8));
         transition1.setFromX(-100);
         transition1.setToX(0);
 
-        // Transition for node2
+    
         TranslateTransition transition2 = new TranslateTransition();
         transition2.setNode(node2);
         transition2.setDuration(Duration.seconds(1.0));
         transition2.setFromX(-100);
         transition2.setToX(0);
 
-        // Transition for node3
+       
         TranslateTransition transition3 = new TranslateTransition();
         transition3.setNode(node3);
         transition3.setDuration(Duration.seconds(1.2));
@@ -389,7 +402,7 @@ public class transistionController {
         transition5.setFromX(-100);
         transition5.setToX(0);
 
-        // Play all transitions
+
         transition1.play();
         transition2.play();
         transition3.play();
@@ -398,56 +411,56 @@ public class transistionController {
     }
     
     public void COMERIGHTALL2(Node node1, Node node2, Node node3, Node node4, Node node5, Node node6, Node node7) {
-        // Transition for node1
+
         TranslateTransition transition1 = new TranslateTransition();
         transition1.setNode(node1);
         transition1.setDuration(Duration.seconds(0.8));
         transition1.setFromX(-100);
         transition1.setToX(0);
 
-        // Transition for node2
+
         TranslateTransition transition2 = new TranslateTransition();
         transition2.setNode(node2);
         transition2.setDuration(Duration.seconds(1.0));
         transition2.setFromX(-100);
         transition2.setToX(0);
 
-        // Transition for node3
+
         TranslateTransition transition3 = new TranslateTransition();
         transition3.setNode(node3);
         transition3.setDuration(Duration.seconds(1.2));
         transition3.setFromX(-100);
         transition3.setToX(0);
         
-        // Transition for node4
+
         TranslateTransition transition4 = new TranslateTransition();
         transition4.setNode(node4);
         transition4.setDuration(Duration.seconds(1.5));
         transition4.setFromX(-100);
         transition4.setToX(0);
         
-        // Transition for node5
+
         TranslateTransition transition5 = new TranslateTransition();
         transition5.setNode(node5);
         transition5.setDuration(Duration.seconds(1.7));
         transition5.setFromX(-100);
         transition5.setToX(0);
 
-        // Transition for node6
+
         TranslateTransition transition6 = new TranslateTransition();
         transition6.setNode(node6);
         transition6.setDuration(Duration.seconds(1.9));
         transition6.setFromX(-100);
         transition6.setToX(0);
 
-        // Transition for node7
+
         TranslateTransition transition7 = new TranslateTransition();
         transition7.setNode(node7);
         transition7.setDuration(Duration.seconds(2.1));
         transition7.setFromX(-100);
         transition7.setToX(0);
 
-        // Play all transitions
+ 
         transition1.play();
         transition2.play();
         transition3.play();
@@ -462,9 +475,8 @@ public class transistionController {
         TranslateTransition transition = new TranslateTransition();
         transition.setNode(node);
         transition.setDuration(Duration.seconds(0.7));
-        transition.setFromY(800); // Bắt đầu bên ngoài màn hình
-        transition.setToY(0); // Đến vị trí gốc
-        
+        transition.setFromY(800); 
+        transition.setToY(0);
         transition.play();
     }
     
@@ -472,8 +484,8 @@ public class transistionController {
         TranslateTransition transition = new TranslateTransition();
         transition.setNode(node);
         transition.setDuration(Duration.seconds(1.0));
-        transition.setFromY(800); // Bắt đầu bên ngoài màn hình
-        transition.setToY(0); // Đến vị trí gốc
+        transition.setFromY(800); 
+        transition.setToY(0); 
         
         transition.play();
     }
@@ -482,8 +494,8 @@ public class transistionController {
         TranslateTransition transition = new TranslateTransition();
         transition.setNode(node);
         transition.setDuration(Duration.seconds(1.5));
-        transition.setFromY(800); // Bắt đầu bên ngoài màn hình
-        transition.setToY(0); // Đến vị trí gốc
+        transition.setFromY(800); 
+        transition.setToY(0); 
         
         transition.play();
     }

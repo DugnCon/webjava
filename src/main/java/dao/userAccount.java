@@ -105,7 +105,6 @@ public class userAccount implements UserAccountInterface<user> {
 
 	@Override
 	public ArrayList<user> selectByCondition(String condition) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	

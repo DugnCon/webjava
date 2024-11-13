@@ -20,7 +20,7 @@
 <?import javafx.scene.control.TextArea?>
 
 
-<StackPane fx:id="rootContainer" xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.lockAccountController" stylesheets="@main/sources/css/logAccount.css">
+<StackPane fx:id="rootContainer" xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.restoreAccountController" stylesheets="@main/sources/css/logAccount.css">
     <BorderPane fx:id = "mainContent">
         <!-- Tạo thanh sidebar -->
         <left>
@@ -72,31 +72,33 @@
         <!-- Tạo bố cục quản lý kho sách -->
         <center>
               <VBox styleClass="vbox_2" HBox.hgrow="ALWAYS">
+                    <padding>
+                        <Insets top="30" right="50" bottom="0" left="50"/>
+                    </padding>
+                    <VBox.margin>
+                        <Insets top="0" right="0" bottom="0" left="0"/>
+                    </VBox.margin>
                     <VBox alignment="CENTER" spacing="40">
                     
-                       <HBox styleClass="alterHbox" spacing="970" alignment="CENTER">
+                       <VBox styleClass="alterHbox" spacing="25" alignment="CENTER">
                            <padding>
-                               <Insets top="0" right="0" bottom="10" left="0"/>
+                               <Insets top="0" right="0" bottom="20" left="0"/>
                            </padding>
-                           <Label fx:id = "label1" text = "Khóa tài khoản" styleClass = "labelTit"/>
-                           <Button fx:id = "back" onAction = "#handleBack" text = "Quay về" styleClass = "buttonBack"/>
-                        </HBox>
-                        
-                       <HBox alignment="CENTER">
-                       <VBox.margin>
-                         <Insets top="50" bottom = "30"/>
-                       </VBox.margin>
-                       <VBox alignment="CENTER" spacing="30">
-                       
-                        <HBox alignment = "CENTER" spacing = "20">
+                           <HBox alignment = "CENTER" spacing = "20">
                               <ImageView fx:id = "image" fitWidth = "30" fitHeight = "30" preserveRatio = "true">
                                 <Image url="/icons8-search-50.png"/>
                               </ImageView>
                               <TextField fx:id="searchID" promptText="Search" styleClass="textfield1"/>
                               <Button fx:id="search" text="Tìm kiếm" onAction="#handleSearchID" styleClass="buttonAdd"/>
-                        </HBox>
+                           </HBox>
+                        </VBox>
                         
-                        <Label fx:id = "label" text="Thông tin người dùng cần ban" styleClass="labelTit"/>
+                       <HBox alignment="CENTER">
+                       <VBox.margin>
+                         <Insets top="100" bottom = "30"/>
+                       </VBox.margin>
+                       <VBox alignment="CENTER" spacing="20">
+                        <Label fx:id = "label" text="Thông tin người dùng cần khôi phục" styleClass="labelTit"/>
                         
                        <VBox alignment = "CENTER" spacing = "20">
                         <HBox alignment = "CENTER" spacing = "20">
@@ -116,7 +118,7 @@
                         <TextField fx:id = "fullname" promptText = "Họ và tên" styleClass = "textfield"/>
                         <TextArea fx:id="explain" promptText="Enter your text here..." wrapText="true" prefRowCount="5" prefColumnCount="20" styleClass = "textArea"/>
                         </VBox>
-                        <Button fx:id = "complete" text = "Ghi nhận" styleClass = "buttonAdd" onAction = "#handleLock"/>
+                        <Button fx:id = "complete" text = "Ghi nhận" styleClass = "buttonAdd" onAction = "#handleRestore"/>
                        </VBox>
                        </VBox> 
                       </HBox>

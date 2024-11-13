@@ -51,8 +51,17 @@ public class lockAccount implements UserAccountInterface<lockaccount> {
 
 	@Override
 	public int delete(lockaccount t) {
-		// TODO Auto-generated method stub
-		return 0;
+		int res =0 ;
+		try {
+			Connection con = JDBCSQL.getConnection();
+			PreparedStatement prsttm = con.prepareStatement("DELETE FROM lockaccount WHERE userID = ?");
+			prsttm.setString(1, t.getID());
+			res = prsttm.executeUpdate();
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return res;
 	}
 
 	@Override
@@ -99,7 +108,6 @@ public class lockAccount implements UserAccountInterface<lockaccount> {
 
 	@Override
 	public ArrayList<lockaccount> selectByCondition1(String condition) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

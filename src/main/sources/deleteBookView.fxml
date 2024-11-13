@@ -83,7 +83,7 @@
           <padding>
             <Insets top = "0" right = "20" bottom = "0" left = "20"/>
           </padding>
-           <ImageView fx:id = "image">
+           <ImageView fx:id = "image" fitWidth = "30" fitHeight = "30" preserveRatio = "true">
              <Image url="/icons8-search-50.png"/>
            </ImageView>
            <TextField fx:id = "searchCode" promptText = "Vui lòng nhập mã sách cần xóa" styleClass = "textField"/>
