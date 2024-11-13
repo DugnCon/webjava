@@ -1,7 +1,0 @@
-.table-view .column-header {
-    -fx-font-size: 16px;
-    -fx-padding: 1px; /* Increase padding to make row look bigger */
-    -fx-background-color: pink;
-    -fx-border-width: 0 2 0 0;
-    -fx-border-color: black;
-}
