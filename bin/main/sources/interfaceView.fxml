@@ -2,132 +2,64 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.geometry.Pos?>
 <?import javafx.geometry.Insets?>
 
 <StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.interfaceController" stylesheets="@main/sources/css/interface.css">
-    <!-- Tạo đêm cho VBox tổng -->
-    <VBox alignment = "CENTER" styleClass = "vbox" >
-      <padding>
-        <Insets top ="50" right = "50" bottom = "50" left = "50"/>
-      </padding>
-      <VBox alignment = "CENTER">
-       <VBox alignment = "CENTER">
-        <padding>
-            <Insets top = "0" right = "0" bottom = "30" left = "0"/>
-          </padding>
-        <HBox alignment = "CENTER" spacing = "50" styleClass = "Vbox">
-          <padding>
-            <Insets top = "20" right = "0" bottom = "20" left = "0"/>
-          </padding>
-          <ImageView fitWidth = "100" fitHeight = "100" preserveRatio = "true">
-            <Image url = "/1024px-Logo_HUET.svg.png"/>
-          </ImageView>
-          <Label text="The Library of UET" styleClass ="labelLogo"/>
-        </HBox>
-        </VBox>
-        
-        <VBox alignment = "CENTER" styleClass = "Vbox">
-        <!-- Tạo bố cục giao diện thứ 1 -->
-          <padding>
-            <Insets top = "0" right = "80" bottom = "0" left = "80"/>
-          </padding>
-          <HBox alignment = "CENTER" spacing = "80" styleClass = "hbox">
-            <padding>
-              <Insets top = "40" right = "0" bottom = "40" left = "0"/>
-            </padding>
-            <GridPane vgap = "40">
-              <!-- Tạo icon và button -->
-             <HBox GridPane.columnIndex="0" GridPane.rowIndex="0" alignment="CENTER" spacing="20" styleClass="Hbox">
-             <padding>
-               <Insets top = "0" right = "30" bottom = "0" left = "0"/>
-             </padding>
-              <ImageView fitWidth="80" fitHeight="80" preserveRatio="true" styleClass="image">
-                <Image url="/open-book.png"/>
-              </ImageView>
-              <StackPane alignment = "CENTER_RIGHT">
-                 <Label text="ON" styleClass="labelOn"/>
-                 <Button text="Quản lý kho sách" onAction="#handleKhosach" styleClass="button"/>
-               </StackPane>
-             </HBox>
-
-              <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "1" alignment = "CENTER" spacing = "20">
-                <padding>
-                 <Insets top = "0" right = "30" bottom = "0" left = "0"/>
-                </padding>
-                <ImageView fitWidth="80" fitHeight="80" preserveRatio="true" styleClass="image">
-                  <Image url="/notebook.png"/>
+    <BorderPane>
+        <left>
+            <VBox alignment="CENTER" styleClass="vbox_1" spacing="80">
+                <ImageView fx:id = "image" fitWidth="90" fitHeight="90" preserveRatio="true">
+                    <Image url="/uet.png"/>
                 </ImageView>
-               <StackPane alignment = "CENTER_RIGHT">
-                 <Label text="ON" styleClass="labelOn"/>
-                 <Button text="Quản lý mượn sách" onAction="#handleMuonsach" styleClass="button"/>
-               </StackPane>
-              </HBox>
-              <HBox GridPane.columnIndex = "0" GridPane.rowIndex = "2" alignment = "CENTER" spacing = "20">
-                <padding>
-                 <Insets top = "0" right = "30" bottom = "0" left = "0"/>
-                </padding>
-                <ImageView fitWidth="80" fitHeight="80" preserveRatio="true" styleClass="image">
-                  <Image url="/shopping-cart.png"/>
-                </ImageView>
-                <StackPane alignment = "CENTER_RIGHT">
-                  <Label text="ON" styleClass="labelOn"/>
-                  <Button text="Quản lý trả sách" onAction="#handleTrasach" styleClass="button"/>
-                </StackPane>
-              </HBox>
-            </GridPane>
-          <!-- Tạo bố cục giao diện thứ 2 -->
-            <GridPane vgap= "40">
-              <!-- Tạo icon và button -->
-              <HBox GridPane.columnIndex = "1" GridPane.rowIndex = "0" alignment = "CENTER" spacing = "20">
-                <padding>
-                 <Insets top = "0" right = "30" bottom = "0" left = "0"/>
-                </padding>
-                <ImageView fitWidth="80" fitHeight="80" preserveRatio="true" styleClass="image">
-                  <Image url="/user.png"/>
-                </ImageView>
-                <StackPane alignment = "CENTER_RIGHT">
-                  <Label text="ON" styleClass="labelOn"/>
-                  <Button text="Quản lý người dùng" onAction="#handleNhanvien" styleClass="button"/>
-                </StackPane>
-              </HBox>
-              <HBox GridPane.columnIndex = "1" GridPane.rowIndex = "1" alignment = "CENTER" spacing = "20">
-                <padding>
-                 <Insets top = "0" right = "30" bottom = "0" left = "0"/>
-               </padding>
-               <ImageView fitWidth="80" fitHeight="80" preserveRatio="true" styleClass="image">
-                 <Image url="/group.png"/>
-               </ImageView>
-               <StackPane alignment = "CENTER_RIGHT">
-                  <Label text="ON" styleClass="labelOn"/>
-                  <Button text="Quản lý nhân viên" onAction="#handleNhanvien" styleClass="button"/>
-               </StackPane>
-              </HBox>
-              <HBox GridPane.columnIndex = "1" GridPane.rowIndex = "2" alignment = "CENTER" spacing = "20">
-                <padding>
-                 <Insets top = "0" right = "30" bottom = "0" left = "0"/>
-                </padding>
-                <ImageView fitWidth="80" fitHeight="80" preserveRatio="true" styleClass="image">
-                  <Image url="/logout.png"/>
-                </ImageView>
-                <StackPane alignment = "CENTER_RIGHT">
-                  <Label text="ON" styleClass="labelOn"/>
-                  <Button fx:id = "signout" text="Đăng xuất" onAction="#handleDangxuat" styleClass="button"/>
-                </StackPane>
-              </HBox>
-            </GridPane>
-          </HBox>
-
-        </VBox>
-      </VBox>
-    </VBox>
+                <VBox spacing="30" alignment="CENTER_LEFT">
+                    <Button fx:id="manageBook" text="Quản lý kho sách" onAction="#handleKhosach" styleClass="button"/>
+                    <Button fx:id="managePay" text="Quản lý trả sách" onAction="#handleTrasach" styleClass="button"/>
+                    <Button fx:id="manageBorrow" text="Quản lý mượn sách" onAction="#handleMuonsach" styleClass="button"/>
+                    <Button fx:id="manageUser" text="Quản lý người dùng" onAction="#handleNguoimuon" styleClass="button"/>
+                    <Button fx:id="manageEmployees" text="Quản lý nhân viên" onAction="#handleNhanvien" styleClass="button"/>
+                    <Button fx:id="signout" text="Đăng xuất" onAction="#handleDangxuat" styleClass="button"/>
+                    <Button fx:id="interfaceUser" text="Giao diện người dùng" onAction="#handleInterfaceuser" styleClass="button"/>
+                </VBox>
+            </VBox>
+        </left>
+        <center>
+            <ScrollPane styleClass = "scrollpane" fitToWidth="true" fitToHeight="true">
+                <VBox spacing="10">
+                    <HBox alignment="CENTER_LEFT" styleClass="hbox_1">
+                        <Label fx:id = "label" text="GIỚI THIỆU VỀ UET" style="-fx-font-size: 40; -fx-text-fill: #2B579A; -fx-font-weight:bold;"/>
+                    </HBox>
+                    <Label text="Trường Đại học Công nghệ, Đại học Quốc gia Hà Nội được thành lập theo Quyết định số 92/2004/QĐ-TTg ngày 25/05/2004 của Thủ tướng Chính phủ trên cơ sở Khoa Công nghệ và Trung tâm Hợp tác Đào tạo và Bồi dưỡng Cơ học trực thuộc Đại học Quốc gia Hà Nội với hai nhiệm vụ như sau:" styleClass="label-custom" />
+                    <Label text = "Chính phủ trên cơ sở Khoa Công nghệ và Trung tâm Hợp tác Đào tạo và Bồi dưỡng Cơ học trực thuộc Đại học Quốc gia Hà Nội với hai nhiệm vụ như sau:" styleClass="label-custom" />
+                    <Label text="1. Đào tạo nguồn nhân lực trình độ đại học, sau đại học và bồi dưỡng nhân tài thuộc lĩnh vực khoa học, công nghệ;" styleClass="label-custom" />
+                    <Label text="2. Nghiên cứu và triển khai ứng dụng khoa học, công nghệ đáp ứng nhu cầu phát triển kinh tế – xã hội." styleClass="label-custom" />
+                    <Label text="Sứ mạng của Nhà trường là đào tạo nguồn nhân lực chất lượng cao, trình độ cao và bồi dưỡng nhân tài; nghiên cứu phát triển và ứng dụng các lĩnh vực khoa học công nghệ tiên tiến mũi nhọn trên cơ sở phát huy thế mạnh về Công nghệ thông tin và Truyền thông." styleClass="label-custom" />
+                    <Label text="ứng dụng các lĩnh vực khoa học công nghệ tiên tiến mũi nhọn trên cơ sở phát huy thế mạnh về Công nghệ thông tin và Truyền thông." styleClass="label-custom" />
+                    <Label text="Nhà trường cũng đã xác định sứ mạng tiên phong tiếp cận chuẩn mực giáo dục đại học khu vực và thế giới, ứng dụng công nghệ thông tin trong quản trị đại học đóng góp tích cực vào sự phát triển nền kinh tế và xã hội tri thức của đất nước." styleClass="label-custom" />
+                    <Label text="Sứ mạng này hoàn toàn phù hợp và thống nhất với chủ trương, giải pháp và các mục tiêu của Chương trình đổi mới toàn diện giáo dục đại học mà Đảng và Nhà nước đang triển khai thực hiện." styleClass="label-custom" />
+                    <HBox alignment="CENTER">
+                        <VBox.margin>
+                            <Insets top="20" bottom="20"/>
+                        </VBox.margin>
+                        <ImageView fitWidth="450" fitHeight="600" preserveRatio="true">
+                            <Image url="/MG_7643-1.jpg"/>
+                        </ImageView>
+                    </HBox>
+                    <Label text="Sau gần hai mươi năm xây dựng và phát triển, Trường Đại học Công nghệ đã và đang từng bước thực hiện nhiệm vụ và dần khẳng định là một trường đại học có vị thế, uy tín trong hệ thống giáo dục đại học của cả nước." styleClass="label-custom" />
+                    <Label text="Tỷ lệ giảng viên cơ hữu có trình độ tiến sĩ đạt 75%, tỷ lệ giáo sư và phó giáo sư đạt 25%, tỷ lệ công bố quốc tế tăng nhanh hằng năm." styleClass="label-custom" />
+                    <Label text="Môi trường đào tạo chuẩn mực chất lượng cao đã được thiết lập với hệ thống chương trình đào tạo được phát triển, hoàn thiện ở mọi bậc đào tạo theo hướng tiên tiến, hiện đại, cập nhật; chất lượng đào tạo được xã hội ghi nhận, đánh giá cao." styleClass="label-custom" />
+                    <Label text = "đào tạo được phát triển, hoàn thiện ở mọi bậc đào tạo theo hướng tiên tiến, hiện đại, cập nhật; chất lượng đào tạo được xã hội ghi nhận, đánh giá cao." styleClass="label-custom" />
+                    <Label text="Phần lớn các chương trình đào tạo của Trường Đại học Công nghệ được kiểm định chương trình đào tạo theo bộ tiêu chuẩn của mạng lưới các trường đại học ASEAN (AUN) và theo tiêu chuẩn của Bộ Giáo dục và Đào tạo." styleClass="label-custom" />
+                    <Label text="Trường Đại học Công nghệ còn là đối tác tin cậy của hơn 50 trường đại học, viện nghiên cứu và tập đoàn công nghiệp lớn trên thế giới." styleClass="label-custom" />
+                    <Label text="Nhà trường đi đầu và triển khai có hiệu quả hoạt động hợp tác 'Trường – Viện – Doanh nghiệp'." styleClass="label-custom" />
+                </VBox>
+            </ScrollPane>
+        </center>
+    </BorderPane>
 </StackPane>
-

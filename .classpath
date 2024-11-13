@@ -2,6 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="image"/>
+	<classpathentry kind="src" path="font"/>
+	<classpathentry kind="src" path="imageBook"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-22">
 		<attributes>
 			<attribute name="module" value="true"/>
@@ -13,12 +15,26 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Program Files/Java/javafx-sdk-22.0.1/lib/javafx.base.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/Java/javafx-sdk-22.0.1/lib/javafx.controls.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Java/javafx-sdk-22.0.1/lib/javafx.controls.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="C:/Program Files/Java/javafx-sdk-22.0.1/lib/javafx.fxml.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Java/javafx-sdk-22.0.1/lib/javafx.graphics.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Java/javafx-sdk-22.0.1/lib/javafx.media.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Java/javafx-sdk-22.0.1/lib/javafx.swing.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Java/javafx-sdk-22.0.1/lib/javafx.web.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Java/javafx-sdk-22.0.1/lib/javafx-swt.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Admin/Downloads/mysql-connector-j-9.0.0/mysql-connector-j-9.0.0/mysql-connector-j-9.0.0.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Admin/Downloads/gson-2.8.9.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

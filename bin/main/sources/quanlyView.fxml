@@ -9,59 +9,117 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.geometry.Pos?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.ProgressIndicator?>
 
-<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.interfaceController" stylesheets="@main/sources/css/interface.css">
-    <!-- Tạo đêm cho VBox tổng -->
-    <VBox>
-    <!-- Tạo thanh sidebar -->
-    <VBox>
-      <VBox>
-        <GridPane>
-        <!-- Tạo ảnh và username -->
-          <ImageView fitWidth = "100" fitHeight = "100" preserveRatio = "true" GridPane.columnIndex = "0" GridPane.rowIndex = "0">
-            <Image url= "/profile-user.png"/>
-          </ImageView>
-           <Label text = "User name" GridPane.columnIndex = "0" GridPane.rowIndex = "1"/>
-           <!-- Tạo bố cục cho ảnh và home -->
-           <Hbox hgap = "40">
-            <ImageView>
-              <Image url = "/notebook.png" />
-            </ImageView>
-            <Button fx:id = "home" text = "Trang chủ" onAction = "#handleHome" GridPane.columnIndex = "0" GridPane.rowIndex = "2" />
-           </Hbox>
-           <!-- Tạo bố cục cho logo và button -->
-           <Hbox hgap = "40">
-            <ImageView>
-              <Image url = "/notebook.png" />
-            </ImageView>
-            <Button fx:id = "borrower" text = "Quản lý người mượn" onAction = "#handleBorrower" GridPane.columnIndex = "0" GridPane.rowIndex = "3" />
-           </Hbox>
-           <Hbox hgap = "40">
-            <ImageView>
-              <Image url = "/shopping-cart.png" />
-            </ImageView>
-            <Button fx:id = "payer" text = "Quản lý người trả" onAction = "#handlePayer" GridPane.columnIndex = "0" GridPane.rowIndex = "4" />
-           </Hbox>
-           <Hbox hgap = "40">
-            <ImageView>
-              <Image url = "/user.png" />
-            </ImageView>
-            <Button fx:id = "user" text = "Quản lý người dùng" onAction = "#handleUser" GridPane.columnIndex = "0" GridPane.rowIndex = "5" />
-           </Hbox>
-           <Hbox hgap = "40">
-            <ImageView>
-              <Image url = "/group.png" />
-            </ImageView>
-            <Button fx:id = "employees" text = "Quản lý nhân viên" onAction = "#handleEmployees" GridPane.columnIndex = "0" GridPane.rowIndex = "5" />
-           </Hbox>
-           
-        </GridPane>
-        <
-      </VBox>
-    </VBox>
-    </VBox>
+
+<StackPane fx:id="rootContainer" xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.quanlyController" stylesheets="@main/sources/css/quanly.css">
+    <BorderPane fx:id = "mainContent">
+        <!-- Tạo thanh sidebar -->
+        <left>
+            <VBox styleClass="vbox_1" alignment="TOP_CENTER">
+                <VBox alignment="CENTER">
+                    <padding>
+                        <Insets top="40" right="0" bottom="0" left="0"/>
+                    </padding>
+                    <VBox alignment="TOP_CENTER" spacing="10">
+                        <ImageView fitWidth="80" fitHeight="80" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="image">
+                            <Image url="/profile-user.png"/>
+                        </ImageView>
+                    </VBox>
+                    <GridPane vgap="5" alignment="CENTER">
+                        <HBox GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="hboxLay">
+                            <padding>
+                                <Insets top="20" right="0" bottom="20" left="0"/>
+                            </padding>
+                            <Button fx:id="home" text="Trang chủ" onAction="#handleHome" styleClass="buttonLay"/>
+                        </HBox>
+                        <HBox GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="hboxLay">
+                            <padding>
+                                <Insets top="20" right="0" bottom="20" left="0"/>
+                            </padding>
+                            <Button fx:id="borrower" text="Quản lý người mượn" onAction="#handleBorrower" styleClass="buttonLay"/>
+                        </HBox>
+                        <HBox GridPane.columnIndex="0" GridPane.rowIndex="4" styleClass="hboxLay">
+                            <padding>
+                                <Insets top="20" right="0" bottom="20" left="0"/>
+                            </padding>
+                            <Button fx:id="payer" text="Quản lý người trả" onAction="#handlePayer" styleClass="buttonLay"/>
+                        </HBox>
+                        <HBox GridPane.columnIndex="0" GridPane.rowIndex="5" styleClass="hboxLay">
+                            <padding>
+                                <Insets top="20" right="0" bottom="20" left="0"/>
+                            </padding>
+                            <Button fx:id="user" text="Quản lý người dùng" onAction="#handleUser" styleClass="buttonLay"/>
+                        </HBox>
+                        <HBox GridPane.columnIndex="0" GridPane.rowIndex="6" styleClass="hboxLay">
+                            <padding>
+                                <Insets top="20" right="0" bottom="20" left="0"/>
+                            </padding>
+                            <Button fx:id="employees" text="Quản lý nhân viên" onAction="#handleEmployees" styleClass="buttonLay"/>
+                        </HBox>
+                    </GridPane>
+                </VBox>
+            </VBox>
+        </left>
+        <!-- Tạo bố cục quản lý kho sách -->
+        <center>
+            <StackPane>
+                <VBox styleClass="vbox_2" HBox.hgrow="ALWAYS">
+                    <padding>
+                        <Insets top="30" right="50" bottom="0" left="50"/>
+                    </padding>
+                    <VBox.margin>
+                        <Insets top="0" right="0" bottom="0" left="0"/>
+                    </VBox.margin>
+                    <VBox alignment="TOP_CENTER" spacing="40">
+                    
+                       <VBox styleClass="alterHbox" spacing="25" alignment="CENTER">
+                           <padding>
+                               <Insets top="0" right="0" bottom="20" left="0"/>
+                           </padding>
+                           <HBox alignment = "CENTER" spacing = "20">
+                              <ImageView fx:id = "image" fitWidth = "30" fitHeight = "30" preserveRatio = "true">
+                                <Image url="/icons8-search-50.png"/>
+                              </ImageView>
+                              <TextField fx:id="fieldSearch" promptText="Search" styleClass="textfield"/>
+                              <Button fx:id="searchBook" text="Tìm kiếm" onAction="#handleSearchBook" styleClass="buttonAdd"/>
+                           </HBox>
+                            
+                           <HBox alignment="CENTER" spacing="30">
+                             <VBox.margin>
+                               <Insets top="0"/>
+                             </VBox.margin>
+                             <Button fx:id="addBook" text="Thêm sách" onAction="#handleAddBook" styleClass="buttonAdd"/>
+                             <Button fx:id="deleteBook" text="Xóa sách" onAction="#handleDeleteBook" styleClass="buttonAdd"/>
+                             <Button fx:id="updateBook" text="Sửa đổi" onAction="#handleUpdateBook" styleClass="buttonAdd"/>
+                           </HBox>
+                        </VBox>
+                        
+                       <HBox alignment="CENTER">
+                       <VBox.margin>
+                         <Insets top="0" bottom = "30"/>
+                       </VBox.margin>
+                       <VBox alignment="CENTER" spacing="10">
+                        <Label fx:id = "label" text="Danh sách kết quả" styleClass="labelTit"/>
+                        <ScrollPane fx:id = "scrollpane" styleClass= "vboxFind" fitToWidth="true" prefHeight="500" prefWidth="600">
+                            <VBox fx:id="searchResultsContainer" spacing="30" alignment="CENTER" styleClass="vboxFind"/>
+                        </ScrollPane>
+                       </VBox> 
+                      </HBox>
+                    </VBox>
+                </VBox>
+            </StackPane>
+        </center>
+    </BorderPane>
+
+    <!-- Thêm loading indicator vào StackPane để nằm trên tất cả các thành phần -->
+    <ProgressIndicator fx:id="loadingIndicator" visible="false" />
 </StackPane>
 

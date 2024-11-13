@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Pos?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.interfaceUserController" stylesheets="@main/sources/css/interfaceUser.css">
+   <BorderPane>
+    <top>
+    <BorderPane>
+     <top>
+    <HBox alignment="TOP_CENTER" styleClass = "header_top" spacing = "50">
+        <!-- Đặt từng ImageView trong VBox để căn chỉnh theo chiều dọc -->
+        <VBox alignment="CENTER">
+          <padding>
+            <Insets top = "0" right = "50" bottom = "0" left = "10"/>
+          </padding>
+            <ImageView fx:id = "img1" fitWidth="70" fitHeight="70" preserveRatio="true">
+                <Image url="/1024px-Logo_HUET.svg.png"/>
+            </ImageView>
+        </VBox>
+        <VBox alignment="CENTER" styleClass = "image">
+          <padding>
+            <Insets top = "0" right = "10" bottom = "0" left = "50"/>
+          </padding>
+            <ImageView fx:id = "img2" fitWidth="70" fitHeight="70" preserveRatio="true">
+                <Image url="/unnamed.png"/>
+            </ImageView>
+        </VBox>
+        <VBox alignment="CENTER" styleClass = "image">
+          <padding>
+            <Insets top = "15" right = "10" bottom = "0" left = "50"/>
+          </padding>
+            <ImageView fx:id = "img3" fitWidth="150" fitHeight="350" preserveRatio="true">
+                <Image url="/logo-vnu.png"/>
+            </ImageView>
+        </VBox>
+        <VBox alignment="CENTER" styleClass = "image">
+          <padding>
+            <Insets top = "40" right = "10" bottom = "0" left = "50"/>
+          </padding>
+            <ImageView fx:id = "img4" fitWidth="200" fitHeight="350" preserveRatio="true">
+                <Image url="/959.png"/>
+            </ImageView>
+        </VBox>
+    </HBox>
+    </top>
+    <!-- Thanh nav thực thi các scene -->
+    <center>
+    <HBox alignment = "CENTER" styleClass = "header_next" spacing = "50">
+      <HBox alignment = "CENTER">
+        <Button text = "Trang chủ" fx:id = "home" onAction = "#handleHome" styleClass = "button_1"/>
+        <Button text = "Giới thiệu" fx:id = "introduce" onAction = "#handleIntro" styleClass = "button_1"/>
+        <Button text = "Nổi bật" fx:id = "suprise" onAction = "#handleSuprise" styleClass = "button_1"/>
+        <Button text = "Dịch vụ" fx:id = "service" onAction = "#handleService" styleClass = "button_1"/>
+        <Button text = "Liên hệ" fx:id = "contact" onAction = "#handleContact" styleClass = "button_1"/>
+        <Button text = "Quay về" fx:id = "back" onAction = "#handleBack" styleClass = "button_1"/>
+      </HBox>
+    </HBox>
+    </center>
+    </BorderPane>
+    </top>
+    
+    <!-- Phần content -->
+    <center>
+    <ScrollPane styleClass="scrollPane" HBox.hgrow="ALWAYS">
+     <content>
+     <!-- Phần giới thiệu -->
+     <VBox styleClass = "body">
+       <padding>
+        <Insets top = "20" right = "0" bottom = "0" left = "56"/>
+       </padding>
+      <HBox spacing = "20">
+       <VBox>
+        <padding>
+          <Insets top = "80" right = "0" bottom = "0" left = "0"/>
+        </padding>
+        <ImageView fx:id = "img5" fitWidth = "400" fitHeight = "500" preserveRatio = "true">
+          <Image url = "/smail-b.png"/>
+        </ImageView>
+       </VBox> 
+       <VBox> 
+        <Label fx:id = "label1" text = "Giới thiệu" styleClass = "fontTile"/>
+        <HBox styleClass = "hbox_tile2">
+          <Label fx:id = "label2" text = "  TÊN GỌI VÀ TRỤ SỞ" styleClass = "fontTile2"/>
+        </HBox>
+        <VBox fx:id = "tuto1">
+         <Label text = " " />
+        <Label text="Điều 1. Tên gọi và trụ sở" styleClass="font"/>
+        <Label text="1. Tên tiếng Việt: Trung tâm Thư viện và Tri thức số." styleClass="font"/>
+        <Label text="2. Tên tiếng Anh: VNU - Library and Digital Knowledge Center." styleClass="font"/>
+        <Label text="3. Tên gọi tắt: VNU - LIC." styleClass="font"/>
+        <Label text="4. Trụ sở:" styleClass="font"/>
+        <Label text="a) Trụ sở chính: Nhà C1T - số 144, đường Xuân Thuỷ, quận Cầu Giấy, thành phố Hà Nội." styleClass="font"/>
+        <Label text="b) Các cơ sở:" styleClass="font"/>
+        <Label text="- Nhà A2, Trường Đại học Ngoại ngữ - số 2, đường Phạm Văn Đồng, quận Cầu Giấy, thành phố Hà Nội." styleClass="font"/>
+        <Label text="- Ký túc xá Mễ Trì - số 182, đường Lương Thế Vinh, quận Thanh Xuân, thành phố Hà Nội." styleClass="font"/>
+        <Label text="- Nhà M, Trường Đại học Khoa học Xã hội và Nhân văn - số 336, đường Nguyễn Trãi, quận Thanh Xuân, thành phố Hà Nội." styleClass="font"/>
+        <Label text="- Khu đô thị Đại học Quốc gia Hà Nội tại Hòa Lạc - xã Thạch Hòa, huyện Thạch Thất, thành phố Hà Nội." styleClass="font"/>
+        <Label text="5. Website: http://lic.vnu.edu.vn Email: lic@vnu.edu.vn" styleClass="font"/>
+        <Label text="6. Điện thoại: (024) 37546545 Hotline: (024) 62539899" styleClass="font"/>
+        <Label text="Điều 2. Vị trí pháp lý" styleClass="font"/>
+        <Label text="1. Trung tâm Thư viện và Tri thức số (sau đây gọi tắt là Trung tâm) được" styleClass="font"/>
+        <Label text="tổ chức lại trên cơ sở điều chỉnh chức năng, nhiệm vụ và đổi tên của Trung tâm" styleClass = "font"/>
+        <Label text="Thông tin - Thư viện theo Quyết định số 316/QĐ-ĐHQGHN ngày 14/02/2022 của Giám đốc Đại học Quốc gia Hà Nội (ĐHQGHN); là đơn vị phục vụ, dịch vụ trực thuộc ĐHQGHN," styleClass="font"/>
+        <Label text="tự đảm bảo một phần chi thường xuyên, có tư cách pháp nhân, có con dấu và tài khoản riêng." styleClass="font"/>
+        <Label text="2. Trung tâm được tổ chức và hoạt động theo các quy định hiện hành của pháp luật có liên quan, các quy định của ĐHQGHN và Quy định này." styleClass="font"/>
+        <Label text="3. Trung tâm chịu sự quản lý toàn diện, trực tiếp của ĐHQGHN, có nghĩa vụ và trách nhiệm thực hiện các nhiệm vụ được giao," styleClass="font"/>
+        <Label text="chấp hành nghiêm chỉnh luật pháp, các quy định, chế độ chính sách của Nhà nước và quy định của ĐHQGHN." styleClass="font"/>
+        <Label text = " "/>
+        </VBox>
+       </VBox>
+      </HBox>
+      
+      <VBox>
+        <VBox styleClass = "hbox_tile2">
+          <Label fx:id = "label3" text = "  HỢP TÁC QUỐC TẾ" styleClass = "fontTile2"/>
+        </VBox>
+        <VBox fx:id = "tuto2">
+         <Label text = " " />
+        <Label text="Trung tâm có quan hệ với hơn 50 trường đại học, viện nghiên cứu, tổ chức quốc tế, các nhà xuất bản tại Hoa Kỳ, Pháp, Đức, Nga, Italy, Nhật Bản, Hàn Quốc và nhiều nước khác, trong đó có:" styleClass="font"/>
+        <Label text="• Viện Harvard Yenching" styleClass="font"/>
+        <Label text="• Đại học Cornell" styleClass="font"/>
+        <Label text="• Đại học Hawaii" styleClass="font"/>
+        <Label text="• Thư viện Quốc hội Hoa Kỳ" styleClass="font"/>
+        <Label text="• Đại học Paris" styleClass="font"/>
+        <Label text="• Đại học Sorbone" styleClass="font"/>
+        <Label text="• Đại học Bone" styleClass="font"/>
+        <Label text="• Đại học Lômônôxôp" styleClass="font"/>
+        <Label text="• Viện Hàn lâm Khoa học Nga" styleClass="font"/>
+        <Label text="• Đại học Tokyo" styleClass="font"/>
+        <Label text="• Đại học Kyodo" styleClass="font"/>
+        <Label text="• Đại học Quốc gia Kangwon" styleClass="font"/>
+        <Label text="• Đại học Thanh Hoa" styleClass="font"/>
+        <Label text="• Đại học Liêu Ning" styleClass="font"/>
+        <Label text="• Thư viện Quốc gia Australia" styleClass="font"/>
+        <Label text="• Trung tâm Nghiên cứu Phát triển Quốc tế" styleClass="font"/>
+        <Label text="• Nhà xuất bản Đại học Tổng hợp Cali" styleClass="font"/>
+        <Label text="• Thư viện Khảo sát địa chất Nhật Bản" styleClass="font"/>
+        <Label text="• Chương trình hỗ trợ của Trung tâm Quốc tế về Vật lý lý thuyết Abdus Salam..." styleClass="font"/>
+        </VBox>
+      </VBox>
+      <!-- Phần nội dung thứ 2 -->
+      <HBox spacing = "30">
+        <VBox fx:id = "tuto3" alignment = "CENTER_LEFT">
+          <Label text="Ngoài ra, Trung tâm còn có quan hệ với nhiều tổ chức quốc tế tại Hà Nội như:" styleClass="font"/>
+          <Label text="• Phòng Văn hóa Thông tin Đại sứ quán Hoa Kỳ" styleClass="font"/>
+          <Label text="• Viện Gớt" styleClass="font"/>
+          <Label text="• Hội đồng Anh" styleClass="font"/>
+          <Label text="• Qũy Châu Á" styleClass="font"/>
+          <Label text="• Phòng Thông tin Đại sứ quán Hàn Quốc" styleClass="font"/>
+          <Label text="• Ngân hàng Thế giới" styleClass="font"/>
+          <Label text="• Hội đồng Pháp ngữ..." styleClass="font"/>
+          <Label text="Trung tâm là thành viên sáng lập và tham gia Ban Chấp hành Hội thư viện đại học trực tuyến" styleClass="font"/>
+          <Label text = "các nước Đông Nam Á (AUNILO) và" styleClass = "font"/>
+          <Label text = "Hội đồng thư viện Đại học Quốc gia các nước Đông Á (East Asian University Library Council)." styleClass = "font"/>
+        </VBox>
+        <VBox alignment = "CENTER_RIGHT">
+          <ImageView fx:id = "img6" fitWidth = "600" fitHeight = "600" preserveRatio = "true">
+           <Image url = "/Hoc-phi-DH-Cong-nghe-HN-fotor-2024102394230.png"/>
+          </ImageView>
+        </VBox>
+      </HBox>
+      
+     <!-- Phần nội dung thứ 3 -->
+     <VBox>
+        <Label text = " "/>
+        <Label text = " "/>
+        <Label text = " "/>
+       <VBox styleClass = "hbox_tile2">
+         <Label fx:id = "label4" text = "  CHỨC NĂNG - NHIỆM VỤ" styleClass = "fontTile2"/>
+       </VBox>
+       <VBox fx:id = "tuto4">
+        <Label text = " "/>
+        <Label text="Chức năng" styleClass="fontTile3" />
+        <Label text="1. Quản lý và cung cấp thông tin khoa học cho người dùng tin." styleClass="font" />
+        <Label text="2. Quản trị dữ liệu lớn và kết nối với cơ sở dữ liệu chất lượng cao." styleClass="font" />
+        <Label text="3. Hỗ trợ nghiên cứu và đào tạo thông qua phân tích và tư vấn." styleClass="font" />
+        <Label text="4. Nghiên cứu và tổ chức đào tạo nghiệp vụ thông tin cho nhân sự." styleClass="font" />
+        <Label text = " "/>
+        <Label text="Nhiệm vụ" styleClass="fontTile3" />
+        <Label text="1. Tham mưu lãnh đạo về quản trị tri thức và thư viện số." styleClass="font" />
+        <Label text="2. Xây dựng kế hoạch phát triển thư viện số trong ĐHQGHN." styleClass="font" />
+        <Label text="3. Phát triển nguồn tài nguyên thông tin cho người dùng tin." styleClass="font" />
+        <Label text="4. Thu nhận và lưu chiểu các xuất bản phẩm của ĐHQGHN." styleClass="font" />
+        <Label text="5. Chuyển đổi số và số hóa tài liệu để phục vụ người dùng." styleClass="font" />
+        <Label text="6. Tạo lập siêu dữ liệu và hệ thống tra cứu thông tin." styleClass="font" />
+        <Label text="7. Quản trị công nghệ và dữ liệu lớn cho hoạt động của Trung tâm." styleClass="font" />
+        <Label text="8. Cung cấp dịch vụ tri thức số cho người dùng tin." styleClass="font" />  
+        <Label text="9. Triển khai các dịch vụ học liệu và mượn trả tự động." styleClass="font" /> 
+        <Label text="10. Quản trị cơ sở vật chất và trang thiết bị hiện đại." styleClass="font" />
+        <Label text="11. Nghiên cứu và áp dụng thành tựu trong lĩnh vực thư viện." styleClass="font" />
+        <Label text="12. Tổ chức hội thảo và đào tạo nâng cao về thư viện số." styleClass="font" />
+        <Label text="13. Cung cấp thông tin các công bố khoa học phục vụ nghiên cứu." styleClass="font" />
+        <Label text="14. Hợp tác với các tổ chức trong và ngoài nước về thư viện." styleClass="font" />
+        <Label text="15. Liên kết và chia sẻ nguồn lực với các đơn vị khác." styleClass="font" />
+        <Label text="16. Phát triển văn hóa đọc cho CCVC và HSSV trong ĐHQGHN." styleClass="font" />
+        <Label text="17. Thực hiện nhiệm vụ khác theo chỉ đạo của Giám đốc." styleClass="font" />
+        <Label text = " " />
+        </VBox>
+      </VBox>
+      
+      <!-- Tạo footer -->
+     <VBox styleClass = "background_img">
+        <padding>
+           <Insets top = "100" right = "200" bottom = "100" left = "200"/>
+         </padding>
+       <StackPane alignment = "CENTER">
+        <VBox alignment = "CENTER">
+         <VBox styleClass = "image_2" alignment = "CENTER">
+           <ImageView fx:id = "img6" fitWidth = "500" fitHeight = "300" preserveRatio = "true">
+             <Image url = "/logo-vnu.png"/>
+           </ImageView>
+         </VBox>
+         <HBox spacing = "50">
+           <padding>
+             <Insets top = "40" right = "0" bottom = "0" left = "0"/>
+           </padding>
+           <Button fx:id = "bt1" text = "FaceBook" styleClass = "button_2"/>
+           <Button fx:id = "bt2" text = "Gmail" styleClass = "button_2"/>
+           <Button fx:id = "bt3" text = "TikTok" styleClass = "button_2"/>
+         </HBox>
+        </VBox> 
+       </StackPane>
+     </VBox>
+     
+     <!-- Tạo footer cuổi -->
+     <HBox styleClass = "header_top" alignment  = "CENTER" spacing = "40">
+      <padding>
+        <Insets top = "10" right = "0" bottom = "10" left = "0"/>
+      </padding>
+       <ImageView fx:id = "img7" fitWidth = "200" fitHeight = "100" preserveRatio = "true">
+         <Image  url = "/logo-vnu.png"/>
+       </ImageView>
+       <ImageView fx:id = "img8" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+         <Image url = "/unnamed.png"/>
+       </ImageView>
+       <ImageView fx:id = "img9" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+         <Image url = "/logo.png"/>
+       </ImageView>
+       <ImageView fx:id = "img10" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+         <Image url = "/VNU-HUS.jpg"/>
+       </ImageView>
+       <ImageView fx:id = "img11" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+         <Image url = "/ULIS-Logo-RBG-02.jpg"/>
+       </ImageView>
+     </HBox>
+     
+     </VBox>
+    </content>
+   </ScrollPane>
+   </center>
+  </BorderPane>
+</VBox>

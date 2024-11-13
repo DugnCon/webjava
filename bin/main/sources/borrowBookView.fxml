@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Pos?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.borrowBookController" stylesheets="@main/sources/css/borrowBook.css">
+   <BorderPane>
+       <left>
+            <VBox styleClass="vbox_1" alignment="TOP_CENTER">
+                <VBox alignment="CENTER">
+                    <padding>
+                        <Insets top="40" right="0" bottom="0" left="0"/>
+                    </padding>
+                    <VBox alignment="TOP_CENTER" spacing="10">
+                        <ImageView fitWidth="80" fitHeight="80" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="image">
+                            <Image url="/profile-user.png"/>
+                        </ImageView>
+                        <Label text="User name" styleClass="labelLay"/>
+                    </VBox>
+                    <GridPane vgap="5" alignment="CENTER">
+                        <HBox GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="hboxLay">
+                            <padding>
+                                <Insets top="20" right="0" bottom="20" left="0"/>
+                            </padding>
+                            <Button fx:id="home" text="Trang chủ" onAction="#handleHome" styleClass="buttonLay"/>
+                        </HBox>
+                        <HBox GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="hboxLay">
+                            <padding>
+                                <Insets top="20" right="0" bottom="20" left="0"/>
+                            </padding>
+                            <Button fx:id="borrower" text="Quản lý người mượn" onAction="#handleManage" styleClass="buttonLay"/>
+                        </HBox>
+                        <HBox GridPane.columnIndex="0" GridPane.rowIndex="4" styleClass="hboxLay">
+                            <padding>
+                                <Insets top="20" right="0" bottom="20" left="0"/>
+                            </padding>
+                            <Button fx:id="payer" text="Quản lý người trả" onAction="#handlePayer" styleClass="buttonLay"/>
+                        </HBox>
+                        <HBox GridPane.columnIndex="0" GridPane.rowIndex="5" styleClass="hboxLay">
+                            <padding>
+                                <Insets top="20" right="0" bottom="20" left="0"/>
+                            </padding>
+                            <Button fx:id="user" text="Quản lý người dùng" onAction="#handleUser" styleClass="buttonLay"/>
+                        </HBox>
+                        <HBox GridPane.columnIndex="0" GridPane.rowIndex="6" styleClass="hboxLay">
+                            <padding>
+                                <Insets top="20" right="0" bottom="20" left="0"/>
+                            </padding>
+                            <Button fx:id="employees" text="Quản lý nhân viên" onAction="#handleEmployees" styleClass="buttonLay"/>
+                        </HBox>
+                    </GridPane>
+                </VBox>
+            </VBox>
+        </left>
+      
+     <center>
+      <VBox HBox.hgrow="ALWAYS" styleClass = "vbox_2">
+        <padding>
+          <Insets top = "30" right = "0" bottom = "0" left = "0"/>
+        </padding>
+        <VBox alignment = "CENTER" spacing = "40">
+          
+         <VBox alignment = "TOP_CENTER" spacing = "10">
+          <HBox alignment = "CENTER" spacing = "30">
+            <ImageView fx:id = "image" fitWidth = "30" fitHeight = "30" preserveRatio = "true">
+               <Image url="/icons8-search-50.png"/>
+            </ImageView>
+            <TextField fx:id = "searchBorrowerID" promptText = "Mã người mượn sách" styleClass = "textfield"/>
+            <Button fx:id = "search" text = "Tìm kiếm" onAction = "#handleSearchBorrower" styleClass = "buttonAdd"/>
+          </HBox>
+           <Button fx:id = "addNewBorrower" text = "Ghi phiếu" onAction = "#handleAdd" styleClass = "buttonAdd"/>
+         </VBox>
+          
+          <VBox alignment = "CENTER" spacing = "20">
+           <padding>
+             <Insets top= "0" right = "50" bottom = "10" left = "50"/>
+           </padding>
+            <Label fx:id = "label" text = "Thông tin người mượn" styleClass = "labelTit"/>
+            <TableView fx:id = "tableBook" styleClass = "tableView">
+              <columns>
+               <TableColumn fx:id="columnCode" text="Mã sách" prefWidth="210"/>
+               <TableColumn fx:id="columnUser" text="Tên người mượn" prefWidth="330"/>
+               <TableColumn fx:id="columnBorrowDate" text="Ngày mượn" prefWidth="280"/>
+               <TableColumn fx:id="columnReturnDate" text="Ngày trả" prefWidth="280"/>
+               <TableColumn fx:id="columnStatus" text = "Tình trạng" prefWidth = "180"/>
+              </columns>
+            </TableView>
+          </VBox>
+        </VBox>
+      </VBox>
+     </center> 
+   </BorderPane>
+</StackPane>
