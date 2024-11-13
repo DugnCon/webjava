@@ -69,27 +69,26 @@
       <!-- tạo nơi thêm sách --> 
      <center>
      <VBox styleClass = "vbox_2">
-      <HBox styleClass = "alterHbox" spacing  ="900" alignment = "CENTER">
-       <Label fx:id = "label" text = "Xóa thông tin sách" styleClass = "labelTit"/>
-       <Button text = "Quay về" fx:id = "Back" onAction = "#handleBack" styleClass = "buttonBack"/>
-      </HBox>
-      <VBox>
+       <HBox styleClass = "alterHbox" spacing  ="900" alignment = "CENTER">
+          <Label fx:id = "label" text = "Xóa thông tin sách" styleClass = "labelTit"/>
+          <Button text = "Quay về" fx:id = "Back" onAction = "#handleBack" styleClass = "buttonBack"/>
+       </HBox>
+     <VBox>
       <padding>
         <Insets top = "30" right = "0" bottom = "0" left = "0"/>
       </padding>
         <VBox alignment = "CENTER" spacing = "40">
-          <!-- Tạo trường để xóa sach -->
-         <HBox alignment = "CENTER" spacing = "20">
-          <padding>
-            <Insets top = "0" right = "20" bottom = "0" left = "20"/>
-          </padding>
+        
+        <VBox alignment = "TOP_CENTER" spacing = "10">
+         <HBox alignment = "CENTER" spacing = "30">
            <ImageView fx:id = "image" fitWidth = "30" fitHeight = "30" preserveRatio = "true">
              <Image url="/icons8-search-50.png"/>
            </ImageView>
-           <TextField fx:id = "searchCode" promptText = "Vui lòng nhập mã sách cần xóa" styleClass = "textField"/>
+           <TextField fx:id = "searchCode" promptText = "Vui lòng nhập mã sách cần xóa" styleClass = "textfield"/>
            <Button fx:id = "deleted" text = "Xóa sách" onAction = "#handleDelete" styleClass = "buttonAdd"/>
          </HBox>
-          <!-- Tạo nút ghi hoàn tất thêm sách -->
+        </VBox>
+
           <HBox alignment = "CENTER">
             <Button fx:id = "back" text = "Tải lại" onAction = "#handleLoad" styleClass = "buttonAdd"/>
           </HBox>
@@ -107,6 +106,7 @@
               </columns>
             </TableView>
           </VBox>
+          
         </VBox>
       </VBox>
       </VBox>
