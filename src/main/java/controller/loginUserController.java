@@ -40,21 +40,19 @@ public class loginUserController extends baseSceneController {
         userLog userlog = new userLog(username.getText(), password.getText());
         int res = userLoginAccount.setNew().insertLog(userlog);
         ArrayList<lockaccount> arr = lockAccount.setNew().selectByCondition(username.getText());
-        if(arr.isEmpty()) {
-        	alertController.setNew().AlertComplete("Đăng nhập thành công");
-            createScene(login1, "/main/sources/interfaceUser.fxml", "/main/sources/css/interfaceUser.css");
-        }else {
+        if(!arr.isEmpty()) {
         	String isUsername = arr.get(0).getUsername();
             String notify = arr.get(0).getExplain();
-            arr.clear();
-            if(res < 1) {
-            	alertController.setNew().AlertComplete("Sai mật khẩu");
-            } else if (res > 0 && (!username.getText().equals(isUsername) || isUsername.isEmpty())) {
-            	alertController.setNew().AlertComplete("Đăng nhập thành công");
-                createScene(login1, "/main/sources/interfaceUser.fxml", "/main/sources/css/interfaceUser.css");
-            } else {
+            if(username.getText().equals(isUsername)) {
             	alertController.setNew().AlertComplete(notify);
             }
+        }else {
+        	if(res > 0) {
+        		alertController.setNew().AlertComplete("Đăng nhập thành công");
+                createScene(login1, "/main/sources/interfaceUser.fxml", "/main/sources/css/interfaceUser.css");
+        	}else {
+        		alertController.setNew().AlertComplete("Sai mật khẩu hoặc tài khoản");
+        	}
         }
     }
 

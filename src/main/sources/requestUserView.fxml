@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.geometry.Pos?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+<?import javafx.scene.control.ProgressIndicator?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.requestUserController" stylesheets="@main/sources/css/interfaceUser.css">
+   <BorderPane>
+    <top>
+    <BorderPane>
+     <top>
+    <HBox alignment="TOP_CENTER" styleClass = "header_top" spacing = "50">
+        <!-- Đặt từng ImageView trong VBox để căn chỉnh theo chiều dọc -->
+        <VBox alignment="CENTER">
+          <padding>
+            <Insets top = "0" right = "50" bottom = "0" left = "10"/>
+          </padding>
+            <ImageView fx:id = "img1" fitWidth="70" fitHeight="70" preserveRatio="true">
+                <Image url="/1024px-Logo_HUET.svg.png"/>
+            </ImageView>
+        </VBox>
+        <VBox alignment="CENTER" styleClass = "image">
+          <padding>
+            <Insets top = "0" right = "10" bottom = "0" left = "50"/>
+          </padding>
+            <ImageView fx:id = "img2" fitWidth="70" fitHeight="70" preserveRatio="true">
+                <Image url="/unnamed.png"/>
+            </ImageView>
+        </VBox>
+        <VBox alignment="CENTER" styleClass = "image">
+          <padding>
+            <Insets top = "15" right = "10" bottom = "0" left = "50"/>
+          </padding>
+            <ImageView fx:id = "img3" fitWidth="150" fitHeight="350" preserveRatio="true">
+                <Image url="/logo-vnu.png"/>
+            </ImageView>
+        </VBox>
+        <VBox alignment="CENTER" styleClass = "image">
+          <padding>
+            <Insets top = "40" right = "10" bottom = "0" left = "50"/>
+          </padding>
+            <ImageView fx:id = "img4" fitWidth="200" fitHeight="350" preserveRatio="true">
+                <Image url="/959.png"/>
+            </ImageView>
+        </VBox>
+    </HBox>
+    </top>
+    <!-- Thanh nav thực thi các scene -->
+    <center>
+    <HBox alignment = "CENTER" styleClass = "header_next" spacing = "50">
+      <HBox alignment = "CENTER">
+        <Button text = "Trang chủ" fx:id = "home" onAction = "#handleHome" styleClass = "button_1"/>
+        <Button text = "Giới thiệu" fx:id = "introduce" onAction = "#handleIntro" styleClass = "button_1"/>
+        <Button text = "Nổi bật" fx:id = "suprise" onAction = "#handleSuprise" styleClass = "button_1"/>
+        <Button text = "Dịch vụ" fx:id = "service" onAction = "#handleService" styleClass = "button_1"/>
+        <Button text = "Liên hệ" fx:id = "contact" onAction = "#handleContact" styleClass = "button_1"/>
+        <Button text = "Quay về" fx:id = "back" onAction = "#handleBack" styleClass = "button_1"/>
+      </HBox>
+    </HBox>
+    </center>
+    </BorderPane>
+    </top>
+    
+    <!-- Phần content -->
+    <center>
+    <ScrollPane styleClass="scrollPane" HBox.hgrow="ALWAYS">
+     <content>
+     
+    <StackPane>
+     <VBox styleClass = "body">
+       <padding>
+        <Insets top = "20" right = "0" bottom = "0" left = "56"/>
+       </padding>
+       
+     <VBox alignment = "CENTER" spacing = "10">
+      <padding>
+        <Insets bottom = "40"/>
+      </padding>
+      <HBox alignment = "CENTER" spacing = "20">
+       <padding>
+         <Insets left = "100"/>
+       </padding>
+        <ImageView fx:id = "image" fitWidth = "30" fitHeight = "30" preserveRatio = "true">
+           <Image url="/icons8-search-50.png"/>
+        </ImageView>
+        <TextField fx:id="fieldSearch" promptText="Search" styleClass="textfield"/>
+        <Button fx:id="searchBook" text="Tìm kiếm" onAction="#handleSearchBook" styleClass="buttonAdd"/>
+      </HBox>
+      
+      <!--******* Update nội dung *********-->
+      <StackPane alignment = "CENTER">
+        <HBox alignment = "CENTER">
+          <padding>
+            <Insets right = "100" left = "100"/>
+          </padding>
+          <ScrollPane fx:id = "scrollpane" styleClass= "vboxFind" fitToWidth="true" prefHeight="400" prefWidth="400">
+            <VBox fx:id="searchResultsContainer" spacing="30" alignment="CENTER" styleClass="vboxFind"/>
+          </ScrollPane>
+       </HBox>
+     </StackPane>
+     <!-- ************************* -->
+     
+     </VBox>
+      
+      <!-- Tạo footer -->
+     <VBox styleClass = "background_img">
+        <padding>
+           <Insets top = "100" right = "200" bottom = "100" left = "200"/>
+         </padding>
+       <StackPane alignment = "CENTER">
+        <VBox alignment = "CENTER">
+         <VBox styleClass = "image_2" alignment = "CENTER">
+           <ImageView fx:id = "img6" fitWidth = "500" fitHeight = "300" preserveRatio = "true">
+             <Image url = "/logo-vnu.png"/>
+           </ImageView>
+         </VBox>
+         <HBox spacing = "50">
+           <padding>
+             <Insets top = "40" right = "0" bottom = "0" left = "0"/>
+           </padding>
+           <Button fx:id = "bt1" text = "FaceBook" styleClass = "button_2"/>
+           <Button fx:id = "bt2" text = "Gmail" styleClass = "button_2"/>
+           <Button fx:id = "bt3" text = "TikTok" styleClass = "button_2"/>
+         </HBox>
+        </VBox> 
+       </StackPane>
+     </VBox>
+     
+     <!-- Tạo footer cuổi -->
+     <HBox styleClass = "header_top" alignment  = "CENTER" spacing = "40">
+      <padding>
+        <Insets top = "10" right = "0" bottom = "10" left = "0"/>
+      </padding>
+       <ImageView fx:id = "img7" fitWidth = "200" fitHeight = "100" preserveRatio = "true">
+         <Image  url = "/logo-vnu.png"/>
+       </ImageView>
+       <ImageView fx:id = "img8" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+         <Image url = "/unnamed.png"/>
+       </ImageView>
+       <ImageView fx:id = "img9" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+         <Image url = "/logo.png"/>
+       </ImageView>
+       <ImageView fx:id = "img10" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+         <Image url = "/VNU-HUS.jpg"/>
+       </ImageView>
+       <ImageView fx:id = "img11" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+         <Image url = "/ULIS-Logo-RBG-02.jpg"/>
+       </ImageView>
+     </HBox>
+     
+      </VBox>
+        <ProgressIndicator fx:id="loadingIndicator" visible="false" />
+     </StackPane>
+    </content>
+   </ScrollPane>
+   </center>
+  </BorderPane>
+</VBox>

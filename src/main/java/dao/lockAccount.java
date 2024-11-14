@@ -108,7 +108,21 @@ public class lockAccount implements UserAccountInterface<lockaccount> {
 
 	@Override
 	public ArrayList<lockaccount> selectByCondition1(String condition) {
-		return null;
+		ArrayList<lockaccount> arr = new ArrayList<lockaccount>();
+		try {
+			Connection con = JDBCSQL.getConnection();
+			PreparedStatement prsttm = con.prepareStatement("SELECT * FROM lockaccount WHERE userID = ?");
+			prsttm.setString(1, condition);
+			ResultSet res = prsttm.executeQuery();
+			if(res.next()) {
+				lockaccount lock = new lockaccount(res.getString(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6));
+				arr.add(lock);
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return arr;
 	}
 
 }

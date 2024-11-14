@@ -148,6 +148,6 @@ public class manageUserController extends baseSceneController {
 	
 	@FXML
 	private void handleRestore() {
-		
+		createScene(restoreaccount,"/main/sources/restoreAccountView.fxml","/main/sources/css/lockAccount.css");
 	}
 }

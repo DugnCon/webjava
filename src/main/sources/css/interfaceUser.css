@@ -145,3 +145,46 @@
 	-fx-pref-width:370;
 	-fx-pref-height:305;
 }
+.textfield{
+	-fx-pref-width:500;
+	-fx-pref-height:40;
+	-fx-border-color:#168560;
+	-fx-border-radius:20;
+	-fx-background-radius:20;
+	-fx-border-color:#2B579A;
+	-fx-border-width:2;
+	-fx-text-fill:black;
+}
+.buttonAdd{
+	-fx-pref-width:130;
+	-fx-pref-height:40;
+	-fx-background-radius:45;
+	-fx-border-radius:45;
+	-fx-font-size:12;
+	-fx-font-weight:bold;
+	-fx-text-fill:#2B579A;
+	-fx-border-color:#2B579A;
+	-fx-border-style:solid;
+	-fx-border-width:2;
+}
+.buttonAdd:hover{
+	-fx-cursor:hand;
+	-fx-background-color:#2B579A;
+	-fx-text-fill:#ffffff;
+}
+.progress-indicator {
+    -fx-pref-width: 50px;
+    -fx-pref-height: 50px;
+    -fx-background-color: transparent;
+}
+.vboxFind{
+	-fx-background-color:#ffffff;
+	-fx-text-fill:black;
+	-fx-font-weight:bold;
+	-fx-font-size:12;
+	-fx-border-style:solid;
+	-fx-wrap-text:true;
+	-fx-font-family: Afacad Flux;
+	-fx-border-radius:8;
+	-fx-background-radius:8;
+}

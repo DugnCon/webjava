@@ -6,6 +6,7 @@ import java.util.Collections;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
@@ -107,7 +108,17 @@ public class interfaceUserController1 extends baseSceneController {
 		tran.COMEONARRAY(img_1);
 		tran.COMERIGHT3(img_2);
 		tran.COMERIGHT3(button);
+		
+		/**Tạo trường thêm link cho tiêu đề*/
+		 /*Hyperlink link = new Hyperlink("Click here to open website");
+
+	        // Gắn sự kiện nhấp chuột để mở trình duyệt với URL
+	        link.setOnAction(event -> {
+	            getHostServices().showDocument("https://www.example.com");
+	        });*/
+		
 	}
+	
 	@FXML
 	private void handleHome() {
 		createScene(home,"/main/sources/interfaceUser.fxml","/main/sources/css/interfaceUser.css");
@@ -117,7 +128,7 @@ public class interfaceUserController1 extends baseSceneController {
 	}
 	@FXML
 	private void handleSuprise() {
-		
+		createScene(suprise,"/main/sources/requestUserView.fxml","/main/sources/css/interfaceUser.css");
 	}
 	@FXML
 	private void handleService() {
