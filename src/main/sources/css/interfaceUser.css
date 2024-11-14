@@ -30,7 +30,7 @@
 	-fx-text-fill:#ffffff;
 	-fx-color:#00477F;
 	-fx-font-size:16;
-	-fx-font-weight:bold;
+	-fx-font-family:"Accent Graphic W00 Medium";
 }
 .button_1:hover{
 	-fx-background-color:#00345D;
@@ -43,13 +43,13 @@
 	-fx-background-color:rgba(255,255,255,0);
 	-fx-text-fill:#ffffff;
 	-fx-font-size:22;
-	-fx-font-weight:bold;
 	-fx-border-style:solid;
 	-fx-border-width:2;
 	-fx-border-color:#ffffff;
+	-fx-font-family:"Accent Graphic W00 Medium";
 }
 .button_2:hover{
-	-fx-background-color:#00477F;
+	-fx-background-color:rgba(255,255,255,0.5);
 }
 .font{
 	-fx-font-size:16;
@@ -72,10 +72,7 @@
 .fontTile4{
 	-fx-font-size:30;
 	-fx-text-fill:black;
-	-fx-font-weight:bold;
-}
-.fontTile4:hover{
-	-fx-text-fill:#00477F;
+	-fx-font-family:"Accent Graphic W00 Medium";
 }
 .fontTile5{
 	-fx-font-size:10;
@@ -105,6 +102,11 @@
 	-fx-font-size:18;
 	-fx-text-fill:black;
 	-fx-font-weight:bold;
+}
+.Text{
+	-fx-font-size:16;
+	-fx-text-fill:black;
+	-fx-font-family:"Accent Graphic W00 Medium";
 }
 .AlterImage1{
 	-fx-padding:10 0 0 10;

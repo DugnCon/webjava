@@ -59,7 +59,7 @@ public class MultiThreadedAPIController {
         book.addProperty("title", openLibraryBook.has("title") ? openLibraryBook.get("title").getAsString() : "Unknown Title");
         book.addProperty("infoLink", openLibraryBook.has("key") ? "https://openlibrary.org" + openLibraryBook.get("key").getAsString() : "");
         
-        // Nếu API cung cấp URL hình ảnh, hãy thêm
+        /**Nếu API cung cấp URL hình ảnh, hãy thêm*/
         if (openLibraryBook.has("cover_i")) {
             String imageUrl = "https://covers.openlibrary.org/b/id/" + openLibraryBook.get("cover_i").getAsInt() + "-M.jpg";
             JsonObject imageLinks = new JsonObject();

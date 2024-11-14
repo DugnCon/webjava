@@ -12,7 +12,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-
+import javafx.scene.image.Image;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
@@ -32,6 +32,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -242,16 +243,31 @@ public class quanlyController extends baseSceneController {
             for (int i = 0; i < items.size(); i++) {
                 JsonObject book = items.get(i).getAsJsonObject();
                 JsonObject volumeInfo = book.getAsJsonObject("volumeInfo");
+
                 String title = volumeInfo.get("title").getAsString();
                 String infoLink = volumeInfo.has("infoLink") ? volumeInfo.get("infoLink").getAsString() : "";
+                String thumbnailUrl = volumeInfo.has("imageLinks") && volumeInfo.getAsJsonObject("imageLinks").has("thumbnail")
+                        ? volumeInfo.getAsJsonObject("imageLinks").get("thumbnail").getAsString() : null;
+
+                HBox bookEntry = new HBox(10); // Tạo một HBox để chứa ảnh và tên sách
+                bookEntry.setAlignment(Pos.CENTER_LEFT);
+
+                // Tạo và đặt ảnh bìa sách
+                if (thumbnailUrl != null) {
+                    ImageView thumbnail = new ImageView(new Image(thumbnailUrl, 50, 75, true, true));
+                    bookEntry.getChildren().add(thumbnail);
+                }
+
+                // Thêm tiêu đề sách và gắn link
                 Text bookTitleText = new Text(title);
-                bookTitleText.setWrappingWidth(400); 
-                
+                bookTitleText.setWrappingWidth(300);
+
                 Hyperlink bookLink = new Hyperlink();
                 bookLink.setGraphic(bookTitleText);
                 bookLink.setOnAction(event -> openWebpage(infoLink));
 
-                searchResultsContainer.getChildren().add(bookLink);
+                bookEntry.getChildren().add(bookLink);
+                searchResultsContainer.getChildren().add(bookEntry);
             }
         } else {
             Text noResults = new Text("Không tìm thấy gợi ý nào.");
@@ -311,26 +327,42 @@ public class quanlyController extends baseSceneController {
 
 
     private void updateResults(JsonArray results) {
-        searchResultsContainer.getChildren().clear(); 
+        searchResultsContainer.getChildren().clear();
+
         if (results != null && results.size() > 0) {
             for (int i = 0; i < results.size(); i++) {
                 JsonObject book = results.get(i).getAsJsonObject();
                 JsonObject volumeInfo = book.getAsJsonObject("volumeInfo");
+
                 String title = volumeInfo.get("title").getAsString();
                 String infoLink = volumeInfo.has("infoLink") ? volumeInfo.get("infoLink").getAsString() : "";
-                Hyperlink bookLink = new Hyperlink(title);
-                if (!infoLink.isEmpty()) {
-                    bookLink.setOnAction(event -> openWebpage(infoLink));
-                } else {
-                    bookLink.setDisable(true); 
+                String thumbnailUrl = volumeInfo.has("imageLinks") && volumeInfo.getAsJsonObject("imageLinks").has("thumbnail")
+                        ? volumeInfo.getAsJsonObject("imageLinks").get("thumbnail").getAsString() : null;
+
+                HBox bookEntry = new HBox(10);
+                bookEntry.setAlignment(Pos.TOP_CENTER);
+
+                if (thumbnailUrl != null) {
+                    ImageView thumbnail = new ImageView(new Image(thumbnailUrl, 50, 75, true, true));
+                    bookEntry.getChildren().add(thumbnail);
                 }
-                searchResultsContainer.getChildren().add(bookLink); 
+
+                Text bookTitleText = new Text(title);
+                bookTitleText.setWrappingWidth(300);
+
+                Hyperlink bookLink = new Hyperlink();
+                bookLink.setGraphic(bookTitleText);
+                bookLink.setOnAction(event -> openWebpage(infoLink));
+
+                bookEntry.getChildren().add(bookLink);
+                searchResultsContainer.getChildren().add(bookEntry);
             }
         } else {
             Text noResults = new Text("Không tìm thấy kết quả.");
             searchResultsContainer.getChildren().add(noResults);
         }
     }
+
 
 
     private void openWebpage(String urlString) {

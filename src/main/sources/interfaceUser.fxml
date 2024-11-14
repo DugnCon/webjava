@@ -65,12 +65,12 @@
     <center>
     <HBox alignment = "CENTER" styleClass = "header_next" spacing = "50">
       <HBox alignment = "CENTER">
-        <Button text = "Trang chủ" fx:id = "home" onAction = "#handleHome" styleClass = "button_1"/>
-        <Button text = "Giới thiệu" fx:id = "introduce" onAction = "#handleIntro" styleClass = "button_1"/>
-        <Button text = "Nổi bật" fx:id = "suprise" onAction = "#handleSuprise" styleClass = "button_1"/>
-        <Button text = "Dịch vụ" fx:id = "service" onAction = "#handleService" styleClass = "button_1"/>
-        <Button text = "Liên hệ" fx:id = "contact" onAction = "#handleContact" styleClass = "button_1"/>
-        <Button text = "Quay về" fx:id = "back" onAction = "#handleBack" styleClass = "button_1"/>
+        <Button text = "Home" fx:id = "home" onAction = "#handleHome" styleClass = "button_1"/>
+        <Button text = "Introduce" fx:id = "introduce" onAction = "#handleIntro" styleClass = "button_1"/>
+        <Button text = "Outstanding" fx:id = "suprise" onAction = "#handleSuprise" styleClass = "button_1"/>
+        <Button text = "Service" fx:id = "service" onAction = "#handleService" styleClass = "button_1"/>
+        <Button text = "Contact" fx:id = "contact" onAction = "#handleContact" styleClass = "button_1"/>
+        <Button text = "Back" fx:id = "back" onAction = "#handleBack" styleClass = "button_1"/>
       </HBox>
     </HBox>
     </center>

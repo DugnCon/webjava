@@ -18,6 +18,7 @@
 	-fx-text-fill:#ffffff;
 	-fx-font-weight:bold;
 	-fx-font-size:16;
+	-fx-font-family: "Accent Graphic W00 Medium";
 }
 .alterHbox{
 	-fx-border-style:none none solid none;

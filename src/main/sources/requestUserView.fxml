@@ -21,6 +21,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 <?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.text.Text?>
 <VBox xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.requestUserController" stylesheets="@main/sources/css/interfaceUser.css">
    <BorderPane>
     <top>
@@ -66,12 +67,12 @@
     <center>
     <HBox alignment = "CENTER" styleClass = "header_next" spacing = "50">
       <HBox alignment = "CENTER">
-        <Button text = "Trang chủ" fx:id = "home" onAction = "#handleHome" styleClass = "button_1"/>
-        <Button text = "Giới thiệu" fx:id = "introduce" onAction = "#handleIntro" styleClass = "button_1"/>
-        <Button text = "Nổi bật" fx:id = "suprise" onAction = "#handleSuprise" styleClass = "button_1"/>
-        <Button text = "Dịch vụ" fx:id = "service" onAction = "#handleService" styleClass = "button_1"/>
-        <Button text = "Liên hệ" fx:id = "contact" onAction = "#handleContact" styleClass = "button_1"/>
-        <Button text = "Quay về" fx:id = "back" onAction = "#handleBack" styleClass = "button_1"/>
+        <Button text = "Home" fx:id = "home" onAction = "#handleHome" styleClass = "button_1"/>
+        <Button text = "Introduce" fx:id = "introduce" onAction = "#handleIntro" styleClass = "button_1"/>
+        <Button text = "Outstanding" fx:id = "suprise" onAction = "#handleSuprise" styleClass = "button_1"/>
+        <Button text = "Service" fx:id = "service" onAction = "#handleService" styleClass = "button_1"/>
+        <Button text = "Contact" fx:id = "contact" onAction = "#handleContact" styleClass = "button_1"/>
+        <Button text = "Back" fx:id = "back" onAction = "#handleBack" styleClass = "button_1"/>
       </HBox>
     </HBox>
     </center>
@@ -113,9 +114,148 @@
           <ScrollPane fx:id = "scrollpane" styleClass= "vboxFind" fitToWidth="true" prefHeight="400" prefWidth="400">
             <VBox fx:id="searchResultsContainer" spacing="30" alignment="CENTER" styleClass="vboxFind"/>
           </ScrollPane>
-       </HBox>
+        </HBox>
+       
+        <VBox style = "-fx-background-color:#f4f4f4;" spacing = "5" alignment = "CENTER">
+         <Text fx:id = "title" text = "Introduce" styleClass = "fontTile4"/>
+         <HBox alignment = "CENTER" spacing = "40">
+           <HBox spacing = "20" alignment = "CENTER_LEFT">
+             <ImageView fitWidth = "250" fitHeight = "350" preserveRatio = "true">
+               <Image url = "/chientranhvahoabinh.jpg"/>
+             </ImageView>
+             <VBox alignment = "TOP_CENTER">
+             <Text fx:id = "lb1" text = "War and Peace" styleClass = "fontTile4"/>
+             <Text fx:id = "text1" styleClass = "Text"/>
+             </VBox>
+           </HBox>
+           <HBox spacing = "20" alignment = "CENTER_RIGHT">
+             <ImageView fitWidth = "250" fitHeight = "350" preserveRatio = "true">
+               <Image url = "/thepdatoitheday.jpg"/>
+             </ImageView>
+             <VBox alignment = "TOP_CENTER">
+             <Text fx:id = "lb2" text = "Steel Has Been Tempered" styleClass = "fontTile4"/>
+             <Text fx:id = "text2" styleClass = "Text"/>
+             </VBox>
+           </HBox>
+        </HBox>
+       </VBox>
      </StackPane>
      <!-- ************************* -->
+     
+     <HBox spacing = "20">
+       <padding>
+         <Insets top = "40"/>
+       </padding>
+      <VBox alignment = "CENTER_LEFT" style = "-fx-border-radius:10; -fx-background-radius:10; -fx-background-color:#ffffff;
+         -fx-border-color:black;">
+       <Text fx:id = "title2" text = "  Special" styleClass = "Text"/>
+       <padding>
+         <Insets top = "10" right = "0" bottom = "0" left = "0"/>
+       </padding>
+       <HBox alignment = "CENTER" style = "-fx-border-color:black transparent transparent transparent;">
+         <padding>
+           <Insets top = "20" right = "50" bottom = "20" left = "40"/>
+         </padding>
+         <HBox spacing = "10" alignment = "CENTER">
+           <ImageView fx:id = "img1" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
+             <Image url = "/matbiec.jpg"/>
+           </ImageView>
+           <ImageView fx:id = "img2" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
+             <Image url = "/ngayxuacomotchuyentinh.jpg"/>
+           </ImageView>
+           <ImageView fx:id = "img3" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
+             <Image url = "/phebinhvanhochauhiendaivietnam.jpg"/>
+           </ImageView>
+           <ImageView fx:id = "img4" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
+             <Image url = "/toithayhoacovang.jpg"/>
+           </ImageView>
+           <ImageView fx:id = "img5" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
+             <Image url = "/truyenngan.jpg"/>
+           </ImageView>
+         </HBox>
+       </HBox>
+      </VBox>
+      
+      <VBox alignment = "CENTER_LEFT" style = "-fx-border-radius:10; -fx-background-radius:10; -fx-background-color:#ffffff;
+         -fx-border-color:black;">
+       <Text fx:id = "title2" text = "  Popular" styleClass = "Text"/>
+       <padding>
+         <Insets top = "10" right = "0" bottom = "0" left = "0"/>
+       </padding>
+       <HBox alignment = "CENTER" style = "-fx-border-color:black transparent transparent transparent;">
+         <padding>
+           <Insets top = "20" right = "50" bottom = "20" left = "40"/>
+         </padding>
+         <HBox spacing = "10" alignment = "CENTER">
+           <ImageView fx:id = "img_6" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
+             <Image url = "/matbiec.jpg"/>
+           </ImageView>
+           <ImageView fx:id = "img_7" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
+             <Image url = "/ngayxuacomotchuyentinh.jpg"/>
+           </ImageView>
+           <ImageView fx:id = "img_8" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
+             <Image url = "/phebinhvanhochauhiendaivietnam.jpg"/>
+           </ImageView>
+           <ImageView fx:id = "img_9" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
+             <Image url = "/toithayhoacovang.jpg"/>
+           </ImageView>
+           <ImageView fx:id = "img_10" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
+             <Image url = "/truyenngan.jpg"/>
+           </ImageView>
+         </HBox>
+       </HBox>
+      </VBox>
+     </HBox>
+     
+     <HBox spacing = "20" alignment = "CENTER">
+       <padding>
+         <Insets top = "40"/>
+       </padding>
+      <VBox alignment = "CENTER_LEFT" style = "-fx-border-radius:10; -fx-background-radius:10; -fx-background-color:#ffffff;
+         -fx-border-color:black;">
+       <Text fx:id = "title2" text = "  Inventory Incoming" styleClass = "Text"/>
+       <padding>
+         <Insets top = "10" right = "0" bottom = "0" left = "0"/>
+       </padding>
+       <HBox alignment = "CENTER" style = "-fx-border-color:black transparent transparent transparent;">
+         <padding>
+           <Insets top = "20" right = "50" bottom = "20" left = "40"/>
+         </padding>
+         <HBox spacing = "10" alignment = "CENTER">
+           <ImageView fx:id = "img111" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
+             <Image url = "/matbiec.jpg"/>
+           </ImageView>
+           <ImageView fx:id = "img22" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
+             <Image url = "/ngayxuacomotchuyentinh.jpg"/>
+           </ImageView>
+           <ImageView fx:id = "img33" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
+             <Image url = "/phebinhvanhochauhiendaivietnam.jpg"/>
+           </ImageView>
+           <ImageView fx:id = "img44" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
+             <Image url = "/toithayhoacovang.jpg"/>
+           </ImageView>
+           <ImageView fx:id = "img55" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
+             <Image url = "/truyenngan.jpg"/>
+           </ImageView>
+           <ImageView fx:id = "img66" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
+             <Image url = "/truyenngan.jpg"/>
+           </ImageView>
+           <ImageView fx:id = "img77" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
+             <Image url = "/truyenngan.jpg"/>
+           </ImageView>
+           <ImageView fx:id = "img88" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
+             <Image url = "/truyenngan.jpg"/>
+           </ImageView>
+           <ImageView fx:id = "img99" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
+             <Image url = "/truyenngan.jpg"/>
+           </ImageView>
+           <ImageView fx:id = "img1010" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
+             <Image url = "/truyenngan.jpg"/>
+           </ImageView>
+         </HBox>
+       </HBox>
+      </VBox>
+     </HBox>
      
      </VBox>
       

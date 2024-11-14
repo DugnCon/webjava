@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import main.java.controller.transistionController;
 
 public class interfaceUserController extends baseSceneController {
@@ -72,6 +73,14 @@ public class interfaceUserController extends baseSceneController {
 		tran.COMEONARRAY(img_1);
 		tran.COMERIGHT3(img_2);
 		tran.COMERIGHT3(button);
+		
+		Font font = Font.loadFont(getClass().getResourceAsStream("/Accent Graphic W00 Medium.ttf"), 20);
+		home.setFont(font);
+		introduce.setFont(font);
+		suprise.setFont(font);
+		service.setFont(font);
+		contact.setFont(font);
+		back.setFont(font);
 	}
 	@FXML
 	private void handleHome() {

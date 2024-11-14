@@ -29,5 +29,4 @@ public class ExternalAPIController {
         }
     }
 
-    // Bạn có thể thêm các phương thức khác để tìm kiếm từ các API khác nữa
 }
