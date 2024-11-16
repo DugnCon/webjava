@@ -6,6 +6,8 @@ import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
@@ -53,7 +55,7 @@ public class requestUserController extends baseSceneController {
 	private VBox tuto1,tuto2,tuto3,tuto4,vboxnew;
 	@FXML
 	private ImageView img1,img2,img3,img4,img5,img6,img7,img8,
-	img9,img10,img11,image,img_6,img_7,img_8,img_9
+	img9,img10,img11,img_1,img_2,img_3,img_4,img_5,image,img_6,img_7,img_8,img_9
 	,img_10,img22,img33,img44,img55,img66,img77,img88,img99,img1010,img111,img1001,img1002;
 	@FXML
 	private Button home,introduce,suprise,service,contact,back;
@@ -66,7 +68,7 @@ public class requestUserController extends baseSceneController {
 	@FXML
 	private ScrollPane scrollpane;
 	@FXML
-	private VBox searchResultsContainer;
+	private VBox searchResultsContainer,para;
 	@FXML
 	private ProgressIndicator loadingIndicator;
 	@FXML
@@ -176,11 +178,11 @@ public class requestUserController extends baseSceneController {
 		label5.setFont(font);
 		label6.setFont(font);
 		
-		applyHoverEffect(img1);
-		applyHoverEffect(img2);
-		applyHoverEffect(img3);
-		applyHoverEffect(img4);
-		applyHoverEffect(img5);
+		applyHoverEffect(img_1);
+		applyHoverEffect(img_2);
+		applyHoverEffect(img_3);
+		applyHoverEffect(img_4);
+		applyHoverEffect(img_5);
 		applyHoverEffect(img_6);
 		applyHoverEffect(img_7);
 		applyHoverEffect(img_8);
@@ -198,6 +200,84 @@ public class requestUserController extends baseSceneController {
 		applyHoverEffect(img1010);
 		applyHoverEffect(img1001);
 		applyHoverEffect(img1002);
+		
+		transistionController tran = new transistionController();
+		tran.COMEON(title);
+		tran.COMEONALL1(searchBook,fieldSearch,image);
+		tran.COMERIGHT(label5);
+		tran.COMERIGHT(para);
+		
+		ArrayList<Node> I = new ArrayList<Node>();
+		I.add(img1);
+		I.add(img2);
+		I.add(img3);
+		I.add(img4);
+		tran.COMEONARRAY(I);
+		
+		ArrayList<Node> butt = new ArrayList<Node>();
+		butt.add(home);
+		butt.add(introduce);
+		butt.add(suprise);
+		butt.add(service);
+		butt.add(contact);
+		butt.add(back);
+		Collections.reverse(butt);
+		tran.COMERIGHT3(butt);
+		
+		ArrayList<Node> I1 = new ArrayList<Node>();
+		I1.add(img1001);
+		I1.add(lb1);
+		I1.add(text1);
+		tran.COMERIGHT3(I1);
+		
+		ArrayList<Node> I2 = new ArrayList<Node>();
+		I2.add(lb2);
+		I2.add(text2);
+		I2.add(img1002);
+		tran.COMELEFTARRAY(I2);
+		
+		ArrayList<Node> I3 = new ArrayList<Node>();
+		I3.add(img_1);
+		I3.add(img_2);
+		I3.add(img_3);
+		I3.add(img_4);
+		I3.add(img_5);
+		tran.COMERIGHT3(I3);
+		
+		ArrayList<Node> I4 = new ArrayList<Node>();
+		I4.add(img_6);
+		I4.add(img_7);
+		I4.add(img_8);
+		I4.add(img_9);
+		I4.add(img_10);
+		tran.COMELEFTARRAY(I4);
+		
+		ArrayList<Node> I5 = new ArrayList<Node>();
+		I5.add(img11);
+		I5.add(img22);
+		I5.add(img33);
+		I5.add(img44);
+		I5.add(img55);
+		I5.add(img66);
+		I5.add(img77);
+		I5.add(img88);
+		I5.add(img99);
+		I5.add(img1010);
+		tran.COMERIGHT3(I5);
+		
+		ArrayList<Node> I6 = new ArrayList<Node>();
+		I6.add(label6);
+		I6.add(username);
+		I6.add(tableBook);
+		I6.add(textarea);
+		I6.add(complete);
+		tran.COMERIGHT3(I6);
+		
+		ArrayList<Node> button = new ArrayList<Node>();
+		button.add(bt1);
+		button.add(bt2);
+		button.add(bt3);
+		tran.COMERIGHT3(button);
 	}
 	
 	private void scheduleSearch(String query) {
@@ -282,7 +362,7 @@ public class requestUserController extends baseSceneController {
         Task<JsonArray> searchTask = new Task<JsonArray>() {
             @Override
             protected JsonArray call() throws Exception {
-                return apiController.searchBooks(query, 5);
+                return apiController.searchBooks(query, 8);
             }
 
             @Override

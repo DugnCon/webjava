@@ -156,19 +156,19 @@
            <Insets top = "20" right = "50" bottom = "20" left = "40"/>
          </padding>
          <HBox spacing = "10" alignment = "CENTER">
-           <ImageView fx:id = "img1" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
+           <ImageView fx:id = "img_1" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
              <Image url = "/matbiec.jpg"/>
            </ImageView>
-           <ImageView fx:id = "img2" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
+           <ImageView fx:id = "img_2" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
              <Image url = "/ngayxuacomotchuyentinh.jpg"/>
            </ImageView>
-           <ImageView fx:id = "img3" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
+           <ImageView fx:id = "img_3" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
              <Image url = "/phebinhvanhochauhiendaivietnam.jpg"/>
            </ImageView>
-           <ImageView fx:id = "img4" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
+           <ImageView fx:id = "img_4" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
              <Image url = "/toithayhoacovang.jpg"/>
            </ImageView>
-           <ImageView fx:id = "img5" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
+           <ImageView fx:id = "img_5" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
              <Image url = "/truyenngan.jpg"/>
            </ImageView>
          </HBox>
@@ -263,7 +263,7 @@
          <Insets top = "20" right = "30" bottom = "40" left = "20"/>
        </padding>
        <Label styleClass = "fontTile4" fx:id = "label5" text = "One Short Paragraph a Day"/>
-       <VBox alignment = "CENTER_LEFT">
+       <VBox fx:id ="para" alignment = "CENTER_LEFT">
          <Text fx:id = "paragraph" styleClass = "Text"/>
        </VBox>
      </VBox>
