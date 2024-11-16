@@ -1,20 +1,31 @@
 package main.java.controller;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import javafx.animation.ScaleTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.util.Duration;
+import main.java.JDBC.JDBCSQL;
+import main.java.model.addNew;
 
 public class interfaceUserController1 extends baseSceneController {
 	@FXML
-	private Label label1,label2,label3,label4;
+	private Label label1,label2,label3,label4,label11;
 	@FXML
 	private VBox tuto1,tuto2,tuto3,tuto4;
 	@FXML
@@ -28,7 +39,23 @@ public class interfaceUserController1 extends baseSceneController {
 	@FXML
 	private VBox IMG8,IMG9,IMG10,IMG11,IMG12,IMG13;
 	@FXML
-	private Label LB1,LB2,LB3,LB4,LB5,LB6,LB7;
+	private Text LB1,LB2,LB3,LB4,LB5,LB6,LB7;
+	@FXML
+	private HBox h2,h3,h4,h5,h6,h7;
+	
+	private void applyHoverEffect(Node node) {
+	   	 ScaleTransition scaleIn = new ScaleTransition(Duration.millis(200), node);
+	        scaleIn.setToX(1.2);
+	        scaleIn.setToY(1.2);
+
+	        ScaleTransition scaleOut = new ScaleTransition(Duration.millis(200), node);
+	        scaleOut.setToX(1.0);
+	        scaleOut.setToY(1.0);
+
+	        node.setOnMouseEntered(e -> scaleIn.play()); 
+	        node.setOnMouseExited(e -> scaleOut.play()); 
+	 }
+	
 	@FXML
 	private void initialize() {
 		transistionController tran = new transistionController();
@@ -109,6 +136,7 @@ public class interfaceUserController1 extends baseSceneController {
 		tran.COMEONARRAY(img_1);
 		tran.COMERIGHT3(img_2);
 		tran.COMERIGHT3(button);
+		tran.COMERIGHT(label11);
 		
 		Font font = Font.loadFont(getClass().getResourceAsStream("/Accent Graphic W00 Medium.ttf"), 20);
 		home.setFont(font);
@@ -118,14 +146,34 @@ public class interfaceUserController1 extends baseSceneController {
 		contact.setFont(font);
 		back.setFont(font);
 		
-		/**Tạo trường thêm link cho tiêu đề*/
-		 /*Hyperlink link = new Hyperlink("Click here to open website");
-
-	        // Gắn sự kiện nhấp chuột để mở trình duyệt với URL
-	        link.setOnAction(event -> {
-	            getHostServices().showDocument("https://www.example.com");
-	        });*/
+		LB1.setFont(font);
+		LB2.setFont(font);
+		LB3.setFont(font);
+		LB4.setFont(font);
+		LB5.setFont(font);
+		LB6.setFont(font);
+		label11.setFont(font);
 		
+		LB1.setWrappingWidth(500);
+		LB2.setWrappingWidth(300);
+		LB3.setWrappingWidth(300);
+		LB4.setWrappingWidth(300);
+		LB5.setWrappingWidth(300);
+		LB6.setWrappingWidth(300);
+		
+		applyHoverEffect(IMG1);
+		applyHoverEffect(h2);
+		applyHoverEffect(h3);
+		applyHoverEffect(h4);
+		applyHoverEffect(h5);
+		applyHoverEffect(h6);
+		applyHoverEffect(h7);
+		applyHoverEffect(IMG8);
+		applyHoverEffect(IMG9);
+		applyHoverEffect(IMG10);
+		applyHoverEffect(IMG11);
+		applyHoverEffect(IMG12);
+		applyHoverEffect(IMG13);
 	}
 	
 	@FXML
@@ -137,7 +185,27 @@ public class interfaceUserController1 extends baseSceneController {
 	}
 	@FXML
 	private void handleSuprise() {
-		createScene(suprise,"/main/sources/requestUserView.fxml","/main/sources/css/interfaceUser.css");
+		try {
+            Connection con = JDBCSQL.getConnection();
+            PreparedStatement prsttm = con.prepareStatement("SELECT * FROM book");
+            ResultSet rs = prsttm.executeQuery();
+            ObservableList<addNew> bookList = FXCollections.observableArrayList();
+            while (rs.next()) {
+                addNew AddNew = new addNew(rs.getString(2), rs.getString(3), rs.getString(4),
+                        rs.getString(5), rs.getString(6), rs.getString(7),
+                        rs.getString(8), rs.getString(9));
+                bookList.add(AddNew);
+            }
+            
+            requestUserController controller = (requestUserController) createScene1(suprise, 
+                "/main/sources/requestUserView.fxml", "/main/sources/css/interfaceUser.css");
+            controller.setBookList(bookList); 
+            con.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Cannot execute: " + e.getMessage());
+        }
 	}
 	@FXML
 	private void handleService() {

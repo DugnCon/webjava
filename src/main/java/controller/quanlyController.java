@@ -249,16 +249,14 @@ public class quanlyController extends baseSceneController {
                 String thumbnailUrl = volumeInfo.has("imageLinks") && volumeInfo.getAsJsonObject("imageLinks").has("thumbnail")
                         ? volumeInfo.getAsJsonObject("imageLinks").get("thumbnail").getAsString() : null;
 
-                HBox bookEntry = new HBox(10); // Tạo một HBox để chứa ảnh và tên sách
+                HBox bookEntry = new HBox(10); 
                 bookEntry.setAlignment(Pos.CENTER_LEFT);
 
-                // Tạo và đặt ảnh bìa sách
                 if (thumbnailUrl != null) {
                     ImageView thumbnail = new ImageView(new Image(thumbnailUrl, 50, 75, true, true));
                     bookEntry.getChildren().add(thumbnail);
                 }
 
-                // Thêm tiêu đề sách và gắn link
                 Text bookTitleText = new Text(title);
                 bookTitleText.setWrappingWidth(300);
 

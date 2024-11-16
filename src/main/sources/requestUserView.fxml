@@ -22,8 +22,8 @@
 <?import javafx.scene.text.TextFlow?>
 <?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.text.Text?>
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.requestUserController" stylesheets="@main/sources/css/interfaceUser.css">
-   <BorderPane>
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.requestUserController" stylesheets="@main/sources/css/interfaceUser.css">
+   <BorderPane fx:id = "mainContent">
     <top>
     <BorderPane>
      <top>
@@ -94,6 +94,7 @@
       <padding>
         <Insets bottom = "40"/>
       </padding>
+      
       <HBox alignment = "CENTER" spacing = "20">
        <padding>
          <Insets left = "100"/>
@@ -102,25 +103,15 @@
            <Image url="/icons8-search-50.png"/>
         </ImageView>
         <TextField fx:id="fieldSearch" promptText="Search" styleClass="textfield"/>
-        <Button fx:id="searchBook" text="Tìm kiếm" onAction="#handleSearchBook" styleClass="buttonAdd"/>
+        <Button fx:id="searchBook" text="Search" onAction="#handleSearchBook" styleClass="buttonAdd"/>
       </HBox>
-      
       <!--******* Update nội dung *********-->
-      <StackPane alignment = "CENTER">
-        <HBox alignment = "CENTER">
-          <padding>
-            <Insets right = "100" left = "100"/>
-          </padding>
-          <ScrollPane fx:id = "scrollpane" styleClass= "vboxFind" fitToWidth="true" prefHeight="400" prefWidth="400">
-            <VBox fx:id="searchResultsContainer" spacing="30" alignment="CENTER" styleClass="vboxFind"/>
-          </ScrollPane>
-        </HBox>
-       
-        <VBox style = "-fx-background-color:#f4f4f4;" spacing = "5" alignment = "CENTER">
+      <StackPane alignment = "CENTER" styleClass = "color1">
+        <VBox fx:id = "vboxnew" style = "-fx-background-color:#f4f4f4;" spacing = "30" alignment = "CENTER">
          <Text fx:id = "title" text = "Introduce" styleClass = "fontTile4"/>
          <HBox alignment = "CENTER" spacing = "40">
-           <HBox spacing = "20" alignment = "CENTER_LEFT">
-             <ImageView fitWidth = "250" fitHeight = "350" preserveRatio = "true">
+           <HBox spacing = "30" alignment = "CENTER_LEFT">
+             <ImageView fx:id = "img1001" fitWidth = "250" fitHeight = "350" preserveRatio = "true">
                <Image url = "/chientranhvahoabinh.jpg"/>
              </ImageView>
              <VBox alignment = "TOP_CENTER">
@@ -128,8 +119,8 @@
              <Text fx:id = "text1" styleClass = "Text"/>
              </VBox>
            </HBox>
-           <HBox spacing = "20" alignment = "CENTER_RIGHT">
-             <ImageView fitWidth = "250" fitHeight = "350" preserveRatio = "true">
+           <HBox spacing = "30" alignment = "CENTER_RIGHT">
+             <ImageView fx:id = "img1002" fitWidth = "250" fitHeight = "350" preserveRatio = "true">
                <Image url = "/thepdatoitheday.jpg"/>
              </ImageView>
              <VBox alignment = "TOP_CENTER">
@@ -139,6 +130,14 @@
            </HBox>
         </HBox>
        </VBox>
+       <HBox fx:id = "hboxnew" alignment = "CENTER">
+          <padding>
+            <Insets right = "100" left = "100"/>
+          </padding>
+          <ScrollPane fx:id = "scrollpane" styleClass= "vboxFind" fitToWidth="true" prefHeight="400" prefWidth="400">
+            <VBox fx:id="searchResultsContainer" spacing="30" alignment="CENTER" styleClass="vboxFind"/>
+          </ScrollPane>
+        </HBox>
      </StackPane>
      <!-- ************************* -->
      
@@ -258,6 +257,40 @@
      </HBox>
      
      </VBox>
+     
+     <VBox alignment = "CENTER_LEFT" styleClass = "color2">
+       <padding>
+         <Insets top = "20" right = "30" bottom = "40" left = "20"/>
+       </padding>
+       <Label styleClass = "fontTile4" fx:id = "label5" text = "One Short Paragraph a Day"/>
+       <VBox alignment = "CENTER_LEFT">
+         <Text fx:id = "paragraph" styleClass = "Text"/>
+       </VBox>
+     </VBox>
+     
+     <VBox>
+       <VBox alignment = "CENTER" spacing = "20">
+        <padding>
+          <Insets right = "200" left  = "200" top ="40" bottom = "40"/>
+        </padding>
+         <Label text = "Your Book Borrowing Request" fx:id = "label6" styleClass = "fontTile4"/>
+         <VBox alignment = "CENTER" spacing = "25">
+           <TextField promptText = "Tên tài khoản" fx:id = "username" styleClass = "textfield1"/>
+           <HBox spacing = "40">
+           <TextArea promptText = "Yêu cầu" fx:id = "textarea" style = "-fx-border-radius:10; -fx-background-radius:10; -fx-border-color:black;"/>
+           <TableView fx:id = "tableBook" styleClass = "tableView">
+              <columns>
+               <TableColumn fx:id="columnCode" text="Mã sách" prefWidth="273"/>
+               <TableColumn fx:id="columnTitle" text="Tên sách" prefWidth="393"/>
+               <TableColumn fx:id="columnAuthor" text="Tác giả" prefWidth="313"/>
+               <TableColumn fx:id="columnYear" text="Năm xuất bản" prefWidth="243"/>
+              </columns>
+           </TableView>
+           </HBox>
+           <Button text = "Ghi nhận" styleClass = "buttonAdd" fx:id = "complete" onAction = "#handleRequire"/>
+         </VBox>
+       </VBox>
+     </VBox>
       
       <!-- Tạo footer -->
      <VBox styleClass = "background_img">
@@ -306,10 +339,10 @@
      </HBox>
      
       </VBox>
-        <ProgressIndicator fx:id="loadingIndicator" visible="false" />
      </StackPane>
     </content>
    </ScrollPane>
    </center>
   </BorderPane>
-</VBox>
+  <ProgressIndicator fx:id="loadingIndicator" visible="false" />
+</StackPane>

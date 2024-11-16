@@ -1,5 +1,8 @@
 package main.java.controller;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import javafx.animation.ScaleTransition;
@@ -16,6 +19,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import main.java.model.addNew;
+import main.java.JDBC.JDBCSQL;
 import main.java.dao.addbook;
 import main.java.dao.borrowbook;
 import main.java.dao.userAccount;
@@ -112,7 +116,26 @@ public class recordFormController extends baseSceneController {
     
     @FXML
     private void handleBack() {
-    	createScene(back,"/main/sources/borrowBookView.fxml","/main/sources/css/borrowBook.css");
+    	try {
+            Connection con = JDBCSQL.getConnection();
+            PreparedStatement prsttm = con.prepareStatement("SELECT * FROM borrower");
+            ResultSet rs = prsttm.executeQuery();
+            ObservableList<borrowNew> bookList = FXCollections.observableArrayList();
+            while (rs.next()) {
+                borrowNew borrownew = new borrowNew(rs.getString(3), rs.getString(8), rs.getString(4),
+                        rs.getString(5), rs.getString(6));
+                bookList.add(borrownew);
+            }
+            
+            borrowBookController controller = (borrowBookController) createScene1(back, 
+                "/main/sources/borrowBookView.fxml", "/main/sources/css/borrowBook.css");
+            controller.setBookList(bookList);
+            con.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Cannot execute: " + e.getMessage());
+        }
     }
     
     @FXML

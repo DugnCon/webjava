@@ -72,17 +72,14 @@
         <!-- Tạo bố cục quản lý kho sách -->
         <center>
               <VBox styleClass="vbox_2" HBox.hgrow="ALWAYS">
-                    <padding>
-                        <Insets top="30" right="50" bottom="0" left="50"/>
-                    </padding>
                     <VBox alignment="CENTER" spacing="40">
                     
-                       <HBox styleClass="alterHbox" spacing="950" alignment="CENTER">
+                       <HBox styleClass="alterHbox" spacing="830" alignment="CENTER">
                            <padding>
-                               <Insets top="0" right="0" bottom="20" left="0"/>
+                               <Insets top="0" right="0" bottom="10" left="0"/>
                            </padding>
-                           <Label text = "Thông tin người dùng" fx:id = "label1"/>
-                           <Button text = "Quay về" fx:id = "back" onAction = "#handleBack"/>
+                           <Label text = "Thông tin người dùng" fx:id = "label1" styleClass = "labelTit"/>
+                           <Button text = "Quay về" fx:id = "back" onAction = "#handleBack" styleClass = "buttonBack"/>
                         </HBox>
                         
                        <HBox alignment="CENTER">

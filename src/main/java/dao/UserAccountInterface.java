@@ -12,6 +12,7 @@ public interface UserAccountInterface<T> {
 	public int searchId(T t);
 	public ArrayList<T> selectAll();
 	public T selectById(T t);
+	public T selectByUser(String condition);
 	public ArrayList<T> selectByCondition(String condition);
 	public ArrayList<T> selectByCondition1(String condition);
 }

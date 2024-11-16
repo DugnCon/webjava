@@ -41,22 +41,9 @@ public class borrowBookController extends baseSceneController {
     
     private ObservableList<borrowNew> incomingBookList = FXCollections.observableArrayList();
     
-    /*public void setBookList(ObservableList<borrowNew> diffbook) {
+    public void setBookList(ObservableList<borrowNew> diffbook) {
         this.incomingBookList = diffbook;
         tableBook.setItems(incomingBookList);
-    }*/
-    
-    private void addButtonZoomEffect(Button button) {
-        ScaleTransition scaleIn = new ScaleTransition(Duration.millis(200), button);
-        scaleIn.setToX(1.1);
-        scaleIn.setToY(1.1);
-
-        ScaleTransition scaleOut = new ScaleTransition(Duration.millis(200), button);
-        scaleOut.setToX(1.0);
-        scaleOut.setToY(1.0);
-
-        button.setOnMouseEntered(e -> scaleIn.play()); 
-        button.setOnMouseExited(e -> scaleOut.play()); 
     }
 
     
@@ -82,6 +69,20 @@ public class borrowBookController extends baseSceneController {
         tran.COMEUNDER2(tableBook);
         tran.COMEON(addNewBorrower);
         tran.COMERIGHT(label);
+    }
+    
+    
+    private void addButtonZoomEffect(Button button) {
+        ScaleTransition scaleIn = new ScaleTransition(Duration.millis(200), button);
+        scaleIn.setToX(1.1);
+        scaleIn.setToY(1.1);
+
+        ScaleTransition scaleOut = new ScaleTransition(Duration.millis(200), button);
+        scaleOut.setToX(1.0);
+        scaleOut.setToY(1.0);
+
+        button.setOnMouseEntered(e -> scaleIn.play()); 
+        button.setOnMouseExited(e -> scaleOut.play()); 
     }
     
     @FXML

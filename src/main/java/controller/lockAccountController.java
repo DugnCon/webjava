@@ -1,8 +1,13 @@
 package main.java.controller;
 
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import javafx.animation.ScaleTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -11,6 +16,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
+import main.java.JDBC.JDBCSQL;
 import main.java.dao.lockAccount;
 import main.java.dao.userLoginAccount;
 import main.java.model.lockaccount;
@@ -75,7 +81,25 @@ public class lockAccountController extends baseSceneController {
 	
 	@FXML
 	private void handleBack() {
-		createScene(back,"/main/sources/manageUserView.fxml","/main/sources/css/manageUser.css");
+		try {
+            Connection con = JDBCSQL.getConnection();
+            PreparedStatement prsttm = con.prepareStatement("SELECT * FROM user");
+            ResultSet rs = prsttm.executeQuery();
+            ObservableList<userLog> bookList = FXCollections.observableArrayList();
+            while (rs.next()) {
+                userLog userlog = new userLog(rs.getString(1), rs.getString(2) , rs.getString(3), rs.getString(4), rs.getString(5));
+                bookList.add(userlog);
+            }
+            
+            manageUserController controller = (manageUserController) createScene1(back, 
+                "/main/sources/manageUserView.fxml", "/main/sources/css/manageUser.css");
+            controller.setBookList(bookList); 
+            con.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Cannot execute: " + e.getMessage());
+        }
 	}
 	
 	@FXML

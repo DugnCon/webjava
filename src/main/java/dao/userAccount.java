@@ -113,4 +113,10 @@ public class userAccount implements UserAccountInterface<user> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public user selectByUser(String condition) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

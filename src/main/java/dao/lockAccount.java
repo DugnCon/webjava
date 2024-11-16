@@ -125,4 +125,10 @@ public class lockAccount implements UserAccountInterface<lockaccount> {
 		return arr;
 	}
 
+	@Override
+	public lockaccount selectByUser(String condition) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

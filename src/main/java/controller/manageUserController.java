@@ -126,10 +126,9 @@ public class manageUserController extends baseSceneController {
 	
 	@FXML
 	private void handleSearchUser() {
-	    String id = searchUserID.getText();
-	    if (!id.isEmpty()) {
-	        userLog isID = new userLog(id);
-	        userLog log = userLoginAccount.setNew().selectById(isID);
+	    String username = searchUserID.getText();
+	    if (!username.isEmpty()) {
+	        userLog log = userLoginAccount.setNew().selectByUser(username);
 	        if (log != null) {
 	            incomingBookList.clear(); 
 	            incomingBookList.add(log);

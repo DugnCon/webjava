@@ -54,20 +54,17 @@
 .font{
 	-fx-font-size:16;
 	-fx-text-fill:black;
+	-fx-font-family:"Accent Graphic W00 Medium";
 }
 .fontTile{
 	-fx-font-size:50;
-	-fx-text-fill:#00477F;
+	-fx-text-fill:black;
+	-fx-font-family:"Accent Graphic W00 Medium";
 }
 .fontTile2{
 	-fx-font-size:30;
-	-fx-text-fill:#ffffff;
-	-fx-font-weight:bold;
-}
-.fontTile3{
-	-fx-font-size:30;
 	-fx-text-fill:black;
-	-fx-font-weight:bold;
+	-fx-font-family:"Accent Graphic W00 Medium";
 }
 .fontTile4{
 	-fx-font-size:30;
@@ -96,7 +93,7 @@
 .fontTile8_1{
 	-fx-font-size:50;
 	-fx-text-fill:black;
-	-fx-font-weight:bold;
+	-fx-font-family:"Accent Graphic W00 Medium";
 }
 .fontTile9{
 	-fx-font-size:18;
@@ -157,6 +154,16 @@
 	-fx-border-width:2;
 	-fx-text-fill:black;
 }
+.textfield1{
+	-fx-pref-width:200;
+	-fx-pref-height:40;
+	-fx-border-color:#168560;
+	-fx-border-radius:20;
+	-fx-background-radius:20;
+	-fx-border-color:#2B579A;
+	-fx-border-width:2;
+	-fx-text-fill:black;
+}
 .buttonAdd{
 	-fx-pref-width:130;
 	-fx-pref-height:40;
@@ -187,6 +194,21 @@
 	-fx-border-style:solid;
 	-fx-wrap-text:true;
 	-fx-font-family: Afacad Flux;
+	-fx-border-radius:8;
+	-fx-background-radius:8;
+}
+.color1{
+	-fx-background-color:#f1f2f6;
+}
+.color2{
+	-fx-background-color:#ffffff;
+}
+.tableView{
+	-fx-pref-height:400;
+	-fx-pref-width:600;
+	-fx-alignment:CENTER;
+	-fx-border-style:solid;
+	-fx-border-width:2;
 	-fx-border-radius:8;
 	-fx-background-radius:8;
 }
