@@ -47,7 +47,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import main.java.JDBC.JDBCSQL;
+import main.java.dao.requireUser;
 import main.java.model.addNew;
+import main.java.model.require;
 public class requestUserController extends baseSceneController {
 	@FXML
 	private Label label1,label2,label3,label4,label5,label6;
@@ -476,7 +478,26 @@ public class requestUserController extends baseSceneController {
 	
 	@FXML
 	private void handleRequire() {
-		
+		if(username.getText().isEmpty()) {
+			alertController.setNew().AlertUnComplete("Bạn chưa nhập tên tài khoản");
+		}else {
+			require req = new require(username.getText(),textarea.getText());
+			int res = requireUser.setNew().searchId(req);
+			if(res > 0) {
+				if(textarea.getText().isEmpty()) {
+					alertController.setNew().AlertUnComplete("Vui lòng nhập yêu cầu của bạn");
+				}else {
+					int ins = requireUser.setNew().insertLog(req);
+					if(ins > 0) {
+						username.clear();
+						textarea.clear();
+						alertController.setNew().AlertComplete("Bạn đã yêu cầu thành công");
+					}else {
+						alertController.setNew().AlertUnComplete("Bạn chưa yêu cầu được");
+					}	
+				}
+			}
+		}
 	}
 	
 	@FXML

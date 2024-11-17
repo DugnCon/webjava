@@ -69,7 +69,6 @@ public class userLoginAccount implements UserAccountInterface<userLog> {
 
 	@Override
 	public int searchId(userLog t) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

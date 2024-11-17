@@ -19,11 +19,12 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import main.java.JDBC.JDBCSQL;
 import main.java.model.borrowNew;
+import main.java.model.requireNew;
 import main.java.model.userLog;
 
 public class interfaceController extends baseSceneController {
     @FXML
-    private Button signout, manageBook, manageBorrow, managePay, manageUser, manageEmployees, interfaceUser;
+    private Button signout, manageBook, manageBorrow, managePay, manageUser, manageRequest, interfaceUser;
     @FXML
     private ImageView image;
     @FXML
@@ -48,10 +49,10 @@ public class interfaceController extends baseSceneController {
         addButtonZoomEffect(manageBorrow);
         addButtonZoomEffect(managePay);
         addButtonZoomEffect(manageUser);
-        addButtonZoomEffect(manageEmployees);
+        addButtonZoomEffect(manageRequest);
         addButtonZoomEffect(interfaceUser);
         transistionController tran = new transistionController();
-        tran.COMERIGHTALL2(manageBook,managePay,manageBorrow,manageUser,manageEmployees, signout, interfaceUser);
+        tran.COMERIGHTALL2(manageBook,managePay,manageBorrow,manageUser,manageRequest, signout, interfaceUser);
         tran.COMEONALL2(label,image);
     }
 
@@ -90,8 +91,26 @@ public class interfaceController extends baseSceneController {
     }
 
     @FXML
-    private void handleNhanvien() {
+    private void handleYeucau() {
+    	try {
+            Connection con = JDBCSQL.getConnection();
+            PreparedStatement prsttm = con.prepareStatement("SELECT * FROM request");
+            ResultSet rs = prsttm.executeQuery();
+            ObservableList<requireNew> bookList = FXCollections.observableArrayList();
+            while (rs.next()) {
+                requireNew require = new requireNew(rs.getString(1), rs.getString(2) , rs.getString(3), rs.getString(4));
+                bookList.add(require);
+            }
+            
+            manageRequestController controller = (manageRequestController) createScene1(manageUser, 
+                "/main/sources/manageRequest.fxml", "/main/sources/css/manageUser.css");
+            controller.setBookList(bookList); 
+            con.close();
 
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Cannot execute: " + e.getMessage());
+        }
     }
 
     @FXML

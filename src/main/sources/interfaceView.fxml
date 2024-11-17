@@ -23,7 +23,7 @@
                     <Button fx:id="managePay" text="Quản lý trả sách" onAction="#handleTrasach" styleClass="button"/>
                     <Button fx:id="manageBorrow" text="Quản lý mượn sách" onAction="#handleMuonsach" styleClass="button"/>
                     <Button fx:id="manageUser" text="Quản lý người dùng" onAction="#handleNguoimuon" styleClass="button"/>
-                    <Button fx:id="manageEmployees" text="Quản lý nhân viên" onAction="#handleNhanvien" styleClass="button"/>
+                    <Button fx:id="manageRequest" text="Yêu cầu khách hàng" onAction="#handleYeucau" styleClass="button"/>
                     <Button fx:id="signout" text="Đăng xuất" onAction="#handleDangxuat" styleClass="button"/>
                     <Button fx:id="interfaceUser" text="Giao diện người dùng" onAction="#handleInterfaceuser" styleClass="button"/>
                 </VBox>
