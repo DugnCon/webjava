@@ -12,7 +12,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -23,13 +22,13 @@ import javafx.util.Duration;
 import main.java.JDBC.JDBCSQL;
 import main.java.model.addNew;
 
-public class interfaceUserController1 extends baseSceneController {
+public class news2Controller extends baseSceneController {
 	@FXML
 	private Label label1,label2,label3,label4,label11;
 	@FXML
 	private VBox tuto1,tuto2,tuto3,tuto4;
 	@FXML
-	private ImageView img1,img2,img3,img4,img5,img6,img7,img8,img9,img10,img11;
+	private ImageView img1,img2,img3,img4,img5,img6,img7,img8,img9,img10,img11,imgtitle;
 	@FXML
 	private Button home,introduce,suprise,service,contact,back;
 	@FXML
@@ -44,6 +43,10 @@ public class interfaceUserController1 extends baseSceneController {
 	private Button LB2,LB3,LB4,LB5,LB6,LB7;
 	@FXML
 	private HBox h2,h3,h4,h5,h6,h7;
+	@FXML
+	private Button customButton;
+	@FXML
+	private Text text1,title,title1;
 	
 	private void applyHoverEffect(Node node) {
 	   	 ScaleTransition scaleIn = new ScaleTransition(Duration.millis(200), node);
@@ -60,12 +63,26 @@ public class interfaceUserController1 extends baseSceneController {
 	
 	@FXML
 	private void initialize() {
+		Font font = Font.loadFont(getClass().getResourceAsStream("/Accent Graphic W00 Medium.ttf"), 20);
+		text1.setText("On September 21, 2024, the Center for Library and Digital Knowledge (VNU-LIC) organized a tutorial on using learning materials for nearly 700 freshmen from the Interdisciplinary and Arts Faculty in an online format.\r\n"
+				+"📝The tutorial was presented by VNU-LIC staff using slides, videos, and various illustrative images that helped the freshmen understand the overview of the 5 learning resources, 10 Knowledge Management services, as well as how to obtain accounts, log in, and use VNU-LIC's learning materials. During the session, the staff also answered questions and clarified how to access and use the accounts.\r\n"
+				+"In this tutorial session, VNU-LIC guided 15,000 freshmen from 11 training units of VNU in both in-person and online formats.");
+		text1.setFont(font);
+		text1.setWrappingWidth(1000);
+		
+		title.setText("VNU-LIC GUIDES 700 FRESHMEN OF THE INTERDISCIPLINARY AND ARTS FACULTY ON USING ONLINE LEARNING MATERIALS.");
+		title.setFont(font);
+		title.setWrappingWidth(1000);
+		
+		title1.setText("Related Articles");
+		title1.setFont(font);
+		title1.setWrappingWidth(200);
 		transistionController tran = new transistionController();
-		ArrayList<Node> img_1 = new ArrayList<Node>();
-		img_1.add(img1);
-		img_1.add(img2);
-		img_1.add(img3);
-		img_1.add(img4);
+		ArrayList<Node> Tran = new ArrayList<Node>();
+		Tran.add(title);
+		Tran.add(text1);
+		Tran.add(imgtitle);
+		tran.COMERIGHT3(Tran);
 		
 		ArrayList<Node> node = new ArrayList<Node>();
 		node.add(home);
@@ -75,36 +92,14 @@ public class interfaceUserController1 extends baseSceneController {
 		node.add(contact);
 		node.add(back);
 		Collections.reverse(node);
+		tran.COMERIGHT3(node);
 		
-		ArrayList<Node> vbox = new ArrayList<Node>();
-		vbox.add(tuto1);
-		vbox.add(tuto2);
-		vbox.add(tuto3);
-		vbox.add(tuto4);
-		
-		ArrayList<Node> vbox1 = new ArrayList<Node>();
-		vbox1.add(IMG8);
-		vbox1.add(IMG9);
-		vbox1.add(IMG10);
-		vbox1.add(IMG11);
-		vbox1.add(IMG12);
-		vbox1.add(IMG13);
-		Collections.reverse(vbox1);
-		
-		ArrayList<Node> label = new ArrayList<Node>();
-		label.add(label1);
-		label.add(label2);
-		label.add(label3);
-		label.add(label4);
-		
-		ArrayList<Node> label1 = new ArrayList<Node>();
-		label1.add(LB1);
-		label1.add(LB2);
-		label1.add(LB3);
-		label1.add(LB4);
-		label1.add(LB5);
-		label1.add(LB6);
-		label1.add(LB7);
+		ArrayList<Node> img_1 = new ArrayList<Node>();
+		img_1.add(img1);
+		img_1.add(img2);
+		img_1.add(img3);
+		img_1.add(img4);
+		tran.COMEONARRAY(img_1);
 		
 		ArrayList<Node> img_2 =  new ArrayList<Node>();
 		img_2.add(img5);
@@ -114,51 +109,25 @@ public class interfaceUserController1 extends baseSceneController {
 		img_2.add(img9);
 		img_2.add(img10);
 		img_2.add(img11);
-		
-		ArrayList<Node> img_3 =  new ArrayList<Node>();
-		img_3.add(IMG1);
-		img_3.add(IMG2);
-		img_3.add(IMG3);
-		img_3.add(IMG4);
-		img_3.add(IMG5);
-		img_3.add(IMG6);
-		img_3.add(IMG7);
-		
-		ArrayList<Node> button = new ArrayList<Node>();
-		button.add(bt1);
-		button.add(bt2);
-		button.add(bt3);
-		
-		tran.COMELEFTARRAY(vbox);
-		tran.COMELEFTARRAY(img_3);
-		tran.COMELEFTARRAY(label1);
-		tran.COMERIGHT3(node);
-		tran.COMERIGHT3(label);
-		tran.COMERIGHT3(vbox1);
-		tran.COMEONARRAY(img_1);
 		tran.COMERIGHT3(img_2);
-		tran.COMERIGHT3(button);
-		tran.COMERIGHT(label11);
 		
-		Font font = Font.loadFont(getClass().getResourceAsStream("/Accent Graphic W00 Medium.ttf"), 20);
-		home.setFont(font);
-		introduce.setFont(font);
-		suprise.setFont(font);
-		service.setFont(font);
-		contact.setFont(font);
-		back.setFont(font);
+		ArrayList<Node> node1 =  new ArrayList<Node>();
+		node1.add(title1);
+		node1.add(h2);
+		node1.add(h4);
+		node1.add(h5);
+		node1.add(h6);
+		node1.add(h7);
+		tran.COMELEFTARRAY(node1);
 		
-		LB2.setText("VNU-LIC CELEBRATES THE 70TH ANNIVERSARY\r\n"
-				+ "OF HANOI LIBERATION DAY\r\n"
-				+ "(10/10/1954 - 10/10/2024)");
-		LB3.setText("VNU-LIC GUIDES ONLINE LEARNING RESOURCE USAGE\r\n"
-				+ "FOR 700 FRESHMEN\r\n"
-				+ "(21/09/2024)");
-		LB5.setText("VNU-LIC SUPPORTS AND SHARES WITH STAFF,\r\n"
+		LB2.setText("VNU-LIC CELEBRATES THE 70TH ANNIVERSARY\\r\\n\"\r\n"
+				+"OF HANOI LIBERATION DAY\\r\\n\"\r\n"
+				+"(10/10/1954 - 10/10/2024)");
+		LB4.setText("VNU-LIC SUPPORTS AND SHARES WITH STAFF,\r\n"
 				+ "EDUCATORS, WORKERS, AND STUDENTS\r\n"
 				+ "IN FLOOD-AFFECTED AREAS\r\n"
 				+ "(17/09/2024)");
-		LB4.setText("THE EXCITING AND ENTHUSIASTIC LEARNING ATMOSPHERE\r\n"
+		LB5.setText("THE EXCITING AND ENTHUSIASTIC LEARNING ATMOSPHERE\r\n"
 				+ "OF STUDENTS AT VNU-LIC\r\n"
 				+ "(26/09/2024)");
 		LB6.setText("STATISTICS ON INTERNATIONAL PUBLICATIONS SCOPUS/WOS\r\n"
@@ -167,34 +136,21 @@ public class interfaceUserController1 extends baseSceneController {
 		LB7.setText("THE FRAGRANCE OF GREEN RICE ON EVERY PAGE\r\n"
 				+ "(17/09/2024)");
 		
-		LB1.setFont(font);
 		LB2.setFont(font);
-		LB3.setFont(font);
 		LB4.setFont(font);
 		LB5.setFont(font);
 		LB6.setFont(font);
-		label11.setFont(font);
 		
-		LB1.setWrappingWidth(500);
 		LB2.setMaxWidth(300);
-		LB3.setMaxWidth(300);
 		LB4.setMaxWidth(300);
 		LB5.setMaxWidth(300);
 		LB6.setMaxWidth(300);
 		
-		applyHoverEffect(IMG1);
 		applyHoverEffect(h2);
-		applyHoverEffect(h3);
 		applyHoverEffect(h4);
 		applyHoverEffect(h5);
 		applyHoverEffect(h6);
 		applyHoverEffect(h7);
-		applyHoverEffect(IMG8);
-		applyHoverEffect(IMG9);
-		applyHoverEffect(IMG10);
-		applyHoverEffect(IMG11);
-		applyHoverEffect(IMG12);
-		applyHoverEffect(IMG13);
 	}
 	
 	@FXML
@@ -238,27 +194,21 @@ public class interfaceUserController1 extends baseSceneController {
 	}
 	@FXML
 	private void handleBack() {
-		createScene(back,"/main/sources/interfaceView.fxml","/main/sources/css/interface.css");
+		createScene(back,"/main/sources/interfaceUser_1.fxml","/main/sources/css/interfaceUser.css");
 	}
-	
 	@FXML
 	private void handleNews1() {
 		createScene(LB2,"/main/sources/news1View.fxml","/main/sources/css/interfaceUser.css");
 	}
 	
 	@FXML
-	private void handleNews2() {
-		createScene(LB3,"/main/sources/news2View.fxml","/main/sources/css/interfaceUser.css");
-	}
-	
-	@FXML
 	private void handleNews3() {
-		createScene(LB4,"/main/sources/news3View.fxml","/main/sources/css/interfaceUser.css");
+		
 	}
 	
 	@FXML
 	private void handleNews4() {
-		
+		createScene(LB4,"/main/sources/news3View.fxml","/main/sources/css/interfaceUser.css");
 	}
 	
 	@FXML

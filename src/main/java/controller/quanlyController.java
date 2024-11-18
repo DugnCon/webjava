@@ -39,6 +39,9 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 import main.java.JDBC.JDBCSQL;
 import main.java.model.addNew;
+import main.java.model.borrowNew;
+import main.java.model.requireNew;
+import main.java.model.userLog;
 
 public class quanlyController extends baseSceneController {
     @FXML
@@ -90,25 +93,80 @@ public class quanlyController extends baseSceneController {
     /**xử lý sự kiện người mượn sách*/
     @FXML
     private void handleBorrower() {
-        
+    	try {
+            Connection con = JDBCSQL.getConnection();
+            PreparedStatement prsttm = con.prepareStatement("SELECT * FROM borrower");
+            ResultSet rs = prsttm.executeQuery();
+            ObservableList<borrowNew> bookList = FXCollections.observableArrayList();
+            while (rs.next()) {
+                borrowNew borrownew = new borrowNew(rs.getString(3), rs.getString(8), rs.getString(4),
+                        rs.getString(5), rs.getString(6));
+                bookList.add(borrownew);
+            }
+            
+            borrowBookController controller = (borrowBookController) createScene1(borrower, 
+                "/main/sources/borrowBookView.fxml", "/main/sources/css/borrowBook.css");
+            controller.setBookList(bookList);
+            con.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Cannot execute: " + e.getMessage());
+        }
     }
     
     /**xử lý sự kiện người trả*/
     @FXML
     private void handlePayer() {
-        
+    	createScene(payer, "/main/sources/returnBookView.fxml", "/main/sources/css/returnBook.css");
     }
     
     /**xử lý sự kiện người dùng*/
     @FXML
     private void handleUser() {
-        
+    	try {
+            Connection con = JDBCSQL.getConnection();
+            PreparedStatement prsttm = con.prepareStatement("SELECT * FROM user");
+            ResultSet rs = prsttm.executeQuery();
+            ObservableList<userLog> bookList = FXCollections.observableArrayList();
+            while (rs.next()) {
+                userLog userlog = new userLog(rs.getString(1), rs.getString(2) , rs.getString(3), rs.getString(4), rs.getString(5));
+                bookList.add(userlog);
+            }
+            
+            manageUserController controller = (manageUserController) createScene1(user, 
+                "/main/sources/manageUserView.fxml", "/main/sources/css/manageUser.css");
+            controller.setBookList(bookList); 
+            con.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Cannot execute: " + e.getMessage());
+        }
     }
 
     /**xử lý sự kiện nhân viên*/
     @FXML
     private void handleEmployees() {
-      
+    	try {
+            Connection con = JDBCSQL.getConnection();
+            PreparedStatement prsttm = con.prepareStatement("SELECT * FROM request");
+            ResultSet rs = prsttm.executeQuery();
+            ObservableList<requireNew> bookList = FXCollections.observableArrayList();
+            while (rs.next()) {
+                requireNew require = new requireNew(rs.getString(1), rs.getString(2) , rs.getString(3), rs.getString(4));
+                bookList.add(require);
+            }
+            
+            manageRequestController controller = (manageRequestController) createScene1(employees, 
+                "/main/sources/manageRequest.fxml", "/main/sources/css/manageUser.css");
+            controller.setBookList(bookList); 
+            con.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Cannot execute: " + e.getMessage());
+        }
     }
     
     /**Xóa sách*/
@@ -292,6 +350,7 @@ public class quanlyController extends baseSceneController {
         Task<JsonArray> searchTask = new Task<JsonArray>() {
             @Override
             protected JsonArray call() throws Exception {
+            	Thread.sleep(3000);
                 return apiController.searchBooks(query, 10);
             }
 

@@ -74,7 +74,7 @@ public class requestUserController extends baseSceneController {
 	@FXML
 	private ProgressIndicator loadingIndicator;
 	@FXML
-	private Text text1,text2,lb1,lb2,title,title2,paragraph;
+	private Text text1,text2,lb1,lb2,title,title2,paragraph,note;
 	@FXML
     private BorderPane mainContent;
 	@FXML
@@ -122,10 +122,10 @@ public class requestUserController extends baseSceneController {
         columnTitle.setCellValueFactory(new PropertyValueFactory<>("nameBook"));
         columnAuthor.setCellValueFactory(new PropertyValueFactory<>("nameAuthor"));
         columnYear.setCellValueFactory(new PropertyValueFactory<>("releaseYear"));
-
+        
         tableBook.setItems(incomingBookList);
-		
-		hboxnew.setVisible(false);
+        
+        hboxnew.setVisible(false);
 		
 		scheduler = Executors.newSingleThreadScheduledExecutor();
         fieldSearch.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -165,6 +165,10 @@ public class requestUserController extends baseSceneController {
 				+ "Perhaps love wasn’t about fireworks or dramatic declarations. Perhaps it was about noticing the way her laughter lingered long after she had stopped, or how his presence turned an ordinary day into something unforgettable. And so, their story grew—not in leaps, but in gentle steps, one moment, one memory, one heartbeat at a time.\"");
 		paragraph.setFont(font);
 		paragraph.setWrappingWidth(1300);
+		
+		note.setText("*Note: Please fill in the full account name, the book you want to borrow, and the book code in the request form below. If not, it will not be approved.");
+		note.setFont(font);
+		note.setWrappingWidth(1000);
 		
 		
 		lb1.setFont(font);
@@ -340,16 +344,15 @@ public class requestUserController extends baseSceneController {
             searchResultsContainer.getChildren().add(noResults);
         }
     }
+    
 	
     @FXML
     private void handleSearchBook() {
         String query = fieldSearch.getText().trim();
-
         if (query.isEmpty()) {
             loadingIndicator.setVisible(false);
             mainContent.setEffect(null); 
             searchResultsContainer.setVisible(false);
-            hboxnew.setVisible(false);
             return;
         }
 

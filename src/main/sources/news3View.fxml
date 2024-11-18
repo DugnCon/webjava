@@ -20,7 +20,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.interfaceUserController1" stylesheets="@main/sources/css/interfaceUser.css">
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.news3Controller" stylesheets="@main/sources/css/interfaceUser.css">
    <BorderPane>
     <top>
     <BorderPane>
@@ -77,6 +77,7 @@
     </BorderPane>
     </top>
     
+    <!-- Phần content -->
     <center>
     <ScrollPane styleClass="scrollPane" HBox.hgrow="ALWAYS">
      <content>
@@ -85,50 +86,48 @@
        <padding>
         <Insets top = "20" right = "0" bottom = "0" left = "56"/>
        </padding>
-      
-      <!-- Tạo phần content -->
-      <HBox alignment = "CENTER" spacing = "10" styleClass = "color1">
-        <VBox alignment = "CENTER_LEFT">
-          <Label fx:id = "label11" text = "News" styleClass = "fontTile"/>
-          <ImageView fx:id = "IMG1" fitWidth = "550" fitHeight = "500" preserveRatio = "true">
-            <Image url = "/463106705_924474886375949_7615068487356660703_n-565x335.jpg"/>
-          </ImageView>
-          <Text fx:id = "LB1" styleClass = "fontTile4">
-            VNU-LIC SUPPORTS THE COMMUNICATION CLUB OF THE UNIVERSITY OF LAW
-          </Text>
-        </VBox>
-        
-        <HBox alignment = "CENTER" spacing = "10">
-          <VBox alignment = "CENTER" spacing = "20">
-             <HBox fx:id = "h2">
+       
+       <!-- Nội dung của báo -->
+      <HBox spacing = "20" styleClass = "color1" alignment = "CENTER">
+        <padding>
+          <Insets top = "40" bottom = "40"/>
+        </padding>
+        <!--****** Update nội dung *******-->
+        <VBox>
+           <HBox.margin>
+             <Insets right = "40"/>
+           </HBox.margin>
+           <VBox alignment = "CENTER" spacing = "20">
+             <Text fx:id = "title" styleClass = "fontTile4" />
+             <Text fx:id = "text1" styleClass = "Text"/>
+             <ImageView fx:id = "imgtitle" fitWidth = "700" fitHeight = "500" preserveRatio = "true">
+               <Image url = "/thuvienjpg.jpg"/>
+             </ImageView>
+             <Text fx:id = "text2" styleClass = "Text"/>
+           </VBox>
+         </VBox>
+         <!-- *********************** -->
+         <VBox>
+           <Text fx:id = "title1" styleClass = "fontTile4"/>
+           <HBox fx:id = "h2">
                <ImageView fx:id="IMG2" fitWidth="150" fitHeight="70" preserveRatio="true">
                 <Image url="/462508358_921021493387955_6015371627903243179_n-100x84.jpg"/>
                </ImageView>
               <Button fx:id="LB2" styleClass="custom-button" onAction = "#handleNews1"/> 
            </HBox>
-
            <HBox fx:id = "h3" >
              <ImageView fx:id = "IMG3" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
                <Image url = "/460663595_907458911410880_604379066960442608_n-100x84.jpg"/>
              </ImageView>
              <Button fx:id="LB3" styleClass="custom-button" onAction = "#handleNews2"/> 
            </HBox>
-           <HBox fx:id = "h4" >
-              <ImageView fx:id = "IMG5" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
-                <Image url = "/461302709_911432027680235_6550184406163210669_n-100x84.jpg"/>
-              </ImageView>
-              <Button fx:id="LB4" styleClass="custom-button" onAction = "#handleNews3"/> 
-            </HBox>
-          </VBox>
-          
-          <VBox alignment = "CENTER" spacing = "20">
             <HBox fx:id = "h5" >
               <ImageView fx:id = "IMG4" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
                 <Image url = "/459648551_904352591721512_7408307320904964313_n-100x84.jpg"/>
               </ImageView>
               <Button fx:id="LB5" styleClass="custom-button" onAction = "#handleNews4"/> 
             </HBox>
-              <HBox fx:id = "h6" >
+             <HBox fx:id = "h6" >
                 <ImageView fx:id = "IMG6" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
                   <Image url = "/plummentandsoar.jpg"/>
                 </ImageView>
@@ -140,150 +139,8 @@
                 </ImageView>
                 <Button fx:id="LB7" styleClass="custom-button" onAction = "#handleNews6"/> 
               </HBox>
-          </VBox>
-        </HBox>
+       </VBox>
       </HBox>
-      
-      <!-- Body 2 -->
-      <VBox spacing = "30" styleClass = "color2">
-      <padding>
-        <Insets top = "40" right = "0" bottom = "40" left = "0"/>
-      </padding>
-      <!-- Dòng 1 -->
-        <HBox spacing = "50" alignment = "CENTER">
-        <!-- Ảnh 1 -->
-          <VBox fx:id = "IMG8" styleClass = "Image1">
-            <VBox alignment = "CENTER_LEFT" styleClass = "AlterImage1">
-              <StackPane alignment = "CENTER_LEFT">
-                <VBox alignment = "CENTER_LEFT">
-                  <Label styleClass = "fontTile6">
-                  Dịch vụ số hóa tài liệu
-                </Label>
-                <Label styleClass = "fontTile6">
-                  theo yêu cầu
-                </Label>
-                <Label text = " "/>
-                <Label styleClass = "fontTile7">
-                  Cung cấp dịch vụ số hóa mọi loại hình tài liệu, sách, báo chí
-                </Label>
-                <Label styleClass = "fontTile7">
-                  với các định dạng file PDF, PDF multi-page, TIFF, TIF, PNG...
-                </Label>
-                <Label text = " "/>
-                <Label text = "1" styleClass = "fontTile8"/>
-                </VBox>
-              </StackPane>
-            </VBox>
-          </VBox>
-          <!-- Ảnh 2 -->
-          <VBox fx:id = "IMG9" styleClass = "Image2">
-            <VBox alignment = "CENTER_RIGHT" styleClass = "AlterImage2">
-              <StackPane alignment = "CENTER_RIGHT">
-                <VBox alignment = "CENTER_RIGHT">
-                  <Label styleClass = "fontTile6">
-                  Dịch vụ chuyển đổ số, số hóa,
-                </Label>
-                <Label styleClass = "fontTile6">
-                  xây dựng, tổ chức và
-                </Label>
-                <Label styleClass = "fontTile6">
-                  quản trị học liệu số theo yêu cầu
-                </Label>
-                <Label styleClass = "fontTile6">
-                  đơn vị đào tạo
-                </Label>
-                <Label text = " "/>
-                <Label text = "2" styleClass = "fontTile8"/>
-                </VBox>
-              </StackPane>
-            </VBox>
-          </VBox>
-          
-          <!-- Ảnh 3 -->
-          <VBox fx:id = "IMG10" styleClass = "Image3">
-            <VBox alignment = "BOTTOM_RIGHT" styleClass = "AlterImage3">
-              <StackPane alignment = "BOTTOM_RIGHT">
-                <VBox alignment = "BOTTOM_RIGHT">
-                  <Label text = "3" styleClass = "fontTile8"/>
-                  <Label text = " "/>
-                  <Label text = " "/>
-                  <Label styleClass = "fontTile6">
-                  Dịch vụ cung cấp dữ liệu,
-                </Label>
-                <Label styleClass = "fontTile6">
-                  thông tin, tri thức cho học tập,
-                </Label>
-                <Label styleClass = "fontTile6">
-                  đào tạo và nghiên cứu
-                </Label>
-                </VBox>
-              </StackPane>
-            </VBox>
-          </VBox>
-        </HBox>
-        <!-- Dòng 2 -->
-        <HBox alignment = "CENTER" spacing = "50">
-        <!-- Ảnh 4 -->
-          <VBox fx:id = "IMG11" styleClass = "Image4">
-            <VBox alignment = "CENTER_LEFT" styleClass = "AlterImage1">
-              <StackPane alignment = "CENTER_LEFT">
-                <VBox alignment = "CENTER_LEFT">
-                  <Label text = "4" styleClass = "fontTile8_1"/>
-                  <Label styleClass = "fontTile9">
-                  Dịch vụ cung cấp dữ liệu,
-                </Label>
-                <Label styleClass = "fontTile9">
-                  thông tin, tri thức cho học tập,
-                </Label>
-                <Label styleClass = "fontTile9">
-                  đào tạo và nghiên cứu
-                </Label>
-                </VBox>
-              </StackPane>
-            </VBox>
-          </VBox>
-          <!-- Ảnh 5 -->
-          <VBox fx:id = "IMG12" styleClass = "Image5">
-            <VBox alignment = "CENTER_LEFT" styleClass = "AlterImage1">
-              <StackPane alignment = "CENTER_LEFT">
-                <VBox alignment = "CENTER_LEFT">
-                  <Label styleClass = "fontTile6">
-                  Dịch vụ trắc lượng
-                </Label>
-                <Label styleClass = "fontTile6">
-                  thư mục
-                </Label>
-                <Label text = " "/>
-                <Label text = " "/>
-                <Label text = "5" styleClass = "fontTile8"/>
-                <Label />
-                </VBox>
-              </StackPane>
-            </VBox>
-          </VBox>
-          <!-- Ảnh 6 -->
-          <VBox fx:id = "IMG13" styleClass = "Image6">
-            <VBox  alignment = "CENTER_RIGHT" styleClass = "AlterImage2">
-              <StackPane alignment = "CENTER_RIGHT">
-                <VBox alignment = "CENTER_RIGHT">
-                  <Label styleClass = "fontTile6">
-                  Dịch vụ kết nối tra cứu
-                </Label>
-                <Label styleClass = "fontTile6">
-                  dữ liệu khoa học
-                </Label>
-                <Label styleClass = "fontTile6">
-                  liên thư viện
-                </Label>
-                <Label text = " "/>
-                <Label text = " "/>
-                <Label text = "6" styleClass = "fontTile8"/>
-                </VBox>
-              </StackPane>
-            </VBox>
-          </VBox>
-        </HBox>
-      </VBox>
       
       <!-- Tạo footer -->
      <VBox styleClass = "background_img">
@@ -335,5 +192,5 @@
     </content>
    </ScrollPane>
    </center>
-   </BorderPane>
+  </BorderPane>
 </VBox>

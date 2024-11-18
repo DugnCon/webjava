@@ -53,13 +53,13 @@
                             <padding>
                                 <Insets top="20" right="0" bottom="20" left="0"/>
                             </padding>
-                            <Button fx:id="user" text="Quản lý người dùng" onAction="#handleUser" styleClass="buttonLay"/>
+                            <Button fx:id="user" text="Quản lý kho sách" onAction="#handleUser" styleClass="buttonLay"/>
                         </HBox>
                         <HBox GridPane.columnIndex="0" GridPane.rowIndex="6" styleClass="hboxLay">
                             <padding>
                                 <Insets top="20" right="0" bottom="20" left="0"/>
                             </padding>
-                            <Button fx:id="employees" text="Quản lý nhân viên" onAction="#handleEmployees" styleClass="buttonLay"/>
+                            <Button fx:id="employees" text="Yêu cầu khách hàng" onAction="#handleEmployees" styleClass="buttonLay"/>
                         </HBox>
                     </GridPane>
                 </VBox>

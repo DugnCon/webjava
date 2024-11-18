@@ -29,7 +29,7 @@ public class interfaceUserController extends baseSceneController {
 	@FXML
 	private HBox tuto4;
 	@FXML
-	private ImageView img1,img2,img3,img4,img5,img6,img7,img8,img9,img10,img11;
+	private ImageView img1,img2,img3,img4,img5,img6,img7,img8,img9,img10,img11,img_6;
 	@FXML
 	private Button home,introduce,suprise,service,contact,back;
 	@FXML
@@ -87,6 +87,7 @@ public class interfaceUserController extends baseSceneController {
 		tran.COMEONARRAY(img_1);
 		tran.COMERIGHT3(img_2);
 		tran.COMERIGHT3(button);
+		tran.COMELEFT(img_6);
 		
 		Font font = Font.loadFont(getClass().getResourceAsStream("/Accent Graphic W00 Medium.ttf"), 20);
 		home.setFont(font);

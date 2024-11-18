@@ -212,3 +212,12 @@
 	-fx-border-radius:8;
 	-fx-background-radius:8;
 }
+.custom-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+    -fx-cursor: hand;
+    -fx-font-family:"Accent Graphic W00 Medium";
+    -fx-text-fill:black;
+    -fx-font-size:10;
+}

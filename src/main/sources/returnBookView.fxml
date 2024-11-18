@@ -48,7 +48,7 @@
                             <padding>
                                 <Insets top="20" right="0" bottom="20" left="0"/>
                             </padding>
-                            <Button fx:id="payer" text="Quản lý người trả" onAction="#handlePayer" styleClass="buttonLay"/>
+                            <Button fx:id="payer" text="Quản lý kho sách" onAction="#handlePayer" styleClass="buttonLay"/>
                         </HBox>
                         <HBox GridPane.columnIndex="0" GridPane.rowIndex="5" styleClass="hboxLay">
                             <padding>
@@ -60,7 +60,7 @@
                             <padding>
                                 <Insets top="20" right="0" bottom="20" left="0"/>
                             </padding>
-                            <Button fx:id="employees" text="Quản lý nhân viên" onAction="#handleEmployees" styleClass="buttonLay"/>
+                            <Button fx:id="employees" text="Yêu cầu khách hàng" onAction="#handleEmployees" styleClass="buttonLay"/>
                         </HBox>
                     </GridPane>
                 </VBox>

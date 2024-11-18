@@ -187,19 +187,19 @@
          </padding>
          <HBox spacing = "10" alignment = "CENTER">
            <ImageView fx:id = "img_6" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
-             <Image url = "/matbiec.jpg"/>
+             <Image url = "/caculus.jpg"/>
            </ImageView>
            <ImageView fx:id = "img_7" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
-             <Image url = "/ngayxuacomotchuyentinh.jpg"/>
+             <Image url = "/harry2.jpg"/>
            </ImageView>
            <ImageView fx:id = "img_8" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
-             <Image url = "/phebinhvanhochauhiendaivietnam.jpg"/>
+             <Image url = "/silenthill.jpg"/>
            </ImageView>
            <ImageView fx:id = "img_9" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
-             <Image url = "/toithayhoacovang.jpg"/>
+             <Image url = "/tuduymo.jpg"/>
            </ImageView>
            <ImageView fx:id = "img_10" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
-             <Image url = "/truyenngan.jpg"/>
+             <Image url = "/tuduynguoc.jpg"/>
            </ImageView>
          </HBox>
        </HBox>
@@ -275,6 +275,7 @@
         </padding>
          <Label text = "Your Book Borrowing Request" fx:id = "label6" styleClass = "fontTile4"/>
          <VBox alignment = "CENTER" spacing = "25">
+           <Text fx:id = "note" styleClass = "Text"/>
            <TextField promptText = "Tên tài khoản" fx:id = "username" styleClass = "textfield1"/>
            <HBox spacing = "40">
            <TextArea promptText = "Yêu cầu" fx:id = "textarea" style = "-fx-border-radius:10; -fx-background-radius:10; -fx-border-color:black;"/>

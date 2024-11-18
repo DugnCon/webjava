@@ -59,7 +59,7 @@
                             <padding>
                                 <Insets top="20" right="0" bottom="20" left="0"/>
                             </padding>
-                            <Button fx:id="employees" text="Quản lý nhân viên" onAction="#handleEmployees" styleClass="buttonLay"/>
+                            <Button fx:id="employees" text="Quản lý kho sách" onAction="#handleEmployees" styleClass="buttonLay"/>
                         </HBox>
                     </GridPane>
                 </VBox>

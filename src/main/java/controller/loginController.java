@@ -40,6 +40,7 @@ public class loginController extends baseSceneController {
     private VBox VBOX1,VBOX2,VBOX3,VBOX4,VBOXCHILD1,VBOXCHILD2,VBOXCHILD3,VBOXCHILD4;
     @FXML
     private StackPane ST1,ST2;
+    //2 cai hinh nen 2 ben
     @FXML
     private TextField Username,userName,fullName;
     @FXML
@@ -64,6 +65,7 @@ public class loginController extends baseSceneController {
     }
    
     @FXML
+    //Nut dang nhap
     private void handleButtonLogin1() {
 		String username = Username.getText();
 		String password = Password.getText();
@@ -71,7 +73,8 @@ public class loginController extends baseSceneController {
 		int res  = loginAccount.getInstance().insert(author);
 		if(res > 0) {
 			alertController.setNew().AlertComplete("Đăng nhập thành công");
-			createScene(login1,"/main/sources/interfaceView.fxml","/main/sources/css/interface.css");	
+            System.out.println("Login Successful");
+			createScene(login1,"/main/sources/interfaceView.fxml","/main/sources/css/interface.css");
 		}else {
 			alertController.setNew().AlertUnComplete("Đăng nhập không thành công");
 			 createScene(signup1, "/main/sources/loginView.fxml", "/main/sources/css/login.css");
@@ -79,6 +82,7 @@ public class loginController extends baseSceneController {
     }
     
     @FXML
+    //tao tai khoan
 	protected void handleButtonSignUp1() {
         // Tải FXML cho cảnh mới
     	transistionController tran = new transistionController();
@@ -110,6 +114,7 @@ public class loginController extends baseSceneController {
 		author Author = new author(UserName, PassWord, RepeatPassWord, FullName);
 		int res = signUpAccount.getInstance().insert(Author);
 		if(res > 0) {
+            signUpAccount.getInstance().AlertComplete();
 			transistionController tran = new transistionController();
 	    	tran.ComeLeft1(ST1);
 	        tran.ComeRight1(ST2);

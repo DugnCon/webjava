@@ -20,6 +20,7 @@ import main.java.JDBC.JDBCSQL;
 import main.java.dao.lockAccount;
 import main.java.dao.userLoginAccount;
 import main.java.model.lockaccount;
+import main.java.model.requireNew;
 import main.java.model.userLog;
 
 public class lockAccountController extends baseSceneController {
@@ -103,28 +104,50 @@ public class lockAccountController extends baseSceneController {
 	}
 	
 	@FXML
-	private void handleHome() {
-		
-	}
-	
-	@FXML
+    private void handleHome() {
+        createScene(home, "/main/sources/interfaceView.fxml", "/main/sources/css/interface.css");
+    }
+    /**xử lý sự kiện mượn sách*/
+    @FXML
 	private void handleBorrower() {
-		
+		createScene(borrower,"/main/sources/borrowBookView.fxml","/main/sources/css/borrowBook.css");
 	}
 	
+	/**xử lý sự kiện người trả*/
 	@FXML
 	private void handlePayer() {
-		
+		createScene(payer, "/main/sources/returnBookView.fxml", "/main/sources/css/returnBook.css");
 	}
 	
+	
+	/**xử lý sự kiện người dùng*/
 	@FXML
 	private void handleUser() {
-		
+		createScene(user,"/main/sources/quanlyView.fxml","/main/sources/css/quanly.css");
 	}
 	
+	/**xử lý sự kiện nhân viên*/
 	@FXML
 	private void handleEmployees() {
-		
+		try {
+            Connection con = JDBCSQL.getConnection();
+            PreparedStatement prsttm = con.prepareStatement("SELECT * FROM request");
+            ResultSet rs = prsttm.executeQuery();
+            ObservableList<requireNew> bookList = FXCollections.observableArrayList();
+            while (rs.next()) {
+                requireNew require = new requireNew(rs.getString(1), rs.getString(2) , rs.getString(3), rs.getString(4));
+                bookList.add(require);
+            }
+            
+            manageRequestController controller = (manageRequestController) createScene1(employees, 
+                "/main/sources/manageRequest.fxml", "/main/sources/css/manageUser.css");
+            controller.setBookList(bookList); 
+            con.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Cannot execute: " + e.getMessage());
+        }
 	}
 	
 	@FXML

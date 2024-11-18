@@ -28,6 +28,7 @@ import main.java.model.add;
 import main.java.model.alter;
 import main.java.model.borrow;
 import main.java.model.borrowNew;
+import main.java.model.requireNew;
 import main.java.model.user;
 import main.java.model.userLog;
 
@@ -143,28 +144,63 @@ public class recordFormController extends baseSceneController {
         createScene(home, "/main/sources/interfaceView.fxml", "/main/sources/css/interface.css");
     }
     /**xử lý sự kiện mượn sách*/
-	@FXML
+    @FXML
 	private void handleBorrower() {
-		
+		createScene(borrower,"/main/sources/quanlyView.fxml","/main/sources/css/quanly.css");
 	}
 	
 	/**xử lý sự kiện người trả*/
 	@FXML
 	private void handlePayer() {
-		
+		createScene(payer, "/main/sources/returnBookView.fxml", "/main/sources/css/returnBook.css");
 	}
-	
 	
 	/**xử lý sự kiện người dùng*/
 	@FXML
 	private void handleUser() {
-		
+		try {
+            Connection con = JDBCSQL.getConnection();
+            PreparedStatement prsttm = con.prepareStatement("SELECT * FROM user");
+            ResultSet rs = prsttm.executeQuery();
+            ObservableList<userLog> bookList = FXCollections.observableArrayList();
+            while (rs.next()) {
+                userLog userlog = new userLog(rs.getString(1), rs.getString(2) , rs.getString(3), rs.getString(4), rs.getString(5));
+                bookList.add(userlog);
+            }
+            
+            manageUserController controller = (manageUserController) createScene1(employees, 
+                "/main/sources/manageUserView.fxml", "/main/sources/css/manageUser.css");
+            controller.setBookList(bookList); 
+            con.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Cannot execute: " + e.getMessage());
+        }
 	}
 	
 	/**xử lý sự kiện nhân viên*/
 	@FXML
 	private void handleEmployees() {
-		
+		try {
+            Connection con = JDBCSQL.getConnection();
+            PreparedStatement prsttm = con.prepareStatement("SELECT * FROM request");
+            ResultSet rs = prsttm.executeQuery();
+            ObservableList<requireNew> bookList = FXCollections.observableArrayList();
+            while (rs.next()) {
+                requireNew require = new requireNew(rs.getString(1), rs.getString(2) , rs.getString(3), rs.getString(4));
+                bookList.add(require);
+            }
+            
+            manageRequestController controller = (manageRequestController) createScene1(employees, 
+                "/main/sources/manageRequest.fxml", "/main/sources/css/manageUser.css");
+            controller.setBookList(bookList); 
+            con.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Cannot execute: " + e.getMessage());
+        }
 	}
 	
 	/**xử lý sự kiện kiểm tra xe sách có tồn tại*/

@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class baseSceneController {
@@ -46,5 +47,22 @@ public class baseSceneController {
         }
         
         return controller;
+    }
+	
+	public void createSceneOnTextClick(Text text, String url, String urlCss) {
+        text.setOnMouseClicked(event -> {
+            try {
+                root = FXMLLoader.load(getClass().getResource(url));
+                scene = new Scene(root, 1536, 800);
+                if (urlCss != null && !urlCss.isEmpty()) {
+                    scene.getStylesheets().add(getClass().getResource(urlCss).toExternalForm());
+                }
+                stage = (Stage) text.getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 }

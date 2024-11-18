@@ -20,7 +20,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.interfaceUserController" stylesheets="@main/sources/css/interfaceUser.css">
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.news2Controller" stylesheets="@main/sources/css/interfaceUser.css">
    <BorderPane>
     <top>
     <BorderPane>
@@ -86,73 +86,60 @@
        <padding>
         <Insets top = "20" right = "0" bottom = "0" left = "56"/>
        </padding>
-      <HBox spacing = "20" styleClass = "color1">
-       <padding>
-         <Insets bottom = "40"/>
-       </padding>
-       <VBox>
+       
+       <!-- Nội dung của báo -->
+      <HBox spacing = "20" styleClass = "color1" alignment = "CENTER">
         <padding>
-          <Insets top = "80" right = "0" bottom = "0" left = "0"/>
+          <Insets top = "40" bottom = "40"/>
         </padding>
-        <ImageView fx:id = "img5" fitWidth = "400" fitHeight = "500" preserveRatio = "true">
-          <Image url = "/smail-b.png"/>
-        </ImageView>
-       </VBox> 
-       <VBox> 
-        <Label fx:id = "label1" text = "Introduce" styleClass = "fontTile8_1"/>
-        <VBox fx:id = "tuto1" alignment = "CENTER_LEFT" spacing = "20">
-         <padding>
-           <Insets top = "30" right = "30" bottom = "5" left = "30"/>
-         </padding>
-         <Label fx:id = "label2" text = "Name and Headquarters" styleClass = "fontTile2"/>
-         <Text fx:id = "text1" styleClass = "font"/>
-        </VBox>
+        <!--****** Update nội dung *******-->
+        <VBox>
+           <HBox.margin>
+             <Insets right = "40"/>
+           </HBox.margin>
+           <VBox alignment = "CENTER" spacing = "20">
+             <Text fx:id = "title" styleClass = "fontTile4" />
+             <Text fx:id = "text1" styleClass = "Text"/>
+             <ImageView fx:id = "imgtitle" fitWidth = "700" fitHeight = "500" preserveRatio = "true">
+               <Image url = "/bieudo.jpg"/>
+             </ImageView>
+           </VBox>
+         </VBox>
+         <!-- *********************** -->
+         <VBox>
+           <Text fx:id = "title1" styleClass = "fontTile4"/>
+           <HBox fx:id = "h2">
+               <ImageView fx:id="IMG2" fitWidth="150" fitHeight="70" preserveRatio="true">
+                <Image url="/462508358_921021493387955_6015371627903243179_n-100x84.jpg"/>
+               </ImageView>
+              <Button fx:id="LB2" styleClass="custom-button" onAction = "#handleNews1"/> 
+           </HBox>
+           <HBox fx:id = "h4" >
+              <ImageView fx:id = "IMG4" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+                <Image url = "/459648551_904352591721512_7408307320904964313_n-100x84.jpg"/>
+              </ImageView>
+              <Button fx:id="LB4" styleClass="custom-button" onAction = "#handleNews3"/> 
+            </HBox>
+            <HBox fx:id = "h5" >
+              <ImageView fx:id = "IMG5" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+                <Image url = "/461302709_911432027680235_6550184406163210669_n-100x84.jpg"/>
+              </ImageView>
+              <Button fx:id="LB5" styleClass="custom-button" onAction = "#handleNews4"/> 
+            </HBox>
+             <HBox fx:id = "h6" >
+                <ImageView fx:id = "IMG6" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+                  <Image url = "/plummentandsoar.jpg"/>
+                </ImageView>
+                <Button fx:id="LB6" styleClass="custom-button" onAction = "#handleNews5"/> 
+              </HBox>
+              <HBox fx:id = "h7" >
+                <ImageView fx:id = "IMG7" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+                  <Image url = "/4088cf344c47ea19b356-100x84.jpg"/>
+                </ImageView>
+                <Button fx:id="LB7" styleClass="custom-button" onAction = "#handleNews6"/> 
+              </HBox>
        </VBox>
       </HBox>
-      
-      <VBox styleClass = "color2">
-       <HBox spacing = "50" alignment = "CENTER">
-        <VBox fx:id = "tuto2" alignment = "CENTER_LEFT"  spacing = "20">
-          <padding>
-            <Insets top = "30" right = "30" bottom = "5" left = "30"/>
-          </padding>
-          <Label fx:id = "label3" text = "International Cooperation" styleClass = "fontTile8_1"/>
-          <Text fx:id = "text2" styleClass = "font"/>
-          <Text fx:id = "text3" styleClass = "font"/>
-        </VBox>
-        <ImageView fx:id = "img_6" fitWidth = "600" fitHeight = "600" preserveRatio = "true">
-          <Image url = "/Hoc-phi-DH-Cong-nghe-HN-fotor-2024102394230.png"/>
-        </ImageView>
-       </HBox>
-      </VBox>
-      
-     <!-- Phần nội dung thứ 3 -->
-     <VBox alignment = "CENTER" styleClass = "color1">
-       <Label fx:id = "label4" text = "Functions - Mission" styleClass = "fontTile8_1"/>
-       <HBox fx:id = "tuto4" spacing = "60" alignment = "CENTER">
-        <padding>
-          <Insets top = "30" right = "30" bottom = "5" left = "30"/>
-        </padding>
-         <VBox spacing = "40">
-           <VBox spacing  ="20">
-            <Label fx:id = "label5" text = "Functions" styleClass = "fontTile2" />
-            <Text fx:id = "text4" styleClass = "font"/>
-           </VBox> 
-           <VBox>
-            <Text fx:id = "text4_1" styleClass = "font" />
-           </VBox>
-         </VBox>
-         <VBox spacing = "40">
-           <VBox spacing = "20">
-            <Label text="Mission" fx:id = "label6" styleClass="fontTile2" />
-            <Text fx:id = "text5" styleClass = "font"/>
-           </VBox>
-           <VBox>
-            <Text fx:id = "text5_1" styleClass = "font"/>
-           </VBox>
-         </VBox>
-       </HBox>
-      </VBox>
       
       <!-- Tạo footer -->
      <VBox styleClass = "background_img">

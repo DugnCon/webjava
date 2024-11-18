@@ -10,7 +10,7 @@ import javafx.scene.Scene;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
-    	// /main/sources/interfaceUser.fxm
+    	// /main/sources/interfaceUser.fxml
     	// /main/sources/css/interfaceUser.css
     	// /main/sources/loginView.fxml
     	// /main/sources/css/login.css

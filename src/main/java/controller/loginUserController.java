@@ -3,7 +3,9 @@ package main.java.controller;
 import java.util.ArrayList;
 
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
@@ -29,11 +31,20 @@ public class loginUserController extends baseSceneController {
     @FXML
     private PasswordField password, repeatpass, passWord;
     @FXML
-    private Button login1, signup1, signup2, login2;
+    private Button login1, signup1, signup2, login2,back;
     @FXML
     private StackPane Pane1, Pane2;
     @FXML
     private VBox vbox1, vbox2, vbox3, vbox4;
+    @FXML
+    private Label log,sign,pass,note;
+    
+    @FXML
+    private void initialize() {
+    	transistionController tran = new transistionController();
+    	tran.ComeRight1(ST1);
+    	tran.ComeLeft1(ST2);
+    }
     
 	@FXML
     private void handleButtonLogin1() {
@@ -95,6 +106,11 @@ public class loginUserController extends baseSceneController {
         } else {
             signUpAccount.getInstance().AlertUnComplete();
         }
+    }
+    
+    @FXML
+    private void handleBack() {
+    	createScene(back,"/main/sources/interfaceView.fxml","/main/sources/css/interface.css");
     }
     
     public void clear() {

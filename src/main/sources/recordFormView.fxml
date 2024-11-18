@@ -42,7 +42,7 @@
                             <padding>
                                 <Insets top="20" right="0" bottom="20" left="0"/>
                             </padding>
-                            <Button fx:id="borrower" text="Quản lý người mượn" onAction="#handleBorrower" styleClass="buttonLay"/>
+                            <Button fx:id="borrower" text="Quản lý kho sách" onAction="#handleBorrower" styleClass="buttonLay"/>
                         </HBox>
                         <HBox GridPane.columnIndex="0" GridPane.rowIndex="4" styleClass="hboxLay">
                             <padding>
@@ -60,7 +60,7 @@
                             <padding>
                                 <Insets top="20" right="0" bottom="20" left="0"/>
                             </padding>
-                            <Button fx:id="employees" text="Quản lý nhân viên" onAction="#handleEmployees" styleClass="buttonLay"/>
+                            <Button fx:id="employees" text="Yêu cầu khách hàng" onAction="#handleEmployees" styleClass="buttonLay"/>
                         </HBox>
                     </GridPane>
                 </VBox>
@@ -88,9 +88,9 @@
                                 <TableColumn fx:id="columnID" text="Mã người mượn" prefWidth="211"/>
                                 <TableColumn fx:id="columnCode" text="Họ và tên" prefWidth="184"/>
                                 <TableColumn fx:id="columnName" text="Mã sách" prefWidth="231"/>
-                                <TableColumn fx:id="columnPhone" text="Ngày mượn" prefWidth="251"/>
+                                <TableColumn fx:id="columnPhone" text="Ngày trả" prefWidth="251"/>
                                 <TableColumn fx:id="columnBorrow" text="Số điện thoại" prefWidth="209"/>
-                                <TableColumn fx:id="columnReturn" text="Ngày trả" prefWidth="160"/>
+                                <TableColumn fx:id="columnReturn" text="Ngày mượn" prefWidth="160"/>
                             </columns>
                         </TableView>
                        <Button fx:id="record" text="Ghi nhận" onAction="#handleRecordForm" styleClass="buttonAdd"/>

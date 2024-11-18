@@ -10,6 +10,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
 
 <StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.interfaceController" stylesheets="@main/sources/css/interface.css">
     <BorderPane>
@@ -32,17 +33,13 @@
         <center>
             <ScrollPane styleClass = "scrollpane" fitToWidth="true" fitToHeight="true">
                 <VBox spacing="10">
+                    <padding>
+                      <Insets left = "10"/>
+                    </padding>
                     <HBox alignment="CENTER_LEFT" styleClass="hbox_1">
                         <Label fx:id = "label" text="GIỚI THIỆU VỀ UET" style="-fx-font-size: 40; -fx-text-fill: #2B579A; -fx-font-weight:bold;"/>
                     </HBox>
-                    <Label text="Trường Đại học Công nghệ, Đại học Quốc gia Hà Nội được thành lập theo Quyết định số 92/2004/QĐ-TTg ngày 25/05/2004 của Thủ tướng Chính phủ trên cơ sở Khoa Công nghệ và Trung tâm Hợp tác Đào tạo và Bồi dưỡng Cơ học trực thuộc Đại học Quốc gia Hà Nội với hai nhiệm vụ như sau:" styleClass="label-custom" />
-                    <Label text = "Chính phủ trên cơ sở Khoa Công nghệ và Trung tâm Hợp tác Đào tạo và Bồi dưỡng Cơ học trực thuộc Đại học Quốc gia Hà Nội với hai nhiệm vụ như sau:" styleClass="label-custom" />
-                    <Label text="1. Đào tạo nguồn nhân lực trình độ đại học, sau đại học và bồi dưỡng nhân tài thuộc lĩnh vực khoa học, công nghệ;" styleClass="label-custom" />
-                    <Label text="2. Nghiên cứu và triển khai ứng dụng khoa học, công nghệ đáp ứng nhu cầu phát triển kinh tế – xã hội." styleClass="label-custom" />
-                    <Label text="Sứ mạng của Nhà trường là đào tạo nguồn nhân lực chất lượng cao, trình độ cao và bồi dưỡng nhân tài; nghiên cứu phát triển và ứng dụng các lĩnh vực khoa học công nghệ tiên tiến mũi nhọn trên cơ sở phát huy thế mạnh về Công nghệ thông tin và Truyền thông." styleClass="label-custom" />
-                    <Label text="ứng dụng các lĩnh vực khoa học công nghệ tiên tiến mũi nhọn trên cơ sở phát huy thế mạnh về Công nghệ thông tin và Truyền thông." styleClass="label-custom" />
-                    <Label text="Nhà trường cũng đã xác định sứ mạng tiên phong tiếp cận chuẩn mực giáo dục đại học khu vực và thế giới, ứng dụng công nghệ thông tin trong quản trị đại học đóng góp tích cực vào sự phát triển nền kinh tế và xã hội tri thức của đất nước." styleClass="label-custom" />
-                    <Label text="Sứ mạng này hoàn toàn phù hợp và thống nhất với chủ trương, giải pháp và các mục tiêu của Chương trình đổi mới toàn diện giáo dục đại học mà Đảng và Nhà nước đang triển khai thực hiện." styleClass="label-custom" />
+                    <Text fx:id = "text1" styleClass = "label-custom"/>
                     <HBox alignment="CENTER">
                         <VBox.margin>
                             <Insets top="20" bottom="20"/>
@@ -51,13 +48,7 @@
                             <Image url="/MG_7643-1.jpg"/>
                         </ImageView>
                     </HBox>
-                    <Label text="Sau gần hai mươi năm xây dựng và phát triển, Trường Đại học Công nghệ đã và đang từng bước thực hiện nhiệm vụ và dần khẳng định là một trường đại học có vị thế, uy tín trong hệ thống giáo dục đại học của cả nước." styleClass="label-custom" />
-                    <Label text="Tỷ lệ giảng viên cơ hữu có trình độ tiến sĩ đạt 75%, tỷ lệ giáo sư và phó giáo sư đạt 25%, tỷ lệ công bố quốc tế tăng nhanh hằng năm." styleClass="label-custom" />
-                    <Label text="Môi trường đào tạo chuẩn mực chất lượng cao đã được thiết lập với hệ thống chương trình đào tạo được phát triển, hoàn thiện ở mọi bậc đào tạo theo hướng tiên tiến, hiện đại, cập nhật; chất lượng đào tạo được xã hội ghi nhận, đánh giá cao." styleClass="label-custom" />
-                    <Label text = "đào tạo được phát triển, hoàn thiện ở mọi bậc đào tạo theo hướng tiên tiến, hiện đại, cập nhật; chất lượng đào tạo được xã hội ghi nhận, đánh giá cao." styleClass="label-custom" />
-                    <Label text="Phần lớn các chương trình đào tạo của Trường Đại học Công nghệ được kiểm định chương trình đào tạo theo bộ tiêu chuẩn của mạng lưới các trường đại học ASEAN (AUN) và theo tiêu chuẩn của Bộ Giáo dục và Đào tạo." styleClass="label-custom" />
-                    <Label text="Trường Đại học Công nghệ còn là đối tác tin cậy của hơn 50 trường đại học, viện nghiên cứu và tập đoàn công nghiệp lớn trên thế giới." styleClass="label-custom" />
-                    <Label text="Nhà trường đi đầu và triển khai có hiệu quả hoạt động hợp tác 'Trường – Viện – Doanh nghiệp'." styleClass="label-custom" />
+                    <Text fx:id = "text2" styleClass = "label-custom"/>
                 </VBox>
             </ScrollPane>
         </center>
