@@ -221,21 +221,6 @@ public class recordFormController extends baseSceneController {
 		}
 	}
 	
-	/**xử lý sự kiện tìm kiếm ID người dùng*/
-	@FXML
-	private void handleSearchID() {
-		String check = userID.getText();
-		if(!check.isEmpty()) {
-			alertController.setNew().AlertComplete("Đã tìm thấy ID người dùng");
-			ArrayList<userLog> arr = userLoginAccount.setNew().selectByCondition(check);
-			username.setText(arr.get(0).getFullname());
-			arr.clear();
-		}else {
-			alertController.setNew().AlertComplete("Không tìm thấy ID người dùng");
-			userID.clear();
-		}
-	}
-	
 	/**xử lý sự kiện ghi phiếu người mượn*/
 	@FXML
 	private void handleRecordForm() {
@@ -243,12 +228,11 @@ public class recordFormController extends baseSceneController {
          if(!res.isEmpty()) {
         	 
         	 /**Cần sửa đoạn này*/
-        	 borrow Borrow = new borrow(borrowerID.getText(), userID.getText(),bookCode.getText()
+        	 borrow Borrow = new borrow(borrowerID.getText(), "19",bookCode.getText()
                      ,borrowDate.getText(), returnDate.getText(), username.getText() ,"Đang mượn", phone.getText());
         	 
         	 int rs = borrowbook.setNew().insert(Borrow);
         	 /********************/
-        	 alertController.setNew().AlertComplete("Đã tìm thấy mã sách");
         	 add Add = new add(quantity.getText(), res);
         	 int check = addbook.setNewAdd().update2(Add);
         	 int Quantity = Integer.parseInt(quantity.getText());

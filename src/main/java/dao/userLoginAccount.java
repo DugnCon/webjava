@@ -63,8 +63,20 @@ public class userLoginAccount implements UserAccountInterface<userLog> {
 
 	@Override
 	public String searchAcc(userLog t) {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder ID = new StringBuilder();
+		try {
+			Connection con = JDBCSQL.getConnection();
+			PreparedStatement prsttm = con.prepareStatement("SELECT userID FROM user WHERE userName = ?");
+			prsttm.setString(1, t.getUsername());
+			ResultSet res = prsttm.executeQuery();
+			if(res.next()) {
+				ID.append(res.getString(1));
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return String.valueOf(ID);
 	}
 
 	@Override

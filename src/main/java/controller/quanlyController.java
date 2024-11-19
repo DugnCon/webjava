@@ -350,7 +350,7 @@ public class quanlyController extends baseSceneController {
         Task<JsonArray> searchTask = new Task<JsonArray>() {
             @Override
             protected JsonArray call() throws Exception {
-            	Thread.sleep(3000);
+            	Thread.sleep(500);
                 return apiController.searchBooks(query, 10);
             }
 

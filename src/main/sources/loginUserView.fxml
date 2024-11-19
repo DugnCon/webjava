@@ -18,37 +18,37 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.geometry.Insets?>
 
-<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.loginUserController" stylesheets="@main/sources/css/login_signUser.css">
+<StackPane styleClass = "stackpane" xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.loginUserController" stylesheets="@main/sources/css/login_signUser.css">
      <HBox fx:id = "HBOX1">
     <StackPane style = "-fx-pref-width:768;" fx:id = "ST1">
     <VBox fx:id = "VBOX3" styleClass = "vbox1" alignment = "CENTER">
        <VBox fx:id = "VBOXCHILD3" styleClass = "vbox1_1" spacing = "20" alignment = "CENTER">
-         <Label text = "Đăng kí" styleClass = "Label"/>
+         <Label text = "Sign Up" styleClass = "Label"/>
          <VBox spacing = "5">
-           <Label text = "Tài khoản" styleClass = "labelTiny"/>
+           <Label fx:id = "Sign" text = "Username" styleClass = "labelTiny"/>
            <TextField fx:id = "userName" promptText = "username" styleClass = "layTextField"/>
-           <Label text = "Mật khẩu" styleClass = "labelTiny"/>
+           <Label fx:id = "Pass" text = "Password" styleClass = "labelTiny"/>
            <PasswordField fx:id = "passWord" promptText = "password" styleClass = "layPassField"/>
-           <Label text = "Nhập lại mật khẩu" styleClass = "labelTiny"/>
+           <Label fx:id = "Repeat" text = "Repeat Password" styleClass = "labelTiny"/>
            <PasswordField fx:id = "repeatpass" promptText = "repeat password" styleClass = "layPassField"/>
-           <Label text = "Họ và tên" styleClass = "labelTiny"/>
+           <Label fx:id = "Full" text = "Fullname" styleClass = "labelTiny"/>
            <TextField fx:id ="fullname" promptText = "fullname" styleClass = "layTextField"/>
          </VBox>
-         <Label text = "Nếu bạn chưa có mật khẩu, vui lòng đăng ký" styleClass = "labelTiny"/>
-         <Button text = "Đăng kí" fx:id = "signup2" onAction = "#handleButtonSignup2" styleClass = "Button1"/>
+         <Label text = "If you do not have a password, please register." styleClass = "labelTiny"/>
+         <Button text = "Sign up" fx:id = "signup2" onAction = "#handleButtonSignup2" styleClass = "Button1"/>
        </VBox>  
      </VBox>
      <VBox fx:id = "VBOX1" styleClass = "vbox1" alignment = "CENTER">
        <VBox fx:id = "VBOXCHILD1" styleClass = "vbox1_1" spacing = "20" alignment = "CENTER">
-         <Label fx:id = "log" text = "Đăng nhập" styleClass = "Label"/>
+         <Label fx:id = "log" text = "Sign In" styleClass = "Label"/>
          <VBox spacing = "5">
-           <Label fx:id = "sign" text = "Tài khoản" styleClass = "labelTiny"/>
+           <Label fx:id = "sign" text = "Username" styleClass = "labelTiny"/>
            <TextField fx:id = "username" promptText = "username" styleClass = "layTextField"/>
-           <Label fx:id = "pass" text = "Mật khẩu" styleClass = "labelTiny"/>
+           <Label fx:id = "pass" text = "Password" styleClass = "labelTiny"/>
            <PasswordField fx:id = "password" promptText = "password" styleClass = "layPassField"/>
          </VBox>
-         <Label fx:id = "note" text = "Nếu bạn chưa có mật khẩu, vui lòng đăng ký" styleClass = "labelTiny"/>
-         <Button text = "Đăng nhập" fx:id = "login1" onAction = "#handleButtonLogin1" styleClass = "Button1"/>
+         <Label fx:id = "note" text = "If you do not have a password, please register." styleClass = "labelTiny"/>
+         <Button text = "Sign in" fx:id = "login1" onAction = "#handleButtonLogin1" styleClass = "Button1"/>
        </VBox>  
      </VBox>
     </StackPane>
@@ -59,8 +59,8 @@
          <ImageView fitWidth = "500" fitHeight = "300" style = "-fx-border-radius: 50%; -fx-background-radius:45;">
            <Image url = "/LeagueofLegends_Worlds2021_Trophy.jpg"/>
          </ImageView>
-         <Label text = "Đăng ký để nhận 1 xuất tham dự CKTG nào !" styleClass = "labelTiny2"/>
-         <Button text = "Đăng nhập" fx:id = "login2" onAction = "#handleButtonLogin2" styleClass = "Button"/>
+         <Label fx:id = "note2" text = "Sign up to get a spot in the World Finals!" styleClass = "labelTiny2"/>
+         <Button text = "Sign in" fx:id = "login2" onAction = "#handleButtonLogin2" styleClass = "Button"/>
        </VBox> 
      </VBox> 
      <VBox fx:id = "VBOX2" styleClass = "vbox2" alignment = "CENTER">
@@ -68,10 +68,10 @@
          <ImageView fitWidth = "500" fitHeight = "300">
            <Image url = "/LeagueOfLegends_Worlds2023_Finals_T1_SummonersCup-removebg.png"/>
          </ImageView>
-         <Label text = "Đăng ký để nhận 1 xuất tham dự CKTG nào !" styleClass = "labelTiny2"/>
+         <Label fx:id = "note1" text = "Sign up to get a spot in the World Finals!" styleClass = "labelTiny2"/>
          <HBox alignment = "CENTER" spacing = "20">
-           <Button text = "Đăng kí" fx:id = "signup1" onAction = "#handleButtonSignUp1" styleClass = "Button"/>
-           <Button text = "Quay về" fx:id = "back" onAction = "#handleBack" styleClass = "Button"/>
+           <Button text = "Sign up" fx:id = "signup1" onAction = "#handleButtonSignUp1" styleClass = "Button"/>
+           <Button text = "Back" fx:id = "back" onAction = "#handleBack" styleClass = "Button"/>
          </HBox>
        </VBox> 
      </VBox> 

@@ -268,27 +268,76 @@
        </VBox>
      </VBox>
      
-     <VBox>
+     <VBox styleClass = "color1">
+       <VBox alignment = "CENTER" spacing = "40">
+         <padding>
+           <Insets right = "200" left ="200" top = "40" bottom = "40"/>
+         </padding>
+         <Label text = "Your Book Borrowing Request" fx:id = "label6" styleClass = "fontTile4"/>
+         <Text fx:id = "note" styleClass = "Text"/>
+         <TableView fx:id = "tableBook" styleClass = "tableView">
+            <columns>
+              <TableColumn fx:id="columnCode" text="Mã sách" prefWidth="273"/>
+              <TableColumn fx:id="columnTitle" text="Tên sách" prefWidth="393"/>
+              <TableColumn fx:id="columnAuthor" text="Tác giả" prefWidth="313"/>
+              <TableColumn fx:id="columnYear" text="Năm xuất bản" prefWidth="243"/>
+            </columns>
+         </TableView>
+         <Label fx:id = "yourID" styleClass = "fontTile4"/>
+         <VBox alignment="CENTER" spacing = "30">
+    <HBox spacing="100" alignment = "TOP_CENTER">
+        <VBox alignment="TOP_CENTER" spacing="20">
+            <Label fx:id="lab2" text="Borrower Information" styleClass="fontTile4"/>
+            <HBox spacing="10" alignment="CENTER">
+                <ImageView fx:id="image2" fitWidth="30" fitHeight="30" preserveRatio="true">
+                    <Image url="/icons8-search-50.png"/>
+                </ImageView>
+                <TextField fx:id="userID" styleClass="textField" promptText="Example: 1"/>
+                <Button text="Find ID" styleClass="buttonAdd" fx:id="searchID" onAction="#handleSearchID"/>
+            </HBox>
+            <VBox spacing="10">
+                <TextField fx:id="borrowerID" styleClass="textField" promptText="Mã người mượn"/>
+                <TextField fx:id="userName" promptText="Tên người mượn" styleClass="textField"/>
+                <TextField fx:id="phone" promptText="Số điện thoại" styleClass="textField"/>
+                <TextField fx:id="borrowDate" promptText="Ngày mượn" styleClass="textField"/>
+                <TextField fx:id="returnDate" promptText="Ngày trả" styleClass="textField"/>
+            </VBox>
+        </VBox>
+        <VBox alignment="TOP_CENTER" spacing="20">
+            <padding>
+                <Insets top="0" right="0" bottom="30" left="0"/>
+            </padding>
+            <Label fx:id="lab1" text="Book Information" styleClass="fontTile4"/>
+            <HBox spacing="10">
+                <ImageView fx:id="image1" fitWidth="30" fitHeight="30" preserveRatio="true">
+                    <Image url="/icons8-search-50.png"/>
+                </ImageView>
+                <TextField fx:id="bookCode" promptText="Example: GT1" styleClass="textField"/>
+                <Button fx:id="search" text="Tìm sách" onAction="#handleSearch" styleClass="buttonAdd"/>
+            </HBox>
+            <VBox spacing="10">
+                <TextField fx:id="Title" promptText="Example: Harry Porter" styleClass="textField"/>
+                <TextField fx:id="chapter" promptText="Example: 1" styleClass="textField"/>
+                <TextField fx:id="author" promptText="Example: Đàm Đại Dũng" styleClass="textField"/>
+                <TextField fx:id="quantity" promptText="Example: 100" styleClass="textField"/>
+            </VBox>
+        </VBox>
+    </HBox>
+    <Button fx:id="complete1" styleClass="buttonAdd" text="Record" onAction="#handleBorrow"/>
+</VBox>
+       </VBox>
+     </VBox>
+     
+     <VBox styleClass = "color2">
        <VBox alignment = "CENTER" spacing = "20">
         <padding>
           <Insets right = "200" left  = "200" top ="40" bottom = "40"/>
         </padding>
-         <Label text = "Your Book Borrowing Request" fx:id = "label6" styleClass = "fontTile4"/>
+         <Label text = "Your Review" fx:id = "label6" styleClass = "fontTile4"/>
          <VBox alignment = "CENTER" spacing = "25">
-           <Text fx:id = "note" styleClass = "Text"/>
            <TextField promptText = "Tên tài khoản" fx:id = "username" styleClass = "textfield1"/>
-           <HBox spacing = "40">
            <TextArea promptText = "Yêu cầu" fx:id = "textarea" style = "-fx-border-radius:10; -fx-background-radius:10; -fx-border-color:black;"/>
-           <TableView fx:id = "tableBook" styleClass = "tableView">
-              <columns>
-               <TableColumn fx:id="columnCode" text="Mã sách" prefWidth="273"/>
-               <TableColumn fx:id="columnTitle" text="Tên sách" prefWidth="393"/>
-               <TableColumn fx:id="columnAuthor" text="Tác giả" prefWidth="313"/>
-               <TableColumn fx:id="columnYear" text="Năm xuất bản" prefWidth="243"/>
-              </columns>
-           </TableView>
-           </HBox>
-           <Button text = "Ghi nhận" styleClass = "buttonAdd" fx:id = "complete" onAction = "#handleRequire"/>
+           <Button text = "Record" styleClass = "buttonAdd" fx:id = "complete" onAction = "#handleRequire"/>
          </VBox>
        </VBox>
      </VBox>

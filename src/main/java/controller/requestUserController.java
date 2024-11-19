@@ -47,12 +47,20 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import main.java.JDBC.JDBCSQL;
+import main.java.dao.addbook;
+import main.java.dao.borrowbook;
 import main.java.dao.requireUser;
+import main.java.dao.userLoginAccount;
+import main.java.model.add;
 import main.java.model.addNew;
+import main.java.model.alter;
+import main.java.model.borrow;
+import main.java.model.borrowNew;
 import main.java.model.require;
+import main.java.model.userLog;
 public class requestUserController extends baseSceneController {
 	@FXML
-	private Label label1,label2,label3,label4,label5,label6;
+	private Label label1,label2,label3,label4,label5,label6,yourID,lab1,lab2;
 	@FXML
 	private VBox tuto1,tuto2,tuto3,tuto4,vboxnew;
 	@FXML
@@ -62,9 +70,13 @@ public class requestUserController extends baseSceneController {
 	@FXML
 	private Button home,introduce,suprise,service,contact,back;
 	@FXML
-	private Button bt1,bt2,bt3,complete;
+	private Button bt1,bt2,bt3,complete,comlete1,searchID,search;
 	@FXML
 	private TextField fieldSearch,username;
+	@FXML
+	private TextField bookCode,borrowerID,userName
+	,phone,borrowDate,returnDate,status,searchAccount
+	,userID,Title,chapter,author,quantity;
 	@FXML
 	private Button searchBook;
 	@FXML
@@ -87,6 +99,16 @@ public class requestUserController extends baseSceneController {
 	private TableColumn<addNew, String> columnCode, columnTitle, columnAuthor, columnYear;
 	@FXML
 	private ObservableList<addNew> bookList = FXCollections.observableArrayList();
+	
+	private String id;
+	
+	public void setID(String id) {
+		this.id = id;
+	}
+	
+	public String getID() {
+		return this.id;
+	}
 	    
 	private ObservableList<addNew> incomingBookList = FXCollections.observableArrayList();
 	
@@ -126,6 +148,11 @@ public class requestUserController extends baseSceneController {
         tableBook.setItems(incomingBookList);
         
         hboxnew.setVisible(false);
+        
+        userLog UserLog = new userLog(loginUserController.getInstance().getUser(), "");
+        String ID = userLoginAccount.setNew().searchAcc(UserLog);
+        yourID.setText("Your ID: " + ID);
+        setID(ID);
 		
 		scheduler = Executors.newSingleThreadScheduledExecutor();
         fieldSearch.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -284,6 +311,35 @@ public class requestUserController extends baseSceneController {
 		button.add(bt2);
 		button.add(bt3);
 		tran.COMERIGHT3(button);
+		
+		ArrayList<Node> I9 = new ArrayList<Node>();
+		I9.add(label6);
+		I9.add(note);
+		I9.add(tableBook);
+		I9.add(yourID);
+		tran.COMERIGHT3(I9);
+		
+		ArrayList<Node> I7 = new ArrayList<Node>();
+		I7.add(label6);
+		I7.add(note);
+		I7.add(tableBook);
+		I7.add(yourID);
+		I7.add(lab2);
+		I7.add(borrowerID);
+		I7.add(userName);
+		I7.add(phone);
+		I7.add(borrowDate);
+		I7.add(returnDate);
+		tran.COMERIGHT3(I7);
+		
+		ArrayList<Node> I8 = new ArrayList<Node>();
+		I8.add(lab1);
+		I8.add(Title);
+		I8.add(chapter);
+		I8.add(author);
+		I8.add(quantity);
+		I8.add(comlete1);
+		tran.COMELEFTARRAY(I8);
 	}
 	
 	private void scheduleSearch(String query) {
@@ -367,6 +423,7 @@ public class requestUserController extends baseSceneController {
         Task<JsonArray> searchTask = new Task<JsonArray>() {
             @Override
             protected JsonArray call() throws Exception {
+            	Thread.sleep(500);
                 return apiController.searchBooks(query, 8);
             }
 
@@ -462,21 +519,100 @@ public class requestUserController extends baseSceneController {
 	private void handleHome() {
 		createScene(home,"/main/sources/interfaceUser.fxml","/main/sources/css/interfaceUser.css");
 	}
+	
 	@FXML
 	private void handleIntro() {
 		createScene(introduce,"/main/sources/interfaceUser_1.fxml","/main/sources/css/interfaceUser.css");
 	}
+	
 	@FXML
 	private void handleSuprise() {
 		
 	}
+	
 	@FXML
 	private void handleService() {
 		
 	}
+	
 	@FXML
 	private void handleContact() {
 		
+	}
+	
+	/**xử lý sự kiện kiểm tra xe sách có tồn tại*/
+	@FXML
+	private void handleSearch() {
+		add Add = new add(bookCode.getText());
+		String bookcode = addbook.setNewAdd().search(Add);
+		if(!bookcode.isEmpty()) {
+			alertController.setNew().AlertComplete("Đã tìm thấy mã sách thành công");
+			ArrayList<alter> arr = addbook.setNewAdd().selectByCondition1(bookcode);
+			Title.setText(arr.get(0).getnameBook());
+			chapter.setText(arr.get(0).getchapBook());
+			author.setText(arr.get(0).getnameAuthor());
+			quantity.setText(arr.get(0).getQuantity());
+		}else {
+			alertController.setNew().AlertComplete("Đã tìm thấy mã sách không thành công");
+			clearFields();
+		}
+	}
+	
+	/**xử lý sự kiện tìm kiếm ID người dùng*/
+	@FXML
+	private void handleSearchID() {
+		String check = userID.getText();
+		if(!check.isEmpty() && check.equals(getID())) {
+			alertController.setNew().AlertComplete("Đã tìm thấy ID của bạn");
+			ArrayList<userLog> arr = userLoginAccount.setNew().selectByCondition(check);
+			userName.setText(arr.get(0).getFullname());
+			arr.clear();
+		}else {
+			alertController.setNew().AlertComplete("Có thể bạn đã nhập sai ID");
+			userID.clear();
+		}
+	}
+	
+	@FXML
+	private void handleBorrow() {
+		String res = bookCode.getText();
+        if(!res.isEmpty()) {
+       	 
+       	 /**Cần sửa đoạn này*/
+       	 borrow Borrow = new borrow(borrowerID.getText(), userID.getText(),bookCode.getText()
+                    ,borrowDate.getText(), returnDate.getText(), userName.getText() ,"Đang mượn", phone.getText());
+       	 
+       	 int rs = borrowbook.setNew().insert(Borrow);
+       	 /********************/
+       	 add Add = new add(quantity.getText(), res);
+       	 int check = addbook.setNewAdd().update2(Add);
+       	 int Quantity = Integer.parseInt(quantity.getText());
+       	 if(rs > 0 && check > 0 && Quantity >= 1) {
+       		 alertController.setNew().AlertComplete("Ghi nhận thành công");
+           	 clearFields();
+           	 clearFields1();
+       	 }else {
+       		 alertController.setNew().AlertUnComplete("Ghi nhạn không thành công");
+       	 }
+        }else {
+       	 alertController.setNew().AlertUnComplete("Không tìm thấy mã sách");
+        }
+	}
+	
+	private void clearFields() {
+	       bookCode.clear();
+	       Title.clear();
+	       chapter.clear();
+	       author.clear();
+	       quantity.clear();
+	}
+	private void clearFields1() {
+		borrowerID.clear();
+		userName.clear();
+		phone.clear();
+		borrowDate.clear();
+		returnDate.clear();
+		userID.clear();
 	}
 	
 	@FXML

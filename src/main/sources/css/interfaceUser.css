@@ -160,7 +160,17 @@
 	-fx-border-color:#168560;
 	-fx-border-radius:20;
 	-fx-background-radius:20;
-	-fx-border-color:#2B579A;
+	-fx-border-color:black;
+	-fx-border-width:2;
+	-fx-text-fill:black;
+}
+.textField{
+	-fx-pref-width:150;
+	-fx-pref-height:40;
+	-fx-border-color:#168560;
+	-fx-border-radius:20;
+	-fx-background-radius:20;
+	-fx-border-color:black;
 	-fx-border-width:2;
 	-fx-text-fill:black;
 }

@@ -99,18 +99,16 @@
 .labelTiny{
 	-fx-font-size:13;
 	-fx-text-fill:black;
-	-fx-font-family:"DFVN NewEddy";
-	-fx-font-weight:bold;
+	-fx-font-family:"Accent Graphic W00 Medium";
 }
 .labelTiny2{
 	-fx-font-size:16;
 	-fx-text-fill:white;
-	-fx-font-family:"DFVN NewEddy";
+	-fx-font-family:"Accent Graphic W00 Medium";
 }
 .Label{
 	-fx-font-size:40;
 	-fx-text-fill:black;
-	-fx-font-family:"DFVN NewEddy";
-	-fx-font-weight:bold;
+	-fx-font-family:"Accent Graphic W00 Medium";
 }
 

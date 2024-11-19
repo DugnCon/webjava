@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import main.java.dao.lockAccount;
 import main.java.dao.signUpAccount;
 import main.java.dao.userAccount;
@@ -37,13 +38,52 @@ public class loginUserController extends baseSceneController {
     @FXML
     private VBox vbox1, vbox2, vbox3, vbox4;
     @FXML
-    private Label log,sign,pass,note;
+    private Label log,sign,pass,note,note1,note2,
+    Sign,Pass,Repeat,Full;
+    
+    /**Dùng singleton để giữ lại giá trị*/
+    /**đây là tham chiếu tĩnh duy nhất của lớp*/
+    /**Nó tham chiếu đến ô nhớ của 1 lớp*/
+    private static loginUserController instance;
+    private String user;
+    
+    public void setUser(String user) {
+    	this.user = user;
+    }
+    
+    public String getUser() {
+    	return this.user;
+    }
+    
+    public static loginUserController setNew() {
+    	return new loginUserController();
+    }
+    
+    /**Kiểm tra instance*/
+    public static loginUserController getInstance() {
+        if (instance == null) {
+            instance = new loginUserController();
+        }
+        return instance;
+    }
     
     @FXML
     private void initialize() {
-    	transistionController tran = new transistionController();
-    	tran.ComeRight1(ST1);
-    	tran.ComeLeft1(ST2);
+    	Font font = Font.loadFont(getClass().getResourceAsStream("/Accent Graphic W00 Medium.ttf"), 20);
+    	sign.setFont(font);
+    	pass.setFont(font);
+    	login1.setFont(font);
+    	login2.setFont(font);
+    	signup1.setFont(font);
+    	signup2.setFont(font);
+    	back.setFont(font);
+    	note.setFont(font);
+    	note2.setFont(font);
+    	note1.setFont(font);
+    	Sign.setFont(font);
+    	Pass.setFont(font);
+    	Repeat.setFont(font);
+    	Full.setFont(font);
     }
     
 	@FXML
@@ -59,6 +99,8 @@ public class loginUserController extends baseSceneController {
             }
         }else {
         	if(res > 0) {
+        		/**Lấy giá trị username*/
+        		loginUserController.getInstance().setUser(username.getText());
         		alertController.setNew().AlertComplete("Đăng nhập thành công");
                 createScene(login1, "/main/sources/interfaceUser.fxml", "/main/sources/css/interfaceUser.css");
         	}else {

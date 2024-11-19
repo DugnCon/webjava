@@ -17,6 +17,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
 import main.java.JDBC.JDBCSQL;
+import main.java.model.borrowNew;
 import main.java.model.requireNew;
 import main.java.model.userLog;
 
@@ -82,7 +83,26 @@ public class manageRequestController extends baseSceneController {
     /**xử lý sự kiện mượn sách*/
     @FXML
 	private void handleBorrower() {
-		createScene(borrower,"/main/sources/borrowBookView.fxml","/main/sources/css/borrowBook.css");
+    	try {
+            Connection con = JDBCSQL.getConnection();
+            PreparedStatement prsttm = con.prepareStatement("SELECT * FROM borrower");
+            ResultSet rs = prsttm.executeQuery();
+            ObservableList<borrowNew> bookList = FXCollections.observableArrayList();
+            while (rs.next()) {
+                borrowNew borrownew = new borrowNew(rs.getString(3), rs.getString(8), rs.getString(4),
+                        rs.getString(5), rs.getString(6));
+                bookList.add(borrownew);
+            }
+            
+            borrowBookController controller = (borrowBookController) createScene1(borrower, 
+                "/main/sources/borrowBookView.fxml", "/main/sources/css/borrowBook.css");
+            controller.setBookList(bookList);
+            con.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Cannot execute: " + e.getMessage());
+        }
 	}
 	
 	/**xử lý sự kiện người trả*/

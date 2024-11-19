@@ -249,5 +249,6 @@ public class returnBookController extends baseSceneController {
 			borrowDate.clear();
 			returnDate.clear();
 			status.clear();
+			userID.clear();
 	}
 }

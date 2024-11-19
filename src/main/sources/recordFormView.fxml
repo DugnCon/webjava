@@ -130,13 +130,6 @@
                             </padding>
                             <VBox alignment="CENTER" spacing="10">
                                  <Label fx:id = "label2" text="Thông tin người mượn" styleClass="labelLay"/>
-                                 <HBox spacing="10" alignment="CENTER">
-                                    <ImageView fx:id = "image2" fitWidth = "30" fitHeight = "30" preserveRatio = "true">
-                                      <Image url="/icons8-search-50.png"/>
-                                    </ImageView>
-                                    <TextField fx:id="userID" styleClass="textField" promptText="Example: 1"/>
-                                    <Button text="Tìm ID" styleClass="buttonAdd" fx:id="searchID" onAction="#handleSearchID"/>
-                                 </HBox>
                                  <VBox spacing = "10">
                                    <padding>
                                       <Insets top="10" right="0" bottom="20" left="0"/>
