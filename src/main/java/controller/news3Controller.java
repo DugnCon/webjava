@@ -232,7 +232,7 @@ public class news3Controller extends baseSceneController {
 	
 	@FXML
 	private void handleNews4() {
-		
+		createScene(LB5,"/main/sources/news4.fxml","/main/sources/css/interfaceUser.css");
 	}
 	
 	@FXML

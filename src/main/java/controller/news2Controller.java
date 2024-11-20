@@ -203,12 +203,12 @@ public class news2Controller extends baseSceneController {
 	
 	@FXML
 	private void handleNews3() {
-		
+		createScene(LB4,"/main/sources/news4.fxml","/main/sources/css/interfaceUser.css");
 	}
 	
 	@FXML
 	private void handleNews4() {
-		createScene(LB4,"/main/sources/news3View.fxml","/main/sources/css/interfaceUser.css");
+		createScene(LB5,"/main/sources/news3View.fxml","/main/sources/css/interfaceUser.css");
 	}
 	
 	@FXML

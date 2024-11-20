@@ -406,6 +406,7 @@ public class requestUserController extends baseSceneController {
     private void handleSearchBook() {
         String query = fieldSearch.getText().trim();
         if (query.isEmpty()) {
+        	hboxnew.setVisible(false);
             loadingIndicator.setVisible(false);
             mainContent.setEffect(null); 
             searchResultsContainer.setVisible(false);

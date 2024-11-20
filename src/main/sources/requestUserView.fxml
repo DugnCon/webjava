@@ -234,13 +234,13 @@
              <Image url = "/toithayhoacovang.jpg"/>
            </ImageView>
            <ImageView fx:id = "img55" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
-             <Image url = "/truyenngan.jpg"/>
+             <Image url = "/ngayxuacomotchuyentinh.jpg"/>
            </ImageView>
            <ImageView fx:id = "img66" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
-             <Image url = "/truyenngan.jpg"/>
+             <Image url = "/bocaukhongduathunguyennhatanh.jpg"/>
            </ImageView>
            <ImageView fx:id = "img77" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
-             <Image url = "/truyenngan.jpg"/>
+             <Image url = "/chotoi1vevetuoitho.jpg"/>
            </ImageView>
            <ImageView fx:id = "img88" fitWidth = "150" fitHeight = "170" preserveRatio = "true">
              <Image url = "/truyenngan.jpg"/>
@@ -316,10 +316,10 @@
                 <Button fx:id="search" text="Tìm sách" onAction="#handleSearch" styleClass="buttonAdd"/>
             </HBox>
             <VBox spacing="10">
-                <TextField fx:id="Title" promptText="Example: Harry Porter" styleClass="textField"/>
-                <TextField fx:id="chapter" promptText="Example: 1" styleClass="textField"/>
-                <TextField fx:id="author" promptText="Example: Đàm Đại Dũng" styleClass="textField"/>
-                <TextField fx:id="quantity" promptText="Example: 100" styleClass="textField"/>
+                <TextField fx:id="Title" promptText="Tên sách" styleClass="textField"/>
+                <TextField fx:id="chapter" promptText="Số chương" styleClass="textField"/>
+                <TextField fx:id="author" promptText="Tên tác giả" styleClass="textField"/>
+                <TextField fx:id="quantity" promptText="Số lượng của sách" styleClass="textField"/>
             </VBox>
         </VBox>
     </HBox>
