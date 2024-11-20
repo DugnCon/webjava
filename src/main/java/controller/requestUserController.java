@@ -620,21 +620,25 @@ public class requestUserController extends baseSceneController {
 		if(username.getText().isEmpty()) {
 			alertController.setNew().AlertUnComplete("Bạn chưa nhập tên tài khoản");
 		}else {
-			require req = new require(username.getText(),textarea.getText());
-			int res = requireUser.setNew().searchId(req);
-			if(res > 0) {
-				if(textarea.getText().isEmpty()) {
-					alertController.setNew().AlertUnComplete("Vui lòng nhập yêu cầu của bạn");
-				}else {
-					int ins = requireUser.setNew().insertLog(req);
-					if(ins > 0) {
-						username.clear();
-						textarea.clear();
-						alertController.setNew().AlertComplete("Bạn đã yêu cầu thành công");
+			if(loginUserController.getInstance().getUser().equals(username.getText())) {
+				require req = new require(username.getText(),textarea.getText());
+				int res = requireUser.setNew().searchId(req);
+				if(res > 0) {
+					if(textarea.getText().isEmpty()) {
+						alertController.setNew().AlertUnComplete("Vui lòng nhập yêu cầu của bạn");
 					}else {
-						alertController.setNew().AlertUnComplete("Bạn chưa yêu cầu được");
-					}	
+						int ins = requireUser.setNew().insertLog(req);
+						if(ins > 0) {
+							username.clear();
+							textarea.clear();
+							alertController.setNew().AlertComplete("Bạn đã yêu cầu thành công");
+						}else {
+							alertController.setNew().AlertUnComplete("Bạn chưa yêu cầu được");
+						}	
+					}
 				}
+			}else {
+				alertController.setNew().AlertUnComplete("Bạn đã nhập sai tên tài khoản của bạn");
 			}
 		}
 	}

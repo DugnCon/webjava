@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Pos?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.news4Controller" stylesheets="@main/sources/css/interfaceUser.css">
+   <BorderPane>
+    <top>
+    <BorderPane>
+     <top>
+    <HBox alignment="TOP_CENTER" styleClass = "header_top" spacing = "50">
+        <!-- Đặt từng ImageView trong VBox để căn chỉnh theo chiều dọc -->
+        <VBox alignment="CENTER">
+          <padding>
+            <Insets top = "0" right = "50" bottom = "0" left = "10"/>
+          </padding>
+            <ImageView fx:id = "img1" fitWidth="70" fitHeight="70" preserveRatio="true">
+                <Image url="/1024px-Logo_HUET.svg.png"/>
+            </ImageView>
+        </VBox>
+        <VBox alignment="CENTER" styleClass = "image">
+          <padding>
+            <Insets top = "0" right = "10" bottom = "0" left = "50"/>
+          </padding>
+            <ImageView fx:id = "img2" fitWidth="70" fitHeight="70" preserveRatio="true">
+                <Image url="/unnamed.png"/>
+            </ImageView>
+        </VBox>
+        <VBox alignment="CENTER" styleClass = "image">
+          <padding>
+            <Insets top = "15" right = "10" bottom = "0" left = "50"/>
+          </padding>
+            <ImageView fx:id = "img3" fitWidth="150" fitHeight="350" preserveRatio="true">
+                <Image url="/logo-vnu.png"/>
+            </ImageView>
+        </VBox>
+        <VBox alignment="CENTER" styleClass = "image">
+          <padding>
+            <Insets top = "40" right = "10" bottom = "0" left = "50"/>
+          </padding>
+            <ImageView fx:id = "img4" fitWidth="200" fitHeight="350" preserveRatio="true">
+                <Image url="/959.png"/>
+            </ImageView>
+        </VBox>
+    </HBox>
+    </top>
+    <!-- Thanh nav thực thi các scene -->
+    <center>
+    <HBox alignment = "CENTER" styleClass = "header_next" spacing = "50">
+      <HBox alignment = "CENTER">
+        <Button text = "Home" fx:id = "home" onAction = "#handleHome" styleClass = "button_1"/>
+        <Button text = "Introduce" fx:id = "introduce" onAction = "#handleIntro" styleClass = "button_1"/>
+        <Button text = "Outstanding" fx:id = "suprise" onAction = "#handleSuprise" styleClass = "button_1"/>
+        <Button text = "Service" fx:id = "service" onAction = "#handleService" styleClass = "button_1"/>
+        <Button text = "Contact" fx:id = "contact" onAction = "#handleContact" styleClass = "button_1"/>
+        <Button text = "Back" fx:id = "back" onAction = "#handleBack" styleClass = "button_1"/>
+      </HBox>
+    </HBox>
+    </center>
+    </BorderPane>
+    </top>
+    
+    <!-- Phần content -->
+    <center>
+    <ScrollPane styleClass="scrollPane" HBox.hgrow="ALWAYS">
+     <content>
+     <!-- Phần giới thiệu -->
+     <VBox styleClass = "body">
+       <padding>
+        <Insets top = "20" right = "0" bottom = "0" left = "56"/>
+       </padding>
+       
+       <!-- Nội dung của báo -->
+      <HBox spacing = "20" styleClass = "color1" alignment = "CENTER">
+        <padding>
+          <Insets top = "40" bottom = "40"/>
+        </padding>
+        <!--****** Update nội dung *******-->
+        <VBox>
+           <HBox.margin>
+             <Insets right = "40"/>
+           </HBox.margin>
+           <VBox alignment = "CENTER">
+             <Text fx:id = "title" styleClass = "fontTile4" />
+             <Text fx:id = "text1" styleClass = "Text"/>
+             <ImageView fx:id = "imgtitle" fitWidth = "700" fitHeight = "500" preserveRatio = "true">
+               <Image url = "/support.jpg"/>
+             </ImageView>
+           </VBox>
+         </VBox>
+         <!-- *********************** -->
+         <VBox>
+           <Text fx:id = "title1" styleClass = "fontTile4"/>
+           <HBox fx:id = "h3" >
+             <ImageView fx:id = "IMG3" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+               <Image url = "/460663595_907458911410880_604379066960442608_n-100x84.jpg"/>
+             </ImageView>
+             <Button fx:id="LB3" styleClass="custom-button" onAction = "#handleNews2"/> 
+           </HBox>
+           <HBox fx:id = "h2">
+               <ImageView fx:id="IMG2" fitWidth="150" fitHeight="70" preserveRatio="true">
+                <Image url="/462508358_921021493387955_6015371627903243179_n-100x84.jpg"/>
+               </ImageView>
+              <Button fx:id="LB2" styleClass="custom-button" onAction = "#handleNews1"/> 
+           </HBox>
+            <HBox fx:id = "h5" >
+              <ImageView fx:id = "IMG5" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+                <Image url = "/461302709_911432027680235_6550184406163210669_n-100x84.jpg"/>
+              </ImageView>
+              <Button fx:id="LB5" styleClass="custom-button" onAction = "#handleNews4"/> 
+            </HBox>
+             <HBox fx:id = "h6" >
+                <ImageView fx:id = "IMG6" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+                  <Image url = "/plummentandsoar.jpg"/>
+                </ImageView>
+                <Button fx:id="LB6" styleClass="custom-button" onAction = "#handleNews5"/> 
+              </HBox>
+              <HBox fx:id = "h7" >
+                <ImageView fx:id = "IMG7" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+                  <Image url = "/4088cf344c47ea19b356-100x84.jpg"/>
+                </ImageView>
+                <Button fx:id="LB7" styleClass="custom-button" onAction = "#handleNews6"/> 
+              </HBox>
+       </VBox>
+      </HBox>
+      
+      <!-- Tạo footer -->
+     <VBox styleClass = "background_img">
+        <padding>
+           <Insets top = "100" right = "200" bottom = "100" left = "200"/>
+         </padding>
+       <StackPane alignment = "CENTER">
+        <VBox alignment = "CENTER">
+         <VBox styleClass = "image_2" alignment = "CENTER">
+           <ImageView fx:id = "img6" fitWidth = "500" fitHeight = "300" preserveRatio = "true">
+             <Image url = "/logo-vnu.png"/>
+           </ImageView>
+         </VBox>
+         <HBox spacing = "50">
+           <padding>
+             <Insets top = "40" right = "0" bottom = "0" left = "0"/>
+           </padding>
+           <Button fx:id = "bt1" text = "FaceBook" styleClass = "button_2"/>
+           <Button fx:id = "bt2" text = "Gmail" styleClass = "button_2"/>
+           <Button fx:id = "bt3" text = "TikTok" styleClass = "button_2"/>
+         </HBox>
+        </VBox> 
+       </StackPane>
+     </VBox>
+     
+     <!-- Tạo footer cuổi -->
+     <HBox styleClass = "header_top" alignment  = "CENTER" spacing = "40">
+      <padding>
+        <Insets top = "10" right = "0" bottom = "10" left = "0"/>
+      </padding>
+       <ImageView fx:id = "img7" fitWidth = "200" fitHeight = "100" preserveRatio = "true">
+         <Image  url = "/logo-vnu.png"/>
+       </ImageView>
+       <ImageView fx:id = "img8" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+         <Image url = "/unnamed.png"/>
+       </ImageView>
+       <ImageView fx:id = "img9" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+         <Image url = "/logo.png"/>
+       </ImageView>
+       <ImageView fx:id = "img10" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+         <Image url = "/VNU-HUS.jpg"/>
+       </ImageView>
+       <ImageView fx:id = "img11" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
+         <Image url = "/ULIS-Logo-RBG-02.jpg"/>
+       </ImageView>
+     </HBox>
+     
+     </VBox>
+    </content>
+   </ScrollPane>
+   </center>
+  </BorderPane>
+</VBox>
