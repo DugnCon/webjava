@@ -78,15 +78,16 @@ public class requestUserController extends baseSceneController {
 	,phone,borrowDate,returnDate,status,searchAccount
 	,userID,Title,chapter,author,quantity;
 	@FXML
-	private Button searchBook;
+	private Button searchBook,clear;
 	@FXML
 	private ScrollPane scrollpane;
 	@FXML
-	private VBox searchResultsContainer,para;
+	private VBox searchResultsContainer,para,yourComment;
 	@FXML
 	private ProgressIndicator loadingIndicator;
 	@FXML
-	private Text text1,text2,lb1,lb2,title,title2,paragraph,note;
+	private Text text1,text2,lb1,lb2,title,title2
+	,paragraph,note,yourName,comment;
 	@FXML
     private BorderPane mainContent;
 	@FXML
@@ -363,44 +364,6 @@ public class requestUserController extends baseSceneController {
 
         scheduler.schedule(searchTask, 500, TimeUnit.MILLISECONDS);
     }
-
-    private void updateSuggestionList(JsonArray items) {
-        searchResultsContainer.getChildren().clear();
-        if (items != null && items.size() > 0) {
-            for (int i = 0; i < items.size(); i++) {
-                JsonObject book = items.get(i).getAsJsonObject();
-                JsonObject volumeInfo = book.getAsJsonObject("volumeInfo");
-
-                String title = volumeInfo.get("title").getAsString();
-                String infoLink = volumeInfo.has("infoLink") ? volumeInfo.get("infoLink").getAsString() : "";
-                String thumbnailUrl = volumeInfo.has("imageLinks") && volumeInfo.getAsJsonObject("imageLinks").has("thumbnail")
-                        ? volumeInfo.getAsJsonObject("imageLinks").get("thumbnail").getAsString() : null;
-
-                HBox bookEntry = new HBox(10); 
-                bookEntry.setAlignment(Pos.CENTER);
-
-                if (thumbnailUrl != null) {
-                    ImageView thumbnail = new ImageView(new Image(thumbnailUrl, 50, 75, true, true));
-                    bookEntry.getChildren().add(thumbnail);
-                }
-
-
-                Text bookTitleText = new Text(title);
-                bookTitleText.setWrappingWidth(300);
-
-                Hyperlink bookLink = new Hyperlink();
-                bookLink.setGraphic(bookTitleText);
-                bookLink.setOnAction(event -> openWebpage(infoLink));
-
-                bookEntry.getChildren().add(bookLink);
-                searchResultsContainer.getChildren().add(bookEntry);
-            }
-        } else {
-            Text noResults = new Text("Không tìm thấy gợi ý nào.");
-            searchResultsContainer.getChildren().add(noResults);
-        }
-    }
-    
 	
     @FXML
     private void handleSearchBook() {
@@ -464,43 +427,114 @@ public class requestUserController extends baseSceneController {
     }
 
     
-	    private void updateResults(JsonArray results) {
-	        searchResultsContainer.getChildren().clear();
+    private void updateSuggestionList(JsonArray items) {
+        searchResultsContainer.getChildren().clear();
+        if (items != null && items.size() > 0) {
+            for (int i = 0; i < items.size(); i++) {
+                JsonObject book = items.get(i).getAsJsonObject();
+                JsonObject volumeInfo = book.getAsJsonObject("volumeInfo");
 
-	        if (results != null && results.size() > 0) {
-	            for (int i = 0; i < results.size(); i++) {
-	                JsonObject book = results.get(i).getAsJsonObject();
-	                JsonObject volumeInfo = book.getAsJsonObject("volumeInfo");
+                String title = volumeInfo.get("title").getAsString();
+                String infoLink = volumeInfo.has("infoLink") ? volumeInfo.get("infoLink").getAsString() : "";
+                String thumbnailUrl = volumeInfo.has("imageLinks") && volumeInfo.getAsJsonObject("imageLinks").has("thumbnail")
+                        ? volumeInfo.getAsJsonObject("imageLinks").get("thumbnail").getAsString() : null;
+                String authors = volumeInfo.has("authors") ? volumeInfo.get("authors").toString().replace("[", "").replace("]", "") : "Không rõ tác giả";
+                String description = volumeInfo.has("description") ? volumeInfo.get("description").getAsString() : "Không có mô tả.";
 
-	                String title = volumeInfo.get("title").getAsString();
-	                String infoLink = volumeInfo.has("infoLink") ? volumeInfo.get("infoLink").getAsString() : "";
-	                String thumbnailUrl = volumeInfo.has("imageLinks") && volumeInfo.getAsJsonObject("imageLinks").has("thumbnail")
-	                        ? volumeInfo.getAsJsonObject("imageLinks").get("thumbnail").getAsString() : null;
+                HBox bookEntry = new HBox(10);
+                bookEntry.setAlignment(Pos.CENTER_LEFT);
 
-	                HBox bookEntry = new HBox(10);
-	                bookEntry.setAlignment(Pos.TOP_CENTER);
+                if (thumbnailUrl != null) {
+                    ImageView thumbnail = new ImageView(new Image(thumbnailUrl, 50, 75, true, true));
+                    bookEntry.getChildren().add(thumbnail);
+                }
 
-	                if (thumbnailUrl != null) {
-	                    ImageView thumbnail = new ImageView(new Image(thumbnailUrl, 50, 75, true, true));
-	                    bookEntry.getChildren().add(thumbnail);
-	                }
+                VBox bookDetails = new VBox(5);
+                bookDetails.setAlignment(Pos.CENTER_LEFT);
+                
+                Font font = Font.loadFont(getClass().getResourceAsStream("/Accent Graphic W00 Medium.ttf"), 20);
+                Text bookTitleText = new Text(title);
+                bookTitleText.setWrappingWidth(300);
+                bookTitleText.setFont(font);
+                bookTitleText.getStyleClass().add("Text");
 
-	                Text bookTitleText = new Text(title);
-	                bookTitleText.setWrappingWidth(300);
+                Hyperlink bookLink = new Hyperlink();
+                bookLink.setGraphic(bookTitleText);
+                bookLink.setOnAction(event -> openWebpage(infoLink));
 
-	                Hyperlink bookLink = new Hyperlink();
-	                bookLink.setGraphic(bookTitleText);
-	                bookLink.setOnAction(event -> openWebpage(infoLink));
+                Text authorText = new Text("Tác giả: " + authors);
+                authorText.setWrappingWidth(300);
+                authorText.setFont(font);
+                authorText.getStyleClass().add("Text");
 
-	                bookEntry.getChildren().add(bookLink);
-	                searchResultsContainer.getChildren().add(bookEntry);
-	            }
-	        } else {
-	            Text noResults = new Text("Không tìm thấy kết quả.");
-	            searchResultsContainer.getChildren().add(noResults);
-	        }
-	    }
+                Text descriptionText = new Text("Mô tả: " + description);
+                descriptionText.setWrappingWidth(100);
+                descriptionText.setFont(font);
+                descriptionText.getStyleClass().add("Text");
 
+                bookDetails.getChildren().addAll(bookLink, authorText, descriptionText);
+
+                bookEntry.getChildren().add(bookDetails);
+                searchResultsContainer.getChildren().add(bookEntry);
+            }
+        } else {
+            Text noResults = new Text("Không tìm thấy gợi ý nào.");
+            searchResultsContainer.getChildren().add(noResults);
+        }
+    }
+
+
+    private void updateResults(JsonArray results) {
+        searchResultsContainer.getChildren().clear();
+
+        if (results != null && results.size() > 0) {
+            for (int i = 0; i < results.size(); i++) {
+                JsonObject book = results.get(i).getAsJsonObject();
+                JsonObject volumeInfo = book.getAsJsonObject("volumeInfo");
+
+                String title = volumeInfo.get("title").getAsString();
+                String infoLink = volumeInfo.has("infoLink") ? volumeInfo.get("infoLink").getAsString() : "";
+                String thumbnailUrl = volumeInfo.has("imageLinks") && volumeInfo.getAsJsonObject("imageLinks").has("thumbnail")
+                        ? volumeInfo.getAsJsonObject("imageLinks").get("thumbnail").getAsString() : null;
+                String authors = volumeInfo.has("authors") ? volumeInfo.get("authors").toString().replace("[", "").replace("]", "") : "Không rõ tác giả";
+                String description = volumeInfo.has("description") ? volumeInfo.get("description").getAsString() : "Không có mô tả.";
+
+                HBox bookEntry = new HBox(10);
+                bookEntry.setAlignment(Pos.TOP_CENTER);
+
+                if (thumbnailUrl != null) {
+                    ImageView thumbnail = new ImageView(new Image(thumbnailUrl, 200, 300, true, true));
+                    bookEntry.getChildren().add(thumbnail);
+                }
+
+                VBox bookDetails = new VBox(5);
+                bookDetails.setAlignment(Pos.TOP_LEFT);
+
+                Text bookTitleText = new Text(title);
+                bookTitleText.setStyle("-fx-font-weight: bold;");
+                bookTitleText.setWrappingWidth(300);
+
+                Hyperlink bookLink = new Hyperlink();
+                bookLink.setGraphic(bookTitleText);
+                bookLink.setOnAction(event -> openWebpage(infoLink));
+
+                Text authorText = new Text("Tác giả: " + authors);
+                authorText.setStyle("-fx-font-style: italic;");
+                authorText.setWrappingWidth(300);
+
+                Text descriptionText = new Text("Mô tả: " + description);
+                descriptionText.setWrappingWidth(800);
+
+                bookDetails.getChildren().addAll(bookLink, authorText, descriptionText);
+
+                bookEntry.getChildren().add(bookDetails);
+                searchResultsContainer.getChildren().add(bookEntry);
+            }
+        } else {
+            Text noResults = new Text("Không tìm thấy kết quả.");
+            searchResultsContainer.getChildren().add(noResults);
+        }
+    }
 
 
 	    private void openWebpage(String urlString) {
@@ -607,6 +641,7 @@ public class requestUserController extends baseSceneController {
 	       author.clear();
 	       quantity.clear();
 	}
+	
 	private void clearFields1() {
 		borrowerID.clear();
 		userName.clear();
@@ -630,7 +665,8 @@ public class requestUserController extends baseSceneController {
 					}else {
 						int ins = requireUser.setNew().insertLog(req);
 						if(ins > 0) {
-							username.clear();
+							yourName.setText(loginUserController.getInstance().getUser());
+							comment.setText(textarea.getText());
 							textarea.clear();
 							alertController.setNew().AlertComplete("Bạn đã yêu cầu thành công");
 						}else {

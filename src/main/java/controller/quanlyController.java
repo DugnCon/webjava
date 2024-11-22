@@ -295,43 +295,6 @@ public class quanlyController extends baseSceneController {
         scheduler.schedule(searchTask, 500, TimeUnit.MILLISECONDS);
     }
 
-    private void updateSuggestionList(JsonArray items) {
-        searchResultsContainer.getChildren().clear();
-        if (items != null && items.size() > 0) {
-            for (int i = 0; i < items.size(); i++) {
-                JsonObject book = items.get(i).getAsJsonObject();
-                JsonObject volumeInfo = book.getAsJsonObject("volumeInfo");
-
-                String title = volumeInfo.get("title").getAsString();
-                String infoLink = volumeInfo.has("infoLink") ? volumeInfo.get("infoLink").getAsString() : "";
-                String thumbnailUrl = volumeInfo.has("imageLinks") && volumeInfo.getAsJsonObject("imageLinks").has("thumbnail")
-                        ? volumeInfo.getAsJsonObject("imageLinks").get("thumbnail").getAsString() : null;
-
-                HBox bookEntry = new HBox(10); 
-                bookEntry.setAlignment(Pos.CENTER_LEFT);
-
-                if (thumbnailUrl != null) {
-                    ImageView thumbnail = new ImageView(new Image(thumbnailUrl, 50, 75, true, true));
-                    bookEntry.getChildren().add(thumbnail);
-                }
-
-                Text bookTitleText = new Text(title);
-                bookTitleText.setWrappingWidth(300);
-
-                Hyperlink bookLink = new Hyperlink();
-                bookLink.setGraphic(bookTitleText);
-                bookLink.setOnAction(event -> openWebpage(infoLink));
-
-                bookEntry.getChildren().add(bookLink);
-                searchResultsContainer.getChildren().add(bookEntry);
-            }
-        } else {
-            Text noResults = new Text("Không tìm thấy gợi ý nào.");
-            searchResultsContainer.getChildren().add(noResults);
-        }
-    }
-
-
 
     @FXML
     private void handleSearchBook() {
@@ -381,6 +344,57 @@ public class quanlyController extends baseSceneController {
 
         new Thread(searchTask).start();
     }
+    
+    private void updateSuggestionList(JsonArray items) {
+        searchResultsContainer.getChildren().clear();
+        if (items != null && items.size() > 0) {
+            for (int i = 0; i < items.size(); i++) {
+                JsonObject book = items.get(i).getAsJsonObject();
+                JsonObject volumeInfo = book.getAsJsonObject("volumeInfo");
+
+                String title = volumeInfo.get("title").getAsString();
+                String infoLink = volumeInfo.has("infoLink") ? volumeInfo.get("infoLink").getAsString() : "";
+                String thumbnailUrl = volumeInfo.has("imageLinks") && volumeInfo.getAsJsonObject("imageLinks").has("thumbnail")
+                        ? volumeInfo.getAsJsonObject("imageLinks").get("thumbnail").getAsString() : null;
+                String authors = volumeInfo.has("authors") ? volumeInfo.get("authors").toString().replace("[", "").replace("]", "") : "Không rõ tác giả";
+                String description = volumeInfo.has("description") ? volumeInfo.get("description").getAsString() : "Không có mô tả.";
+
+                HBox bookEntry = new HBox(10);
+                bookEntry.setAlignment(Pos.CENTER_LEFT);
+
+                if (thumbnailUrl != null) {
+                    ImageView thumbnail = new ImageView(new Image(thumbnailUrl, 50, 75, true, true));
+                    bookEntry.getChildren().add(thumbnail);
+                }
+
+                VBox bookDetails = new VBox(5);
+                bookDetails.setAlignment(Pos.CENTER_LEFT);
+
+                Text bookTitleText = new Text(title);
+                bookTitleText.setStyle("-fx-font-weight: bold;");
+                bookTitleText.setWrappingWidth(300);
+
+                Hyperlink bookLink = new Hyperlink();
+                bookLink.setGraphic(bookTitleText);
+                bookLink.setOnAction(event -> openWebpage(infoLink));
+
+                Text authorText = new Text("Tác giả: " + authors);
+                authorText.setStyle("-fx-font-style: italic;");
+                authorText.setWrappingWidth(300);
+
+                Text descriptionText = new Text("Mô tả: " + description);
+                descriptionText.setWrappingWidth(300);
+
+                bookDetails.getChildren().addAll(bookLink, authorText, descriptionText);
+
+                bookEntry.getChildren().add(bookDetails);
+                searchResultsContainer.getChildren().add(bookEntry);
+            }
+        } else {
+            Text noResults = new Text("Không tìm thấy gợi ý nào.");
+            searchResultsContainer.getChildren().add(noResults);
+        }
+    }
 
 
     private void updateResults(JsonArray results) {
@@ -395,23 +409,38 @@ public class quanlyController extends baseSceneController {
                 String infoLink = volumeInfo.has("infoLink") ? volumeInfo.get("infoLink").getAsString() : "";
                 String thumbnailUrl = volumeInfo.has("imageLinks") && volumeInfo.getAsJsonObject("imageLinks").has("thumbnail")
                         ? volumeInfo.getAsJsonObject("imageLinks").get("thumbnail").getAsString() : null;
+                String authors = volumeInfo.has("authors") ? volumeInfo.get("authors").toString().replace("[", "").replace("]", "") : "Không rõ tác giả";
+                String description = volumeInfo.has("description") ? volumeInfo.get("description").getAsString() : "Không có mô tả.";
 
                 HBox bookEntry = new HBox(10);
                 bookEntry.setAlignment(Pos.TOP_CENTER);
 
                 if (thumbnailUrl != null) {
-                    ImageView thumbnail = new ImageView(new Image(thumbnailUrl, 50, 75, true, true));
+                    ImageView thumbnail = new ImageView(new Image(thumbnailUrl, 200, 300, true, true));
                     bookEntry.getChildren().add(thumbnail);
                 }
 
+                VBox bookDetails = new VBox(5);
+                bookDetails.setAlignment(Pos.TOP_LEFT);
+
                 Text bookTitleText = new Text(title);
+                bookTitleText.setStyle("-fx-font-weight: bold;");
                 bookTitleText.setWrappingWidth(300);
 
                 Hyperlink bookLink = new Hyperlink();
                 bookLink.setGraphic(bookTitleText);
                 bookLink.setOnAction(event -> openWebpage(infoLink));
 
-                bookEntry.getChildren().add(bookLink);
+                Text authorText = new Text("Tác giả: " + authors);
+                authorText.setStyle("-fx-font-style: italic;");
+                authorText.setWrappingWidth(300);
+
+                Text descriptionText = new Text("Mô tả: " + description);
+                descriptionText.setWrappingWidth(800);
+
+                bookDetails.getChildren().addAll(bookLink, authorText, descriptionText);
+
+                bookEntry.getChildren().add(bookDetails);
                 searchResultsContainer.getChildren().add(bookEntry);
             }
         } else {
@@ -419,6 +448,7 @@ public class quanlyController extends baseSceneController {
             searchResultsContainer.getChildren().add(noResults);
         }
     }
+
 
 
 

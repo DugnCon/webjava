@@ -134,7 +134,7 @@
           <padding>
             <Insets right = "100" left = "100"/>
           </padding>
-          <ScrollPane fx:id = "scrollpane" styleClass= "vboxFind" fitToWidth="true" prefHeight="400" prefWidth="400">
+          <ScrollPane fx:id = "scrollpane" styleClass= "vboxFind" fitToWidth="true" prefHeight="500" prefWidth="1000">
             <VBox fx:id="searchResultsContainer" spacing="30" alignment="CENTER" styleClass="vboxFind"/>
           </ScrollPane>
         </HBox>
@@ -312,7 +312,7 @@
                 <ImageView fx:id="image1" fitWidth="30" fitHeight="30" preserveRatio="true">
                     <Image url="/icons8-search-50.png"/>
                 </ImageView>
-                <TextField fx:id="bookCode" promptText="Example: GT1" styleClass="textField"/>
+                <TextField fx:id="bookCode" promptText="Mã sách" styleClass="textField"/>
                 <Button fx:id="search" text="Tìm sách" onAction="#handleSearch" styleClass="buttonAdd"/>
             </HBox>
             <VBox spacing="10">
