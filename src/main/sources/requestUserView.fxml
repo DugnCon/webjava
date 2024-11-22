@@ -134,7 +134,7 @@
           <padding>
             <Insets right = "100" left = "100"/>
           </padding>
-          <ScrollPane fx:id = "scrollpane" styleClass= "vboxFind" fitToWidth="true" prefHeight="500" prefWidth="1000">
+          <ScrollPane fx:id = "scrollpane" styleClass= "vboxFind" fitToWidth="true" prefHeight="300" prefWidth="550">
             <VBox fx:id="searchResultsContainer" spacing="30" alignment="CENTER" styleClass="vboxFind"/>
           </ScrollPane>
         </HBox>

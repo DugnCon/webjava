@@ -16,17 +16,23 @@ import java.util.concurrent.TimeUnit;
 
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+import javafx.animation.FadeTransition;
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
@@ -36,6 +42,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
@@ -438,11 +445,18 @@ public class requestUserController extends baseSceneController {
                 String infoLink = volumeInfo.has("infoLink") ? volumeInfo.get("infoLink").getAsString() : "";
                 String thumbnailUrl = volumeInfo.has("imageLinks") && volumeInfo.getAsJsonObject("imageLinks").has("thumbnail")
                         ? volumeInfo.getAsJsonObject("imageLinks").get("thumbnail").getAsString() : null;
-                String authors = volumeInfo.has("authors") ? volumeInfo.get("authors").toString().replace("[", "").replace("]", "") : "Không rõ tác giả";
-                String description = volumeInfo.has("description") ? volumeInfo.get("description").getAsString() : "Không có mô tả.";
+                String authors = volumeInfo.has("authors") ? volumeInfo.get("authors").toString().replace("[", "").replace("]", "") : "Unknown author";
+                String description = volumeInfo.has("description") ? volumeInfo.get("description").getAsString() : "No description available";
+                String publishedDate = volumeInfo.has("publishedDate") ? volumeInfo.get("publishedDate").getAsString() : "Unknown publication date";
+                String ratings = volumeInfo.has("averageRating") ? volumeInfo.get("averageRating").getAsString() : "No ratings available";
+                String publisher = volumeInfo.has("publisher") ? volumeInfo.get("publisher").getAsString() : "Unknown publisher";  
+                String categories = volumeInfo.has("categories") ? volumeInfo.get("categories").toString().replace("[", "").replace("]", "") : "No categories available";  // Thêm thể loại
 
                 HBox bookEntry = new HBox(10);
                 bookEntry.setAlignment(Pos.CENTER_LEFT);
+                bookEntry.setStyle("-fx-padding: 10; -fx-border-color: #ddd; -fx-border-radius: 5; -fx-background-color: #f9f9f9; -fx-effect: dropshadow(gaussian, #cccccc, 10, 0.1, 0, 2);");
+                bookEntry.setOnMouseEntered(e -> bookEntry.setStyle("-fx-background-color: #eef; -fx-effect: dropshadow(gaussian, #999999, 15, 0.3, 0, 4);"));
+                bookEntry.setOnMouseExited(e -> bookEntry.setStyle("-fx-background-color: #f9f9f9; -fx-effect: dropshadow(gaussian, #cccccc, 10, 0.1, 0, 2);"));
 
                 if (thumbnailUrl != null) {
                     ImageView thumbnail = new ImageView(new Image(thumbnailUrl, 50, 75, true, true));
@@ -451,37 +465,49 @@ public class requestUserController extends baseSceneController {
 
                 VBox bookDetails = new VBox(5);
                 bookDetails.setAlignment(Pos.CENTER_LEFT);
-                
-                Font font = Font.loadFont(getClass().getResourceAsStream("/Accent Graphic W00 Medium.ttf"), 20);
+
                 Text bookTitleText = new Text(title);
+                bookTitleText.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
                 bookTitleText.setWrappingWidth(300);
-                bookTitleText.setFont(font);
-                bookTitleText.getStyleClass().add("Text");
 
                 Hyperlink bookLink = new Hyperlink();
                 bookLink.setGraphic(bookTitleText);
                 bookLink.setOnAction(event -> openWebpage(infoLink));
 
-                Text authorText = new Text("Tác giả: " + authors);
-                authorText.setWrappingWidth(300);
-                authorText.setFont(font);
-                authorText.getStyleClass().add("Text");
+                Tooltip tooltip = new Tooltip("Description: " + description + "\nPublication Date: " + publishedDate + "\nRatings: " + ratings);
+                Tooltip.install(bookEntry, tooltip);
 
-                Text descriptionText = new Text("Mô tả: " + description);
-                descriptionText.setWrappingWidth(100);
-                descriptionText.setFont(font);
-                descriptionText.getStyleClass().add("Text");
+                Text authorText = new Text("Authors: " + authors);
+                authorText.setStyle("-fx-font-size: 14px;");
 
-                bookDetails.getChildren().addAll(bookLink, authorText, descriptionText);
+                Text publisherText = new Text("Publisher: " + publisher); 
+                publisherText.setStyle("-fx-font-size: 14px;");
+
+                Text categoriesText = new Text("Categories: " + categories);
+                categoriesText.setStyle("-fx-font-size: 14px;");
+
+                Text descriptionText = new Text("Description: " + description);
+                descriptionText.setWrappingWidth(1000);
+                descriptionText.setStyle("-fx-font-size: 12px; -fx-fill: #555;");
+
+                Text publishedDateText = new Text("Publication Date: " + publishedDate);
+                publishedDateText.setStyle("-fx-font-size: 12px; -fx-fill: #777;");
+
+                Text ratingsText = new Text("Ratings: " + ratings);
+                ratingsText.setStyle("-fx-font-size: 12px; -fx-fill: #777;");
+
+                bookDetails.getChildren().addAll(bookLink, authorText, publisherText, categoriesText, descriptionText, publishedDateText, ratingsText);
 
                 bookEntry.getChildren().add(bookDetails);
                 searchResultsContainer.getChildren().add(bookEntry);
             }
         } else {
-            Text noResults = new Text("Không tìm thấy gợi ý nào.");
+            Text noResults = new Text("No suggestions found.");
+            noResults.setStyle("-fx-font-size: 16px; -fx-fill: #999;");
             searchResultsContainer.getChildren().add(noResults);
         }
     }
+
 
 
     private void updateResults(JsonArray results) {
@@ -496,45 +522,149 @@ public class requestUserController extends baseSceneController {
                 String infoLink = volumeInfo.has("infoLink") ? volumeInfo.get("infoLink").getAsString() : "";
                 String thumbnailUrl = volumeInfo.has("imageLinks") && volumeInfo.getAsJsonObject("imageLinks").has("thumbnail")
                         ? volumeInfo.getAsJsonObject("imageLinks").get("thumbnail").getAsString() : null;
-                String authors = volumeInfo.has("authors") ? volumeInfo.get("authors").toString().replace("[", "").replace("]", "") : "Không rõ tác giả";
-                String description = volumeInfo.has("description") ? volumeInfo.get("description").getAsString() : "Không có mô tả.";
+                String authors = volumeInfo.has("authors") ? volumeInfo.get("authors").toString().replace("[", "").replace("]", "") : "Unknown author";
+                String description = volumeInfo.has("description") ? volumeInfo.get("description").getAsString() : "No description available";
+                String publishedDate = volumeInfo.has("publishedDate") ? volumeInfo.get("publishedDate").getAsString() : "Unknown publication date";
+                String ratings = volumeInfo.has("averageRating") ? volumeInfo.get("averageRating").getAsString() : "No ratings available";
+                String publisher = volumeInfo.has("publisher") ? volumeInfo.get("publisher").getAsString() : "Unknown publisher";
+                String categories = volumeInfo.has("categories") ? volumeInfo.get("categories").toString().replace("[", "").replace("]", "") : "No categories available";  // Thêm thể loại
 
                 HBox bookEntry = new HBox(10);
                 bookEntry.setAlignment(Pos.TOP_CENTER);
+                bookEntry.setStyle("-fx-padding: 10; -fx-border-color: #ddd; -fx-border-radius: 5; -fx-background-color: #f9f9f9;");
 
                 if (thumbnailUrl != null) {
-                    ImageView thumbnail = new ImageView(new Image(thumbnailUrl, 200, 300, true, true));
+                    ImageView thumbnail = new ImageView(new Image(thumbnailUrl, 100, 150, true, true));
                     bookEntry.getChildren().add(thumbnail);
                 }
 
-                VBox bookDetails = new VBox(5);
-                bookDetails.setAlignment(Pos.TOP_LEFT);
+                VBox bookDetails = new VBox(20);
+                bookDetails.setAlignment(Pos.TOP_CENTER);
+                Font font = Font.loadFont(getClass().getResourceAsStream("/Accent Graphic W00 Medium.ttf"), 20);
 
                 Text bookTitleText = new Text(title);
-                bookTitleText.setStyle("-fx-font-weight: bold;");
+
+                bookTitleText.setStyle("-fx-font-size: 16px; -fx-font-family:'Accent Graphic W00 Medium';");
                 bookTitleText.setWrappingWidth(300);
 
                 Hyperlink bookLink = new Hyperlink();
                 bookLink.setGraphic(bookTitleText);
                 bookLink.setOnAction(event -> openWebpage(infoLink));
 
-                Text authorText = new Text("Tác giả: " + authors);
-                authorText.setStyle("-fx-font-style: italic;");
-                authorText.setWrappingWidth(300);
+                Text authorText = new Text("Authors: " + authors);
+                authorText.setStyle("-fx-font-size: 14px; -fx-font-family:'Accent Graphic W00 Medium';");
 
-                Text descriptionText = new Text("Mô tả: " + description);
-                descriptionText.setWrappingWidth(800);
+                Text publisherText = new Text("Publisher: " + publisher);
+                publisherText.setStyle("-fx-font-size: 14px; -fx-font-family:'Accent Graphic W00 Medium';");
 
-                bookDetails.getChildren().addAll(bookLink, authorText, descriptionText);
+                Text categoriesText = new Text("Categories: " + categories);
+                categoriesText.setStyle("-fx-font-size: 14px; -fx-font-family:'Accent Graphic W00 Medium';");
+
+                Text descriptionText = new Text();
+                Button seeMoreButton = new Button("View Details");
+                seeMoreButton.getStyleClass().add("buttonAdd");
+
+                if (description.length() > 200) {
+                    descriptionText.setText("Description: " + description.substring(0, 200) + "...");
+                    descriptionText.setStyle("-fx-font-size: 14px; -fx-font-family:'Accent Graphic W00 Medium';");
+                    seeMoreButton.setOnAction(event -> showDetailedPopup(title, thumbnailUrl, authors, publishedDate, ratings, description, publisher, categories));
+                } else {
+                    descriptionText.setText("Description: " + description);
+                    seeMoreButton.setVisible(false);
+                }
+                descriptionText.setWrappingWidth(300);
+                descriptionText.setStyle("-fx-font-size: 12px;-fx-text-fill:black;-fx-font-family:'Accent Graphic W00 Medium';");
+
+                Text publishedDateText = new Text("Publication date: " + publishedDate);
+                publishedDateText.setStyle("-fx-font-size: 12px;-fx-text-fill:black;-fx-font-family:'Accent Graphic W00 Medium';");
+
+                Text ratingsText = new Text("Ratings: " + ratings);
+                ratingsText.setStyle("-fx-font-size: 12px;-fx-text-fill:black;-fx-font-family:'Accent Graphic W00 Medium';");
+
+                bookDetails.getChildren().addAll(bookLink, authorText, publisherText, categoriesText, descriptionText, publishedDateText, ratingsText, seeMoreButton);
 
                 bookEntry.getChildren().add(bookDetails);
                 searchResultsContainer.getChildren().add(bookEntry);
             }
         } else {
-            Text noResults = new Text("Không tìm thấy kết quả.");
+            Text noResults = new Text("No results found.");
+            noResults.setStyle("-fx-font-size: 16px; -fx-fill: #999;");
             searchResultsContainer.getChildren().add(noResults);
         }
     }
+
+
+
+    private void showDetailedPopup(String title, String thumbnailUrl, String authors, String publishedDate, String ratings, String description,String publisher, String categories) {
+        Stage popupStage = new Stage();
+        popupStage.initModality(Modality.APPLICATION_MODAL);
+        popupStage.setTitle("Thông tin chi tiết");
+        Font font = Font.loadFont(getClass().getResourceAsStream("/Accent Graphic W00 Medium.ttf"), 20);
+
+        VBox popupContent = new VBox(10);
+        popupContent.setPadding(new Insets(10));
+        popupContent.setAlignment(Pos.TOP_CENTER);
+        
+        Text popupTitle = new Text(title);
+        popupTitle.setStyle("-fx-font-size: 30px; -fx-font-family:'Accent Graphic W00 Medium';");
+        popupTitle.setFont(font);
+        popupTitle.setWrappingWidth(400);
+
+        ImageView thumbnail = null;
+        if (thumbnailUrl != null) {
+            thumbnail = new ImageView(new Image(thumbnailUrl, 200, 300, true, true));
+        }
+        
+        Text authorText = new Text("Authors: " + authors);
+        authorText.setStyle("-fx-font-size: 14px;-fx-font-family:'Accent Graphic W00 Medium';");
+        authorText.setFont(font);
+        
+        Text publisherText = new Text("Publisher: " + publisher);
+        publisherText.setStyle("-fx-font-size: 14px; -fx-text-fill:black; -fx-font-family:'Accent Graphic W00 Medium';");
+        publisherText.setFont(font);
+
+        Text categoriesText = new Text("Categories: " + categories);
+        categoriesText.setStyle("-fx-font-size: 14px; -fx-font-family:'Accent Graphic W00 Medium';");
+        categoriesText.setFont(font);
+        
+        Text publishedDateText = new Text("Publication date: " + publishedDate);
+        publishedDateText.setStyle("-fx-font-size: 14px; -fx-font-family:'Accent Graphic W00 Medium';");
+        publishedDateText.setFont(font);
+        
+        Text ratingsText = new Text("Rating: " + ratings);
+        ratingsText.setStyle("-fx-font-size: 14px;-fx-font-family:'Accent Graphic W00 Medium';");
+        ratingsText.setFont(font);
+        
+        Text fullDescription = new Text(description);
+        fullDescription.setWrappingWidth(400);
+        fullDescription.setStyle("-fx-font-size: 12px; -fx-text-fill:black; -fx-font-family:'Accent Graphic W00 Medium';");
+        fullDescription.setFont(font);
+        
+        ScrollPane scrollPane = new ScrollPane(fullDescription);
+        scrollPane.setPrefWidth(450);
+        scrollPane.setPrefHeight(300);
+        scrollPane.setPadding(new Insets(20));
+        scrollPane.setStyle("-fx-border-radius:10; -fx-background-radius:10; -fx-border-color:black;");
+
+        VBox layout = new VBox(10, popupTitle);
+        if (thumbnail != null) {
+            layout.getChildren().add(thumbnail);
+            layout.setAlignment(Pos.CENTER);
+        }
+        layout.getChildren().addAll(authorText, publishedDateText, publisherText, categoriesText, ratingsText);
+        layout.setAlignment(Pos.CENTER);
+        
+        HBox lay = new HBox(10);
+        lay.getChildren().addAll(layout, scrollPane);
+        lay.setAlignment(Pos.TOP_CENTER);
+        lay.setPadding(new Insets(15));
+
+        Scene popupScene = new Scene(lay, 1000, 600);
+        popupStage.setScene(popupScene);
+        popupStage.showAndWait();
+    }
+
+
 
 
 	    private void openWebpage(String urlString) {
