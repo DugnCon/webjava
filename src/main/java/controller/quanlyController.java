@@ -48,6 +48,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import main.java.JDBC.JDBCSQL;
+import main.java.dao.addbook;
+import main.java.model.add;
 import main.java.model.addNew;
 import main.java.model.borrowNew;
 import main.java.model.requireNew;
@@ -76,9 +78,6 @@ public class quanlyController extends baseSceneController {
     private ScrollPane scrollpane;
     @FXML
     private Label label;
-    
-    private TextField nameBook, chapBook, Publisher, releaseYear, nameAuthor, styleBook, bookCode, quantity;
-
 
     private APIController apiController = new APIController();
     private ScheduledExecutorService scheduler;
@@ -569,89 +568,22 @@ public class quanlyController extends baseSceneController {
         scrollPane.setPadding(new Insets(20));
         scrollPane.setStyle("-fx-border-radius:10; -fx-background-radius:10; -fx-border-color:black;");
         
-        
-        nameBook = new TextField();
-        chapBook = new TextField();
-        Publisher = new TextField();
-        releaseYear = new TextField();
-        nameAuthor = new TextField();
-        styleBook = new TextField();
-        bookCode = new TextField();
-        quantity = new TextField();
-        
-     VBox layall = new VBox(20);
-     layall.getChildren().addAll(bookCode, nameBook, chapBook, nameAuthor, styleBook, Publisher, releaseYear, quantity);
-     layall.setPadding(new Insets(40));
 
-     HBox HBoxButton = new HBox(10);
      Button add = new Button("Add Book");
-     add.getStyleClass().add("buttonAdd");
+     add.setStyle("-fx-pref-width:130;\r\n"
+     		+ "	-fx-pref-height:40;\r\n"
+     		+ "	-fx-background-radius:45;\r\n"
+     		+ "	-fx-border-radius:45;\r\n"
+     		+ "	-fx-font-size:12;\r\n"
+     		+ "	-fx-font-weight:bold;\r\n"
+     		+ "	-fx-text-fill:#2B579A;\r\n"
+     		+ "	-fx-border-color:#2B579A;\r\n"
+     		+ "	-fx-border-style:solid;\r\n"
+     		+ "	-fx-border-width:2;\r\n"
+     		+ "	-fx-effect: dropshadow(gaussian, #2b579a, 0, 1, 5, 5);");
 
-     add.setOnAction(event -> {
-    	    nameBook.setText(title);
-    	    nameAuthor.setText(authors);
-    	    styleBook.setText(categories);
-    	    Publisher.setText(publisher);
-    	    releaseYear.setText(publishedDate);
-
-    	    List<TextField> textFields = Arrays.asList(nameBook, chapBook, Publisher, releaseYear, nameAuthor, styleBook, bookCode, quantity);
-
-    	    String commonStyle = "-fx-pref-width:500;\r\n"
-    	            + " -fx-pref-height:40;\r\n"
-    	            + " -fx-border-color:#168560;\r\n"
-    	            + " -fx-border-radius:20;\r\n"
-    	            + " -fx-background-radius:20;\r\n"
-    	            + " -fx-border-color:#2B579A;\r\n"
-    	            + " -fx-border-width:2;\r\n"
-    	            + " -fx-text-fill:black;\r\n"
-    	            + " -fx-effect: dropshadow(gaussian, #2b579a, 0, 1, 5, 5);";
-
-    	    for (TextField textField : textFields) {
-    	        textField.setStyle(commonStyle);
-    	    }
-
-    	    VBox newLayall = new VBox(20);
-
-    	    List<TextField> newTextFields = Arrays.asList(
-    	        createTextField(bookCode.getText(), "Mã sách"),
-    	        createTextField(nameBook.getText(), "Tên sách"),
-    	        createTextField(chapBook.getText(), "Chương"),
-    	        createTextField(nameAuthor.getText(), "Tên tác giả"),
-    	        createTextField(styleBook.getText(), "Thể loại"),
-    	        createTextField(Publisher.getText(), "Nhà xuất bản"),
-    	        createTextField(releaseYear.getText(), "Năm phát hành"),
-    	        createTextField(quantity.getText(), "Số lượng")
-    	    );
-
-    	    for (TextField newTextField : newTextFields) {
-    	        newTextField.setStyle(commonStyle);
-    	        newLayall.getChildren().add(newTextField);
-    	    }
-
-    	    double time = 0.5;
-    	    for (TextField textField : newTextFields) {
-    	        TranslateTransition transition = new TranslateTransition();
-    	        transition.setNode(textField);
-    	        transition.setDuration(Duration.seconds(1.0 + time));
-    	        transition.setFromY(-400);
-    	        transition.setToY(0); 
-    	        transition.setCycleCount(1); 
-    	        transition.play();
-    	        time += 0.2;
-    	    }
-
-    	    newLayall.setPadding(new Insets(40));
-
-    	    Stage popupStageNew = new Stage();
-    	    popupStageNew.initModality(Modality.APPLICATION_MODAL);
-    	    popupStageNew.setTitle("Thông tin chi tiết");
-
-    	    Scene scene = new Scene(newLayall, 500, 600);
-    	    popupStageNew.setScene(scene);
-    	    popupStageNew.showAndWait();
-    	});
-
-
+     add.setOnAction(event -> showDetailsAddBook(title, thumbnailUrl, authors, publishedDate, ratings, description, publisher, categories));
+    
         VBox layout = new VBox(10, popupTitle);
         if (thumbnail != null) {
             layout.getChildren().add(thumbnail);
@@ -665,18 +597,159 @@ public class quanlyController extends baseSceneController {
         lay.setAlignment(Pos.TOP_CENTER);
         lay.setPadding(new Insets(15));
 
-        Scene popupScene = new Scene(lay, 1000, 600);
+        Scene popupScene = new Scene(lay, 1000, 700);
         popupStage.setScene(popupScene);
         popupStage.showAndWait();
     }
-
     
-    private TextField createTextField(String text, String promptText) {
-        TextField textField = new TextField(text);
-        textField.setPromptText(promptText); 
-        return textField;
-    }
+    public void showDetailsAddBook(String title, String thumbnailUrl, String authors, String publishedDate, String ratings, String description,String publisher, String categories) {
+    	TextField nameBook, chapBook, Publisher, releaseYear, nameAuthor, styleBook, bookCode, quantity;
+    	
+    	 nameBook = new TextField();
+         chapBook = new TextField();
+         Publisher = new TextField();
+         releaseYear = new TextField();
+         nameAuthor = new TextField();
+         styleBook = new TextField();
+         bookCode = new TextField();
+         quantity = new TextField();
+         
+         bookCode.setPromptText("Mã sách");
+         quantity.setPromptText("Số lượng");
+         chapBook.setPromptText("Chương sách");
+         
+     	VBox layall = new VBox(20);
+        layall.getChildren().addAll(bookCode, nameBook, chapBook, nameAuthor, styleBook, Publisher, releaseYear, quantity);
+        layall.setPadding(new Insets(40));
+         
+         Button record = new Button("Record");
+         record.setStyle("-fx-pref-width:130;\r\n"
+          		+ "	-fx-pref-height:40;\r\n"
+          		+ "	-fx-background-radius:45;\r\n"
+          		+ "	-fx-border-radius:45;\r\n"
+          		+ "	-fx-font-size:12;\r\n"
+          		+ "	-fx-font-weight:bold;\r\n"
+          		+ "	-fx-text-fill:#2B579A;\r\n"
+          		+ "	-fx-border-color:#2B579A;\r\n"
+          		+ "	-fx-border-style:solid;\r\n"
+          		+ "	-fx-border-width:2;\r\n"
+          		+ "	-fx-effect: dropshadow(gaussian, #2b579a, 0, 1, 5, 5);");
+         
+        nameBook.setText(title);
+ 	    nameAuthor.setText(authors);
+ 	    styleBook.setText(categories);
+ 	    Publisher.setText(publisher);
+ 	    releaseYear.setText(publishedDate);
 
+ 	    List<TextField> textFields = Arrays.asList(nameBook, chapBook, Publisher, releaseYear, nameAuthor, styleBook, bookCode, quantity);
+
+ 	    String commonStyle = "-fx-pref-width:500;\r\n"
+ 	            + " -fx-pref-height:40;\r\n"
+ 	            + " -fx-border-color:#168560;\r\n"
+ 	            + " -fx-border-radius:20;\r\n"
+ 	            + " -fx-background-radius:20;\r\n"
+ 	            + " -fx-border-color:#2B579A;\r\n"
+ 	            + " -fx-border-width:2;\r\n"
+ 	            + " -fx-text-fill:black;\r\n"
+ 	            + " -fx-effect: dropshadow(gaussian, #2b579a, 0, 1, 5, 5);";
+
+ 	    for (TextField textField : textFields) {
+ 	        textField.setStyle(commonStyle);
+ 	    }
+ 	    
+ 	    Label newLabel = new Label("Thông tin chi tiết sách");
+ 	    newLabel.setStyle("-fx-text-fill:#2B579A; -fx-font-size:25;-fx-font-weight:bold;");
+
+ 	    VBox newLayall = new VBox(20);
+ 	    
+ 	    newLayall.getChildren().add(newLabel);
+
+ 	    List<TextField> newTextFields = Arrays.asList(
+ 	        bookCode,
+ 	        nameBook,
+ 	        chapBook,
+ 	        nameAuthor,
+ 	        styleBook,
+ 	        Publisher,
+ 	        releaseYear,
+ 	        quantity
+ 	    );
+
+ 	    for (TextField newTextField : newTextFields) {
+ 	        newTextField.setStyle(commonStyle);
+ 	        newLayall.getChildren().addAll(newTextField);
+ 	    }
+ 	    newLayall.getChildren().add(record);
+ 	    newLayall.setAlignment(Pos.CENTER);  
+
+ 	    double time = 0.5;
+ 	    for (TextField textField : newTextFields) {
+ 	        TranslateTransition transition = new TranslateTransition();
+ 	        transition.setNode(textField);
+ 	        transition.setDuration(Duration.seconds(1.0 + time));
+ 	        transition.setFromY(-400);
+ 	        transition.setToY(0); 
+ 	        transition.setCycleCount(1); 
+ 	        transition.play();
+ 	        time += 0.2;
+ 	    }
+ 	    
+
+ 	     record.setOnAction(event -> {
+ 	    	    String bookCodeText = bookCode.getText().trim();
+ 	    	    String chapBookText = chapBook.getText().trim();
+ 	    	    String quantityText = quantity.getText().trim();
+ 	    	    
+ 	    	    if (bookCodeText.isEmpty() || chapBookText.isEmpty() || quantityText.isEmpty()) {
+ 	    	        alertController.setNew().AlertUnComplete(
+ 	    	            "Thiếu thông tin sách. Mã sách: " + bookCodeText + ", Chương: " + chapBookText + ", Số lượng: " + quantityText
+ 	    	        );
+ 	    	    } else {
+
+ 	    	        add Add = new add(
+ 	    	            bookCode.getText(),
+ 	    	            nameBook.getText(),
+ 	    	            chapBook.getText(),
+ 	    	            nameAuthor.getText(),
+ 	    	            styleBook.getText(),
+ 	    	            Publisher.getText(),
+ 	    	            releaseYear.getText(),
+ 	    	            quantity.getText()
+ 	    	        );
+ 	    	        
+ 	    	       add SearchAdd = new add(bookCode.getText());
+ 	    	        int res = addbook.setNewAdd().insert1(Add);
+ 	    	        String Code = addbook.setNewAdd().search(SearchAdd);
+ 	    	        if(Code.isEmpty()) {
+ 	    	        	if (res > 0) {
+ 	 	    	        	bookCode.clear();
+ 	 	    	            nameBook.clear();
+ 	 	    	            chapBook.clear();
+ 	 	    	            nameAuthor.clear();
+ 	 	    	            styleBook.clear();
+ 	 	    	            Publisher.clear();
+ 	 	    	            releaseYear.clear();
+ 	 	    	            quantity.clear();
+ 	 	    	            alertController.setNew().AlertComplete("Thêm sách thành công");
+ 	 	    	        } else {
+ 	 	    	            alertController.setNew().AlertUnComplete("Thêm sách không thành công");
+ 	 	    	        }
+ 	    	        }else {
+ 	    	        	alertController.setNew().AlertUnComplete("Sách này đã được thêm");
+ 	    	        }
+ 	    	    }
+ 	    	});
+
+ 	    newLayall.setPadding(new Insets(40));
+
+ 	    Stage popupStageNew = new Stage();
+ 	    popupStageNew.initModality(Modality.APPLICATION_MODAL);
+ 	    popupStageNew.setTitle("Thông tin chi tiết");
+
+ 	    Scene scene = new Scene(newLayall, 500, 600);
+ 	    popupStageNew.setScene(scene);
+ 	    popupStageNew.showAndWait();
+    }
 
     private void openWebpage(String urlString) {
         try {

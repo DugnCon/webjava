@@ -27,15 +27,18 @@ public class addbook implements AddBookInterface<add> {
 	            PreparedStatement prsttm = con.prepareStatement("INSERT INTO book "
 	                    + "(bookCode, title, chapter, author, genre, publisher, releaseYear, quantity) "
 	                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-
+	            
+	            int Quantity = Integer.parseInt(t.getchapBook());
+	            int Chapter = Integer.parseInt(t.getchapBook());
+	            
 	            prsttm.setString(1, t.getbookCode());
 	            prsttm.setString(2, t.getnameBook());
-	            prsttm.setInt(3, Integer.parseInt(t.getchapBook()));
+	            prsttm.setInt(3, Quantity);
 	            prsttm.setString(4, t.getnameAuthor());
 	            prsttm.setString(5, t.getstyleBook());
 	            prsttm.setString(6, t.getPublisher());
 	            prsttm.setString(7, t.getreleaseYear());
-	            prsttm.setInt(8, Integer.parseInt(t.getQuantity()));
+	            prsttm.setInt(8, Chapter);
 	            res = prsttm.executeUpdate();
 	            
 	            ResultSet generatedKeys = prsttm.getGeneratedKeys();

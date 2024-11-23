@@ -108,7 +108,7 @@
                        </VBox.margin>
                        <VBox alignment="CENTER" spacing="10">
                         <Label fx:id = "label" text="Danh sách kết quả" styleClass="labelTit"/>
-                        <ScrollPane fx:id = "scrollpane" styleClass= "vboxFind" fitToWidth="true" prefHeight="500" prefWidth="500">
+                        <ScrollPane fx:id = "scrollpane" styleClass= "vboxFind" fitToWidth="true" prefHeight="500" prefWidth="650">
                             <VBox fx:id="searchResultsContainer" spacing="30" alignment="CENTER" styleClass="vboxFind"/>
                         </ScrollPane>
                        </VBox> 
