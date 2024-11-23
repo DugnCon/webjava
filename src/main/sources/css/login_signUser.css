@@ -15,7 +15,6 @@
 }
 .Button{
 	-fx-font-size:16px;
-	-fx-font-weight:bold;
 	-fx-text-fill:black;
 	-fx-border-radius: 20;
     -fx-background-radius: 20;
@@ -24,16 +23,17 @@
     -fx-pref-height:40;
     -fx-border-color:black;
     -fx-background-color:white;
+    -fx-font-family:"Accent Graphic W00 Medium";
 }
 .Button:hover{
 	-fx-background-color:black;
 	-fx-text-fill:white;
 	-fx-cursor: hand;
 	-fx-effect: dropshadow(one-pass-box, white, 20, 0.5, 0, 0);
+	-fx-font-family:"Accent Graphic W00 Medium";
 }
 .Button1{
 	-fx-font-size:16px;
-	-fx-font-weight:bold;
 	-fx-text-fill:white;
 	-fx-border-radius: 20;
     -fx-background-radius: 20;
@@ -42,12 +42,14 @@
     -fx-pref-height:40;
     -fx-border-color:black;
     -fx-background-color:black;
+    -fx-font-family:"Accent Graphic W00 Medium";
 }
 .Button1:hover{
 	-fx-background-color:white;
 	-fx-text-fill:black;
 	-fx-cursor: hand;
 	-fx-effect: dropshadow(one-pass-box, black, 20, 0.5, 0, 0);
+	-fx-font-family:"Accent Graphic W00 Medium";
 }
 .background {
     -fx-background-image: url("/background.png");
