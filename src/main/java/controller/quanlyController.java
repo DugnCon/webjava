@@ -696,13 +696,9 @@ public class quanlyController extends baseSceneController {
  	    
 
  	     record.setOnAction(event -> {
- 	    	    String bookCodeText = bookCode.getText().trim();
- 	    	    String chapBookText = chapBook.getText().trim();
- 	    	    String quantityText = quantity.getText().trim();
- 	    	    
- 	    	    if (bookCodeText.isEmpty() || chapBookText.isEmpty() || quantityText.isEmpty()) {
+ 	    	    if (bookCode.getText().isEmpty() || chapBook.getText().isEmpty() || quantity.getText().isEmpty()) {
  	    	        alertController.setNew().AlertUnComplete(
- 	    	            "Thiếu thông tin sách. Mã sách: " + bookCodeText + ", Chương: " + chapBookText + ", Số lượng: " + quantityText
+ 	    	            "Thiếu thông tin sách."
  	    	        );
  	    	    } else {
 
@@ -717,10 +713,10 @@ public class quanlyController extends baseSceneController {
  	    	            quantity.getText()
  	    	        );
  	    	        
- 	    	       add SearchAdd = new add(bookCode.getText());
- 	    	        int res = addbook.setNewAdd().insert1(Add);
+ 	    	        add SearchAdd = new add(bookCode.getText());
  	    	        String Code = addbook.setNewAdd().search(SearchAdd);
  	    	        if(Code.isEmpty()) {
+ 	    	        	int res = addbook.setNewAdd().insert1(Add);
  	    	        	if (res > 0) {
  	 	    	        	bookCode.clear();
  	 	    	            nameBook.clear();

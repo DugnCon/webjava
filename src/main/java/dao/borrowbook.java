@@ -108,7 +108,6 @@ public class borrowbook implements BorrowReturnInterface<borrow> {
 
 	@Override
 	public ArrayList<borrow> selectAll() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -116,6 +115,26 @@ public class borrowbook implements BorrowReturnInterface<borrow> {
 	public borrow selectById(borrow t) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public ArrayList<borrow> selectByCondition2(String condition) {
+		return null;
+	}
+
+	@Override
+	public int DeleteBookCode(String condition) {
+		int res = 0;
+		try {
+			Connection con = JDBCSQL.getConnection();
+			PreparedStatement prsttm = con.prepareStatement("DELETE FROM borrower WHERE bookCode = ?");
+			prsttm.setString(1, condition);
+			res = prsttm.executeUpdate();
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return res;
 	}
 
 }

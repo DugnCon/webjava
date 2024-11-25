@@ -21,7 +21,10 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import main.java.JDBC.JDBCSQL;
+import main.java.dao.userLoginAccount;
 import main.java.model.addNew;
+import main.java.model.borrowNew;
+import main.java.model.userLog;
 
 public class interfaceUserController1 extends baseSceneController {
 	@FXML
@@ -207,22 +210,34 @@ public class interfaceUserController1 extends baseSceneController {
 	@FXML
 	private void handleSuprise() {
 		try {
-            Connection con = JDBCSQL.getConnection();
-            PreparedStatement prsttm = con.prepareStatement("SELECT * FROM book");
-            ResultSet rs = prsttm.executeQuery();
-            ObservableList<addNew> bookList = FXCollections.observableArrayList();
-            while (rs.next()) {
-                addNew AddNew = new addNew(rs.getString(2), rs.getString(3), rs.getString(4),
-                        rs.getString(5), rs.getString(6), rs.getString(7),
-                        rs.getString(8), rs.getString(9));
-                bookList.add(AddNew);
-            }
-            
-            requestUserController controller = (requestUserController) createScene1(suprise, 
-                "/main/sources/requestUserView.fxml", "/main/sources/css/interfaceUser.css");
-            controller.setBookList(bookList); 
-            con.close();
-
+			 Connection con = JDBCSQL.getConnection();
+	            PreparedStatement prsttm = con.prepareStatement("SELECT * FROM book");
+	            PreparedStatement prsttm1 = con.prepareStatement("SELECT * FROM borrowed_books WHERE userID = ?");
+	            userLog UserLog = new userLog(loginUserController.getInstance().getUser(), "");
+	            String ID = userLoginAccount.setNew().searchAcc(UserLog);
+	            prsttm1.setInt(1,Integer.parseInt(ID));
+	            ResultSet rs = prsttm.executeQuery();
+	            ResultSet rs1 = prsttm1.executeQuery();
+	            ObservableList<addNew> bookList = FXCollections.observableArrayList();
+	            ObservableList<borrowNew> borrowList = FXCollections.observableArrayList();
+	            while (rs.next()) {
+	                addNew AddNew = new addNew(rs.getString(2), rs.getString(3), rs.getString(4),
+	                        rs.getString(5), rs.getString(6), rs.getString(7),
+	                        rs.getString(8), rs.getString(9));
+	                bookList.add(AddNew);
+	            }
+	            
+	            while(rs1.next()) {
+	            	borrowNew BorrowNew = new borrowNew(rs1.getInt(1), rs1.getString(2) , rs1.getString(3));
+	            	borrowList.add(BorrowNew);
+	            }
+	            
+	            requestUserController controller = (requestUserController) createScene1(suprise, 
+	                "/main/sources/requestUserView.fxml", "/main/sources/css/interfaceUser.css");
+	            controller.setBookList(bookList); 
+	            controller.setBorrowList(borrowList);             
+	                
+	            con.close();
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Cannot execute: " + e.getMessage());

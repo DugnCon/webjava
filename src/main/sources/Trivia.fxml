@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1536.0" style="-fx-background-color: black;" xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.triviaGame.TriviaGameController">
+    <children>
+        <ImageView fitHeight="1550.0" fitWidth="1550" layoutX="1.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="/Hoc-phi-DH-Cong-nghe-HN.jpg" />
+            </image>
+        </ImageView>
+        <Label layoutX="364.0" layoutY="-152.0" text="Trivia Game" textFill="#ff00c8">
+            <font>
+                <Font name="Arial" size="67.6" />
+            </font>
+        </Label>
+        <Label fx:id="firstAns" layoutX="213.0" layoutY="440" prefHeight="57.9" prefWidth="486.8" textAlignment="CENTER" textFill="#FFA000">
+            <font>
+                <Font name="Arial" size="40" />
+            </font>
+        </Label>
+        <Label fx:id="secondAns"  layoutX="217.0" layoutY="607.0" prefHeight="57.9" prefWidth="501.7" textFill="#FFA000">
+            <font>
+                <Font name="Arial" size="40" />
+            </font>
+        </Label>
+        <Label fx:id="fourAns" layoutX="863.0" layoutY="606.0" prefHeight="57.9" prefWidth="517.2" textFill="#FFA000">
+            <font>
+                <Font name="Arial" size="40" />
+            </font>
+        </Label>
+        <Label layoutX="182.0" layoutY="338.0" prefHeight="20.6" prefWidth="791.6" />
+        <Label fx:id="thirdAns" layoutX="863.0" layoutY="440" prefHeight="57.9" prefWidth="523.4" textFill="#FFA000">
+            <font>
+                <Font name="Arial" size="40" />
+            </font>
+        </Label>
+        <Label layoutX="31.0" layoutY="31.0" prefHeight="35.2" prefWidth="115.3" text="Score:" textFill="WHITE">
+            <font>
+                <Font name="Arial" size="40" />
+            </font>
+        </Label>
+        <Button layoutX="1373.3" layoutY="19.0" mnemonicParsing="false" onAction="#endGame" prefHeight="61.6" prefWidth="138.5" text="End Game">
+            <font>
+                <Font name="Arial" size="21.7" />
+            </font>
+        </Button>
+        <Label fx:id="score" layoutX="167.0" layoutY="24.0" prefHeight="21.8" prefWidth="98.6" textFill="#ffee00">
+            <font>
+                <Font name="Arial Bold" size="33.5" />
+            </font>
+        </Label>
+        <Label layoutX="202.0" layoutY="459.0" />
+        <Text fx:id="question" fill="WHITE" layoutX="320.0" layoutY="174.5" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="1027.5">
+            <font>
+                <Font name="Arial" size="58.5" />
+            </font>
+        </Text>
+        <RadioButton fx:id="firstAnswer" layoutX="165.3" layoutY="463.9" mnemonicParsing="false" onAction="#answerSelected" textFill="WHITE">
+            <toggleGroup>
+                <ToggleGroup fx:id="choice" />
+            </toggleGroup>
+        </RadioButton>
+        <RadioButton fx:id="secondAnswer" layoutX="168.7" layoutY="630.1" mnemonicParsing="false" onAction="#answerSelected" textFill="WHITE" toggleGroup="$choice"/>
+        <RadioButton fx:id="thirdAnswer" layoutX="815.6" layoutY="461.7" mnemonicParsing="false" onAction="#answerSelected" textFill="WHITE" toggleGroup="$choice" />
+        <RadioButton fx:id="fourAnswer" layoutX="815.6" layoutY="630.1" mnemonicParsing="false" onAction="#answerSelected" textFill="WHITE" toggleGroup="$choice" />
+    </children>
+</Pane>

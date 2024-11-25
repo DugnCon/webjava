@@ -81,4 +81,16 @@ public class returnbook implements BorrowReturnInterface<Return>{
 		return 0;
 	}
 
+	@Override
+	public ArrayList<Return> selectByCondition2(String condition) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int DeleteBookCode(String condition) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

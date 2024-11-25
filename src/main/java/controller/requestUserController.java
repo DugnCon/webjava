@@ -56,6 +56,7 @@ import javafx.util.Duration;
 import main.java.JDBC.JDBCSQL;
 import main.java.dao.addbook;
 import main.java.dao.borrowbook;
+import main.java.dao.borrowedBooks;
 import main.java.dao.requireUser;
 import main.java.dao.userLoginAccount;
 import main.java.model.add;
@@ -79,13 +80,13 @@ public class requestUserController extends baseSceneController {
 	@FXML
 	private Button bt1,bt2,bt3,complete,comlete1,searchID,search;
 	@FXML
-	private TextField fieldSearch,username;
+	private TextField fieldSearch,username,textReturn;
 	@FXML
 	private TextField bookCode,borrowerID,userName
 	,phone,borrowDate,returnDate,status,searchAccount
 	,userID,Title,chapter,author,quantity;
 	@FXML
-	private Button searchBook,clear;
+	private Button searchBook,clear,loading;
 	@FXML
 	private ScrollPane scrollpane;
 	@FXML
@@ -104,9 +105,34 @@ public class requestUserController extends baseSceneController {
 	@FXML
 	private TableView<addNew> tableBook;
 	@FXML
+	private TableView<borrowNew> tableBorrowBook;
+	@FXML
+	private TableColumn<borrowNew, String> columnUserID1, columnCode1, columnTitle1;
+	@FXML
 	private TableColumn<addNew, String> columnCode, columnTitle, columnAuthor, columnYear;
 	@FXML
 	private ObservableList<addNew> bookList = FXCollections.observableArrayList();
+	@FXML
+	private ObservableList<borrowNew> borrowList = FXCollections.observableArrayList();
+	
+	private ObservableList<addNew> incomingBookList = FXCollections.observableArrayList();
+	
+	private ObservableList<borrowNew> incomingBorrowList = FXCollections.observableArrayList();
+	
+	private APIController apiController = new APIController();
+	
+    private ScheduledExecutorService scheduler;
+    
+    private Runnable searchTask;
+    
+    private static requestUserController instance;
+    
+    public static requestUserController getInstance() {
+    	if(instance == null) {
+    		instance = new requestUserController();
+    	}
+    	return instance;
+    }
 	
 	private String id;
 	
@@ -117,8 +143,6 @@ public class requestUserController extends baseSceneController {
 	public String getID() {
 		return this.id;
 	}
-	    
-	private ObservableList<addNew> incomingBookList = FXCollections.observableArrayList();
 	
 	public static requestUserController setNew() {
     	return new requestUserController();
@@ -129,9 +153,10 @@ public class requestUserController extends baseSceneController {
 	        tableBook.setItems(incomingBookList);
 	 }
 	
-	private APIController apiController = new APIController();
-    private ScheduledExecutorService scheduler;
-    private Runnable searchTask;
+	 public void setBorrowList(ObservableList<borrowNew> diffbook) {
+	        this.incomingBorrowList = diffbook;
+	        tableBorrowBook.setItems(incomingBorrowList);
+	 }
 	
 	private void applyHoverEffect(Node node) {
    	 ScaleTransition scaleIn = new ScaleTransition(Duration.millis(200), node);
@@ -153,7 +178,12 @@ public class requestUserController extends baseSceneController {
         columnAuthor.setCellValueFactory(new PropertyValueFactory<>("nameAuthor"));
         columnYear.setCellValueFactory(new PropertyValueFactory<>("releaseYear"));
         
+        columnUserID1.setCellValueFactory(new PropertyValueFactory<>("userID"));
+        columnCode1.setCellValueFactory(new PropertyValueFactory<>("bookCode"));
+        columnTitle1.setCellValueFactory(new PropertyValueFactory<>("title"));
+        
         tableBook.setItems(incomingBookList);
+        tableBorrowBook.setItems(incomingBorrowList);
         
         hboxnew.setVisible(false);
         
@@ -742,22 +772,25 @@ public class requestUserController extends baseSceneController {
 	private void handleBorrow() {
 		String res = bookCode.getText();
         if(!res.isEmpty()) {
-       	 
-       	 /**Cần sửa đoạn này*/
        	 borrow Borrow = new borrow(borrowerID.getText(), userID.getText(),bookCode.getText()
                     ,borrowDate.getText(), returnDate.getText(), userName.getText() ,"Đang mượn", phone.getText());
        	 
+       	 borrow newBorrow = new borrow(getID(),bookCode.getText(), Title.getText());
+       	 
        	 int rs = borrowbook.setNew().insert(Borrow);
-       	 /********************/
+       	 int rs2 = borrowedBooks.setNew().insert(newBorrow);
+       	 
        	 add Add = new add(quantity.getText(), res);
        	 int check = addbook.setNewAdd().update2(Add);
        	 int Quantity = Integer.parseInt(quantity.getText());
-       	 if(rs > 0 && check > 0 && Quantity >= 1) {
+       	 if(rs > 0 && rs2 > 0 && check > 0 && Quantity >= 1) {
+       		 borrowNew borrownew = new borrowNew(Integer.parseInt(getID()),bookCode.getText(),Title.getText());
+       		 incomingBorrowList.add(borrownew);
        		 alertController.setNew().AlertComplete("Ghi nhận thành công");
            	 clearFields();
            	 clearFields1();
        	 }else {
-       		 alertController.setNew().AlertUnComplete("Ghi nhạn không thành công");
+       		 alertController.setNew().AlertUnComplete("Ghi nhận không thành công");
        	 }
         }else {
        	 alertController.setNew().AlertUnComplete("Không tìm thấy mã sách");
@@ -808,6 +841,58 @@ public class requestUserController extends baseSceneController {
 				alertController.setNew().AlertUnComplete("Bạn đã nhập sai tên tài khoản của bạn");
 			}
 		}
+	}
+	
+	@FXML
+	private void handleReturn() {
+		String Code = textReturn.getText();
+		int res = borrowedBooks.setNew().Delete(Code);
+		int res1 = borrowbook.setNew().DeleteBookCode(Code);
+		if(Code.isEmpty()) {
+			alertController.setNew().AlertUnComplete("Vui lòng nhập mã sách cần trả");
+		}else {
+			if(res > 0 && res1 > 0) {
+				alertController.setNew().AlertUnComplete("Đã trả sách thành công");
+			}else {
+				alertController.setNew().AlertUnComplete("Có thể bạn đã nhập sai mã sách");
+			}
+		}
+	}
+	
+	@FXML
+	private void handleLoadingPage() {
+		try {
+            Connection con = JDBCSQL.getConnection();
+            PreparedStatement prsttm = con.prepareStatement("SELECT * FROM book");
+            PreparedStatement prsttm1 = con.prepareStatement("SELECT * FROM borrowed_books WHERE userID = ?");
+            prsttm1.setInt(1,Integer.parseInt(getID()));
+            ResultSet rs = prsttm.executeQuery();
+            ResultSet rs1 = prsttm1.executeQuery();
+            ObservableList<addNew> bookList = FXCollections.observableArrayList();
+            ObservableList<borrowNew> borrowList = FXCollections.observableArrayList();
+            while (rs.next()) {
+                addNew AddNew = new addNew(rs.getString(2), rs.getString(3), rs.getString(4),
+                        rs.getString(5), rs.getString(6), rs.getString(7),
+                        rs.getString(8), rs.getString(9));
+                bookList.add(AddNew);
+            }
+            
+            while(rs1.next()) {
+            	borrowNew BorrowNew = new borrowNew(rs1.getInt(1), rs1.getString(2) , rs1.getString(3));
+            	borrowList.add(BorrowNew);
+            }
+            
+            requestUserController controller = (requestUserController) createScene1(loading, 
+                "/main/sources/requestUserView.fxml", "/main/sources/css/interfaceUser.css");
+            controller.setBookList(bookList); 
+            controller.setBorrowList(borrowList); 
+            
+            con.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Cannot execute: " + e.getMessage());
+        }
 	}
 	
 	@FXML

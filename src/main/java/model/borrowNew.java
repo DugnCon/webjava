@@ -13,6 +13,7 @@ public class borrowNew {
     private SimpleStringProperty returnDate;
     private SimpleStringProperty status;
     private SimpleStringProperty phonenum;
+    private SimpleStringProperty title;
 
     public borrowNew() {
         this.borrowerID = new SimpleStringProperty();
@@ -23,6 +24,7 @@ public class borrowNew {
         this.returnDate = new SimpleStringProperty();
         this.status = new SimpleStringProperty();
         this.phonenum = new SimpleStringProperty();
+        this.title = new SimpleStringProperty();
     }
 
     public borrowNew(String borrowerID, String bookCode, 
@@ -36,6 +38,13 @@ public class borrowNew {
         setReturnDate(returnDate);
         setStatus(status);
         setPhonenum(phonenum);
+    }
+    
+    public borrowNew(int userID, String bookCode, String title) {
+    	this();
+    	setUserID(userID);
+    	setBookCode(bookCode);
+    	setTitle(title);
     }
     
     public borrowNew(String bookCode, String userName, String borrowDate, String returnDate, String status) {
@@ -120,5 +129,13 @@ public class borrowNew {
 
     public void setPhonenum(String phonenum) {
         this.phonenum.set(phonenum);
+    }
+    
+    public String getTitle() {
+    	return title.get();
+    }
+    
+    public void setTitle(String title) {
+    	this.title.set(title);
     }
 }
