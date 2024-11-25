@@ -4,10 +4,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
+import main.java.controller.baseSceneController;
 
 import java.util.Optional;
 
-public class TriviaGameController {
+public class TriviaGameController extends baseSceneController{
     @FXML
     private ToggleGroup choice;
 
@@ -39,6 +40,9 @@ public class TriviaGameController {
 
     @FXML
     private Label score;
+    
+    @FXML
+    private Button endgame;
 
     private static TriviaGameLogic triviaGame;
     private int scoringResults;
@@ -103,6 +107,7 @@ public class TriviaGameController {
         //bam cancel thi huy thoat ra ben ngoai
         else if (option.get() == null || option.get() == ButtonType.CANCEL)
             System.exit(0);
+        createScene(endgame,"/main/sources/interfaceUser.fxml","/main/sources/css/interfaceUser.css");
     }
 
     //truyen canh sang cau hoi tiep theo

@@ -57,18 +57,18 @@
     <VBox fx:id = "VBOX4" styleClass = "vbox2" alignment = "CENTER">
        <VBox fx:id = "VBOXCHILD3" styleClass = "vbox1_2" spacing = "20" alignment = "CENTER">
          <ImageView fitWidth = "500" fitHeight = "300" style = "-fx-border-radius: 50%; -fx-background-radius:45;">
-           <Image url = "/LeagueofLegends_Worlds2021_Trophy.jpg"/>
+           <Image url = "/imageLogin2.jpg"/>
          </ImageView>
-         <Label fx:id = "note2" text = "Sign up to get a spot in the World Finals!" styleClass = "labelTiny2"/>
+         <Label fx:id = "note2" text = "From that moment, I loved you, so swiftly." styleClass = "labelTiny2"/>
          <Button text = "Sign in" fx:id = "login2" onAction = "#handleButtonLogin2" styleClass = "Button"/>
        </VBox> 
      </VBox> 
      <VBox fx:id = "VBOX2" styleClass = "vbox2" alignment = "CENTER">
        <VBox fx:id = "VBOXCHILD2" styleClass = "vbox1_2" spacing = "20" alignment = "CENTER">
          <ImageView fitWidth = "500" fitHeight = "300">
-           <Image url = "/LeagueOfLegends_Worlds2023_Finals_T1_SummonersCup-removebg.png"/>
+           <Image url = "/imageSigup1.jpg"/>
          </ImageView>
-         <Label fx:id = "note1" text = "Sign up to get a spot in the World Finals!" styleClass = "labelTiny2"/>
+         <Label fx:id = "note1" text = "Are you a magician? Because every time I look at you, everyone else disappears." styleClass = "labelTiny2"/>
          <HBox alignment = "CENTER" spacing = "20">
            <Button text = "Sign up" fx:id = "signup1" onAction = "#handleButtonSignUp1" styleClass = "Button"/>
            <Button text = "Back" fx:id = "back" onAction = "#handleBack" styleClass = "Button"/>

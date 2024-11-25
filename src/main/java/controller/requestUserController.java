@@ -827,10 +827,8 @@ public class requestUserController extends baseSceneController {
 						alertController.setNew().AlertUnComplete("Vui lòng nhập yêu cầu của bạn");
 					}else {
 						int ins = requireUser.setNew().insertLog(req);
+						textarea.clear();
 						if(ins > 0) {
-							yourName.setText(loginUserController.getInstance().getUser());
-							comment.setText(textarea.getText());
-							textarea.clear();
 							alertController.setNew().AlertComplete("Bạn đã yêu cầu thành công");
 						}else {
 							alertController.setNew().AlertUnComplete("Bạn chưa yêu cầu được");

@@ -245,7 +245,7 @@ public class interfaceUserController1 extends baseSceneController {
 	}
 	@FXML
 	private void handleService() {
-		
+		createScene(service,"/main/sources/Trivia.fxml","");
 	}
 	@FXML
 	private void handleContact() {

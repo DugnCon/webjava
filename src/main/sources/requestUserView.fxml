@@ -334,11 +334,11 @@
            <Insets right = "200" left = "200" top = "40" bottom = "40"/>
          </padding>
          <Label text = "Borrowed Books" fx:id = "label7" styleClass = "fontTile4"/>
-         <TableView fx:id = "tableBorrowBook" styleClass = "tableView">
+         <TableView fx:id = "tableBorrowBook" styleClass = "tableView1">
             <columns>
-              <TableColumn fx:id="columnUserID1" text = "UserID" prefWidth = "250"/>
-              <TableColumn fx:id="columnCode1" text="Mã sách" prefWidth="273"/>
-              <TableColumn fx:id="columnTitle1" text="Tên sách" prefWidth="393"/>
+              <TableColumn fx:id="columnUserID1" text = "UserID" prefWidth = "350"/>
+              <TableColumn fx:id="columnCode1" text="Mã sách" prefWidth="350"/>
+              <TableColumn fx:id="columnTitle1" text="Tên sách" prefWidth="400"/>
             </columns>
          </TableView>
          <VBox>

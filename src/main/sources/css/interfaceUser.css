@@ -222,6 +222,15 @@
 	-fx-border-radius:8;
 	-fx-background-radius:8;
 }
+.tableView1{
+	-fx-pref-height:400;
+	-fx-pref-width:500;
+	-fx-alignment:CENTER;
+	-fx-border-style:solid;
+	-fx-border-width:2;
+	-fx-border-radius:8;
+	-fx-background-radius:8;
+}
 .custom-button {
     -fx-background-color: transparent;
     -fx-border-color: transparent;

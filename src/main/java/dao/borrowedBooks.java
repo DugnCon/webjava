@@ -86,4 +86,10 @@ public class borrowedBooks implements BorrowReturnInterface<borrow> {
 		return null;
 	}
 
+	@Override
+	public int DeleteBookCode(String condition) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

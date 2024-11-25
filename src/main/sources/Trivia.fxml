@@ -14,7 +14,7 @@
     <children>
         <ImageView fitHeight="1550.0" fitWidth="1550" layoutX="1.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="/Hoc-phi-DH-Cong-nghe-HN.jpg" />
+                <Image url="/829055.png" />
             </image>
         </ImageView>
         <Label layoutX="364.0" layoutY="-152.0" text="Trivia Game" textFill="#ff00c8">
@@ -48,7 +48,7 @@
                 <Font name="Arial" size="40" />
             </font>
         </Label>
-        <Button layoutX="1373.3" layoutY="19.0" mnemonicParsing="false" onAction="#endGame" prefHeight="61.6" prefWidth="138.5" text="End Game">
+        <Button fx:id = "endgame" layoutX="1373.3" layoutY="19.0" mnemonicParsing="false" onAction="#endGame" prefHeight="61.6" prefWidth="138.5" text="End Game">
             <font>
                 <Font name="Arial" size="21.7" />
             </font>

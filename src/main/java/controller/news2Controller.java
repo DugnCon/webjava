@@ -186,7 +186,7 @@ public class news2Controller extends baseSceneController {
 	}
 	@FXML
 	private void handleService() {
-		
+		createScene(service,"/main/sources/Trivia.fxml","");
 	}
 	@FXML
 	private void handleContact() {

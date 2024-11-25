@@ -148,9 +148,10 @@ public class news3Controller extends baseSceneController {
 		LB3.setText("VNU-LIC GUIDES ONLINE LEARNING RESOURCE USAGE\\r\\n\"\r\n"
 				+"FOR 700 FRESHMEN\\r\\n\"\r\n"
 				+"(21/09/2024)");
-		LB5.setText("THE EXCITING AND ENTHUSIASTIC LEARNING ATMOSPHERE\r\n"
-				+ "OF STUDENTS AT VNU-LIC\r\n"
-				+ "(26/09/2024)");
+		LB5.setText("VNU-LIC SUPPORTS AND SHARES WITH STAFF,\r\n"
+				+"EDUCATORS, WORKERS, AND STUDENTS\r\n"
+				+"IN FLOOD-AFFECTED AREAS\r\n"
+				+"(17/09/2024)");
 		LB6.setText("STATISTICS ON INTERNATIONAL PUBLICATIONS SCOPUS/WOS\r\n"
 				+ "OF VNU IN SEPTEMBER 2024\r\n"
 				+ "(25/09/2024)");
@@ -210,7 +211,7 @@ public class news3Controller extends baseSceneController {
 	}
 	@FXML
 	private void handleService() {
-		
+		createScene(service,"/main/sources/Trivia.fxml","");
 	}
 	@FXML
 	private void handleContact() {
