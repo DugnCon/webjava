@@ -727,7 +727,7 @@ public class requestUserController extends baseSceneController {
 	
 	@FXML
 	private void handleService() {
-		
+		createScene(service,"/main/sources/Trivia.fxml","");
 	}
 	
 	@FXML
