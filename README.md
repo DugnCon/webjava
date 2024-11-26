@@ -1,4 +1,5 @@
 # Ứng dụng quản lý thư viện (Manage Library)
+
 # I. Cách tải và cài đặt ứng dụng về máy của mình
 * B1: Tải project về
   1. Cách 1: Trên Github, chọn Code => Download ZIP. 
@@ -6,6 +7,7 @@
 * B2: Chạy ứng dụng
   1. Khi đã download project về máy, hãy kiểm tra xem IDE của hai bên có giống nhau không (ở đây tôi dùng Eclipse).
   2. Tìm tới cái main.java và chạy ứng dụng.
+ 
 # II. Giới thiệu về quản lý thư viện
 # Mô tả
 Ứng dụng được thiết kế để hỗ trợ các nhu cầu tìm kiếm sách cho bạn. Ứng dụng được viết bằng ngôn ngữ Java và sử dụng thêm thư viện JavaFX. Ứng dựng sử dụng mô hình MVC (Model, View, Controller). Ứng dụng có nhiều tính năng cho lần Admin và User giúp linh hoạt hơn và có nhiều chức năng. Ứng dụng sử dụng MySQL làm nơi chứa dữ liệu cho các tài liệu sách...
@@ -20,8 +22,8 @@
 ![UML](https://github.com/user-attachments/assets/89fa0a2d-6230-4afc-bfeb-e929a29564f1)
 
 ## Cài đặt ##
-1. Clone từ repo github : `git clone https://github.com/nguyenmanhdung23020520/BTL-OOP`
-2. Mở trong IDE *(khuyên dùng* [IntelliJ](https://www.jetbrains.com/idea/))
+1. Clone từ repo github : `git clone https://github.com/DugnCon/webjava`
+2. Mở trong IDE *(Có thể dùng* [IntelliJ](https://www.jetbrains.com/idea/)) => `Đây là trường hợp bạn muốn dùng Intellji`
 3. Cài đặt thư viên thêm trong folder `lib` vào project modules và library
 4. Sử dụng [mySQL](https://dev.mysql.com/downloads/installer/) vào import file ```managelibSQL.sql``` và chạy tạo database , có thể chỉnh sửa data của các bảng tạo ra
 5. Chạy project
