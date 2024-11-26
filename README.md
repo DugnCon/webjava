@@ -40,7 +40,6 @@
 
 4.Trò chơi sẽ kết thúc khi kho câu hỏi hêt hoặc người chơi thoát
 
-5.Sé có nhạc trong suốt quá trình trò chơi diễn ra
 
 
 
