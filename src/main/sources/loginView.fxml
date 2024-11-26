@@ -57,18 +57,18 @@
     <VBox fx:id = "VBOX4" styleClass = "vbox2" alignment = "CENTER">
        <VBox fx:id = "VBOXCHILD3" styleClass = "vbox1_2" spacing = "20" alignment = "CENTER">
          <ImageView fitWidth = "500" fitHeight = "300" style = "-fx-border-radius: 50%; -fx-background-radius:45;">
-           <Image url = "/LeagueofLegends_Worlds2021_Trophy.jpg"/>
+           <Image url = "/imageLogin2.jpg"/>
          </ImageView>
-         <Label text = "Đăng ký để nhận 1 xuất tham dự CKTG nào !" styleClass = "labelTiny2"/>
+         <Label text = "Good day !" styleClass = "labelTiny2"/>
          <Button text = "Đăng nhập" fx:id = "login2" onAction = "#handleButtonLogin2" styleClass = "Button"/>
        </VBox> 
      </VBox> 
      <VBox fx:id = "VBOX2" styleClass = "vbox2" alignment = "CENTER">
        <VBox fx:id = "VBOXCHILD2" styleClass = "vbox1_2" spacing = "20" alignment = "CENTER">
          <ImageView fitWidth = "500" fitHeight = "300">
-           <Image url = "/LeagueOfLegends_Worlds2023_Finals_T1_SummonersCup-removebg.png"/>
+           <Image url = "/imageSigup1.jpg"/>
          </ImageView>
-         <Label text = "Đăng ký để nhận 1 xuất tham dự CKTG nào !" styleClass = "labelTiny2"/>
+         <Label text = "Hi Admin" styleClass = "labelTiny2"/>
          <Button text = "Đăng kí" fx:id = "signup1" onAction = "#handleButtonSignUp1" styleClass = "Button"/>
        </VBox> 
      </VBox> 

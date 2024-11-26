@@ -3,6 +3,8 @@ package main.java.controller;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import javafx.animation.ScaleTransition;
@@ -209,8 +211,10 @@ public class recordFormController extends baseSceneController {
 		add Add = new add(bookCode.getText());
 		String bookcode = addbook.setNewAdd().search(Add);
 		if(!bookcode.isEmpty()) {
+			int randomNumber = (int) (Math.random() * 90000000) + 10000000;
 			alertController.setNew().AlertComplete("Đã tìm thấy mã sách thành công");
 			ArrayList<alter> arr = addbook.setNewAdd().selectByCondition1(bookcode);
+			borrowerID.setText(String.valueOf(randomNumber));
 			title.setText(arr.get(0).getnameBook());
 			chapter.setText(arr.get(0).getchapBook());
 			author.setText(arr.get(0).getnameAuthor());
@@ -221,35 +225,40 @@ public class recordFormController extends baseSceneController {
 		}
 	}
 	
-	/**xử lý sự kiện ghi phiếu người mượn*/
 	@FXML
 	private void handleRecordForm() {
-         String res = bookCode.getText();
-         if(!res.isEmpty()) {
-        	 
-        	 /**Cần sửa đoạn này*/
-        	 borrow Borrow = new borrow(borrowerID.getText(), "19",bookCode.getText()
-                     ,borrowDate.getText(), returnDate.getText(), username.getText() ,"Đang mượn", phone.getText());
-        	 
-        	 int rs = borrowbook.setNew().insert(Borrow);
-        	 /********************/
-        	 add Add = new add(quantity.getText(), res);
-        	 int check = addbook.setNewAdd().update2(Add);
-        	 int Quantity = Integer.parseInt(quantity.getText());
-        	 if(rs > 0 && check > 0 && Quantity >= 1) {
-        		 borrowNew BorrowNew = new borrowNew(borrowerID.getText(),bookCode.getText(), username.getText(), 
-                         borrowDate.getText(), returnDate.getText(), phone.getText());
-        		 alertController.setNew().AlertComplete("Ghi nhận thành công");
-            	 incomingBookList.add(BorrowNew);
-            	 clearFields();
-            	 clearFields1();
-        	 }else {
-        		 alertController.setNew().AlertUnComplete("Ghi nhạn không thành công");
-        	 }
-         }else {
-        	 alertController.setNew().AlertUnComplete("Không tìm thấy mã sách");
-         }
+	    String res = bookCode.getText();
+	    if (!res.isEmpty()) {
+	        LocalDate currentDate = LocalDate.now();
+	        LocalDate borrowReturnDate = LocalDate.parse(returnDate.getText(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+	        String status = currentDate.isAfter(borrowReturnDate) ? "Quá hạn" : "Đang mượn";
+
+	        borrow Borrow = new borrow(borrowerID.getText(), "19", bookCode.getText(),
+	                borrowDate.getText(), returnDate.getText(), username.getText(), status, phone.getText());
+
+	        int rs = borrowbook.setNew().insert(Borrow);
+
+	        add Add = new add(quantity.getText(), res);
+	        int check = addbook.setNewAdd().update2(Add);
+	        int Quantity = Integer.parseInt(quantity.getText());
+
+	        if (rs > 0 && check > 0 && Quantity >= 1) {
+	            borrowNew BorrowNew = new borrowNew(borrowerID.getText(), bookCode.getText(), username.getText(),
+	                    borrowDate.getText(), returnDate.getText(), phone.getText());
+
+	            alertController.setNew().AlertComplete("Ghi nhận thành công");
+	            incomingBookList.add(BorrowNew);
+	            clearFields();
+	            clearFields1();
+	        } else {
+	            alertController.setNew().AlertUnComplete("Ghi nhận không thành công");
+	        }
+	    } else {
+	        alertController.setNew().AlertUnComplete("Không tìm thấy mã sách");
+	    }
 	}
+
 	
 	private void clearFields() {
 	       bookCode.clear();
