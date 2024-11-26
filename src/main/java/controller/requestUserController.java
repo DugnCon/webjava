@@ -758,8 +758,10 @@ public class requestUserController extends baseSceneController {
 	private void handleSearchID() {
 		String check = userID.getText();
 		if(!check.isEmpty() && check.equals(getID())) {
+			int randomNumber = (int) (Math.random() * 90000000) + 10000000;
 			alertController.setNew().AlertComplete("Đã tìm thấy ID của bạn");
 			ArrayList<userLog> arr = userLoginAccount.setNew().selectByCondition(check);
+			borrowerID.setText(String.valueOf(randomNumber));
 			userName.setText(arr.get(0).getFullname());
 			arr.clear();
 		}else {
