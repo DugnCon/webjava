@@ -30,6 +30,7 @@
 
 ## Demo sử dụng ##
 [![Video demo](https://img.youtube.com/vi/so74FvZ7t8E/0.jpg)](https://www.youtube.com/watch?v=so74FvZ7t8E)
+![uml](https://github.com/user-attachments/assets/ff9e2446-1d97-4f77-98b8-a43e91487af0)
 
 ## Game Trivia ##
 1.Game có cách chơi tương tự ai là triệu phú ,người chơi sẽ phải chọn 1 trong 4 đáp án đúng
