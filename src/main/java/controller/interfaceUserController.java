@@ -261,7 +261,7 @@ public class interfaceUserController extends baseSceneController {
 	}
 	@FXML
 	private void handleContact() {
-		
+		createScene(contact,"/main/sources/ChatBotView.fxml","");
 	}
 	@FXML
 	private void handleBack() {

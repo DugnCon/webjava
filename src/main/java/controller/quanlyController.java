@@ -587,10 +587,10 @@ public class quanlyController extends baseSceneController {
         VBox layout = new VBox(10, popupTitle);
         if (thumbnail != null) {
             layout.getChildren().add(thumbnail);
-            layout.setAlignment(Pos.CENTER);
+            layout.setAlignment(Pos.CENTER_LEFT);
         }
         layout.getChildren().addAll(authorText, publishedDateText, publisherText, categoriesText, ratingsText, add);
-        layout.setAlignment(Pos.CENTER);
+        layout.setAlignment(Pos.CENTER_LEFT);
         
         HBox lay = new HBox(10);
         lay.getChildren().addAll(layout, scrollPane);
