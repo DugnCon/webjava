@@ -6,6 +6,8 @@ import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.CompletableFuture;
@@ -774,8 +776,13 @@ public class requestUserController extends baseSceneController {
 	private void handleBorrow() {
 		String res = bookCode.getText();
         if(!res.isEmpty()) {
+         LocalDate currentDate = LocalDate.now();
+	     LocalDate borrowReturnDate = LocalDate.parse(returnDate.getText(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+	     String status = currentDate.isAfter(borrowReturnDate) ? "Quá hạn" : "Đang mượn";
+        	
        	 borrow Borrow = new borrow(borrowerID.getText(), userID.getText(),bookCode.getText()
-                    ,borrowDate.getText(), returnDate.getText(), userName.getText() ,"Đang mượn", phone.getText());
+                    ,borrowDate.getText(), returnDate.getText(), userName.getText() ,status, phone.getText());
        	 
        	 borrow newBorrow = new borrow(getID(),bookCode.getText(), Title.getText());
        	 

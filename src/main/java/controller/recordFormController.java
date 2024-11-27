@@ -115,6 +115,8 @@ public class recordFormController extends baseSceneController {
         tran.COMEON(label2);
         
         tran.COMELEFT(back);
+        
+        updateBookStatus();
     }
     
     @FXML
@@ -224,6 +226,37 @@ public class recordFormController extends baseSceneController {
 			clearFields();
 		}
 	}
+	
+	private void updateBookStatus() {
+	    LocalDate currentDate = LocalDate.now();
+
+	    try {
+	        Connection con = JDBCSQL.getConnection();
+	        PreparedStatement prsttm = con.prepareStatement("SELECT * FROM borrower");
+	        ResultSet rs = prsttm.executeQuery();
+
+	        while (rs.next()) {
+	            String borrowerID = rs.getString("borrowerID");
+	            String bookCode = rs.getString("bookCode");
+	            LocalDate returnDate = LocalDate.parse(rs.getString("returnDate"), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+	            String status = rs.getString("status");
+
+	            if (currentDate.isAfter(returnDate) && status.equals("Đang mượn")) {
+	                PreparedStatement updateStmt = con.prepareStatement("UPDATE borrow SET status = ? WHERE borrowerID = ? AND bookCode = ?");
+	                updateStmt.setString(1, "Quá hạn");
+	                updateStmt.setString(2, borrowerID);
+	                updateStmt.setString(3, bookCode);
+	                updateStmt.executeUpdate();
+	            }
+	        }
+
+	        con.close();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        System.out.println("Cannot update book status: " + e.getMessage());
+	    }
+	}
+
 	
 	@FXML
 	private void handleRecordForm() {
