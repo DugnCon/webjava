@@ -106,16 +106,6 @@ public class news3Controller extends baseSceneController {
 		Tran.add(text2);
 		tran.COMERIGHT3(Tran);
 		
-		ArrayList<Node> node = new ArrayList<Node>();
-		node.add(home);
-		node.add(introduce);
-		node.add(suprise);
-		node.add(service);
-		node.add(contact);
-		node.add(back);
-		Collections.reverse(node);
-		tran.COMERIGHT3(node);
-		
 		ArrayList<Node> img_1 = new ArrayList<Node>();
 		img_1.add(img1);
 		img_1.add(img2);
