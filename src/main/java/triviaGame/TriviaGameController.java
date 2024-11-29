@@ -43,6 +43,7 @@ public class TriviaGameController extends baseSceneController{
     
     @FXML
     private Button endgame;
+    
 
     private static TriviaGameLogic triviaGame;
     private int scoringResults;
@@ -101,14 +102,17 @@ public class TriviaGameController extends baseSceneController{
         alert.setHeaderText("The game is over. " + "Your score is:  " + scoringResults);
         alert.setContentText("Press OK to start a new game");
         Optional<ButtonType> option = alert.showAndWait();
-        //bam ok thi tp tuc chs
-        if (option.get() == ButtonType.OK)
+        if (option.isPresent() && option.get() == ButtonType.OK) {
             setNewGame();
-        //bam cancel thi huy thoat ra ben ngoai
-        else if (option.get() == null || option.get() == ButtonType.CANCEL)
+            playmusic.pauseMusicNew();
+        }
+        else if (!option.isPresent() || option.get() == ButtonType.CANCEL) {
             System.exit(0);
-        createScene(endgame,"/main/sources/interfaceUser.fxml","/main/sources/css/interfaceUser.css");
+        }
+
+        createScene(endgame, "/main/sources/interfaceUser.fxml", "/main/sources/css/interfaceUser.css");
     }
+
 
     //truyen canh sang cau hoi tiep theo
     public void getNextQuestion() {

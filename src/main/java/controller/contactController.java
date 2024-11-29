@@ -5,64 +5,100 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.concurrent.ScheduledExecutorService;
 
-import javafx.animation.ScaleTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.util.Duration;
 import main.java.JDBC.JDBCSQL;
 import main.java.dao.userLoginAccount;
 import main.java.model.addNew;
 import main.java.model.borrowNew;
 import main.java.model.userLog;
+import main.java.triviaGame.playmusic;
 
-public class interfaceUserController1 extends baseSceneController {
+public class contactController extends baseSceneController {
 	@FXML
-	private Label label1,label2,label3,label4,label11;
+	private Label label1,label2,label3,label4,label5,label6,yourID,lab1,lab2;
 	@FXML
-	private VBox tuto1,tuto2,tuto3,tuto4;
+	private VBox tuto1,tuto2,tuto3,tuto4,vboxnew;
 	@FXML
-	private ImageView img1,img2,img3,img4,img5,img6,img7,img8,img9,img10,img11;
+	private ImageView img1,img2,img3,img4,img5,img6,img7,img8,
+	img9,img10,img11,img_1,img_2,img_3,img_4,img_5,image,img_6,img_7,img_8,img_9
+	,img_10,img22,img33,img44,img55,img66,img77,img88,img99,img1010,img111,img1001,img1002;
 	@FXML
 	private Button home,introduce,suprise,service,contact,back;
 	@FXML
-	private Button bt1,bt2,bt3,btt1,btt2,btt3,btt4,btt5;
+	private Button bt1,bt2,bt3,complete,comlete1,searchID,search;
 	@FXML
-	private ImageView IMG1,IMG2,IMG3,IMG4,IMG5,IMG6,IMG7;
+	private TextField fieldSearch,username,textReturn;
 	@FXML
-	private VBox IMG8,IMG9,IMG10,IMG11,IMG12,IMG13;
+	private TextField bookCode,borrowerID,userName
+	,phone,borrowDate,returnDate,status,searchAccount
+	,userID,Title,chapter,author,quantity;
 	@FXML
-	private Text LB1;
+	private Button searchBook,clear,loading,listen1,listen2,listen3,Pause1,Pause2,Pause3;
 	@FXML
-	private Button LB2,LB3,LB4,LB5,LB6,LB7;
+	private ScrollPane scrollpane;
 	@FXML
-	private HBox h2,h3,h4,h5,h6,h7;
+	private VBox searchResultsContainer,para,yourComment;
+	@FXML
+	private ProgressIndicator loadingIndicator;
+	@FXML
+	private Text text1,text2,lb1,lb2,title,title2
+	,paragraph,note,yourName,comment;
+	@FXML
+    private BorderPane mainContent;
+	@FXML
+	private HBox hboxnew;
+	@FXML
+	private TextArea textarea;
+	@FXML
+	private TableView<addNew> tableBook;
+	@FXML
+	private TableView<borrowNew> tableBorrowBook;
+	@FXML
+	private TableColumn<borrowNew, String> columnUserID1, columnCode1, columnTitle1;
+	@FXML
+	private TableColumn<addNew, String> columnCode, columnTitle, columnAuthor, columnYear;
+	@FXML
+	private ObservableList<addNew> bookList = FXCollections.observableArrayList();
+	@FXML
+	private ObservableList<borrowNew> borrowList = FXCollections.observableArrayList();
 	
-	private void applyHoverEffect(Node node) {
-	   	 ScaleTransition scaleIn = new ScaleTransition(Duration.millis(200), node);
-	        scaleIn.setToX(1.2);
-	        scaleIn.setToY(1.2);
-
-	        ScaleTransition scaleOut = new ScaleTransition(Duration.millis(200), node);
-	        scaleOut.setToX(1.0);
-	        scaleOut.setToY(1.0);
-
-	        node.setOnMouseEntered(e -> scaleIn.play()); 
-	        node.setOnMouseExited(e -> scaleOut.play()); 
-	 }
+	private ObservableList<addNew> incomingBookList = FXCollections.observableArrayList();
 	
-	@FXML
+	private ObservableList<borrowNew> incomingBorrowList = FXCollections.observableArrayList();
+	
+	private APIController apiController = new APIController();
+	
+    private ScheduledExecutorService scheduler;
+    
+    private Runnable searchTask;
+    
+    private playmusic play1,play2,play3,pau1,pau2,pau3;
+    
+    @FXML
 	private void initialize() {
+    	play1 = new playmusic();
+    	play2 = new playmusic();
+    	play3 = new playmusic();
+    	
 		transistionController tran = new transistionController();
 		ArrayList<Node> img_1 = new ArrayList<Node>();
 		img_1.add(img1);
@@ -76,29 +112,12 @@ public class interfaceUserController1 extends baseSceneController {
 		vbox.add(tuto3);
 		vbox.add(tuto4);
 		
-		ArrayList<Node> vbox1 = new ArrayList<Node>();
-		vbox1.add(IMG8);
-		vbox1.add(IMG9);
-		vbox1.add(IMG10);
-		vbox1.add(IMG11);
-		vbox1.add(IMG12);
-		vbox1.add(IMG13);
-		Collections.reverse(vbox1);
-		
 		ArrayList<Node> label = new ArrayList<Node>();
 		label.add(label1);
 		label.add(label2);
 		label.add(label3);
 		label.add(label4);
-		
-		ArrayList<Node> label1 = new ArrayList<Node>();
-		label1.add(LB1);
-		label1.add(LB2);
-		label1.add(LB3);
-		label1.add(LB4);
-		label1.add(LB5);
-		label1.add(LB6);
-		label1.add(LB7);
+		label.add(label5);
 		
 		ArrayList<Node> img_2 =  new ArrayList<Node>();
 		img_2.add(img5);
@@ -109,29 +128,17 @@ public class interfaceUserController1 extends baseSceneController {
 		img_2.add(img10);
 		img_2.add(img11);
 		
-		ArrayList<Node> img_3 =  new ArrayList<Node>();
-		img_3.add(IMG1);
-		img_3.add(IMG2);
-		img_3.add(IMG3);
-		img_3.add(IMG4);
-		img_3.add(IMG5);
-		img_3.add(IMG6);
-		img_3.add(IMG7);
-		
 		ArrayList<Node> button = new ArrayList<Node>();
 		button.add(bt1);
 		button.add(bt2);
 		button.add(bt3);
 		
 		tran.COMELEFTARRAY(vbox);
-		tran.COMELEFTARRAY(img_3);
-		tran.COMELEFTARRAY(label1);
 		tran.COMERIGHT3(label);
-		tran.COMERIGHT3(vbox1);
 		tran.COMEONARRAY(img_1);
 		tran.COMERIGHT3(img_2);
 		tran.COMERIGHT3(button);
-		tran.COMERIGHT(label11);
+		tran.COMELEFT(img_6);
 		
 		Font font = Font.loadFont(getClass().getResourceAsStream("/Accent Graphic W00 Medium.ttf"), 20);
 		home.setFont(font);
@@ -141,62 +148,17 @@ public class interfaceUserController1 extends baseSceneController {
 		contact.setFont(font);
 		back.setFont(font);
 		
-		LB2.setText("VNU-LIC CELEBRATES THE 70TH ANNIVERSARY\r\n"
-				+ "OF HANOI LIBERATION DAY\r\n"
-				+ "(10/10/1954 - 10/10/2024)");
-		LB3.setText("VNU-LIC GUIDES ONLINE LEARNING RESOURCE USAGE\r\n"
-				+ "FOR 700 FRESHMEN\r\n"
-				+ "(21/09/2024)");
-		LB5.setText("VNU-LIC SUPPORTS AND SHARES WITH STAFF,\r\n"
-				+ "EDUCATORS, WORKERS, AND STUDENTS\r\n"
-				+ "IN FLOOD-AFFECTED AREAS\r\n"
-				+ "(17/09/2024)");
-		LB4.setText("THE EXCITING AND ENTHUSIASTIC LEARNING ATMOSPHERE\r\n"
-				+ "OF STUDENTS AT VNU-LIC\r\n"
-				+ "(26/09/2024)");
-		LB6.setText("STATISTICS ON INTERNATIONAL PUBLICATIONS SCOPUS/WOS\r\n"
-				+ "OF VNU IN SEPTEMBER 2024\r\n"
-				+ "(25/09/2024)");
-		LB7.setText("THE FRAGRANCE OF GREEN RICE ON EVERY PAGE\r\n"
-				+ "(17/09/2024)");
-		
-		LB1.setFont(font);
-		LB2.setFont(font);
-		LB3.setFont(font);
-		LB4.setFont(font);
-		LB5.setFont(font);
-		LB6.setFont(font);
-		label11.setFont(font);
-		
-		LB1.setWrappingWidth(500);
-		LB2.setMaxWidth(300);
-		LB3.setMaxWidth(300);
-		LB4.setMaxWidth(300);
-		LB5.setMaxWidth(300);
-		LB6.setMaxWidth(300);
-		
-		applyHoverEffect(IMG1);
-		applyHoverEffect(h2);
-		applyHoverEffect(h3);
-		applyHoverEffect(h4);
-		applyHoverEffect(h5);
-		applyHoverEffect(h6);
-		applyHoverEffect(h7);
-		applyHoverEffect(IMG8);
-		applyHoverEffect(IMG9);
-		applyHoverEffect(IMG10);
-		applyHoverEffect(IMG11);
-		applyHoverEffect(IMG12);
-		applyHoverEffect(IMG13);
 	}
-	
 	@FXML
 	private void handleHome() {
 		createScene(home,"/main/sources/interfaceUser.fxml","/main/sources/css/interfaceUser.css");
 	}
+	
 	@FXML
 	private void handleIntro() {
+		createScene(introduce,"/main/sources/interfaceUser_1.fxml","/main/sources/css/interfaceUser.css");
 	}
+	
 	@FXML
 	private void handleSuprise() {
 		try {
@@ -228,52 +190,85 @@ public class interfaceUserController1 extends baseSceneController {
 	            controller.setBorrowList(borrowList);             
 	                
 	            con.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Cannot execute: " + e.getMessage());
-        }
+       } catch (Exception e) {
+           e.printStackTrace();
+           System.out.println("Cannot execute: " + e.getMessage());
+       }
 	}
+	
 	@FXML
 	private void handleService() {
 		createSceneGame(service,"/main/sources/Trivia.fxml","","/music.mp3");
 	}
+	
 	@FXML
 	private void handleContact() {
 		
 	}
+	
 	@FXML
 	private void handleBack() {
+		play1.pauseMusic();
+		play2.pauseMusic();
+		play3.pauseMusic();
 		createScene(back,"/main/sources/interfaceView.fxml","/main/sources/css/interface.css");
 	}
 	
+
+	private boolean isMusicPlaying = false;
+
 	@FXML
-	private void handleNews1() {
-		createScene(LB2,"/main/sources/news1View.fxml","/main/sources/css/interfaceUser.css");
+	private void handlePlay1() {
+	    if (!isMusicPlaying) {
+	    	play3.pauseMusic();
+	    	play2.pauseMusic();
+	        play1.initMusic(getClass().getResource("/dc558c1f-7664-4d24-9948-7a1ab318892a.mp3").toString());
+	        play1.playMusic();
+	        isMusicPlaying = true;
+	        System.out.println("Music is already playing.");
+	    }
+	}
+
+	
+	@FXML
+	private void handlePlay2() {
+		if (!isMusicPlaying) {
+			play1.pauseMusic();
+			play3.pauseMusic();
+	        play2.initMusic(getClass().getResource("/Tainhanh.net_YouTube_SON-TUNG-MTP-CHUNG-TA-CUA-HIEN-TAI-CM1X_Media_QPKHfugLTqc_006_144p.mp3").toString());
+	        play2.playMusic();
+	        isMusicPlaying = true;
+	        System.out.println("Music is already playing.");
+	    }
 	}
 	
 	@FXML
-	private void handleNews2() {
-		createScene(LB3,"/main/sources/news2View.fxml","/main/sources/css/interfaceUser.css");
+	private void handlePlay3() {
+		if (!isMusicPlaying) {
+			play1.pauseMusic();
+			play2.pauseMusic();
+	        play3.initMusic(getClass().getResource("/Tainhanh.net_YouTube_Last-Christmas-Remix-Hung-Hack-Nhac-Remi_Media_iDXRKHY7mJA_006_144p.mp3").toString());
+	        play3.playMusic();
+	        isMusicPlaying = true;
+	        System.out.println("Music is already playing.");
+	    }
 	}
 	
 	@FXML
-	private void handleNews3() {
-		createScene(LB4,"/main/sources/news3View.fxml","/main/sources/css/interfaceUser.css");
+	private void handlePause1() {
+		play1.pauseMusic();
+		isMusicPlaying = false;
 	}
 	
 	@FXML
-	private void handleNews4() {
-		createScene(LB5,"/main/sources/news4.fxml","/main/sources/css/interfaceUser.css");
+	private void handlePause2() {
+		play2.pauseMusic();
+		isMusicPlaying = false;
 	}
 	
 	@FXML
-	private void handleNews5() {
-		
+	private void handlePause3() {
+		play3.pauseMusic();
+		isMusicPlaying = false;
 	}
-	
-	@FXML
-	private void handleNews6() {
-		
-	}
-	
 }

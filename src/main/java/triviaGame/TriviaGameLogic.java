@@ -10,14 +10,12 @@ import java.util.Scanner;
 
 public class TriviaGameLogic {
     private static final int numOfRowsInNode = 5;
-    //numOfRowsInNode: Number of rows representing a single question (1 question + 4 answers).
     private static String firstAns;
     private static String secondAns;
     private static String thirdAns;
     private static String fourAns;
     private static String correctAns;
     private static String[] shuffleAns;
-    //: Array to hold shuffled answers for the current question.
     private static LinkedList<Question> questionsAndAnswers;
     private static Question currNode;
 
@@ -59,7 +57,6 @@ public class TriviaGameLogic {
     }
 
     public static LinkedList readFromFile() {
-        //set question and 4 answer
         int cnt = 0;
         boolean flag = false;
         InputStream inputStream = TriviaGameLogic.class.getResourceAsStream("/trivia.txt");
@@ -83,7 +80,6 @@ public class TriviaGameLogic {
             }
             cnt++;
             if ((cnt % 5 == 0) && (flag == false)) {
-                //Adds the created Question objects to questionsAndAnswers.
                 questionsAndAnswers.add(currNode);
             }
         }
@@ -92,7 +88,6 @@ public class TriviaGameLogic {
     }
 
     public static String randomQuestion() {
-        //kq la dap an dau tien
         Collections.shuffle(questionsAndAnswers);
         String question = questionsAndAnswers.get(0).getQuestion();
         correctAns = questionsAndAnswers.get(0).getFirstAns();
@@ -111,7 +106,6 @@ public class TriviaGameLogic {
     }
 
     public static void shuffleTheAnswers() {
-        //trao cau hoi
         shuffleAns[0] = firstAns;
         shuffleAns[1] = secondAns;
         shuffleAns[2] = thirdAns;

@@ -114,7 +114,7 @@ public class loginController extends baseSceneController {
 		author Author = new author(UserName, PassWord, RepeatPassWord, FullName);
 		int res = signUpAccount.getInstance().insert(Author);
 		if(res > 0) {
-            signUpAccount.getInstance().AlertComplete();
+            alertController.setNew().AlertComplete("Đăng ký thành công");
 			transistionController tran = new transistionController();
 	    	tran.ComeLeft1(ST1);
 	        tran.ComeRight1(ST2);
@@ -123,7 +123,7 @@ public class loginController extends baseSceneController {
 	    	tran.UnhideWithFade(VBOX1);
 	    	tran.UnhideWithFade(VBOX2);	
 		}else {
-			signUpAccount.getInstance().AlertUnComplete();
+			alertController.setNew().AlertUnComplete("Đăng ký không thành công");
 		}
     }
     

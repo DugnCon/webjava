@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
 import javafx.animation.ScaleTransition;
@@ -72,7 +73,6 @@ public class recordFormController extends baseSceneController {
         button.setOnMouseExited(e -> scaleOut.play()); 
     }
 
-    
     @FXML
     private void initialize() {
         columnID.setCellValueFactory(new PropertyValueFactory<>("borrowerID"));
@@ -228,9 +228,8 @@ public class recordFormController extends baseSceneController {
 	}
 	
 	private void updateBookStatus() {
-	    LocalDate currentDate = LocalDate.now();
-
 	    try {
+	        LocalDate currentDate = LocalDate.now();
 	        Connection con = JDBCSQL.getConnection();
 	        PreparedStatement prsttm = con.prepareStatement("SELECT * FROM borrower");
 	        ResultSet rs = prsttm.executeQuery();
@@ -238,24 +237,34 @@ public class recordFormController extends baseSceneController {
 	        while (rs.next()) {
 	            String borrowerID = rs.getString("borrowerID");
 	            String bookCode = rs.getString("bookCode");
-	            LocalDate returnDate = LocalDate.parse(rs.getString("returnDate"), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 	            String status = rs.getString("status");
-
-	            if (currentDate.isAfter(returnDate) && status.equals("Đang mượn")) {
-	                PreparedStatement updateStmt = con.prepareStatement("UPDATE borrow SET status = ? WHERE borrowerID = ? AND bookCode = ?");
-	                updateStmt.setString(1, "Quá hạn");
-	                updateStmt.setString(2, borrowerID);
-	                updateStmt.setString(3, bookCode);
-	                updateStmt.executeUpdate();
+	            try {
+	                LocalDate returnDate = LocalDate.parse(rs.getString("returnDate"), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+	                if (currentDate.isAfter(returnDate) && status.equals("Đang mượn")) {
+	                    PreparedStatement updateStmt = con.prepareStatement(
+	                        "UPDATE borrower SET status = ? WHERE borrowerID = ? AND bookCode = ?"
+	                    );
+	                    System.out.println("Updating status to 'Quá hạn' for BorrowerID: " + borrowerID);
+	                    updateStmt.setString(1, "Quá hạn");
+	                    updateStmt.setString(2, borrowerID);
+	                    updateStmt.setString(3, bookCode);
+	                    updateStmt.executeUpdate();
+	                    updateStmt.close();
+	                }
+	            } catch (DateTimeParseException e) {
+	                System.out.println("Invalid date format for returnDate: " + rs.getString("returnDate"));
 	            }
 	        }
 
+	        rs.close();
+	        prsttm.close();
 	        con.close();
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	        System.out.println("Cannot update book status: " + e.getMessage());
 	    }
 	}
+
 
 	
 	@FXML
@@ -264,7 +273,8 @@ public class recordFormController extends baseSceneController {
 	    if (!res.isEmpty()) {
 	        LocalDate currentDate = LocalDate.now();
 	        LocalDate borrowReturnDate = LocalDate.parse(returnDate.getText(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-
+	        System.out.println(currentDate);
+	        
 	        String status = currentDate.isAfter(borrowReturnDate) ? "Quá hạn" : "Đang mượn";
 
 	        borrow Borrow = new borrow(borrowerID.getText(), "19", bookCode.getText(),

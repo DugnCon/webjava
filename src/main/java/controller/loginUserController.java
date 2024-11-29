@@ -135,9 +135,12 @@ public class loginUserController extends baseSceneController {
     private void handleButtonSignup2() {
     	user User = new user(userName.getText(), passWord.getText(), repeatpass.getText(), fullname.getText());
         int res = userAccount.setNew().insertSign(User);
+        if(res == 0) {
+        	alertController.setNew().AlertUnComplete("Tên tài khoản đã tồn tại");
+        }
         int res1 = userAccount.setNew().insertLog(User);
         if (res > 0 && res1 > 0) {
-            signUpAccount.getInstance().AlertComplete();
+            alertController.setNew().AlertComplete("Đăng ký thành công");
             transistionController tran = new transistionController();
 	    	tran.ComeLeft1(ST1);
 	        tran.ComeRight1(ST2);
@@ -146,7 +149,7 @@ public class loginUserController extends baseSceneController {
 	    	tran.UnhideWithFade(VBOX1);
 	    	tran.UnhideWithFade(VBOX2);	
         } else {
-            signUpAccount.getInstance().AlertUnComplete();
+            alertController.setNew().AlertUnComplete("Đăng ký không thành công");
         }
     }
     

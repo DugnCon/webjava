@@ -71,6 +71,11 @@
 	-fx-text-fill:black;
 	-fx-font-family:"Accent Graphic W00 Medium";
 }
+.fontTile41{
+	-fx-font-size:30;
+	-fx-text-fill:#ffffff;
+	-fx-font-family:"Accent Graphic W00 Medium";
+}
 .fontTile5{
 	-fx-font-size:10;
 	-fx-text-fill:black;
@@ -239,4 +244,21 @@
     -fx-font-family:"Accent Graphic W00 Medium";
     -fx-text-fill:black;
     -fx-font-size:10;
+}
+.Vbox_music{
+	-fx-background-color:#303150;
+	-fx-border-radius:20;
+	-fx-background-radius:20;
+}
+.buttonAdd1{
+	-fx-pref-width:130;
+	-fx-pref-height:40;
+	-fx-background-radius:45;
+	-fx-border-radius:45;
+	-fx-font-size:12;
+	-fx-font-weight:bold;
+	-fx-text-fill:#ffffff;
+	-fx-border-style:solid;
+	-fx-border-width:2;
+	-fx-background-color:#7A64EC;
 }

@@ -9,11 +9,13 @@ import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import main.java.triviaGame.playmusic;
 
 public class baseSceneController {
 	private Scene scene;
 	private Parent root;
 	private Stage stage;
+	
 	public void createScene(Node node,String url,String urlCss) {
 		try {
 			root = FXMLLoader.load(getClass().getResource(url));
@@ -27,6 +29,34 @@ public class baseSceneController {
 			e.printStackTrace();
 		}
 	}
+	
+	public void createSceneGame(Node node,String url,String urlCss, String music) {
+		try {
+			root = FXMLLoader.load(getClass().getResource(url));
+			scene = new Scene(root, 1536, 800);
+	        playmusic.initMusicNew(getClass().getResource(music).toString());
+	        playmusic.playMusicNew();
+	        scene.setOnKeyPressed(event -> {
+	            switch (event.getCode()) {
+	                case S -> {
+	                    playmusic.pauseMusicNew();
+	                    System.out.println("Stopping music...");
+	                }
+	                case D -> {
+	                    playmusic.playMusicNew();
+	                    System.out.println("Playing music...");
+	                }
+	            }
+	            });
+	        stage = (Stage) node.getScene().getWindow();
+	        stage.setScene(scene);
+	        stage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	
 	protected <T> T createScene1(Node node, String url, String urlCss) {
         T controller = null;

@@ -287,16 +287,6 @@ public class requestUserController extends baseSceneController {
 		I.add(img4);
 		tran.COMEONARRAY(I);
 		
-		ArrayList<Node> butt = new ArrayList<Node>();
-		butt.add(home);
-		butt.add(introduce);
-		butt.add(suprise);
-		butt.add(service);
-		butt.add(contact);
-		butt.add(back);
-		Collections.reverse(butt);
-		tran.COMERIGHT3(butt);
-		
 		ArrayList<Node> I1 = new ArrayList<Node>();
 		I1.add(img1001);
 		I1.add(lb1);
@@ -729,12 +719,12 @@ public class requestUserController extends baseSceneController {
 	
 	@FXML
 	private void handleService() {
-		createScene(service,"/main/sources/Trivia.fxml","");
+		createSceneGame(service,"/main/sources/Trivia.fxml","","/music.mp3");
 	}
 	
 	@FXML
 	private void handleContact() {
-		
+		createScene(contact,"/main/sources/contactView.fxml","/main/sources/css/interfaceUser.css");
 	}
 	
 	/**xử lý sự kiện kiểm tra xe sách có tồn tại*/

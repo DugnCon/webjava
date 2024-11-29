@@ -48,15 +48,6 @@ public class interfaceUserController extends baseSceneController {
 		img_1.add(img3);
 		img_1.add(img4);
 		
-		ArrayList<Node> node = new ArrayList<Node>();
-		node.add(home);
-		node.add(introduce);
-		node.add(suprise);
-		node.add(service);
-		node.add(contact);
-		node.add(back);
-		Collections.reverse(node);
-		
 		ArrayList<Node> vbox = new ArrayList<Node>();
 		vbox.add(tuto1);
 		vbox.add(tuto2);
@@ -85,7 +76,6 @@ public class interfaceUserController extends baseSceneController {
 		button.add(bt3);
 		
 		tran.COMELEFTARRAY(vbox);
-		tran.COMERIGHT3(node);
 		tran.COMERIGHT3(label);
 		tran.COMEONARRAY(img_1);
 		tran.COMERIGHT3(img_2);
@@ -257,11 +247,11 @@ public class interfaceUserController extends baseSceneController {
 	}
 	@FXML
 	private void handleService() {
-		createScene(service,"/main/sources/Trivia.fxml","");
+		createSceneGame(service,"/main/sources/Trivia.fxml","","/music.mp3");
 	}
 	@FXML
 	private void handleContact() {
-		createScene(contact,"/main/sources/ChatBotView.fxml","");
+		createScene(contact,"/main/sources/contactView.fxml","/main/sources/css/interfaceUser.css");
 	}
 	@FXML
 	private void handleBack() {

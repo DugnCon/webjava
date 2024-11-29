@@ -20,7 +20,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.news3Controller" stylesheets="@main/sources/css/interfaceUser.css">
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.contactController" stylesheets="@main/sources/css/interfaceUser.css">
    <BorderPane>
     <top>
     <BorderPane>
@@ -69,7 +69,7 @@
         <Button text = "Introduce" fx:id = "introduce" onAction = "#handleIntro" styleClass = "button_1"/>
         <Button text = "Outstanding" fx:id = "suprise" onAction = "#handleSuprise" styleClass = "button_1"/>
         <Button text = "Service" fx:id = "service" onAction = "#handleService" styleClass = "button_1"/>
-        <Button text = "Music" fx:id = "contact" onAction = "#handleContact" styleClass = "button_1"/>
+        <Button text = "Contact" fx:id = "contact" onAction = "#handleContact" styleClass = "button_1"/>
         <Button text = "Back" fx:id = "back" onAction = "#handleBack" styleClass = "button_1"/>
       </HBox>
     </HBox>
@@ -77,7 +77,6 @@
     </BorderPane>
     </top>
     
-    <!-- Phần content -->
     <center>
     <ScrollPane styleClass="scrollPane" HBox.hgrow="ALWAYS">
      <content>
@@ -86,61 +85,66 @@
        <padding>
         <Insets top = "20" right = "0" bottom = "0" left = "56"/>
        </padding>
-       
-       <!-- Nội dung của báo -->
-      <HBox spacing = "20" styleClass = "color1" alignment = "CENTER">
-        <padding>
-          <Insets top = "40" bottom = "40"/>
-        </padding>
-        <!--****** Update nội dung *******-->
-        <VBox>
-           <HBox.margin>
-             <Insets right = "40"/>
-           </HBox.margin>
-           <VBox alignment = "CENTER" spacing = "20">
-             <Text fx:id = "title" styleClass = "fontTile4" />
-             <Text fx:id = "text1" styleClass = "Text"/>
-             <ImageView fx:id = "imgtitle" fitWidth = "700" fitHeight = "500" preserveRatio = "true">
-               <Image url = "/thuvienjpg.jpg"/>
-             </ImageView>
-             <Text fx:id = "text2" styleClass = "Text"/>
-           </VBox>
-         </VBox>
-         <!-- *********************** -->
-         <VBox>
-           <Text fx:id = "title1" styleClass = "fontTile4"/>
-           <HBox fx:id = "h2">
-               <ImageView fx:id="IMG2" fitWidth="150" fitHeight="70" preserveRatio="true">
-                <Image url="/462508358_921021493387955_6015371627903243179_n-100x84.jpg"/>
-               </ImageView>
-              <Button fx:id="LB2" styleClass="custom-button" onAction = "#handleNews1"/> 
-           </HBox>
-           <HBox fx:id = "h3" >
-             <ImageView fx:id = "IMG3" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
-               <Image url = "/460663595_907458911410880_604379066960442608_n-100x84.jpg"/>
-             </ImageView>
-             <Button fx:id="LB3" styleClass="custom-button" onAction = "#handleNews2"/> 
-           </HBox>
-            <HBox fx:id = "h5" >
-              <ImageView fx:id = "IMG4" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
-                <Image url = "/459648551_904352591721512_7408307320904964313_n-100x84.jpg"/>
-              </ImageView>
-              <Button fx:id="LB5" styleClass="custom-button" onAction = "#handleNews4"/> 
+      
+      
+      <!-- Phần content -->
+    <HBox alignment = "CENTER">
+    <padding>
+        <Insets top = "0" right = "0" bottom = "40" left = "0"/>
+       </padding>
+      <HBox spacing = "40">
+       <!-- Nhạc 1 -->
+        <VBox styleClass = "Vbox_music">
+         <padding>
+            <Insets top = "70" left = "30" right = "30" bottom = "70"/>
+          </padding>
+          <VBox alignment = "CENTER" spacing = "30">
+            <Label text = "Son Tung MTP" styleClass = "fontTile41"/>
+            <ImageView fitWidth = "300" fitHeight = "400" preserveRatio = "true">
+              <Image url = "/mtp.jpg" />
+            </ImageView>
+            <HBox alignment = "CENTER" spacing = "20">
+              <Button fx:id = "listen1" text = "Play Music" styleClass = "buttonAdd1" onAction = "#handlePlay1"/>
+              <Button fx:id = "Pause1" text = "Pause Music" styleClass = "buttonAdd1" onAction = "#handlePause1"/>
             </HBox>
-             <HBox fx:id = "h6" >
-                <ImageView fx:id = "IMG6" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
-                  <Image url = "/plummentandsoar.jpg"/>
-                </ImageView>
-                <Button fx:id="LB6" styleClass="custom-button" onAction = "#handleNews5"/> 
-              </HBox>
-              <HBox fx:id = "h7" >
-                <ImageView fx:id = "IMG7" fitWidth = "150" fitHeight = "70" preserveRatio = "true">
-                  <Image url = "/4088cf344c47ea19b356-100x84.jpg"/>
-                </ImageView>
-                <Button fx:id="LB7" styleClass="custom-button" onAction = "#handleNews6"/> 
-              </HBox>
-       </VBox>
+          </VBox>
+        </VBox>
+        
+        <!-- Nhạc 2 -->
+        <VBox styleClass = "Vbox_music">
+         <padding>
+            <Insets top = "70" left = "30" right = "30" bottom = "70"/>
+          </padding>
+          <VBox alignment = "CENTER" spacing = "30">
+            <Label text = "Son Tung MTP" styleClass = "fontTile41"/>
+            <ImageView fitWidth = "300" fitHeight = "400" preserveRatio = "true">
+              <Image url = "/hinh-anh-son-tung-full-hd_012524666.jpg" />
+            </ImageView>
+            <HBox alignment = "CENTER" spacing = "20">
+              <Button fx:id = "listen2" text = "Play Music" styleClass = "buttonAdd1" onAction = "#handlePlay2"/>
+              <Button fx:id = "Pause2" text = "Pause Music" styleClass = "buttonAdd1" onAction = "#handlePause2"/>
+            </HBox>
+          </VBox>
+        </VBox>
+        
+        <VBox styleClass = "Vbox_music">
+          <padding>
+            <Insets top = "70" left = "30" right = "30" bottom = "70"/>
+          </padding>
+          <VBox alignment = "CENTER" spacing = "30">
+            <Label text = "Last Christmas" styleClass = "fontTile41"/>
+            <ImageView fitWidth = "300" fitHeight = "400" preserveRatio = "true">
+              <Image url = "/hinh-nen-giang-sinh-de-thuong_091727423.jpg" />
+            </ImageView>
+            <HBox alignment = "CENTER" spacing = "20">
+              <Button fx:id = "listen3" text = "Play Music" styleClass = "buttonAdd1" onAction = "#handlePlay3"/>
+              <Button fx:id = "Pause3" text = "Pause Music" styleClass = "buttonAdd1" onAction = "#handlePause3"/>
+            </HBox>
+          </VBox>
+        </VBox>
+        
       </HBox>
+    </HBox>
       
       <!-- Tạo footer -->
      <VBox styleClass = "background_img">
@@ -192,5 +196,5 @@
     </content>
    </ScrollPane>
    </center>
-  </BorderPane>
+   </BorderPane>
 </VBox>
