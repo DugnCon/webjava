@@ -239,7 +239,7 @@ public class interfaceUserController1 extends baseSceneController {
 	}
 	@FXML
 	private void handleContact() {
-		
+		createScene(contact,"/main/sources/contactView.fxml","/main/sources/css/interfaceUser.css");
 	}
 	@FXML
 	private void handleBack() {

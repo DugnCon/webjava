@@ -91,7 +91,11 @@ public class contactController extends baseSceneController {
     
     private Runnable searchTask;
     
-    private playmusic play1,play2,play3,pau1,pau2,pau3;
+    private playmusic musicPlayer = playmusic.getInstance();
+    
+	private boolean isMusicPlaying = false;
+	 private playmusic play1,play2,play3,pau1,pau2,pau3;
+
     
     @FXML
 	private void initialize() {
@@ -198,6 +202,10 @@ public class contactController extends baseSceneController {
 	
 	@FXML
 	private void handleService() {
+		if (isMusicPlaying) {
+	        stopAllMusic();
+	        isMusicPlaying = false;
+	    }
 		createSceneGame(service,"/main/sources/Trivia.fxml","","/music.mp3");
 	}
 	
@@ -208,67 +216,71 @@ public class contactController extends baseSceneController {
 	
 	@FXML
 	private void handleBack() {
-		play1.pauseMusic();
-		play2.pauseMusic();
-		play3.pauseMusic();
+		if (isMusicPlaying) {
+	        stopAllMusic();
+	        isMusicPlaying = false;
+	    }
 		createScene(back,"/main/sources/interfaceView.fxml","/main/sources/css/interface.css");
 	}
-	
 
-	private boolean isMusicPlaying = false;
 
-	@FXML
-	private void handlePlay1() {
-	    if (!isMusicPlaying) {
-	    	play3.pauseMusic();
-	    	play2.pauseMusic();
-	        play1.initMusic(getClass().getResource("/dc558c1f-7664-4d24-9948-7a1ab318892a.mp3").toString());
-	        play1.playMusic();
-	        isMusicPlaying = true;
-	        System.out.println("Music is already playing.");
-	    }
-	}
+@FXML
+private void handlePlay1() {
+    if (!isMusicPlaying) {
+        stopAllMusic();
+        musicPlayer.initMusic(getClass().getResource("/dc558c1f-7664-4d24-9948-7a1ab318892a.mp3").toString());
+        musicPlayer.playMusic();
+        isMusicPlaying = true;
+        System.out.println("Playing music 1.");
+    }
+}
 
-	
-	@FXML
-	private void handlePlay2() {
-		if (!isMusicPlaying) {
-			play1.pauseMusic();
-			play3.pauseMusic();
-	        play2.initMusic(getClass().getResource("/Tainhanh.net_YouTube_SON-TUNG-MTP-CHUNG-TA-CUA-HIEN-TAI-CM1X_Media_QPKHfugLTqc_006_144p.mp3").toString());
-	        play2.playMusic();
-	        isMusicPlaying = true;
-	        System.out.println("Music is already playing.");
-	    }
-	}
-	
-	@FXML
-	private void handlePlay3() {
-		if (!isMusicPlaying) {
-			play1.pauseMusic();
-			play2.pauseMusic();
-	        play3.initMusic(getClass().getResource("/Tainhanh.net_YouTube_Last-Christmas-Remix-Hung-Hack-Nhac-Remi_Media_iDXRKHY7mJA_006_144p.mp3").toString());
-	        play3.playMusic();
-	        isMusicPlaying = true;
-	        System.out.println("Music is already playing.");
-	    }
-	}
-	
-	@FXML
-	private void handlePause1() {
-		play1.pauseMusic();
-		isMusicPlaying = false;
-	}
-	
-	@FXML
-	private void handlePause2() {
-		play2.pauseMusic();
-		isMusicPlaying = false;
-	}
-	
-	@FXML
-	private void handlePause3() {
-		play3.pauseMusic();
-		isMusicPlaying = false;
-	}
+@FXML
+private void handlePlay2() {
+    if (!isMusicPlaying) {
+        stopAllMusic();
+        musicPlayer.initMusic(getClass().getResource("/Tainhanh.net_YouTube_SON-TUNG-MTP-CHUNG-TA-CUA-HIEN-TAI-CM1X_Media_QPKHfugLTqc_006_144p.mp3").toString());
+        musicPlayer.playMusic();
+        isMusicPlaying = true;
+        System.out.println("Playing music 2.");
+    }
+}
+
+@FXML
+private void handlePlay3() {
+    if (!isMusicPlaying) {
+        stopAllMusic();
+        musicPlayer.initMusic(getClass().getResource("/Tainhanh.net_YouTube_Last-Christmas-Remix-Hung-Hack-Nhac-Remi_Media_iDXRKHY7mJA_006_144p.mp3").toString());
+        musicPlayer.playMusic();
+        isMusicPlaying = true;
+        System.out.println("Playing music 3.");
+    }
+}
+
+@FXML
+private void handlePause1() {
+    musicPlayer.pauseMusic();
+    isMusicPlaying = false;
+    System.out.println("Paused music 1.");
+}
+
+@FXML
+private void handlePause2() {
+    musicPlayer.pauseMusic();
+    isMusicPlaying = false;
+    System.out.println("Paused music 2.");
+}
+
+@FXML
+private void handlePause3() {
+    musicPlayer.pauseMusic();
+    isMusicPlaying = false;
+    System.out.println("Paused music 3.");
+}
+
+private void stopAllMusic() {
+    musicPlayer.pauseMusic();
+    isMusicPlaying = false;
+    System.out.println("Stopped all music.");
+}
 }

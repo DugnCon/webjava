@@ -69,7 +69,7 @@
         <Button text = "Introduce" fx:id = "introduce" onAction = "#handleIntro" styleClass = "button_1"/>
         <Button text = "Outstanding" fx:id = "suprise" onAction = "#handleSuprise" styleClass = "button_1"/>
         <Button text = "Service" fx:id = "service" onAction = "#handleService" styleClass = "button_1"/>
-        <Button text = "Contact" fx:id = "contact" onAction = "#handleContact" styleClass = "button_1"/>
+        <Button text = "Music" fx:id = "contact" onAction = "#handleContact" styleClass = "button_1"/>
         <Button text = "Back" fx:id = "back" onAction = "#handleBack" styleClass = "button_1"/>
       </HBox>
     </HBox>
@@ -99,7 +99,7 @@
             <Insets top = "70" left = "30" right = "30" bottom = "70"/>
           </padding>
           <VBox alignment = "CENTER" spacing = "30">
-            <Label text = "Son Tung MTP" styleClass = "fontTile41"/>
+            <Label text = "Making my way" styleClass = "fontTile41"/>
             <ImageView fitWidth = "300" fitHeight = "400" preserveRatio = "true">
               <Image url = "/mtp.jpg" />
             </ImageView>
@@ -116,7 +116,7 @@
             <Insets top = "70" left = "30" right = "30" bottom = "70"/>
           </padding>
           <VBox alignment = "CENTER" spacing = "30">
-            <Label text = "Son Tung MTP" styleClass = "fontTile41"/>
+            <Label text = "Chung ta cua hien tai" styleClass = "fontTile41"/>
             <ImageView fitWidth = "300" fitHeight = "400" preserveRatio = "true">
               <Image url = "/hinh-anh-son-tung-full-hd_012524666.jpg" />
             </ImageView>

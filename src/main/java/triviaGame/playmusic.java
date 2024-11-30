@@ -9,6 +9,7 @@ public class playmusic {
     private MediaPlayer mediaPlayer;
     private static MediaPlayer mediaPlayerNew;
     private static playmusic instance;
+    private boolean isPlaying = false;
     
     public static playmusic getInstance() {
     	if(instance == null) {
@@ -18,9 +19,10 @@ public class playmusic {
     }
 
     public void initMusic(String musicPath) {
-         Media media = new Media(musicPath);
+    	Media media = new Media(musicPath);
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        isPlaying = false;
     }
     
     public static void initMusicNew(String musicPath) {
@@ -39,18 +41,31 @@ public class playmusic {
     }
     
     public void playMusic() {
-        if (mediaPlayer != null) {
+    	if (mediaPlayer != null) {
+            stopCurrentPlayingMusic();
             mediaPlayer.play();
+            isPlaying = true;
         } else {
             System.out.println("Music not initialized!");
         }
     }
+    
+    public boolean isMusicPlaying() {
+        return isPlaying;
+    }
 
     public void pauseMusic() {
-        if (mediaPlayer != null) {
+    	if (mediaPlayer != null) {
             mediaPlayer.pause();
+            isPlaying = false;
         } else {
             System.out.println("Music not initialized!");
+        }
+    }
+    
+    private void stopCurrentPlayingMusic() {
+        if (instance != null && instance.isPlaying) {
+            instance.pauseMusic();
         }
     }
     
