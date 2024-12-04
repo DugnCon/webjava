@@ -379,7 +379,7 @@ public class requestUserController extends baseSceneController {
         
         searchTask = () -> {
             try {
-                JsonArray results = apiController.getSuggestions(query);
+                JsonArray results = apiController.searchBooksFromOpenLibrary(query);
                 Platform.runLater(() -> updateSuggestionList(results));
             } catch (IOException | InterruptedException e) {
                 Platform.runLater(() -> {
@@ -416,8 +416,8 @@ public class requestUserController extends baseSceneController {
         Task<JsonArray> searchTask = new Task<JsonArray>() {
             @Override
             protected JsonArray call() throws Exception {
-            	Thread.sleep(500);
-                return apiController.searchBooks(query, 8);
+            	Thread.sleep(200);
+                return apiController.searchBooks(query, 40);
             }
 
             @Override
@@ -530,8 +530,6 @@ public class requestUserController extends baseSceneController {
         }
     }
 
-
-
     private void updateResults(JsonArray results) {
         searchResultsContainer.getChildren().clear();
 
@@ -540,79 +538,117 @@ public class requestUserController extends baseSceneController {
                 JsonObject book = results.get(i).getAsJsonObject();
                 JsonObject volumeInfo = book.getAsJsonObject("volumeInfo");
 
-                String title = volumeInfo.get("title").getAsString();
-                String infoLink = volumeInfo.has("infoLink") ? volumeInfo.get("infoLink").getAsString() : "";
-                String thumbnailUrl = volumeInfo.has("imageLinks") && volumeInfo.getAsJsonObject("imageLinks").has("thumbnail")
-                        ? volumeInfo.getAsJsonObject("imageLinks").get("thumbnail").getAsString() : null;
-                String authors = volumeInfo.has("authors") ? volumeInfo.get("authors").toString().replace("[", "").replace("]", "") : "Unknown author";
-                String description = volumeInfo.has("description") ? volumeInfo.get("description").getAsString() : "No description available";
-                String publishedDate = volumeInfo.has("publishedDate") ? volumeInfo.get("publishedDate").getAsString() : "Unknown publication date";
-                String ratings = volumeInfo.has("averageRating") ? volumeInfo.get("averageRating").getAsString() : "No ratings available";
-                String publisher = volumeInfo.has("publisher") ? volumeInfo.get("publisher").getAsString() : "Unknown publisher";
-                String categories = volumeInfo.has("categories") ? volumeInfo.get("categories").toString().replace("[", "").replace("]", "") : "No categories available";  // Thêm thể loại
+                String title = getStringValue(volumeInfo, "title");
+                String infoLink = getStringValue(volumeInfo, "infoLink", "");
+                String thumbnailUrl = getThumbnailUrl(volumeInfo);
+                String authors = getAuthors(volumeInfo);
+                String description = getStringValue(volumeInfo, "description", "No description available");
+                String publishedDate = getStringValue(volumeInfo, "publishedDate", "Unknown publication date");
+                String ratings = getStringValue(volumeInfo, "averageRating", "No ratings available");
+                String publisher = getStringValue(volumeInfo, "publisher", "Unknown publisher");
+                String categories = getCategories(volumeInfo);
 
-                HBox bookEntry = new HBox(10);
-                bookEntry.setAlignment(Pos.TOP_CENTER);
-                bookEntry.setStyle("-fx-padding: 10; -fx-border-color: #ddd; -fx-border-radius: 5; -fx-background-color: #f9f9f9;");
-
-                if (thumbnailUrl != null) {
-                    ImageView thumbnail = new ImageView(new Image(thumbnailUrl, 100, 150, true, true));
-                    bookEntry.getChildren().add(thumbnail);
-                }
-
-                VBox bookDetails = new VBox(20);
-                bookDetails.setAlignment(Pos.TOP_CENTER);
-                Font font = Font.loadFont(getClass().getResourceAsStream("/Accent Graphic W00 Medium.ttf"), 20);
-
-                Text bookTitleText = new Text(title);
-
-                bookTitleText.setStyle("-fx-font-size: 16px; -fx-font-family:'Accent Graphic W00 Medium';");
-                bookTitleText.setWrappingWidth(300);
-
-                Hyperlink bookLink = new Hyperlink();
-                bookLink.setGraphic(bookTitleText);
-                bookLink.setOnAction(event -> openWebpage(infoLink));
-
-                Text authorText = new Text("Authors: " + authors);
-                authorText.setStyle("-fx-font-size: 14px; -fx-font-family:'Accent Graphic W00 Medium';");
-
-                Text publisherText = new Text("Publisher: " + publisher);
-                publisherText.setStyle("-fx-font-size: 14px; -fx-font-family:'Accent Graphic W00 Medium';");
-
-                Text categoriesText = new Text("Categories: " + categories);
-                categoriesText.setStyle("-fx-font-size: 14px; -fx-font-family:'Accent Graphic W00 Medium';");
-
-                Text descriptionText = new Text();
-                Button seeMoreButton = new Button("View Details");
-                seeMoreButton.getStyleClass().add("buttonAdd");
-
-                if (description.length() > 200) {
-                    descriptionText.setText("Description: " + description.substring(0, 200) + "...");
-                    descriptionText.setStyle("-fx-font-size: 14px; -fx-font-family:'Accent Graphic W00 Medium';");
-                    seeMoreButton.setOnAction(event -> showDetailedPopup(title, thumbnailUrl, authors, publishedDate, ratings, description, publisher, categories));
-                } else {
-                    descriptionText.setText("Description: " + description);
-                    seeMoreButton.setVisible(false);
-                }
-                descriptionText.setWrappingWidth(300);
-                descriptionText.setStyle("-fx-font-size: 12px;-fx-text-fill:black;-fx-font-family:'Accent Graphic W00 Medium';");
-
-                Text publishedDateText = new Text("Publication date: " + publishedDate);
-                publishedDateText.setStyle("-fx-font-size: 12px;-fx-text-fill:black;-fx-font-family:'Accent Graphic W00 Medium';");
-
-                Text ratingsText = new Text("Ratings: " + ratings);
-                ratingsText.setStyle("-fx-font-size: 12px;-fx-text-fill:black;-fx-font-family:'Accent Graphic W00 Medium';");
-
-                bookDetails.getChildren().addAll(bookLink, authorText, publisherText, categoriesText, descriptionText, publishedDateText, ratingsText, seeMoreButton);
+                HBox bookEntry = createBookEntry(title, thumbnailUrl);
+                VBox bookDetails = createBookDetails(title, infoLink, thumbnailUrl,authors, publisher, categories, description, publishedDate, ratings);
 
                 bookEntry.getChildren().add(bookDetails);
                 searchResultsContainer.getChildren().add(bookEntry);
             }
         } else {
-            Text noResults = new Text("No results found.");
-            noResults.setStyle("-fx-font-size: 16px; -fx-fill: #999;");
-            searchResultsContainer.getChildren().add(noResults);
+            displayNoResultsMessage();
         }
+    }
+
+    private String getStringValue(JsonObject volumeInfo, String key) {
+        return getStringValue(volumeInfo, key, "Unknown");
+    }
+
+    private String getStringValue(JsonObject volumeInfo, String key, String defaultValue) {
+        return volumeInfo.has(key) ? volumeInfo.get(key).getAsString() : defaultValue;
+    }
+
+    private String getThumbnailUrl(JsonObject volumeInfo) {
+        if (volumeInfo.has("imageLinks") && volumeInfo.getAsJsonObject("imageLinks").has("thumbnail")) {
+            return volumeInfo.getAsJsonObject("imageLinks").get("thumbnail").getAsString();
+        }
+        return null;
+    }
+    private String getAuthors(JsonObject volumeInfo) {
+        return volumeInfo.has("authors") ? volumeInfo.get("authors").toString().replace("[", "").replace("]", "") : "Unknown author";
+    }
+
+    private String getCategories(JsonObject volumeInfo) {
+        return volumeInfo.has("categories") ? volumeInfo.get("categories").toString().replace("[", "").replace("]", "") : "No categories available";
+    }
+
+    private HBox createBookEntry(String title, String thumbnailUrl) {
+        HBox bookEntry = new HBox(10);
+        bookEntry.setAlignment(Pos.TOP_CENTER);
+        bookEntry.setStyle("-fx-padding: 10; -fx-border-color: #ddd; -fx-border-radius: 5; -fx-background-color: #f9f9f9;");
+
+        if (thumbnailUrl != null) {
+            ImageView thumbnail = new ImageView();
+            
+            Task<Image> loadImageTask = new Task<Image>() {
+                @Override
+                protected Image call() throws Exception {
+                    return new Image(thumbnailUrl, 200, 350, true, true); 
+                }
+            };
+
+            loadImageTask.setOnSucceeded(event -> {
+                Platform.runLater(() -> thumbnail.setImage(loadImageTask.getValue()));
+            });
+
+            new Thread(loadImageTask).start(); 
+
+            bookEntry.getChildren().add(thumbnail);
+        }
+
+        return bookEntry;
+    }
+    private VBox createBookDetails(String title, String infoLink, String thumbnailUrl, String authors,String publisher, String categories, String description, String publishedDate, String ratings) {
+        VBox bookDetails = new VBox(20);
+        bookDetails.setAlignment(Pos.CENTER);
+
+        Text bookTitleText = new Text(title);
+        bookTitleText.setStyle("-fx-font-size:20px;");
+        bookTitleText.setWrappingWidth(250);
+
+        Hyperlink bookLink = new Hyperlink();
+        bookLink.setGraphic(bookTitleText);
+        bookLink.setOnAction(event -> openWebpage(infoLink));
+
+        Text authorText = new Text("Authors: " + authors);
+        Text publisherText = new Text("Publisher: " + publisher);
+        Text categoriesText = new Text("Categories: " + categories);
+
+        Text descriptionText = new Text();
+        Button seeMoreButton = new Button("View Details");
+        seeMoreButton.getStyleClass().add("buttonAdd");
+
+        if (description.length() > 200) {
+            descriptionText.setText("Description: " + description.substring(0, 200) + "...");
+            seeMoreButton.setOnAction(event -> showDetailedPopup(title, thumbnailUrl, authors, publishedDate, ratings, description, publisher, categories));
+        } else {
+            descriptionText.setText("Description: " + description);
+            seeMoreButton.setVisible(false);
+        }
+
+        descriptionText.setWrappingWidth(300);
+
+        Text publishedDateText = new Text("Publication date: " + publishedDate);
+        Text ratingsText = new Text("Ratings: " + ratings);
+
+        bookDetails.getChildren().addAll(bookLink, authorText, publisherText, categoriesText, descriptionText, publishedDateText, ratingsText, seeMoreButton);
+
+        return bookDetails;
+    }
+
+    private void displayNoResultsMessage() {
+        Text noResults = new Text("No results found.");
+        noResults.setStyle("-fx-font-size: 16px; -fx-fill: #999;");
+        searchResultsContainer.getChildren().add(noResults);
     }
 
 
@@ -632,10 +668,19 @@ public class requestUserController extends baseSceneController {
         popupTitle.setFont(font);
         popupTitle.setWrappingWidth(400);
 
-        ImageView thumbnail = null;
-        if (thumbnailUrl != null) {
-            thumbnail = new ImageView(new Image(thumbnailUrl, 200, 300, true, true));
-        }
+        ImageView thumbnailImage = new ImageView();
+        Task<Image> loadImageTask = new Task<Image>() {
+            @Override
+            protected Image call() throws Exception {
+                return new Image(thumbnailUrl, 200, 300, true, true);
+            }
+        };
+
+        loadImageTask.setOnSucceeded(event -> {
+            thumbnailImage.setImage(loadImageTask.getValue());
+        });
+
+        new Thread(loadImageTask).start();
         
         Text authorText = new Text("Authors: " + authors);
         authorText.setStyle("-fx-font-size: 14px;-fx-font-family:'Accent Graphic W00 Medium';");
@@ -669,8 +714,8 @@ public class requestUserController extends baseSceneController {
         scrollPane.setStyle("-fx-border-radius:10; -fx-background-radius:10; -fx-border-color:black;");
 
         VBox layout = new VBox(10, popupTitle);
-        if (thumbnail != null) {
-            layout.getChildren().add(thumbnail);
+        if (thumbnailImage != null) {
+            layout.getChildren().addAll(thumbnailImage);
             layout.setAlignment(Pos.CENTER_LEFT);
         }
         layout.getChildren().addAll(authorText, publishedDateText, publisherText, categoriesText, ratingsText);
